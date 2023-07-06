@@ -1,0 +1,65 @@
+<!-- Component imports (macros) -->
+{# {% from 'breadcrumb/macro.njk' import breadcrumb %}`
+{% from 'details/macro.njk' import details %} #}
+
+<!-- Extends the layout from /views/layout/layout.html -->
+{% extends 'layouts/layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  NHS.UK prototype kit
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+  {{ breadcrumb({
+    items: [{
+      href: "/prototypes/admin-frameworks",
+      text: "Home"
+    },{
+      href: "/prototypes/admin-frameworks/select-a-framework",
+      text: "Select a framework"
+    },{
+      href: "/prototypes/admin-frameworks/select-a-framework/framework-dashboard",
+      text: "IV Therapy passport"
+    }]
+  }) }}
+
+  {{ hero({
+    "heading": "Users",
+    "text": "Manage user, create or manage how you group users or approve new registrations."
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full">
+        <ul class="nhsuk-list">
+          <li>
+              <a class="nhsuk-link nhsuk-body-l nhsuk-u-margin-bottom-4" href="users/users-search">Search and manage users</a>
+          </li>
+          <li>
+              <a class="nhsuk-link nhsuk-body-l nhsuk-u-margin-bottom-4" href="#groups">Groups</a>
+          </li>
+          {# 
+          This manot be needed for frameworks
+          <li>
+              <a class="nhsuk-link nhsuk-body-l nhsuk-u-margin-bottom-4" href="#Courses">Courses</a>
+          </li> #}
+          <li>
+              <a class="nhsuk-link nhsuk-body-l nhsuk-u-margin-bottom-4" href="#new-regestrations">Approve new regestrations</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  {% endblock %}
+
+  <!-- For adding a back link -->
+  <!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+  {% block outerContent %}
+  {% endblock %}

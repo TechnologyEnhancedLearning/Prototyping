@@ -1,5 +1,5 @@
 <!-- Extends the layout from /views/layout.html -->
-{% extends 'layout.html' %}
+{% extends 'layouts/layout.html' %}
 
 <!-- Set the page title -->
 {# {% block pageTitle %}
@@ -8,11 +8,11 @@
 
 {% block beforeContent %}
   {# Change home breadcrumb to the start of the prototype journey to #}
-  {# "/prototypes/new-prototype-journey-home" #}
+  {# "proficiencies-journey" #}
   {{ breadcrumb({
     items: [
     {
-      href: "#",
+      href: "/prototypes/proficiencies-journey",
       text: "Home"
     }
   ]}) }}
@@ -31,9 +31,7 @@
     
       <div class="nhsuk-grid-column-full">
         <!-- Change the page heading -->
-        <h1>
-          Example page, page heading goes here
-        </h1>
+        <h1>Nursing, learner, proficiencies journey</h1>
       </div>
 
       <div class="nhsuk-grid-column-full">
@@ -42,9 +40,9 @@
           <!-- Add content here -->
           <!-- Styles and components can be found at https://service-manual.nhs.uk/design-system -->
           <p class="nhsuk-lede-text">
-            This is an example page
+            Possible issues have been identified around the Nursing proficiencies journey however more work needs to be done to understand these issues with users first.
           </p>
-          
+
           <p>
             For styles, code snippets and guidance on components visit the
             <a href="https://service-manual.nhs.uk/design-system">NHS digital service manual</a>.

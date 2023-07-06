@@ -1,0 +1,88 @@
+<!-- Use this page as the Index-ogOg-og for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layouts/layout.html' %}
+<!-- 
+  In /views/layout.html you can:
+  - change the header and footer 
+  - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Welcome - DLS prototype
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+  {{ breadcrumb({
+    href: "/prototypes/admin-frameworks",
+    text: "Home"
+  }) }}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full">
+        <h1>Select a framework</h1>
+      </div>
+    </div>
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full">
+        <div class="nhsuk-u-reading-width">
+          <ul class="nhsuk-list">
+
+            <li class="nhsuk-list-item">
+              <h2 class="nhsuk-heading-xs nhsuk-u-margin-bottom-2">
+                <a href="/prototypes/admin-frameworks/select-a-framework/framework-dashboard">
+                  IV Therapy Passport
+                </a>
+              </h2>
+              <p class="nhsuk-body-s nhsuk-u-margin-bottom-0">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium consequatur quaerat asperiores harum nostrum cum commodi alias modi labore similique cupiditate dolor repellendus recusandae ut sint, ab iste voluptatibus facere?
+              </p>
+              <hr class="nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-4">
+            </li>
+
+            <li class="nhsuk-list-item">
+              <h2 class="nhsuk-heading-xs nhsuk-u-margin-bottom-2">
+                <a href="#">
+                  Step 1
+                </a>
+              </h2>
+              <p class="nhsuk-body-s nhsuk-u-margin-bottom-0">
+                National Proficiency Framework for Registered Nurses in Adult Critical Care
+              </p>
+              <hr class="nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-4">
+            </li>
+
+            <li class="nhsuk-list-item">
+              <h2 class="nhsuk-heading-xs nhsuk-u-margin-bottom-2">
+                <a href="#">
+                  Step 2
+                </a>
+              </h2>
+              <p class="nhsuk-body-s nhsuk-u-margin-bottom-0">
+                National Proficiency Framework for Registered Nurses in Adult Critical Care
+              </p>
+              <hr class="nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-4">
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
