@@ -28,7 +28,9 @@ function compileStyles() {
     'app/assets/sass/**/*.scss',
     'docs/assets/sass/**/*.scss'
   ])
-    .pipe(sass())
+    .pipe(sass({
+      includePaths: ['node_modules']
+    }))
     .pipe(gulp.dest('public/css'))
     .on('error', (err) => {
       console.log(err)

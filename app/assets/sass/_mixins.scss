@@ -1,0 +1,142 @@
+@use 'sass:math';
+
+@mixin show-for-sr() {
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  top: auto;
+  left: -10000px;
+}
+
+@mixin breakpoint($breakpoint, $range: 'up') {
+  @if type-of($range) == 'number' {
+    @media screen and (min-width: #{$breakpoint * 100px}) and (max-width: #{(($range + 1) * 100px) - 1px}) {
+      @content;
+    }
+  }
+
+  @else if $range == 'only' {
+    @media screen and (min-width: #{$breakpoint * 100px}) and (max-width: #{(($breakpoint + 1) * 100px) - 1px}) {
+      @content;
+    }
+  }
+
+  @else if $range == 'down' {
+    @media screen and (max-width: #{(($breakpoint + 1) * 100px) - 1px}) {
+      @content;
+    }
+  }
+
+  @else if $range == 'up' {
+    @media screen and (min-width: #{$breakpoint * 100px}) {
+      @content;
+    }
+  }
+
+  @else {
+    @error 'Unknown breakpoint range \'#{$range}\'. Possible values: \'only\', \'down\', \'up\', or number.';
+  }
+}
+
+@mixin light-text($color: $color_nhsuk-white) {
+  color: $color;
+
+  a {
+    @include underline();
+
+    color: inherit;
+    font-weight: 600;
+  }
+
+  a:visited {
+    color: inherit;
+  }
+
+  h2,
+  h3,
+  h4 {
+    color: inherit;
+  }
+
+  select,
+  input {
+    color: $bad-tempered-teal;
+  }
+}
+
+@mixin dark-text($color: $nhsuk-text-color) {
+  color: $color;
+
+  a {
+    @include underline();
+
+    color: inherit;
+    font-weight: 600;
+  }
+
+  a:visited {
+    color: $color;
+  }
+}
+
+// This function removes the white space above a heading creating equal space visually at the top and bottom of an element without offsetting opther margins or padding. 
+// This is used when a heading is the first item in a box 
+// This will need updating to take in the responsive nhs responsive line-height function.
+// @mixin adjust-heading {
+//   margin-top: -($heading-line-height - 1) + em;
+//   line-height: $heading-line-height;
+// }
+
+@mixin no-list-style {
+  margin: 0;
+  list-style: none;
+}
+
+@mixin underline($thickness: 1px, $offset: 0.075em, $includeState: true) {
+  text-decoration: underline;
+  text-decoration-thickness: $thickness;
+  text-underline-offset: $offset;
+
+  @if ($includeState == true) {
+    &:hover {
+      text-decoration: underline;
+      text-decoration-thickness: $thickness;
+      text-underline-offset: $offset;
+    }
+
+    &:focus-visible {
+      text-decoration: none;
+    }
+  }
+}
+
+@mixin clearfix {
+  &:before,
+  &:after {
+    content: '';
+    display: block;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin wysiwyg-content {
+  a {
+    @include underline;
+  }
+
+  & > *:last-child,
+  & > a:last-child img:last-child,
+  & > p:last-child .button:last-child {
+    margin-bottom: 0;
+  }
+
+  & > ul,
+  & > ol {
+    margin-left: 36px;
+    margin-bottom: 1em;
+  }
+}

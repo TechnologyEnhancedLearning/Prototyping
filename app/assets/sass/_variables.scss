@@ -1,0 +1,44 @@
+@use 'sass:math';
+
+/* Layout
+---------------------------------------------------------------------- */
+// Some of the NHS styles break down with the 3/4 column layout below this
+// size. Since the NHS large-desktop is 990px, defined this xl-desktop size.
+$xl-desktop: 1024px;
+$mq-tablet: 768px;
+
+$inside-width: $xl-desktop;
+$number-of-columns: 12;
+$column-max-width: math.div($inside-width, $number-of-columns);
+$border-rounded: 100%;
+$global-radius: 4px;
+
+// it might be helpful to include a gutter variable and update the global radius to match the nhsuk button radius
+
+/* Typography
+---------------------------------------------------------------------- */
+$heading-line-height: 1.2;
+
+/* Colours and transparency
+---------------------------------------------------------------------- */
+$alpha: 0.95;
+
+$spectre: transparent;
+$transparent-white: rgba(white, $alpha);
+
+// Social media
+$twitter: #1e9ce9;
+$facebook: #3b5998;
+$instagram: #c13584;
+
+/* Aspect ratios
+---------------------------------------------------------------------- */
+// Note: To be applied to padding top or bottom
+$aspect-ratio-1-to-1: 100%; // 100% of width
+$aspect-ratio-3-to-2: math.div(100%, 3) * 2; // 66.66% of width
+$aspect-ratio-16-to-9: math.div(100%, 16) * 9; // 56.25% of width
+$aspect-ratio-2-to-1: math.div(100%, 2) * 1; // 50% of width
+$aspect-ratio-3-to-1: math.div(100%, 3) * 1; // 33% of width
+$aspect-ratio-4-to-1: math.div(100%, 4) * 1; // 25% of width
+$aspect-ratio-5-to-1: math.div(100%, 5) * 1; // 20%
+$aspect-ratio-6-to-1: math.div(100%, 6) * 1; // 16.66%

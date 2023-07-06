@@ -1,0 +1,32 @@
+{% macro picture( additionalClasses, smallSrc, mediumSrc, largeSrc, xlargeSrc, xxlargeSrc, xxxlargeSrc, alt, loading='lazy') %}
+<div class="picture {{ additionalClasses if additionalClasses }}">
+  <picture class="picture__element">
+    <!--[if IE 9]><video style="display: none;"><![endif]-->
+    {% if xxxlargeSrc %}
+    <source srcset="{{ xxxlargeSrc }}" media="(min-width: 1800px)">
+    {% endif %}
+
+    {% if xxlargeSrc %}
+    <source srcset="{{ xxlargeSrc }}" media="(min-width: 1500px)">
+    {% endif %}
+
+    {% if xlargeSrc %}
+    <source srcset="{{ xlargeSrc }}" media="(min-width: 1200px)">
+    {% endif %}
+
+    {% if largeSrc %}
+    <source srcset="{{ largeSrc }}" media="(min-width: 900px)">
+    {% endif %}
+
+    {% if mediumSrc %}
+    <source srcset="{{ mediumSrc }}" media="(min-width: 600px)">
+    {% endif %}
+
+    {% if smallSrc %}
+    <source srcset="{{ smallSrc }}" media="(min-width: 0px)">
+    {% endif %}
+    <!--[if IE 9]></video><![endif]-->
+
+    <img class="picture__image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" srcset="{{ smallSrc }}" alt="{{ alt }}" loading="{{ loading }}">
+  </picture>
+</div>
