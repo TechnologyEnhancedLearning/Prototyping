@@ -22,13 +22,41 @@
 {% block header %}
   {{ header({
     "service": {
-        "name": "Prototype kit",
+        "name": "Digital Learning Solutions Prototype",
         "href": "/"
       },
-      "showNav": "false",
-      "showSearch": "false"
+      "showNav": "true",
+      "classes": "",
+      "primaryLinks": [
+      {
+        "url"  : "#",
+        "label" : 'My learning'
+      },
+      {
+        'url' : '#',
+        'label' : 'Manage a framework'
+      },
+      {
+        'url'  : '#',
+        'label' : 'Find your centre'
+      },
+      {
+        'url'  : '#',
+        'label' : 'Notifications'
+      },
+      {
+        'url'  : '#',
+        'label' : 'My account'
+      },
+      {
+        'url' : '#',
+        'label' : 'Log out'
+      }
+    ]
     })
   }}
+
+  {# {% include "includes/dls-header.html" %} #}
 {% endblock %}
 
 <!-- Edit the footer -->
@@ -37,15 +65,31 @@
   {{ footer({
     "links": [
       {
-        "URL": "/",
-        "label": "Home"
+        "URL": "#",
+        "label": "Accessibility statement"
       },
       {
-        "URL": "/page-example",
-        "label": "Example page"
+        "URL": "#",
+        "label": "Contact us"
+      },
+      {
+        "URL": "#",
+        "label": "Cookies"
+      },
+      {
+        "URL": "#",
+        "label": "Privacy policy"
+      },
+      {
+        "URL": "#",
+        "label": "Terms and conditions"
+      },
+      {
+        "URL": "/",
+        "label": "Prototype Home"
       }
     ]
-  })}}
+  }) }}
 {% endblock %}
 
 {% block bodyEnd %}
