@@ -1,0 +1,23 @@
+{% macro featuredMedia(classes='', heading, content, image, loading='lazy') %}
+<div class="featured-media featured-media--image {{ classes }}">
+  <div class="nhsuk-width-container">
+    <div class="featured-media__inner nhsuk-grid-row">
+      <div class="featured-media__content-container nhsuk-grid-column-two-thirds">
+        {% if heading %}
+        <h2 class="featured-media__heading">{{ heading }}</h2>
+        {% endif %}
+
+        <div class="featured-media__content">
+          <div class="wysiwyg-content">
+              {{ content }}
+          </div>
+        </div>
+      </div>
+
+      <div class="featured-media__media nhsuk-grid-column-one-third">
+        <img src="{{ image }}" alt="" loading="{{ loading }}">
+      </div>
+    </div>
+  </div>
+</div>
+{% endmacro %}

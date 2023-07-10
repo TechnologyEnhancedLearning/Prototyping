@@ -1,0 +1,79 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layouts/layout.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title -->
+<!-- {% block pageTitle %}
+  NHS.UK prototype kit
+{% endblock %} -->
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+  {{ hero({
+    "heading": "NHS.UK prototype kit",
+    "text": "Rapidly create HTML prototypes of NHS.UK services."
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full">
+
+        <ul class="nhsuk-grid-row nhsuk-card-group">
+          <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
+            {{ card({
+              "href": "/prototypes/admin-frameworks",
+              "clickable": "true",
+              "heading": "Frameworks admin interface",
+              "headingClasses": "nhsuk-heading-s",
+              "description": ""
+            }) }}
+          </li>
+          <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
+            {{ card({
+              "href": "/prototypes/proficiencies-journey",
+              "clickable": "true",
+              "heading": "Nursing, learner proficiencies",
+              "headingClasses": "nhsuk-heading-s",
+              "description": ""
+            }) }}
+          </li>
+          <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
+            {{ card({
+              "href": "/prototypes/login-journey",
+              "clickable": "true",
+              "heading": "Login journey",
+              "headingClasses": "nhsuk-heading-s",
+              "description": ""
+            }) }}
+          </li>
+        </ul>
+
+        <hr class="nhsuk-u-margin-top-2 nhsuk-u-margin-bottom-6">
+
+        <div class="nhsuk-u-reading-width">
+          <p class="nhsuk-u-margin-bottom-0">Visit the <a href="https://service-manual.nhs.uk">NHS digital service manual</a> for guidance and examples.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+
+

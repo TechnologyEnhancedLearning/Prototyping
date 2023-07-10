@@ -1,0 +1,73 @@
+<!-- Component imports (macros) -->
+{# {% from 'breadcrumb/macro.njk' import breadcrumb %}`
+{% from 'details/macro.njk' import details %} #}
+
+<!-- Extends the layout from /views/layout/layout.html -->
+{% extends 'layouts/layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  NHS.UK prototype kit
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+  {{ breadcrumb({
+    items: [{
+      href: "/prototypes/admin-frameworks",
+      text: "Home"
+    },{
+      href: "/prototypes/admin-frameworks/select-a-framework",
+      text: "Select a framework"
+    },{
+      href: "/prototypes/admin-frameworks/select-a-framework/framework-dashboard",
+      text: "IV Therapy passport"
+    },{
+      href: "/prototypes/admin-frameworks/select-a-framework/framework-dashboard/users",
+      text: "Users"
+    }]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full">
+        <h1>
+          <span class="nhsuk-caption-l">
+            IV Therapy passport framework
+            <span class="nhsuk-u-visually-hidden"> - </span>
+          </span>
+          Search and manage users
+        </h1>
+
+
+        <div class="">
+          <hr class="nhsuk-u-margin-top-2 nhsuk-u-margin-bottom-2">
+          <div>
+            <a class="nhsuk-u-margin-right-4 nhsuk-link-active nhsuk-u-font-weight-bold" href="#">Search users</a>
+            <a class="nhsuk-u-margin-right-4" href="#">Register users</a>
+            {# <a class="nhsuk-u-margin-right-4" href="#">Send welcome message</a> #}
+            <a class="nhsuk-u-margin-right-4" href="#">Bulk opperation</a>
+          </div>
+          <hr class="nhsuk-u-margin-top-2 nhsuk-u-margin-bottom-6">
+        </div>
+
+        <p class="nhsuk-lead-text nhsuk-body-l">Lorem ipsum dolor sit amet4 consectetur adipisicing elit. Rerum repellendus consequuntur odio, dolore nostrum eveniet.</p>
+      </div>
+    </div>
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full">
+        {% include 'includes/search-with-listing.html' %}
+      </div>
+    </div>
+  </div>
+
+  {% endblock %}
+
+  <!-- For adding a back link -->
+  <!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+  {% block outerContent %}
+  {% endblock %}

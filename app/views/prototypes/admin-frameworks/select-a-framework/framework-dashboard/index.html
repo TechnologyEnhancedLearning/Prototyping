@@ -1,0 +1,100 @@
+<!-- Component imports (macros) -->
+{# {% from 'breadcrumb/macro.njk' import breadcrumb %}`
+{% from 'details/macro.njk' import details %} #}
+
+<!-- Extends the layout from /views/layout/layout.html -->
+{% extends 'layouts/layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  NHS.UK prototype kit
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+  {{ breadcrumb({
+    items: [{
+      href: "/prototypes/admin-frameworks",
+      text: "Home"
+    },{
+      href: "/prototypes/admin-frameworks/select-a-framework",
+      text: "Select a framework"
+    }]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full">
+        <h1>IV Therapy passport framework dashboard</h1>
+        <p class="nhsuk-lead-text nhsuk-body-l">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum repellendus consequuntur odio, dolore nostrum eveniet.</p>
+      </div>
+    </div>
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full">
+
+        <ul class="nhsuk-grid-row nhsuk-card-group">
+          <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
+            {{ card({
+              "href": "framework-dashboard/users",
+              "clickable": "true",
+              "heading": "Users",
+              "headingClasses": "nhsuk-heading-xs",
+              "description": "Manage user on this framework"
+            }) }}
+          </li>
+          <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
+            {{ card({
+              "href": "#",
+              "clickable": "true",
+              "heading": "Reports",
+              "headingClasses": "nhsuk-heading-xs",
+              "description": "Download self assesment reprots"
+            }) }}
+          </li>
+          <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
+            {{ card({
+              "href": "#",
+              "clickable": "true",
+              "heading": "Support",
+              "headingClasses": "nhsuk-heading-xs",
+              "description": "Access Digital Learning Solutions support"
+            }) }}
+          </li>
+        </ul>
+
+        <hr class="nhsuk-u-margin-top-2 nhsuk-u-margin-bottom-6">
+
+        <div class="nhsuk-grid-row">
+          <div class="nhsuk-grid-column-full">
+
+            {{ details({
+              "classes": "nhsuk-expander",
+              "text": "Framework details",
+              "HTML": "
+              <p>You can see your GP records by:</p>
+              <ul>
+                <li>asking for them at your GP surgery </li>
+                <li>going online to see them (if you have signed up for <a href=\"/using-the-nhs/nhs-services/gps/gp-online-services/\">GP online services</a>) </li>
+              </ul>"
+            }) }}
+
+          </div>
+        </div>  
+
+        {# <div class="nhsuk-u-reading-width">
+          <p class="nhsuk-u-margin-bottom-0">Visit the <a href="https://service-manual.nhs.uk">NHS digital service manual</a> for guidance and examples.</p>
+        </div> #}
+
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}

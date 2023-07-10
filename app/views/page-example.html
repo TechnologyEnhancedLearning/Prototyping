@@ -1,0 +1,57 @@
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{# {% block pageTitle %}
+  Content page example - NHS.UK prototype kit
+{% endblock %} #}
+
+{% block beforeContent %}
+  {# Change home breadcrumb to the start of the prototype journey to #}
+  {# "/prototypes/new-prototype-journey-home" #}
+  {{ breadcrumb({
+    items: [
+    {
+      href: "#",
+      text: "Home"
+    }
+  ]}) }}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+    
+      <div class="nhsuk-grid-column-full">
+        <!-- Change the page heading -->
+        <h1>
+          Example page, page heading goes here
+        </h1>
+      </div>
+
+      <div class="nhsuk-grid-column-full">
+        <div class="nhsuk-u-reading-width">
+
+          <!-- Add content here -->
+          <!-- Styles and components can be found at https://service-manual.nhs.uk/design-system -->
+          <p class="nhsuk-lede-text">
+            This is an example page
+          </p>
+          
+          <p>
+            For styles, code snippets and guidance on components visit the
+            <a href="https://service-manual.nhs.uk/design-system">NHS digital service manual</a>.
+          </p>
+
+        </div>
+      </div>  
+    </div>
+  </div>
+{% endblock %}

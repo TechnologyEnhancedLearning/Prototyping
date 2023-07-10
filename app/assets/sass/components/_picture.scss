@@ -1,0 +1,27 @@
+.picture {
+  $this: &;
+
+  overflow: hidden;
+
+  &--cover {
+    #{$this}__image {
+      width: 100%;
+      margin-bottom: 0;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+
+      @supports (object-fit: cover) {
+        height: 100%;
+        top: 0;
+        transform: none;
+        object-fit: cover;
+      }
+    }
+  }
+
+  &__image {
+    border-radius: 0;
+    background-color: $color_nhsuk-grey-5
+  }
+}

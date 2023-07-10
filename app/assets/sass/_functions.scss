@@ -1,0 +1,5 @@
+@use 'sass:math';
+
+@function grid-calc($column-count, $total-columns) {
+  @return math.div($column-count, $total-columns) * 100%;
+}
