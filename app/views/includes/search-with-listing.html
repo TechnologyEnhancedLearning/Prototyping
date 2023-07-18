@@ -24,47 +24,146 @@
       <div class="search-filters__filter-lists">
         <h2 class="nhsuk-heading-s">Filters</h2>
 
+        {% set userGroup %}
+          <form>
+            {{ checkboxes({
+              "idPrefix": "example",
+              "name": "example",
+              "hint": {
+                "text": "Select all options that are relevant to you."
+              },
+              "items": [
+                {
+                  "value": "Admins",
+                  "text": "Admins"
+                },
+                {
+                  "value": "Learners",
+                  "text": "Learners"
+                }
+              ]
+            }) }}
+          </form>
+        {% endset %}
+        {{ details({
+          "text": "User group",
+          "HTML": userGroup
+        }) }}
+
+        {% set status %}
+          <form>
+            {{ checkboxes({
+              "idPrefix": "example",
+              "name": "example",
+              "hint": {
+                "text": "Select all options that are relevant to you."
+              },
+              "items": [
+                {
+                  "value": "Account locked",
+                  "text": "Account locked"
+                },
+                {
+                  "value": "Password set",
+                  "text": "Password set"
+                },
+                {
+                  "value": "account active",
+                  "text": "account active"
+                },
+                {
+                  "value": "account inactive",
+                  "text": "account inactive"
+                },
+                {
+                  "value": "Password not set",
+                  "text": "Text message"
+                },
+                {
+                  "value": "Password not set",
+                  "text": "Text message"
+                }
+              ]
+            }) }}
+          </form>
+        {% endset %}
         {{ details({
           "text": "Status",
-          "HTML": "
-          <p>An NHS number is a 10 digit number, like 485 777 3456.</p>
-            <p>You can find your NHS number by logging in to a GP online service or on any document the NHS has sent you, such as your:</p>
-            <ul>
-                <li>prescriptions</li>
-                <li>test results</li>
-                <li>hospital referral letters</li>
-                <li>appointment letters</li>
-            </ul>
-            <p>Ask your GP surgery for help if you can't find your NHS number.</p>
-          "
+          "HTML": status
         }) }}
+
+        {% set jobGroup %}
+          <form>
+            {{ checkboxes({
+              "idPrefix": "example",
+              "name": "example",
+              "fieldset": {
+                "legend": {
+                  "text": "How would you like to be contacted?",
+                  "classes": "nhsuk-fieldset__legend--l",
+                  isPageHeading: true
+                }
+              },
+              "hint": {
+                "text": "Select all options that are relevant to you."
+              },
+              "items": [
+                {
+                  "value": "email",
+                  "text": "Email"
+                },
+                {
+                  "value": "phone",
+                  "text": "Phone"
+                },
+                {
+                  "value": "text message",
+                  "text": "Text message"
+                }
+              ]
+            }) }}
+          </form>
+        {% endset %}
         {{ details({
           "text": "Job group",
-          "HTML": "
-          <p>An NHS number is a 10 digit number, like 485 777 3456.</p>
-            <p>You can find your NHS number by logging in to a GP online service or on any document the NHS has sent you, such as your:</p>
-            <ul>
-                <li>prescriptions</li>
-                <li>test results</li>
-                <li>hospital referral letters</li>
-                <li>appointment letters</li>
-            </ul>
-            <p>Ask your GP surgery for help if you can't find your NHS number.</p>
-          "
+          "HTML": jobGroup
         }) }}
+
+        {% set department %}
+          <form>
+            {{ checkboxes({
+              "idPrefix": "example",
+              "name": "example",
+              "fieldset": {
+                "legend": {
+                  "text": "How would you like to be contacted?",
+                  "classes": "nhsuk-fieldset__legend--l",
+                  isPageHeading: false
+                }
+              },
+              "hint": {
+                "text": "Select all options that are relevant to you."
+              },
+              "items": [
+                {
+                  "value": "email",
+                  "text": "Email"
+                },
+                {
+                  "value": "phone",
+                  "text": "Phone"
+                },
+                {
+                  "value": "text message",
+                  "text": "Text message"
+                }
+              ]
+            }) }}
+          </form>
+        {% endset %}
         {{ details({
           "text": "Department",
-          "HTML": "
-          <p>An NHS number is a 10 digit number, like 485 777 3456.</p>
-            <p>You can find your NHS number by logging in to a GP online service or on any document the NHS has sent you, such as your:</p>
-            <ul>
-                <li>prescriptions</li>
-                <li>test results</li>
-                <li>hospital referral letters</li>
-                <li>appointment letters</li>
-            </ul>
-            <p>Ask your GP surgery for help if you can't find your NHS number.</p>
-          "
+          "HTML": department
         }) }}
       </div>
     </div>
