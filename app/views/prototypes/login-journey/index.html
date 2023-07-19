@@ -1,21 +1,30 @@
 <!-- Extends the layout from /views/layout.html -->
 {% extends 'layouts/layout.html' %}
+{% from "components/featured-media.njk" import featuredMedia %}
 
 <!-- Set the page title -->
 {# {% block pageTitle %}
   Content page example - NHS.UK prototype kit
 {% endblock %} #}
+{% block header %}
+  {{ header({
+    "service": {
+        "name": "Digital Learning Solutions Prototype"
+      },
+      "homeHref": "/prototypes/login-journey",
+      "showNav": "false",
+      "classes": "",
+      "primaryLinks": []
+    })
+  }}
+{% endblock %}
 
 {% block beforeContent %}
-  {# Change home breadcrumb to the start of the prototype journey to #}
-  {# "/prototypes/new-prototype-journey-home" #}
-  {{ breadcrumb({
-    items: [
-    {
-      href: "/prototypes/login-journey",
-      text: "Home"
-    }
-  ]}) }}
+  {{ hero({
+    "imageURL": "/images/fm/healthcare-image-2.jpg",
+    "heading": "Digital Learning Solutions",
+    "text": "A home for learning in healthcare."
+  }) }}
 {% endblock %}
 
 <!-- For adding a back link -->
@@ -26,30 +35,42 @@
 <!-- For adding page content -->
 <!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
-  <div class="nhsuk-width-container">
-    <div class="nhsuk-grid-row">
-    
-      <div class="nhsuk-grid-column-full">
-        <!-- Change the page heading -->
-        <h1>Login & registration journey tbc</h1>
-      </div>
-
-      <div class="nhsuk-grid-column-full">
-        <div class="nhsuk-u-reading-width">
-
-          <!-- Add content here -->
-          <!-- Styles and components can be found at https://service-manual.nhs.uk/design-system -->
-          <p class="nhsuk-lede-text">
-            Possible issues have been identified around the login and registration journey however more work needs to be done to understand these issues with users first.
-          </p>
-
-          <p>
-            For styles, code snippets and guidance on components visit the
-            <a href="https://service-manual.nhs.uk/design-system">NHS digital service manual</a>.
-          </p>
-
+  <div class="nhsuk-width-container nhsuk-u-margin-top-9  nhsuk-u-margin-bottom-9" id="maincontentwrapper">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+          <div class="nhsuk-u-reading-width">
+            <p class="nhsuk-body-m">
+              If you're creating an account that should be associated with the trust you work at then we recomend that you regester while at your trust.
+            </p>
+          </div>
+          <div class="welcome-page-button-container">
+            <a class="nhsuk-button auth-button auth-button--left nhsuk-u-margin-right-4" href="./login-journey/login" role="button">Log in</a>
+            <a class="nhsuk-button nhsuk-button--secondary auth-button" href="#sdffe" role="#100">Register</a>
+          </div>
         </div>
-      </div>  
-    </div>
+      </div>
   </div>
+
+  {% set fmProducts %}
+    <p>Discover more information about the tools our platform has to offer</p>
+    <p><a>Discover products on DLS</a></p>
+  {% endset %}
+  {{ featuredMedia(
+    classes="featured-media--bg-white",
+    heading="Products on Digital learning solutions platform",
+    content=fmProducts,
+    image="/images/fm/healthcare-image-1.jpg"
+  ) }}
+
+  {% set fmLearningContent %}
+    <p>Information about quality assured Digital Skills and learning wider content</p>
+    <p><a>Information on learning content</a></p>
+  {% endset %}
+  {{ featuredMedia(
+    classes="featured-media--reversed",
+    heading="Learning content",
+    content=fmLearningContent,
+    image="/images/fm/healthcare-image-2.jpg",
+    reversed=true
+  ) }}
 {% endblock %}
