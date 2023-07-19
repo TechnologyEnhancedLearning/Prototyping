@@ -1,0 +1,80 @@
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layouts/layout.html' %}
+
+<!-- Set the page title -->
+{# {% block pageTitle %}
+  Content page example - NHS.UK prototype kit
+{% endblock %} #}
+
+{% block header %}
+  {{ header({
+    "service": {
+        "name": "Digital Learning Solutions Prototype"
+      },
+      "homeHref": "/prototypes/login-journey",
+      "showNav": "false",
+      "classes": "",
+      "primaryLinks": []
+    })
+  }}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+<div class="nhsuk-width-container" id="maincontentwrapper">
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+      <form action="/v2/Login" class="nhsuk-u-margin-bottom-8" method="post" novalidate="">
+        <input id="ReturnUrl" name="ReturnUrl" type="hidden" value="">
+
+        <div class="nhsuk-u-margin-bottom-8">
+          <h1 class="nhsuk-heading-xl" id="page-heading">Log in</h1>
+
+
+          <h2 class="nhsuk-heading-s">Enter your details to log into your account.</h2>
+        </div>
+
+
+        <div class="nhsuk-form-group" style="white-space:nowrap">
+          <label class="nhsuk-label" for="Username">Email or user ID</label>
+          <input aria-required="true" autocomplete="off" class="nhsuk-input nhsuk-u-width-one-half" id="Username" name="Username" type="text" value="">
+        </div>
+
+
+        <div class="nhsuk-form-group" style="white-space:nowrap">
+          <label class="nhsuk-label" for="Password">Password</label>
+          <input aria-required="true" autocomplete="off" class="nhsuk-input nhsuk-u-width-one-half" id="Password" name="Password" type="password" value="">
+        </div>
+
+
+        <div class="nhsuk-checkboxes__item">
+          <input class="nhsuk-checkboxes__input" data-val="true" data-val-required="The RememberMe field is required." id="RememberMe" name="RememberMe" spellcheck="false" type="checkbox" value="true"> <label class="nhsuk-label nhsuk-checkboxes__label" for="RememberMe">Remember me for 24 hours</label>
+        </div>
+
+
+        <div class="nhsuk-inset-text nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-4">
+          <span class="nhsuk-u-visually-hidden">Information:</span>
+
+          <p>By logging in, I consent to my details being stored and processed in line with your <a href="https://www.hee.nhs.uk/about/privacy-notice" target="_blank">Privacy Policy</a> and agree to use the system according to <a href="/v2/LearningSolutions/Terms" target="_blank">Terms of Use</a></p>
+        </div>
+        <a class="nhsuk-button" href="/prototypes/admin-frameworks" >Log in</a> <a class="nhsuk-button nhsuk-button--secondary nhsuk-u-margin-left-2" href="#ForgotPassword" role="button">Forgot password</a> <input name="__RequestVerificationToken" type="hidden" value="CfDJ8BnxON2_EAJJqD2p8EJgnrvDi8hssGfgxTl68DNPB9VvO6_AsTlTyUf7PRZ2YO5_eUonMd4mklL50qZYzrGTtodrDDB3ZvlhDyHFA_HVpIJDhh-JT9TCgafNG9VwfJETHbN46fnl3ZmTcy90ICSlOds"><input name="RememberMe" type="hidden" value="false">
+      </form>
+
+
+      <h2 class="nhsuk-heading-s">Alternatively, if you are a new user, register</h2>
+      <a class="nhsuk-button nhsuk-button--secondary" role="button">Register</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% from "data/users.njk" import users %}
+{% from "components/listing.njk" import listing %}
+{% from 'pagination/macro.njk' import pagination %}
+
+{# Replace with listing component #}
+{% for user in users %}
+  <div class="proto-listing nhsuk-u-reading-width">
+    <ul class="nhsuk-list">
+      <li class="nhsuk-list-item">
+        <h2 class="nhsuk-heading-s nhsuk-u-margin-bottom-3">
+          <a href="#{{loop.index}}">
+            {{user["Name"]}} ({{user["Email"]}})
+          </a>
+        </h2>
+        <div class="nhsuk-body-s nhsuk-u-margin-bottom-0">
+        {% if user["User type"] != "Learner" %}
+          {{ tag({
+            text: "Admin: " + user["User type"],
+            classes: "nhsuk-tag--green"
+          })}}
+        {% endif %}
+        {% if not user["active-user"] %}
+          {{ tag({
+            text: "user inactive",
+            classes: "nhsuk-tag--grey"
+          })}}
+        {% endif %}
+        {% if not user["password set"] %}
+          {{ tag({
+            text: "Password not set",
+            classes: "nhsuk-tag--grey"
+          })}}
+        {% endif %}
+        {% if not user["account claimed"] %}
+          {{ tag({
+            text: "Account unclaimed",
+            classes: "nhsuk-tag--grey"
+          })}}
+        {% endif %}
+        </div>
+
+        <hr class="nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-4">
+      </li>
+    </ul>
+  </div>
+{% endfor %}
+
+{{ pagination({
+  "nextUrl": "#next",
+  "nextPage": "Page 1 of 55"
+}) }}

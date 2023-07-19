@@ -1,6 +1,6 @@
-<!-- 
+<!--
   This is the main layout where you can:
-    - change the header and footer 
+    - change the header and footer
     - add custom CSS and JavaScript
 -->
 
@@ -21,38 +21,38 @@
 <!-- Header code examples can be found at https://service-manual.nhs.uk/design-system/components/header -->
 {% block header %}
   {{ header({
-    "service": {
-        "name": "Digital Learning Solutions Prototype",
-        "href": "/"
+      "service": {
+        "name": "Digital Learning Solutions Prototype"
       },
+      "homeHref": "/prototypes/admin-frameworks",
       "showNav": "true",
       "classes": "",
       "primaryLinks": [
-      {
-        "url"  : "#",
-        "label" : 'My learning'
-      },
-      {
-        'url' : '#',
-        'label' : 'Manage a framework'
-      },
-      {
-        'url'  : '#',
-        'label' : 'Find your centre'
-      },
-      {
-        'url'  : '#',
-        'label' : 'Notifications'
-      },
-      {
-        'url'  : '#',
-        'label' : 'My account'
-      },
-      {
-        'url' : '#',
-        'label' : 'Log out'
-      }
-    ]
+        {
+          "url"  : "#",
+          "label" : 'My learning'
+        },
+        {
+          'url' : '#',
+          'label' : 'Manage a framework'
+        },
+        {
+          'url'  : '#',
+          'label' : 'Find your centre'
+        },
+        {
+          'url'  : '#',
+          'label' : 'Notifications'
+        },
+        {
+          'url'  : '#',
+          'label' : 'My account'
+        },
+        {
+          'url' : '/prototypes/login-journey',
+          'label' : 'Log out'
+        }
+      ]
     })
   }}
 

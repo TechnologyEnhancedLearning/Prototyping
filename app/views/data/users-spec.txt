@@ -1,0 +1,16 @@
+parameter: Name
+parameter: Email
+parameter: active-user: boolean
+parameter: password set: boolean
+parameter: registered
+  option 1: registered by center
+  option 2: self-registered
+parameter (most users will be learners): User type:
+  option: Learner
+  option: Assessor
+  option: Supervisor
+  option: Framework manager
+Parameter: Professional Registration Number
+  option: Not professionally registered
+  option: XXXXXX
+Parameter: account claimed: boolean
