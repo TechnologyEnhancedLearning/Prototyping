@@ -63,20 +63,28 @@
       </div>
     </div>
   </div>
-      
+
   {% from "components/featured-media.njk" import featuredMedia %}
 
+  {% set fmProducts %}
+    <p>Discover more information about the tools our platform has to offer</p>
+    <p><a>Discover products on DLS</a></p>
+  {% endset %}
   {{ featuredMedia(
     classes="featured-media--bg-white",
     heading="Products on Digital learning solutions platform",
-    content="Discover more information about the tools our platform has to offer",
+    content=fmProducts,
     image="/images/fm/healthcare-image-1.jpg"
   ) }}
 
+  {% set fmLearningContent %}
+    <p>Information about quality assured Digital Skills and learning wider content</p>
+    <p><a>Information on learning content</a></p>
+  {% endset %}
   {{ featuredMedia(
     classes="featured-media--reversed",
     heading="Learning content",
-    content="Lorem ipsum",
+    content=fmLearningContent,
     image="/images/fm/healthcare-image-2.jpg",
     reversed=true
   ) }}
