@@ -71,19 +71,146 @@
         <div class="nhsuk-grid-row">
           <div class="nhsuk-grid-column-full">
 
+            {% set frameworkDetails %}
+            <div class="nhsuk-details__text">
+              <dl class="nhsuk-summary-list details-list-with-button">
+
+                <div class="nhsuk-summary-list__row details-list-with-button__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Centre ranking
+                  </dt>
+
+            <dd class="nhsuk-summary-list__value">
+              No activity
+            </dd>
+
+                </div>
+
+                <div class="nhsuk-summary-list__row details-list-with-button__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Centre name
+                  </dt>
+
+            <dd class="nhsuk-summary-list__value">
+              ##NHSE Demo Centre##
+            </dd>
+
+                </div>
+
+                <div class="nhsuk-summary-list__row details-list-with-button__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Centre number
+                  </dt>
+
+            <dd class="nhsuk-summary-list__value">
+              374
+            </dd>
+
+                </div>
+
+                <div class="nhsuk-summary-list__row details-list-with-button__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Region
+                  </dt>
+
+            <dd class="nhsuk-summary-list__value">
+              National
+            </dd>
+
+                </div>
+
+                <div class="nhsuk-summary-list__row details-list-with-button__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Contract type
+                  </dt>
+
+            <dd class="nhsuk-summary-list__value">
+              Premium
+            </dd>
+
+                </div>
+
+                <div class="nhsuk-summary-list__row details-list-with-button__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Centre manager
+                  </dt>
+
+            <dd class="nhsuk-summary-list__value">
+              DLS DemoOnlyCentre
+            </dd>
+
+                </div>
+
+                <div class="nhsuk-summary-list__row details-list-with-button__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Email
+                  </dt>
+
+            <dd class="nhsuk-summary-list__value">
+              support@dls.nhs.uk
+            </dd>
+
+                </div>
+
+                <div class="nhsuk-summary-list__row details-list-with-button__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Contact number
+                  </dt>
+
+            <dd class="nhsuk-summary-list__value">
+              55555 555555
+            </dd>
+
+                </div>
+
+                <div class="nhsuk-summary-list__row details-list-with-button__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Centre support details
+                  </dt>
+
+            <dd class="nhsuk-summary-list__value">
+              Need Help? For IT skills contact: 123456 Open 09:00 to 17:00. IV Therapy Passport queries contact: IV.passport@catmail.com
+            </dd>
+
+                </div>
+
+                <div class="nhsuk-summary-list__row details-list-with-button__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Your IP address
+                  </dt>
+
+            <dd class="nhsuk-summary-list__value">
+              82.47.56.51
+            </dd>
+
+                </div>
+
+                <div class="nhsuk-summary-list__row details-list-with-button__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Pre-approved IPs
+                  </dt>
+
+            <dd class="nhsuk-summary-list__value">
+              1234
+            </dd>
+
+                </div>
+
+              </dl>
+
+              <a class="nhsuk-button" role="button" href="/v2/TrackingSystem/Centre/Configuration">
+                Edit centre details
+              </a>
+            </div>
+            {% endset %}
             {{ details({
               "classes": "nhsuk-expander",
               "text": "Framework details",
-              "HTML": "
-              <p>You can see your GP records by:</p>
-              <ul>
-                <li>asking for them at your GP surgery </li>
-                <li>going online to see them (if you have signed up for <a href=\"/using-the-nhs/nhs-services/gps/gp-online-services/\">GP online services</a>) </li>
-              </ul>"
+              "HTML": frameworkDetails
             }) }}
 
           </div>
-        </div>  
+        </div>
 
         {# <div class="nhsuk-u-reading-width">
           <p class="nhsuk-u-margin-bottom-0">Visit the <a href="https://service-manual.nhs.uk">NHS digital service manual</a> for guidance and examples.</p>

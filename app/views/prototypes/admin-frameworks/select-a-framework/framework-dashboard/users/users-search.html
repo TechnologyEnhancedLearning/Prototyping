@@ -32,18 +32,23 @@
 
 {% block content %}
   <div class="nhsuk-width-container">
-    <div class="nhsuk-grid-row">
-      <div class="nhsuk-grid-column-full">
-        <h1>
-          <span class="nhsuk-caption-l">
-            IV Therapy passport framework
-            <span class="nhsuk-u-visually-hidden"> - </span>
-          </span>
-          Search and manage users
-        </h1>
+    <div class="proto-heading-block">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+          <h1>
+            <span class="nhsuk-caption-l">
+              IV Therapy passport framework
+              <span class="nhsuk-u-visually-hidden"> - </span>
+            </span>
+            Search and manage users
+          </h1>
+        </div>
+      </div>
+    </div>
 
-
-        <div class="proto-in-page-nav">
+    <div class="proto-in-page-nav">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
           <ul class="proto-in-page-nav__list">
             <li class="proto-in-page-nav__item proto-in-page-nav__item--active">
               <a class="proto-in-page-nav__link" href="#">Search users</a>
@@ -59,18 +64,161 @@
             </li>
           </ul>
         </div>
+      </div>
+    </div>
 
-        <p class="nhsuk-lead-text nhsuk-body-l">Lorem ipsum dolor sit amet4 consectetur adipisicing elit. Rerum repellendus consequuntur odio, dolore nostrum eveniet.</p>
+    <div class="proto-content-block">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+          <p class="nhsuk-lead-text nhsuk-body-l">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum repellendus consequuntur odio, dolore nostrum eveniet.</p>
+        </div>
       </div>
     </div>
 
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-full">
-        {% include 'includes/search-with-listing.html' %}
+        <div class="nhsuk-grid-row">
+          <div class="nhsuk-grid-column-two-thirds">
+            {% include "includes/search.html" %}
+          </div>
+        </div>
+
+        <div class="nhsuk-grid-row">
+          <div class="nhsuk-grid-column-one-third">
+            <div class="search-filters">
+              <div class="search-filters__filter-lists">
+                <h2 class="nhsuk-heading-s">Filters</h2>
+                {{ checkboxes({
+                  "idPrefix": "",
+                  "name": "",
+                  "hint": {
+                    "text": "Select all options that are relevant to you."
+                  },
+                  "items": []
+                }) }}
+                {% set userGroup %}
+                  <form>
+                    {{ checkboxes({
+                      "idPrefix": "example",
+                      "name": "example",
+                      "items": [
+                        {
+                          "value": "Admins",
+                          "text": "Admins"
+                        },
+                        {
+                          "value": "Learners",
+                          "text": "Learners"
+                        }
+                      ]
+                    }) }}
+                  </form>
+                {% endset %}
+                {{ details({
+                  "open": true,
+                  "text": "User group",
+                  "HTML": userGroup
+                }) }}
+
+                {% set status %}
+                  <form>
+                    {{ checkboxes({
+                      "idPrefix": "example",
+                      "name": "example",
+                      "items": [
+                        {
+                          "value": "Account locked",
+                          "text": "Account locked"
+                        },
+                        {
+                          "value": "Password set",
+                          "text": "Password set"
+                        },
+                        {
+                          "value": "account active",
+                          "text": "account active"
+                        },
+                        {
+                          "value": "account inactive",
+                          "text": "account inactive"
+                        }
+                      ]
+                    }) }}
+                  </form>
+                {% endset %}
+                {{ details({
+                  "text": "Status",
+                  "HTML": status
+                }) }}
+
+                {% set jobGroup %}
+                  <form>
+                    {{ checkboxes({
+                      "idPrefix": "example",
+                      "name": "example",
+                      "items": [
+                        {
+                          "value": "Admin / clerical",
+                          "text": "Admin / clerical"
+                        },
+                        {
+                          "value": "Allied Health Professionals",
+                          "text": "Allied Health Professionals"
+                        },
+                        {
+                          "value": "Educational Support",
+                          "text": "Educational Support"
+                        },
+                        {
+                          "value": "Nursing / midwifery",
+                          "text": "Nursing / midwifery"
+                        }
+                      ]
+                    }) }}
+                  </form>
+                {% endset %}
+                {{ details({
+                  "text": "Job group",
+                  "HTML": jobGroup
+                }) }}
+
+                {% set department %}
+                  <form>
+                    {{ checkboxes({
+                      "idPrefix": "example",
+                      "name": "example",
+                      "items": [
+                        {
+                          "value": "ICU",
+                          "text": "ICU"
+                        },
+                        {
+                          "value": "Pathology",
+                          "text": "Pathology"
+                        }
+                      ]
+                    }) }}
+                  </form>
+                {% endset %}
+                {{ details({
+                  "text": "Department or team",
+                  "HTML": department
+                }) }}
+              </div>
+            </div>
+          </div>
+
+          <div class="nhsuk-grid-column-two-thirds">
+            <div class="nhsuk-u-reading-width">
+              <h2 class="nhsuk-heading-s">14,928 results</h2>
+              {% include "includes/users.html" %}
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
-
   {% endblock %}
 
   <!-- For adding a back link -->
