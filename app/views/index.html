@@ -4,23 +4,36 @@
 
 <!-- Extends the layout from /views/layout.html -->
 {% extends 'layouts/layout.html' %}
-<!-- 
+<!--
   In /views/layout.html you can:
-    - change the header and footer 
+    - change the header and footer
     - add custom CSS and JavaScript
 -->
 
 <!-- Set the page title -->
-<!-- {% block pageTitle %}
-  NHS.UK prototype kit
-{% endblock %} -->
+{% block pageTitle %}
+  DLS prototype
+{% endblock %}
+
+{% block header %}
+  {{ header({
+    "service": {
+        "name": "Digital Learning Solutions Prototype"
+      },
+      "homeHref": "/prototypes/login-journey",
+      "showNav": "false",
+      "classes": "",
+      "primaryLinks": []
+    })
+  }}
+{% endblock %}
 
 <!-- For adding a breadcrumb -->
 <!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
 {% block beforeContent %}
   {{ hero({
-    "heading": "NHS.UK prototype kit",
-    "text": "Rapidly create HTML prototypes of NHS.UK services."
+    "heading": "DLS prototype kit",
+    "text": "HTML prototypes for Digital Learning Solutions services."
   }) }}
 {% endblock %}
 
