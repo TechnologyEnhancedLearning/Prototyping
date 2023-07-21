@@ -2,9 +2,22 @@
 {% extends 'layouts/layout.html' %}
 
 <!-- Set the page title -->
-{# {% block pageTitle %}
-  Content page example - NHS.UK prototype kit
-{% endblock %} #}
+{% block pageTitle %}
+  DLS prototype
+{% endblock %}
+
+{% block header %}
+  {{ header({
+    "service": {
+        "name": "Digital Learning Solutions Prototype"
+      },
+      "homeHref": "/",
+      "showNav": "false",
+      "classes": "",
+      "primaryLinks": []
+    })
+  }}
+{% endblock %}
 
 {% block beforeContent %}
   {# Change home breadcrumb to the start of the prototype journey to #}
