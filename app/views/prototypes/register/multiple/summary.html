@@ -1,0 +1,205 @@
+{% extends 'layouts/layout-transaction.html' %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block pageTitle %}
+  Register multiple people
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "/prototypes/register/multiple/welcome",
+    "text": "Go back",
+    "classes": "nhsuk-width-container nhsuk-u-margin-top-4"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-quarters">
+
+      <h1>
+        Summary
+      </h1>
+
+      <form action="/prototypes/register/multiple/confirmation" method="post" class="form">
+
+        <div class="nhsuk-u-reading-width">
+          <p class="nhsuk-body-l">
+            <b>{{ uploadData | length }}</b> new delegates to be created
+          </p>
+          <p>
+            Review the information below to ensure everything looks right. If anything looks incorrect, check your spreadsheet then <b><a href='/prototypes/register/multiple'>go back</a></b> and reupload.
+          </p>
+        </div>
+
+        <div class="upload-summary__table">
+          <table>
+            <thead>
+              <th>First name</th>
+              <th>Last name</th>
+              <th>Email</th>
+              <th>Professional registration number</th>
+              <th>Job group</th>
+              <th>Programme of study / course</th>
+              <th>Department / team</th>
+            </thead>
+            <tbody>
+              {% for person in uploadData %}
+              <tr>
+                <td>{{ person['first-name'] }}</td>
+                <td>{{ person['last-name'] }}</td>
+                <td>{{ person['email'] }}</td>
+                <td>{{ person['prn'] }}</td>
+                <td>{{ person['question1'] }}</td>
+                <td>{{ person['question2'] }}</td>
+                <td>{{ person['question3'] }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="nhsuk-heading-m">Self assessment enrolment</h2>
+
+        <dl class="nhsuk-summary-list">
+
+          {% if data['enrolment'] %}
+            <p>
+              These delegates will be enrolled onto the following self assessment{{ "s" if data['enrolment'] | length > 1 }} as Learners:
+            </p>
+            {% for programme in data['enrolment'] %}
+              <div class="nhsuk-summary-list__row">
+
+                <dd class="nhsuk-summary-list__value">
+                  {{ allProgrammes[programme].title }}
+                </dd>
+
+                <dd class="nhsuk-summary-list__actions">
+
+                  <a href="/prototypes/register/multiple/enrolment">
+                    Change<span class="nhsuk-u-visually-hidden"> enrolment</span>
+                  </a>
+
+                </dd>
+
+              </div>
+            {% endfor %}
+          {% else %}
+
+            <div class="nhsuk-summary-list__row">
+
+
+              <dd class="nhsuk-summary-list__value">
+                These delegates will not be enroled onto a self assessment
+              </dd>
+
+              <dd class="nhsuk-summary-list__actions">
+
+                <a href="/prototypes/register/multiple/enrolment">
+                  Change<span class="nhsuk-u-visually-hidden"> enrolment</span>
+                </a>
+
+              </dd>
+
+            </div>
+          {% endif %}
+
+        </dl>
+
+        <h2 class="nhsuk-heading-m">Admin role</h2>
+
+        <dl class="nhsuk-summary-list">
+        {% if data['promotion'] %}
+        <p>
+          These delegates will be promoted to the following Admin role{{ "s" if data['promotion'] | length > 1 }}:
+        </p>
+
+              {% for programme in data['promotion'] %}
+
+                <div class="nhsuk-summary-list__row">
+
+                  <dd class="nhsuk-summary-list__value">
+                    {{ allProgrammes[programme].title }}
+                  </dd>
+                  <dd class="nhsuk-summary-list__value">
+                    {%
+                      if data['promotion'].includes(programme)
+                      and data[programme+'-role']
+                    %}
+                      <b>Role(s):</b>
+                      <ul>
+                        {% for role in data[programme+'-role'] %}
+                          <li>{{ allRoles[role] }}</li>
+                        {% endfor %}
+                      </ul>
+                    {% endif %}
+                  </dd>
+
+                  <dd class="nhsuk-summary-list__actions">
+
+                    <a href="/prototypes/register/multiple/promotion">
+                      Change<span class="nhsuk-u-visually-hidden"> admin promotion</span>
+                    </a>
+
+                  </dd>
+
+                </div>
+              {% endfor %}
+
+          {% else %}
+            <div class="nhsuk-summary-list__row">
+
+              <dd class="nhsuk-summary-list__value">
+                These delegates will not be promoted to an admin role
+              </dd>
+
+              <dd class="nhsuk-summary-list__actions">
+
+                <a href="/prototypes/register/multiple/promotion">
+                  Change<span class="nhsuk-u-visually-hidden"> enrolment</span>
+                </a>
+
+              </dd>
+
+            </div>
+
+          {% endif %}
+
+        </dl>
+
+        <h2>Welcome email</h2>
+
+        <dl class="nhsuk-summary-list">
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Scheduled to send
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['welcome-day'] }} {{ months[data['welcome-month']] }} {{ data['welcome-year'] }}
+            </dd>
+
+            <dd class="nhsuk-summary-list__actions">
+
+              <a href="/prototypes/register/multiple/welcome">
+                Change<span class="nhsuk-u-visually-hidden"> welcome email date</span>
+              </a>
+
+            </dd>
+
+          </div>
+
+        </dl>
+
+        {{ button({
+          "text": "Confirm new registration",
+          "id": "btn_submit"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

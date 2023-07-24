@@ -1,0 +1,112 @@
+{% extends 'layouts/layout-transaction.html' %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block pageTitle %}
+  Register multiple people
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "/prototypes/register/multiple",
+    "text": "Go back",
+    "classes": "nhsuk-width-container nhsuk-u-margin-top-4"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <h1>Start upload</h1>
+
+      <div class="nhsuk-u-reading-width">
+        <p class="nhsuk-body-l">
+          <b>{{ uploadData | length }}</b> new delegates identified
+        </p>
+        <p>
+          Review this information to ensure everything looks right. If anything looks incorrect, check your spreadsheet then <b><a href='/prototypes/register/multiple'>go back</a></b> and reupload.
+        </p>
+      </div>
+
+      <hr />
+
+      <div class="upload-summary__table">
+        {% for person in uploadData %}
+        <dl class="nhsuk-summary-list">
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Name
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <span class="nhsuk-body-l"><b>{{ person['first-name'] }} {{ person['last-name'] }}</b></span>
+            </dd>
+          </div>
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Email
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ person['email'] }}
+            </dd>
+          </div>
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Professional registration number
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ person['prn'] }}
+            </dd>
+          </div>
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Job group
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ person['job-group'] }}
+            </dd>
+          </div>
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Programme of study / course
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ person['question1'] }}
+            </dd>
+          </div>
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Department / team
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ person['question2'] }}
+            </dd>
+          </div>
+
+        </dl>
+        {% endfor %}
+      </div>
+
+      <p class="nhsuk-u-margin-top-9">
+        <a href="/prototypes/register/multiple/enrolment" class="nhsuk-button">
+          Continue
+        </a>
+      </p>
+
+    </div>
+  </div>
+
+  <style>
+    .upload-summary__table {
+      max-width: 100%;
+      overflow: auto;
+    }
+  </style>
+
+{% endblock %}

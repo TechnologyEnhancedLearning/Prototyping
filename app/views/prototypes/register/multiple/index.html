@@ -1,0 +1,71 @@
+{% extends 'layouts/layout-transaction.html' %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block pageTitle %}
+  Register multiple people
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "/prototypes/register",
+    "text": "Back to register users",
+    "classes": "nhsuk-width-container nhsuk-u-margin-top-4"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>Register multiple delegates</h1>
+
+      <div class="nhsuk-u-reading-width">
+        <p>
+          To register multiple people, <a href="#">download the template</a> and add each person as a new row.
+        </p>
+        <p>
+          You'll be able to enrol all of them onto self assessments or promote them into admin roles as part of this process.
+        </p>
+        <p>
+          If you want to enrol or promote groups of delegates differently, you should complete a <b>separate template for each group</b>.
+        </p>
+        <p>
+          If you're unsure how to complete any of the columns, you can refer to the reference sheets on the additional tabs within the template.
+        </p>
+        <p>
+          <a class="nhsuk-button nhsuk-button--secondary" href="#">
+            Download template
+          </a>
+        </p>
+        <p>
+          Once you have filled in the template, save it locally on your computer.
+        </p>
+        <form action="/register/multiple/upload" method="post">
+
+          <div class="nhsuk-form-group">
+
+            <h2 class="nhsuk-label-heading">
+              <label class="nhsuk-form-label" for="upload">
+                Upload your file
+              </label>
+              <div class="nhsuk-hint" id="upload-hint">
+                Select <b>Choose file</b> and select your completed template
+              </div>
+            </h2>
+          <img style="max-width: 100%;" src="data:image/png;base64,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" />
+          <div class="nhsuk-u-margin-top-4 nhsuk-card">
+            <input name="upload-with-error" id="upload-with-error" type="checkbox" value="true">
+            <label for="check_upload-with-error"><b>Test:</b> Upload a spreadsheet with errors</label>
+          </div>
+        </div>
+          <button class="nhsuk-button">
+            Start upload
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,169 @@
+{% extends 'layouts/layout-transaction.html' %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block pageTitle %}
+  Register a single person
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "/prototypes/register/single",
+    "text": "Back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>
+        Delegate information
+      </h1>
+
+      <form action="/prototypes/register/single/enrolment" method="post" class="form">
+
+          {{ select({
+            "id": "job-group",
+            "name": "job-group",
+            "classes": "nhsuk-u-width-full",
+            "label": {
+              "text": "Job group"
+            },
+            "items": [
+              {
+                "value": "",
+                "text": "Select a job group",
+                "selected": data['job-group'] === undefined,
+                "disabled": true
+              },
+              {
+                "value": "Admin / clerical",
+                "text": "Admin / clerical",
+                "selected": checked('job-group', 'Admin / clerical')
+              },
+              {
+                "value": "Allied Health Professionals",
+                "text": "Allied Health Professionals",
+                "selected": checked('job-group', 'Allied Health Professionals')
+              },
+              {
+                "value": "Educational Support",
+                "text": "Educational Support",
+                "selected": checked('job-group', 'Educational Support')
+              },
+              {
+                "value": "Nursing / midwifery",
+                "text": "Nursing / midwifery",
+                "selected": checked('job-group', 'Nursing / midwifery')
+              }
+            ]
+          }) }}
+
+          {% set prn %}
+            {{ input({
+              id: "prn",
+              name: "prn",
+              classes: "nhsuk-u-width-two-thirds",
+              label: {
+                text: "What is their professional registration number?"
+              }
+            }) }}
+          {% endset -%}
+
+          {{ radios({
+            "idPrefix": "example",
+            "name": "example",
+            "fieldset": {
+              "legend": {
+                "text": "Do they have a professional registration number?"
+              }
+            },
+            "hint": {
+              "text": "They should have one if they are a health professional registered with a professional body such as the NMC, GMC, or GDC. If you don't have it to hand, they can provide it later by visiting My Account / Edit details."
+            },
+            "items": [
+              {
+                "value": "yes",
+                "text": "Yes",
+                "conditional": {
+                  "html": prn
+                }
+              },
+              {
+                "value": "no",
+                "text": "No"
+              }
+            ]
+          }) }}
+
+          {{ select({
+            "id": "programme",
+            "name": "programme",
+            "classes": "nhsuk-u-width-full",
+            "label": {
+              "text": "Programme of study / course"
+            },
+            "items": [
+              {
+                "value": "",
+                "text": "Select a programme of study / course",
+                "selected": true,
+                "disabled": true
+              },
+              {
+                "value": "Digital Skills",
+                "text": "Digital Skills"
+              },
+              {
+                "value": "IV Therapy Passport",
+                "text": "IV Therapy Passport"
+              },
+              {
+                "value": "Critical Care Step 1 proficiencies",
+                "text": "Critical Care Step 1 proficiencies"
+              },
+              {
+                "value": "Other",
+                "text": "Other"
+              }
+            ]
+          }) }}
+
+          {{ select({
+            "id": "department",
+            "name": "department",
+            "classes": "nhsuk-u-width-full",
+            "label": {
+              "text": "Department / team"
+            },
+            "items": [
+              {
+                "value": "",
+                "text": "Select a department / team",
+                "selected": true,
+                "disabled": true
+              },
+              {
+                "value": "ICU",
+                "text": "ICU"
+              },
+              {
+                "value": "Pathology",
+                "text": "Pathology"
+              }
+            ]
+          }) }}
+
+        {{ button({
+          "text": "Continue",
+          "id": "btn_submit"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

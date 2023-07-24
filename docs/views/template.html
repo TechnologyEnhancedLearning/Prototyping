@@ -28,7 +28,7 @@
 {%- from 'radios/macro.njk' import radios %}
 {%- from 'select/macro.njk' import select %}
 {%- from 'summary-list/macro.njk' import summaryList %}
-{%- from 'tabs/macro.njk' import tabs %} 
+{%- from 'tabs/macro.njk' import tabs %}
 {%- from 'tag/macro.njk' import tag %}
 {%- from 'textarea/macro.njk' import textarea %}
 
@@ -71,7 +71,7 @@
     {% endblock %}
 
     {% block head %}{% endblock %}
-    
+
   </head>
 
   <body class="{{ bodyClasses }}">
@@ -93,7 +93,7 @@
       {% block beforeContent %}{% endblock %}
 
       {% block main %}
-        <div class="{{ containerClasses }}">
+        <div class="nhsuk-width-container {{ containerClasses }}">
           {% block outerContent %}{% endblock %}
           <main class="nhsuk-main-wrapper {{ mainClasses }}" id="maincontent" role="main">
             {% block content %}{% endblock %}

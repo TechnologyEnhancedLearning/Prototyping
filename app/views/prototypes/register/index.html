@@ -1,0 +1,80 @@
+{% extends 'layouts/layout-transaction.html' %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block pageTitle %}
+  Register a new delegate - prototype
+{% endblock %}
+
+{% block beforeContent %}
+  {{ backLink({
+    "href": "/prototypes/admin-frameworks/select-a-framework/framework-dashboard/users/users-search",
+    "text": "Go back to manage users",
+    "classes": "nhsuk-width-container nhsuk-u-margin-top-4"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>Register a new delegate</h1>
+
+      <p>Use this process to register either a single person, or a group of people, onto the platform. You will be able to:</p>
+
+      <ul>
+        <li>Enrol them as a learner onto a specific self assessment.</li>
+        <li>Promote them to an admin role.</li>
+        <li>Schedule a welcome email to invite them to access the platform.</li>
+      </ul>
+
+      <h2 class="nhsuk-heading-m">Before you start</h2>
+
+      <p>You will need the following information for each person you're registering:</p>
+
+      <ul>
+        <li>Full name</li>
+        <li>Email address</li>
+      </ul>
+
+      <p>It's also recommended that you have their professional registration number, but if you don't have this now then it can be added at a later time.</p>
+
+      <form action="/register/start" method="post" class="form">
+
+        {{ radios({
+          "idPrefix": "how-many",
+          "name": "how-many",
+          "fieldset": {
+            "legend": {
+              "text": "How many people do you want to register?",
+              "classes": "nhsuk-fieldset__legend--m",
+              "isPageHeading": true
+            }
+          },
+          "items": [
+            {
+              "value": "single",
+              "text": "One person"
+            },
+            {
+              "divider": "or"
+            },
+            {
+              "value": "multiple",
+              "text": "Multiple people",
+              "hint": {
+                "text": "You'll be provided with an Excel template which you'll need to complete."
+              }
+            }
+          ]
+        }) }}
+
+        {{ button({
+          "text": "Continue",
+          "id": "btn_submit"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

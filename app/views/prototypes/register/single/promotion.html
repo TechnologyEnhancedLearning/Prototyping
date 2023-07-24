@@ -1,0 +1,112 @@
+{% extends 'layouts/layout-transaction.html' %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block pageTitle %}
+  Register a single person
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "/prototypes/register/single/enrolment",
+    "text": "Back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-quarters">
+
+      <form action="/prototypes/register/single/welcome" method="post" class="form">
+
+        <div class="nhsuk-form-group">
+          <fieldset class="nhsuk-fieldset" aria-describedby="promotion-hint">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+              <h1 class="nhsuk-fieldset__heading">
+                Do you want to promote them to an admin role on a self assessment?
+              </h1>
+            </legend>
+
+            <div class="nhsuk-u-reading-width">
+              <div class="nhsuk-hint nhsuk-u-margin-bottom-2" id="promotion-hint">
+                Select each self assessment you wish to promote them to an <b>admin role</b> on, then select the role.
+              </div>
+              <div class="nhsuk-hint">
+                You can find more information on the different admin roles and their responsibilities in the <a href="https://nhs-step1-training.netlify.app/roles/" target="_blank">user guide</a>.
+              </div>
+            </div>
+
+            <div class="nhsuk-checkboxes nhsuk-checkboxes--conditional">
+
+              {% for shortname, assessment in allProgrammes %}
+
+              {% if data['enrolment'] === undefined or shortname not in data['enrolment'] %}
+
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="promotion-{{ loop.index }}" name="promotion" type="checkbox" value="{{ shortname }}" aria-controls="conditional-promotion-{{ loop.index }}" aria-expanded="false" {{ checked('promotion', shortname) }} data-checkbox-exclusive-group="promotion-list">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="promotion-{{ loop.index }}">
+                  {{ assessment.title }}
+                  <div class="info">
+                    <span class="nhsuk-tag nhsuk-tag--grey">{{ assessment.brand }}</span>
+                    <span class="nhsuk-tag nhsuk-tag--grey">{{ assessment.scope }}</span>
+                  </div>
+                </label>
+              </div>
+
+              <div class="nhsuk-checkboxes__conditional nhsuk-checkboxes__conditional--hidden" id="conditional-promotion-{{ loop.index }}">
+
+                <div class="nhsuk-form-group">
+                  <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+                    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                      Which roles do you want them to have?
+                    </legend>
+
+                    <div class="nhsuk-hint" id="example-hint">
+                      Select all options that are relevant.
+                    </div>
+
+                    <div class="nhsuk-checkboxes">
+
+                      {% for shortrole, role in allRoles %}
+                      <div class="nhsuk-checkboxes__item">
+                        <input class="nhsuk-checkboxes__input" id="{{ shortname }}-role-{{ loop.index }}" name="{{ shortname }}-role" type="checkbox" value="{{ shortrole }}" {{ checked(shortname+'-role', shortrole) }}>
+                        <label class="nhsuk-label nhsuk-checkboxes__label" for="{{ shortname }}-role-{{ loop.index }}">
+                          {{ role }}
+                        </label>
+                      </div>
+                      {% endfor %}
+
+                    </div>
+                  </fieldset>
+                </div>
+
+              </div>
+
+              {% endif %}
+
+              {% endfor %}
+
+              <div class="nhsuk-checkboxes__divider">or</div>
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="promotion-n" name="promotion" type="checkbox" value="none" {{ checked('promotion', "none") }} data-checkbox-exclusive data-checkbox-exclusive-group="promotion-list">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="promotion-n">
+                  No, I don't want to promote them to an admin role
+                </label>
+              </div>
+
+            </div>
+          </fieldset>
+        </div>
+
+        {{ button({
+          "text": "Continue",
+          "id": "btn_submit"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

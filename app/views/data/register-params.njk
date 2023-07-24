@@ -1,0 +1,134 @@
+{%
+  set allRoles = {
+    centremanager: 'Centre Manager',
+    administrator: 'Administrator',
+    educator: 'Educator / Manager',
+    assessor: 'Assessor'
+  }
+%}
+
+{%
+  set allProgrammes = {
+    step1: {
+      title: 'Step 1 Proficiencies - National Proficiency Framework for Registered Nurses in Adult Critical Care',
+      brand: 'NHS Elect',
+      scope: 'National'
+    },
+    iv:  {
+      title:  'IV Therapy Passport',
+      brand: 'Health Education England',
+      scope: 'National'
+    },
+    acciv:  {
+      title: 'Adult Critical Care IV Therapy Passport',
+      brand: 'Health Education England',
+      scope: 'Local'
+    }
+  }
+%}
+
+{%
+  set months = [
+    '',
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+  ]
+%}
+
+{%
+  set uploadData = [
+    {
+      'first-name': "Abbie",
+      'last-name': "Abbotson",
+      'email': "abbie@nhs.net",
+      'prn': "12345678",
+      'job-group': 'Nursing/midwifery',
+      'question1': 'IV Therapy',
+      'question2': 'ICU',
+      'question3': '',
+      'question4': '',
+      'question5': '',
+      'question6': ''
+    },
+    {
+      'first-name': "Billie",
+      'last-name': "Bilton",
+      'email': "billie@nhs.net",
+      'prn': "84315681",
+      'job-group': 'Nursing/midwifery',
+      'question1': 'IV Therapy',
+      'question2': 'ICU',
+      'question3': '',
+      'question4': '',
+      'question5': '',
+      'question6': ''
+    },
+    {
+      'first-name': "Chris",
+      'last-name': "Calder",
+      'email': "chris@nhs.net",
+      'prn': "13564384",
+      'job-group': 'Nursing/midwifery',
+      'question1': 'IV Therapy',
+      'question2': 'ICU',
+      'question3': '',
+      'question4': '',
+      'question5': '',
+      'question6': ''
+    }
+  ]
+%}
+
+{%
+  set uploadDataFaulty = [
+    {
+      'first-name': "Abbie",
+      'last-name': "Abbotson",
+      'email': "abbie@nhs.net",
+      'prn': "12345678",
+      'job-group': 'Nursing/midwifery',
+      'question1': 'IV Therapy',
+      'question2': '',
+      'question3': '',
+      'question4': '',
+      'question5': '',
+      'question6': ''
+    },
+    {
+      'first-name': "Billie",
+      'last-name': "Bilton",
+      'email': "billienhs.net",
+      'prn': "84315681",
+      'job-group': 'Nursing/midwifery',
+      'question1': 'IV Therapy',
+      'question2': '',
+      'question3': '',
+      'question4': '',
+      'question5': '',
+      'question6': ''
+    },
+    {
+      'first-name': "Chris",
+      'last-name': "Calder",
+      'email': "chris@nhs.net",
+      'prn': "13564384",
+      'job-group': 'Nursing/midwifery',
+      'question1': 'IV Therapy',
+      'question2': '',
+      'question3': '',
+      'question4': '',
+      'question5': '',
+      'question6': ''
+    }
+  ]
+%}

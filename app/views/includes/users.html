@@ -37,10 +37,10 @@
   {% endset %}
 
   {% set userFormatted={
-      heading: heading,
-      href: href,
-      content: content
-    } %}
+    heading: heading,
+    href: href,
+    content: content
+  } %}
 
   {% set listOfUsers = (listOfUsers.push(userFormatted), listOfUsers) %}
 {% endfor %}

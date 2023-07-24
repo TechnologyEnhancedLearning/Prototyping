@@ -1,0 +1,100 @@
+{% extends 'layouts/layout-transaction.html' %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block pageTitle %}
+Register multiple people
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "/prototypes/register/multiple/upload",
+    "text": "Go back",
+    "classes": "nhsuk-width-container nhsuk-u-margin-top-4"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-quarters">
+
+      <form action="/prototypes/register/multiple/promotion" method="post" class="form">
+
+        <div class="nhsuk-form-group">
+
+          <fieldset class="nhsuk-fieldset" aria-describedby="enrolment-hint">
+
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+              <h1 class="nhsuk-fieldset__heading">
+                Do you want to enrol all of these new delegates as Learners onto a self assessment?
+              </h1>
+            </legend>
+            <div class="nhsuk-hint nhsuk-u-reading-width" id="enrolment-hint">
+              Select any self assessment on which you wish to enrol <b>all your delegates</b> as Learners.
+            </div>
+            <div class="nhsuk-hint nhsuk-u-reading-width">
+              You can also individually enrol delegates onto a self assessment later, once they are registered on the platform.
+            </div>
+            <p class="nhsuk-hint nhsuk-u-reading-width">
+              Alternatively, you can promote them to an Admin role in the next step.
+            </p>
+            <p class="nhsuk-hint nhsuk-u-reading-width">
+              <b>Note:</b> You can't enrol someone as a Learner and also promote them to an Admin role on the same self assessment.
+            </p>
+
+            <div class="nhsuk-checkboxes">
+              {% for shortname, programme in allProgrammes %}
+                <div class="nhsuk-checkboxes__item">
+                  <input
+                    class="nhsuk-checkboxes__input"
+                    id="enrolment-{{ loop.index }}"
+                    name="enrolment"
+                    type="checkbox"
+                    value="{{ shortname }}"
+                    {{ checked('enrolment', shortname) }}
+                    data-checkbox-exclusive-group="enrolment-list"
+                  >
+                  <label class="nhsuk-label nhsuk-checkboxes__label" for="enrolment-{{ loop.index }}">
+                    {{ programme.title }}
+                    <div class="info">
+                      <span class="nhsuk-tag nhsuk-tag--grey">{{ programme.brand }}</span>
+                      <span class="nhsuk-tag nhsuk-tag--grey">{{ programme.scope }}</span>
+                    </div>
+                  </label>
+                </div>
+              {% endfor %}
+
+              <div class="nhsuk-checkboxes__divider">or</div>
+              <div class="nhsuk-checkboxes__item">
+                <input
+                  class="nhsuk-checkboxes__input"
+                  id="enrolment-n"
+                  name="enrolment"
+                  type="checkbox"
+                  value="none"
+                  {{ checked('enrolment', 'none') }}
+                  data-checkbox-exclusive
+                  data-checkbox-exclusive-group="enrolment-list"
+                >
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="enrolment-n">
+                  No, I don't want to enrol them as a learner
+                </label>
+              </div>
+
+            </div>
+
+          </fieldset>
+
+        </div>
+
+        {{ button({
+          "text": "Continue",
+          "id": "btn_submit"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
