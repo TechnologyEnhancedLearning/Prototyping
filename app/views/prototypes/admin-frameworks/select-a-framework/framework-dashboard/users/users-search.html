@@ -75,147 +75,149 @@
       </div>
     </div>
 
-    <div class="nhsuk-grid-row">
-      <div class="nhsuk-grid-column-full">
-        <div class="nhsuk-grid-row">
-          <div class="nhsuk-grid-column-two-thirds">
-            {% include "includes/search.html" %}
+    <div class="proto-search-and-filter-users">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+          <div class="nhsuk-grid-row">
+            <div class="nhsuk-grid-column-two-thirds">
+              {% include "includes/search.html" %}
+            </div>
           </div>
-        </div>
 
-        <div class="nhsuk-grid-row">
-          <div class="nhsuk-grid-column-one-third">
-            <div class="search-filters">
-              <div class="search-filters__filter-lists">
-                <h2 class="nhsuk-heading-s">Filters</h2>
-                {{ checkboxes({
-                  "idPrefix": "",
-                  "name": "",
-                  "hint": {
-                    "text": "Select all options that are relevant to you."
-                  },
-                  "items": []
-                }) }}
-                {% set userGroup %}
-                  <form>
-                    {{ checkboxes({
-                      "idPrefix": "example",
-                      "name": "example",
-                      "items": [
-                        {
-                          "value": "Admins",
-                          "text": "Admins"
-                        },
-                        {
-                          "value": "Learners",
-                          "text": "Learners"
-                        }
-                      ]
-                    }) }}
-                  </form>
-                {% endset %}
-                {{ details({
-                  "open": true,
-                  "text": "User group",
-                  "HTML": userGroup
-                }) }}
+          <div class="nhsuk-grid-row">
+            <div class="nhsuk-grid-column-one-third">
+              <div class="proto-search-filters">
+                <div class="proto-search-filters__filter-lists">
+                  <h2 class="nhsuk-heading-s">Filters</h2>
+                  {{ checkboxes({
+                    "idPrefix": "",
+                    "name": "",
+                    "hint": {
+                      "text": "Select all options that are relevant to you."
+                    },
+                    "items": []
+                  }) }}
+                  {% set userGroup %}
+                    <form>
+                      {{ checkboxes({
+                        "idPrefix": "example",
+                        "name": "example",
+                        "items": [
+                          {
+                            "value": "Admins",
+                            "text": "Admins"
+                          },
+                          {
+                            "value": "Learners",
+                            "text": "Learners"
+                          }
+                        ]
+                      }) }}
+                    </form>
+                  {% endset %}
+                  {{ details({
+                    "open": true,
+                    "text": "User group",
+                    "HTML": userGroup
+                  }) }}
 
-                {% set status %}
-                  <form>
-                    {{ checkboxes({
-                      "idPrefix": "example",
-                      "name": "example",
-                      "items": [
-                        {
-                          "value": "Account locked",
-                          "text": "Account locked"
-                        },
-                        {
-                          "value": "Password set",
-                          "text": "Password set"
-                        },
-                        {
-                          "value": "account active",
-                          "text": "account active"
-                        },
-                        {
-                          "value": "account inactive",
-                          "text": "account inactive"
-                        }
-                      ]
-                    }) }}
-                  </form>
-                {% endset %}
-                {{ details({
-                  "text": "Status",
-                  "HTML": status
-                }) }}
+                  {% set status %}
+                    <form>
+                      {{ checkboxes({
+                        "idPrefix": "example",
+                        "name": "example",
+                        "items": [
+                          {
+                            "value": "Account locked",
+                            "text": "Account locked"
+                          },
+                          {
+                            "value": "Password set",
+                            "text": "Password set"
+                          },
+                          {
+                            "value": "account active",
+                            "text": "account active"
+                          },
+                          {
+                            "value": "account inactive",
+                            "text": "account inactive"
+                          }
+                        ]
+                      }) }}
+                    </form>
+                  {% endset %}
+                  {{ details({
+                    "text": "Status",
+                    "HTML": status
+                  }) }}
 
-                {% set jobGroup %}
-                  <form>
-                    {{ checkboxes({
-                      "idPrefix": "example",
-                      "name": "example",
-                      "items": [
-                        {
-                          "value": "Admin / clerical",
-                          "text": "Admin / clerical"
-                        },
-                        {
-                          "value": "Allied Health Professionals",
-                          "text": "Allied Health Professionals"
-                        },
-                        {
-                          "value": "Educational Support",
-                          "text": "Educational Support"
-                        },
-                        {
-                          "value": "Nursing / midwifery",
-                          "text": "Nursing / midwifery"
-                        }
-                      ]
-                    }) }}
-                  </form>
-                {% endset %}
-                {{ details({
-                  "text": "Job group",
-                  "HTML": jobGroup
-                }) }}
+                  {% set jobGroup %}
+                    <form>
+                      {{ checkboxes({
+                        "idPrefix": "example",
+                        "name": "example",
+                        "items": [
+                          {
+                            "value": "Admin / clerical",
+                            "text": "Admin / clerical"
+                          },
+                          {
+                            "value": "Allied Health Professionals",
+                            "text": "Allied Health Professionals"
+                          },
+                          {
+                            "value": "Educational Support",
+                            "text": "Educational Support"
+                          },
+                          {
+                            "value": "Nursing / midwifery",
+                            "text": "Nursing / midwifery"
+                          }
+                        ]
+                      }) }}
+                    </form>
+                  {% endset %}
+                  {{ details({
+                    "text": "Job group",
+                    "HTML": jobGroup
+                  }) }}
 
-                {% set department %}
-                  <form>
-                    {{ checkboxes({
-                      "idPrefix": "example",
-                      "name": "example",
-                      "items": [
-                        {
-                          "value": "ICU",
-                          "text": "ICU"
-                        },
-                        {
-                          "value": "Pathology",
-                          "text": "Pathology"
-                        }
-                      ]
-                    }) }}
-                  </form>
-                {% endset %}
-                {{ details({
-                  "text": "Department or team",
-                  "HTML": department
-                }) }}
+                  {% set department %}
+                    <form>
+                      {{ checkboxes({
+                        "idPrefix": "example",
+                        "name": "example",
+                        "items": [
+                          {
+                            "value": "ICU",
+                            "text": "ICU"
+                          },
+                          {
+                            "value": "Pathology",
+                            "text": "Pathology"
+                          }
+                        ]
+                      }) }}
+                    </form>
+                  {% endset %}
+                  {{ details({
+                    "text": "Department or team",
+                    "HTML": department
+                  }) }}
+                </div>
+              </div>
+            </div>
+
+            <div class="nhsuk-grid-column-two-thirds">
+              <div class="nhsuk-u-reading-width">
+                <h2 class="nhsuk-heading-s">14,928 results</h2>
+                {% include "includes/users.html" %}
               </div>
             </div>
           </div>
 
-          <div class="nhsuk-grid-column-two-thirds">
-            <div class="nhsuk-u-reading-width">
-              <h2 class="nhsuk-heading-s">14,928 results</h2>
-              {% include "includes/users.html" %}
-            </div>
-          </div>
         </div>
-
       </div>
     </div>
   </div>

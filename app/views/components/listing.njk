@@ -7,14 +7,14 @@
     <div class="proto-listing nhsuk-u-reading-width {{ classes }}">
       <ul class="nhsuk-list">
         <li class="nhsuk-list-item">
-          <h2 class="nhsuk-heading-xs nhsuk-u-margin-bottom-2">
+          <h2 class="nhsuk-heading-s nhsuk-u-margin-bottom-3">
             <a href="{{ href }}">
-              {{ heading }}
+              {{ heading | safe }}
             </a>
           </h2>
 
           <p class="nhsuk-body-s nhsuk-u-margin-bottom-0">
-            {{ content }}
+            {{ content | safe }}
           </p>
 
           <hr class="nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-4">
