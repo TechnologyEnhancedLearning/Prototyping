@@ -1,0 +1,152 @@
+{% extends 'layouts/layout-registration.html' %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block pageTitle %}
+  Register multiple people
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "/prototypes/register/multiple",
+    "text": "Go back",
+    "classes": "nhsuk-width-container nhsuk-u-margin-top-4"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <h1>Start upload</h1>
+
+      <div class="nhsuk-u-reading-width">
+        <p class="nhsuk-body-l">
+          <b>{{ uploadData | length }}</b> new delegates identified
+        </p>
+        <div class="nhsuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1">
+          <h2 class="nhsuk-error-summary__title" id="error-summary-title">
+            There is a problem with some of the information uploaded
+          </h2>
+          <div class="nhsuk-error-summary__body">
+            <p>
+              The following problems have been identified in the template you've uploaded. Please look through the highlighted columns in the following table and correct the template, then <b><a href='/prototypes/register/multiple'>go back</a></b> and reupload.
+            </p>
+            <ul class="nhsuk-list nhsuk-error-summary__list" role="list">
+              <li>
+                <a href="#error-3">A delegate already exists on the platform</a>
+                <ul><li>If someone already has an account on the platform, remove them from the template and investigate or update their profile separately</li></ul>
+              </li>
+              <li>
+                <a href="#error-1">Someone's email address is not valid</a>
+                <ul><li>Correct the email address in the table and reupload</li></ul>
+              </li>
+              <li>
+                <a href="#error-2">The field "Department / Teams" must be answered</a>
+                <ul><li>Complete all the required columns in the table and reupload</li></ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="upload-summary__table">
+        {% for person in uploadDataFaulty %}
+        <dl class="nhsuk-summary-list">
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Name
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <span class="nhsuk-body-l"><b>{{ person['first-name'] }} {{ person['last-name'] }}</b></span>
+            </dd>
+
+          </div>
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key {{ 'nhsuk-form-group--error' if '@' not in person['email'] }} {{ 'nhsuk-form-group--error' if person['first-name'] == 'Chris' }}">
+              Email
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ person['email'] }}
+              {% if '@' not in person['email'] %}
+                <span class="nhsuk-error-message">
+                  <span class="nhsuk-u-visually-hidden">Error:</span> Email isn't valid
+                </span>
+              {% endif %}
+              {% if person['first-name'] == 'Chris' %}
+                <span class="nhsuk-error-message">
+                  <span class="nhsuk-u-visually-hidden">Error:</span> Delegate already exists
+                </span>
+              {% endif %}
+            </dd>
+          </div>
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Professional registration number
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ person['prn'] }}
+            </dd>
+          </div>
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Job group
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ person['job-group'] }}
+            </dd>
+          </div>
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key {{ 'nhsuk-form-group--error' if person['question1'] === '' }}">
+              Programme of study / course
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ person['question1'] }}
+            </dd>
+            {% if person['question1'] === '' %}
+                <span class="nhsuk-error-message">
+                  <span class="nhsuk-u-visually-hidden">Error:</span> Question must be answered
+                </span>
+                {% endif %}
+          </div>
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key {{ 'nhsuk-form-group--error' if person['question2'] === '' }}">
+              Department / team
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ person['question2'] }}
+              {% if person['question2'] === '' %}
+                <span class="nhsuk-error-message">
+                  <span class="nhsuk-u-visually-hidden">Error:</span> Question must be answered
+                </span>
+              {% endif %}
+            </dd>
+          </div>
+
+        </dl>
+        {% endfor %}
+      </div>
+
+      <p class="nhsuk-u-margin-top-9">
+        <a href="/prototypes/register/multiple" class="nhsuk-button">
+          Return to upload
+        </a>
+      </p>
+
+    </div>
+  </div>
+
+  <style>
+    .upload-summary__table {
+      max-width: 100%;
+      overflow: auto;
+    }
+  </style>
+
+{% endblock %}

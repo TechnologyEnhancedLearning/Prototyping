@@ -1,0 +1,87 @@
+{% extends 'layouts/layout-registration.html' %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block pageTitle %}
+  Register a multiple people
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "/prototypes/register/multiple/promotion",
+    "text": "Go back",
+    "classes": "nhsuk-width-container nhsuk-u-margin-top-4"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-one-half">
+
+      <form action="/prototypes/register/multiple/summary" method="post" class="form">
+
+        <div class="nhsuk-form-group">
+
+          <fieldset class="nhsuk-fieldset" aria-describedby="welcome-hint" role="group">
+            <legend class="nhsuk-fieldset__legend nhsuk-label--l">
+              <h1 class="nhsuk-fieldset__heading">
+                When do you want their welcome email to be sent to them?
+              </h1>
+            </legend>
+            <div class="nhsuk-hint" id="welcome-hint">
+              For example, 18 5 2023
+            </div>
+
+            <div class="nhsuk-date-input" id="welcome">
+              <div class="nhsuk-date-input__item">
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label nhsuk-date-input__label" for="welcome-day">
+                    Day
+                  </label>
+                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="welcome-day" name="welcome-day" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['welcome-day'] }}">
+                </div>
+              </div>
+              <div class="nhsuk-date-input__item">
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label nhsuk-date-input__label" for="welcome-month">
+                    Month
+                  </label>
+                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="welcome-month" name="welcome-month" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['welcome-month'] }}">
+                </div>
+              </div>
+              <div class="nhsuk-date-input__item">
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label nhsuk-date-input__label" for="welcome-year">
+                    Year
+                  </label>
+                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4" id="welcome-year" name="welcome-year" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['welcome-year'] }}">
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+        </div>
+
+        {{ button({
+          "text": "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+    <div class="nhsuk-grid-column-one-half">
+      <div class="nhsuk-card">
+        <div class="nhsuk-card__content">
+          <h2 class="nhsuk-card__heading nhsuk-heading-s">
+            What's in the welcome email:
+
+          </h2>
+          <div class="nhsuk-card__description">
+            Example email here
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

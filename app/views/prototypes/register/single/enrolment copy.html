@@ -1,0 +1,131 @@
+{% extends 'layouts/layout-registration.html' %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block pageTitle %}
+  Register a single person
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "/prototypes/register/single/information",
+    "text": "Go back",
+    "classes": "nhsuk-width-container nhsuk-u-margin-top-4"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <form action="/prototypes/register/single/promotion" method="post" class="form">
+
+        <div class="nhsuk-form-group">
+
+          <fieldset class="nhsuk-fieldset" aria-describedby="enrolment-hint">
+
+          <table role="table" class="nhsuk-table-responsive">
+            <caption class="nhsuk-table__caption">
+              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                <h1 class="nhsuk-fieldset__heading">
+                  Do you want to enrol them as a learner on a self assessment?
+                </h1>
+              </legend>
+              <div class="nhsuk-hint nhsuk-u-reading-width" id="enrolment-hint">
+                Select any self assessment on which you wish to enrol the delegate as a learner.
+              </div>
+              <div class="nhsuk-hint nhsuk-u-reading-width">
+                You'll able to promote them to an admin role on the next page.
+              </div>
+            </caption>
+            <thead role="rowgroup" class="nhsuk-table__head">
+              <tr role="row">
+                <th role="columnheader" class="" scope="col">
+                  Self assessment
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Brand
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Scope
+                </th>
+              </tr>
+            </thead>
+            <div class="nhsuk-checkboxes">
+            <tbody class="nhsuk-table__body">
+
+
+
+                {% for shortname, programme in allProgrammes %}
+                  <tr role="row" class="nhsuk-table__row">
+                    <td role="cell" class="nhsuk-table__cell">
+                      <div class="nhsuk-checkboxes__item">
+                        <input
+                          class="nhsuk-checkboxes__input"
+                          id="enrolment-{{ loop.index }}"
+                          name="enrolment"
+                          type="checkbox"
+                          value="{{ shortname }}"
+                          {{ checked('enrolment', shortname) }}
+                          data-checkbox-exclusive-group="enrolment-list"
+                        >
+                        <label class="nhsuk-label nhsuk-checkboxes__label" for="enrolment-{{ loop.index }}">
+                          {{ programme.title }}
+                        </label>
+                      </div>
+                    </td>
+                    <td role="cell" class="nhsuk-table__cell">
+                      {{ programme.brand }}
+                    </td>
+                    <td role="cell" class="nhsuk-table__cell">
+                      <span class="nhsuk-table-responsive__heading">Scope </span>{{ programme.scope }}
+                    </td>
+                  </tr>
+                {% endfor %}
+
+                <tr role="row" class="nhsuk-table__row">
+                  <td role="cell" class="nhsuk-table__cell">
+                    <div class="nhsuk-checkboxes__divider">or</div>
+                    <div class="nhsuk-checkboxes__item">
+                      <input
+                        class="nhsuk-checkboxes__input"
+                        id="enrolment-n"
+                        name="enrolment"
+                        type="checkbox"
+                        value="none"
+                        {{ checked('enrolment', 'none') }}
+                        data-checkbox-exclusive
+                        data-checkbox-exclusive-group="enrolment-list"
+                      >
+                      <label class="nhsuk-label nhsuk-checkboxes__label" for="enrolment-n">
+                        No, I don't want to enrol them as a learner
+                      </label>
+                    </div>
+                  </td>
+                  <td role="cell" class="nhsuk-table__cell">
+                    {{ programme.brand }}
+                  </td>
+                  <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading">Scope </span>{{ programme.scope }}
+                  </td>
+                </tr>
+
+            </tbody>
+          </div>
+          </table>
+
+          </fieldset>
+
+        </div>
+
+        {{ button({
+          "text": "Continue",
+          "id": "btn_submit"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'layouts/layout-registration.html' %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block pageTitle %}
+  Register multiple people
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "/prototype/register",
+    "text": "Go back",
+    "classes": "nhsuk-width-container nhsuk-u-margin-top-4"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>Registration complete</h1>
+
+      <p class="nhsuk-body-l">
+        <b>{{ uploadData | length }}</b> new delegates have been successfully created.
+      </p>
+      <p>
+        They'll receive their welcome email on <b>{{ data['welcome-day'] }} {{ months[data['welcome-month']] }} {{ data['welcome-year'] }}</b>.
+      </p>
+
+      <form method="post" action="/restart">
+        <button class="nhsuk-button">
+          Register someone else
+        </button>
+      </form>
+      <form method="post"action="/cancel">
+        <button class="nhsuk-button nhsuk-button--secondary">
+          Return to dashboard
+        </button>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

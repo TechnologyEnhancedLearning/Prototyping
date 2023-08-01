@@ -1,0 +1,305 @@
+{% extends 'layouts/layout-registration.html' %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block pageTitle %}
+  Register a single person
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "/prototypes/register/single/welcome",
+    "text": "Go back",
+    "classes": "nhsuk-width-container nhsuk-u-margin-top-4"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-quarters">
+
+      <h1>
+        Summary
+      </h1>
+
+      <p>
+        Please check all these details carefully before submitting.
+      </p>
+
+      <form action="/prototypes/register/single/confirmation" method="post" class="form">
+
+        <dl class="nhsuk-summary-list">
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              First name
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['first-name'] }}
+            </dd>
+
+            <dd class="nhsuk-summary-list__actions">
+
+              <a href="/prototypes/register/single">
+                Change<span class="nhsuk-u-visually-hidden"> first name</span>
+              </a>
+
+            </dd>
+
+          </div>
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Last name
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['last-name'] }}
+            </dd>
+
+            <dd class="nhsuk-summary-list__actions">
+
+              <a href="/prototypes/register/single">
+                Change<span class="nhsuk-u-visually-hidden"> last name</span>
+              </a>
+
+            </dd>
+
+          </div>
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Email
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['email'] }}
+            </dd>
+
+            <dd class="nhsuk-summary-list__actions">
+
+              <a href="/prototypes/register/single">
+                Change<span class="nhsuk-u-visually-hidden"> email</span>
+              </a>
+
+            </dd>
+
+          </div>
+
+        </dl>
+
+        <dl class="nhsuk-summary-list">
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Job Group
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['job-group'] }}
+            </dd>
+
+            <dd class="nhsuk-summary-list__actions">
+
+              <a href="/prototypes/register/single/information">
+                Change<span class="nhsuk-u-visually-hidden"> job group</span>
+              </a>
+
+            </dd>
+
+          </div>
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Professional Registration Number
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {% if data['prn'] %}
+                {{ data['prn'] }}
+              {% else %}
+                Not provided
+              {% endif %}
+            </dd>
+
+            <dd class="nhsuk-summary-list__actions">
+
+              <a href="/prototypes/register/single/information">
+                Change<span class="nhsuk-u-visually-hidden"> professional registration number</span>
+              </a>
+
+            </dd>
+
+          </div>
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Programme of study / course
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['programme'] }}
+            </dd>
+
+            <dd class="nhsuk-summary-list__actions">
+
+              <a href="/prototypes/register/single/information">
+                Change<span class="nhsuk-u-visually-hidden"> programme of study / course</span>
+              </a>
+
+            </dd>
+
+          </div>
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Department / team
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['department'] }}
+            </dd>
+
+            <dd class="nhsuk-summary-list__actions">
+
+              <a href="/prototypes/register/single/information">
+                Change<span class="nhsuk-u-visually-hidden"> department / team</span>
+              </a>
+
+            </dd>
+
+          </div>
+
+        </dl>
+
+        <h2 class="nhsuk-heading-m">Enroled as a Learner</h2>
+
+        <dl class="nhsuk-summary-list">
+
+          {% if data['enrolment'] %}
+            {% for programme in data['enrolment'] %}
+              <div class="nhsuk-summary-list__row">
+
+                <dd class="nhsuk-summary-list__value">
+                  {{ allProgrammes[programme].title }}
+                </dd>
+
+                <dd class="nhsuk-summary-list__actions">
+
+                  <a href="/prototypes/register/single/enrolment">
+                    Change<span class="nhsuk-u-visually-hidden"> enrolment</span>
+                  </a>
+
+                </dd>
+
+              </div>
+            {% endfor %}
+          {% else %}
+
+            <div class="nhsuk-summary-list__row">
+
+
+              <dd class="nhsuk-summary-list__value">
+                Not enrolled as a Learner on a self assessment
+              </dd>
+
+              <dd class="nhsuk-summary-list__actions">
+
+                <a href="/prototypes/register/single/enrolment">
+                  Change<span class="nhsuk-u-visually-hidden"> enrolment</span>
+                </a>
+
+              </dd>
+
+            </div>
+          {% endif %}
+
+        </dl>
+
+        <h2 class="nhsuk-heading-m">Promoted to an Admin role</h2>
+
+        <dl class="nhsuk-summary-list">
+        {% if data['promotion'] %}
+
+              {% for programme in data['promotion'] %}
+
+                <div class="nhsuk-summary-list__row">
+
+                  <dd class="nhsuk-summary-list__value">
+                    {{ allProgrammes[programme].title }}
+                  </dd>
+                  <dd class="nhsuk-summary-list__value">
+                    {%
+                      if data['promotion'].includes(programme)
+                      and data[programme+'-role']
+                    %}
+                      <b>Role(s):</b>
+                      <ul>
+                        {% for role in data[programme+'-role'] %}
+                          <li>{{ allRoles[role] }}</li>
+                        {% endfor %}
+                      </ul>
+                    {% endif %}
+                  </dd>
+
+                  <dd class="nhsuk-summary-list__actions">
+
+                    <a href="/prototypes/register/single/promotion">
+                      Change<span class="nhsuk-u-visually-hidden"> admin promotion</span>
+                    </a>
+
+                  </dd>
+
+                </div>
+              {% endfor %}
+
+          {% else %}
+            <div class="nhsuk-summary-list__row">
+
+              <dd class="nhsuk-summary-list__value">
+                Not promoted to an Admin role
+              </dd>
+
+              <dd class="nhsuk-summary-list__actions">
+
+                <a href="/prototypes/register/single/promotion">
+                  Change<span class="nhsuk-u-visually-hidden"> enrolment</span>
+                </a>
+
+              </dd>
+
+            </div>
+
+          {% endif %}
+
+        </dl>
+
+        <h2>Welcome email</h2>
+
+        <dl class="nhsuk-summary-list">
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Scheduled to send
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['welcome-day'] }} {{ months[data['welcome-month']] }} {{ data['welcome-year'] }}
+            </dd>
+
+            <dd class="nhsuk-summary-list__actions">
+
+              <a href="/prototypes/register/single/welcome">
+                Change<span class="nhsuk-u-visually-hidden"> welcome email date</span>
+              </a>
+
+            </dd>
+
+          </div>
+
+        </dl>
+
+        {{ button({
+          "text": "Confirm new registration",
+          "id": "btn_submit"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

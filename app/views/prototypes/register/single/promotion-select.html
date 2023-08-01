@@ -1,0 +1,103 @@
+{% extends 'layouts/layout-registration.html' %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block pageTitle %}
+  Register a single person
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "/prototypes/register/single/enrolment",
+    "text": "Go back",
+    "classes": "nhsuk-width-container nhsuk-u-margin-top-4"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <h1>
+        Admin role promotion
+      </h1>
+
+      <p>
+        {{ data['enrolment'] }}
+      </p>
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-one-third">
+          {{ select({
+            "id": "programme",
+            "name": "programme",
+            "classes": "nhsuk-u-width-full",
+            "label": {
+              "text": "Label text goes here"
+            },
+            "items": [
+              {
+                "value": 1,
+                "text": "NHS.UK frontend option 1"
+              },
+              {
+                "value": 2,
+                "text": "NHS.UK frontend option 2",
+                "selected": true
+              },
+              {
+                "value": 3,
+                "text": "NHS.UK frontend option 3",
+                "disabled": true
+              }
+            ]
+          }) }}
+        </div>
+        <div class="nhsuk-grid-column-one-third">
+          {{ select({
+            "id": "select-1",
+            "name": "select-1",
+            "classes": "nhsuk-u-width-full",
+            "label": {
+              "text": "Label text goes here"
+            },
+            "items": [
+              {
+                "value": 1,
+                "text": "NHS.UK frontend option 1"
+              },
+              {
+                "value": 2,
+                "text": "NHS.UK frontend option 2",
+                "selected": true
+              },
+              {
+                "value": 3,
+                "text": "NHS.UK frontend option 3",
+                "disabled": true
+              }
+            ]
+          }) }}
+        </div>
+        <div class="nhsuk-grid-column-one-third">
+
+        </div>
+      </div>
+
+      <form action="/prototypes/register/single/welcome" method="post" class="form">
+
+        <div class="nhsuk-form-group">
+
+        </div>
+
+        {{ button({
+          "text": "Continue",
+          "id": "btn_submit"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

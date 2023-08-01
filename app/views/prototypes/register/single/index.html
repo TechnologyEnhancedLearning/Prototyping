@@ -1,0 +1,66 @@
+{% extends 'layouts/layout-registration.html' %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block pageTitle %}
+  Register a single person
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "/prototype/register",
+    "text": "Go back",
+    "classes": "nhsuk-width-container nhsuk-u-margin-top-4"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>
+        Register a new delegate
+      </h1>
+
+      <form action="/prototypes/register/single/information" method="post" class="form">
+
+          <fieldset class="nhsuk-fieldset">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+              <h2 class="nhsuk-fieldset__heading">
+                What is the delegate's name?
+              </h2>
+            </legend>
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label" for="first-name">
+                First name
+              </label>
+              <input class="nhsuk-input nhsuk-u-width-three-quarters" id="first-name" name="first-name" value="{{ data['first-name'] }}" type="text">
+            </div>
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label" for="last-name">
+                Last name
+              </label>
+              <input class="nhsuk-input nhsuk-u-width-three-quarters" id="last-name" name="last-name" value="{{ data['last-name'] }}" type="text">
+            </div>
+          </fieldset>
+
+          <div class="nhsuk-form-group">
+            <h2 class="nhsuk-label-wrapper">
+              <label class="nhsuk-label nhsuk-label--l" for="email">
+                What is their email address?
+              </label>
+            </h2>
+            <input class="nhsuk-input nhsuk-u-width-three-quarters" id="email" name="email" value="{{ data['email'] }}" type="text">
+          </div>
+
+        {{ button({
+          "text": "Continue",
+          "id": "btn_submit"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
