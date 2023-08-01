@@ -13,14 +13,6 @@ const registrationRoutes = require(`./routes/registration.js`);
 // }
 // router.use(logRequest);
 
-const rootViewDirectory2 = '/prototypes';
-
-// Create a custom route for the root URL
-// router.get('/', (req, res) => {
-//   // Render the files from the specified directory as the response
-//   res.sendFile(path.join(rootViewDirectory2, '/'));
-// });
-
 router.use('/', globalRoutes);
 router.use('/', registrationRoutes);
 
