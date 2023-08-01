@@ -1,55 +1,27 @@
 // External dependencies
 const express = require('express');
 const router = express.Router();
+const path = require('path');
 
 // Add your routes here - above the module.exports line
+const globalRoutes = require(`./routes/global.js`);
+const registrationRoutes = require(`./routes/registration.js`);
 
-router.post('/register/start', (req, res) => {
-  const howMany = req.session.data['how-many'];
+// function logRequest(req, res, next) {
+//   console.log('log something');
+//   next();
+// }
+// router.use(logRequest);
 
-  if (howMany === 'single') {
-    res.redirect('/prototypes/register/single');
-  } else {
-    res.redirect('/prototypes/register/multiple');
-  }
-});
+const rootViewDirectory2 = '/prototypes';
 
-router.post('/register/multiple/upload', (req, res) => {
-  const withErrors = req.session.data['upload-with-error'];
+// Create a custom route for the root URL
+// router.get('/', (req, res) => {
+//   // Render the files from the specified directory as the response
+//   res.sendFile(path.join(rootViewDirectory2, '/'));
+// });
 
-  if (withErrors == 'true') {
-    res.redirect('/prototypes/register/multiple/upload-error');
-  } else {
-    res.redirect('/prototypes/register/multiple/upload');
-  }
-});
-
-/*
-router.post('/register/single/promotion', (req, res) => {
-  // Make a variable and give it the value from 'know-nhs-number'
-  const enroled = req.session.data['enrolment'];
-
-  // Check whether the variable matches a condition
-  if (enroled !== undefined && enroled.length > 0) {
-    // Send user to next page
-    res.redirect('/register/single/promotion');
-  } else {
-    // Send user to ineligible page
-    res.redirect('/register/single/welcome');
-  }
-});
-*/
-
-// Clear all data in session if you open /examples/passing-data/clear-data
-router.post('/restart', (req, res) => {
-  req.session.data = {};
-  res.redirect('/prototypes/register');
-});
-
-// Clear all data in session if you open /examples/passing-data/clear-data
-router.post('/cancel', (req, res) => {
-  req.session.data = {};
-  res.redirect('/prototypes/register');
-});
+router.use('/', globalRoutes);
+router.use('/', registrationRoutes);
 
 module.exports = router;
