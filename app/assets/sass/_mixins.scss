@@ -80,8 +80,8 @@
   }
 }
 
-// This function removes the white space above a heading creating equal space visually at the top and bottom of an element without offsetting opther margins or padding. 
-// This is used when a heading is the first item in a box 
+// This function removes the white space above a heading creating equal space visually at the top and bottom of an element without offsetting opther margins or padding.
+// This is used when a heading is the first item in a box
 // This will need updating to take in the responsive nhs responsive line-height function.
 // @mixin adjust-heading {
 //   margin-top: -($heading-line-height - 1) + em;
@@ -140,4 +140,10 @@
     margin-left: 36px;
     margin-bottom: 1em;
   }
+}
+
+@mixin error {
+  // error border pulled from the form groups in the nhsuk front end kit
+  border-left: $nhsuk-border-width-form-group-error solid $nhsuk-error-color !important;
+  padding-left: nhsuk-spacing(3);
 }

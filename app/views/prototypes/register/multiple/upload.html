@@ -1,3 +1,7 @@
+{%- from "data/register/upload.njk" import uploadUsers %}
+{%- from "summary-list/macro.njk" import summaryList %}
+{%- from "components/listing.njk" import listing %}
+
 {% extends 'layouts/layout-registration.html' %}
 
 {% set mainClasses = "nhsuk-main-wrapper--s" %}
@@ -15,84 +19,369 @@
 {% endblock %}
 
 {% block content %}
+
+  {# -------------------------
+  Add numbering to the items
+  remove non-errors items
+  add view all button
+  change sort to the order the user uploaded order "order added to spreadsheet" or "order uploaded"
+  Add spreadsheet row number "ID"
+  ------------------------- #}
+
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-full">
 
-      <h1>Start upload</h1>
+      <h1>Upload summary</h1>
 
       <div class="nhsuk-u-reading-width">
         <p class="nhsuk-body-l">
-          <b>{{ uploadData | length }}</b> new delegates identified
+          <b>{{ uploadUsers | length }}</b> new delegates identified
         </p>
-        <p>
-          Review this information to ensure everything looks right. If anything looks incorrect, check your spreadsheet then <b><a href='/prototypes/register/multiple'>go back</a></b> and reupload.
-        </p>
+
+        {% set errorSummaryContent %}
+          <p>12 of 55 users had errors, please update before submiting</p>
+          <ul>
+            <li>You can review and edit details on this page</li>
+            <li>or, check your spreadsheet and reupload it from the <a href='/prototypes/register/multiple'>previosue page</a>.</li>
+          </ul>
+        {% endset %}
+
+        {{ errorSummary({
+          "titleText": "There is a problem",
+          "errorList": [
+            {
+              "text": errorSummaryContent | safe
+            }
+          ]
+        }) }}
+        {# <p>
+          Review and edit details in-page, or check your spreadsheet, then <b><a href='/prototypes/register/multiple'>go back</a></b> and reupload it.
+        </p> #}
       </div>
 
-      <hr />
+      {# <hr /> #}
 
-      <div class="upload-summary__table">
-        {% for person in uploadData %}
-        <dl class="nhsuk-summary-list">
+      <div class="proto-search-and-filter-users">
+        <div class="nhsuk-grid-row">
+          <div class="nhsuk-grid-column-full">
+            <div class="nhsuk-grid-row">
+              <div class="nhsuk-grid-column-two-thirds">
+                {% include "includes/search.html" %}
+              </div>
+            </div>
 
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Name
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              <span class="nhsuk-body-l"><b>{{ person['first-name'] }} {{ person['last-name'] }}</b></span>
-            </dd>
+            <div class="nhsuk-grid-row">
+              <div class="nhsuk-grid-column-one-third">
+                <div class="proto-search-filters">
+                  <div class="proto-search-filters__filter-lists">
+                    {{ select({
+                      "id": "select-1",
+                      "name": "select-1",
+                      "label": {
+                        "text": "Sort by"
+                      },
+                      "items": [
+                        {
+                          "value": 1,
+                          "text": "Order uploaded",
+                          "selected": true
+                        },
+                        {
+                          "value": 2,
+                          "text": "Alphabetical (assending)"
+                        },
+                        {
+                          "value": 3,
+                          "text": "Alphabetical (desending)"
+                        }
+                      ]
+                    }) }}
+                  </div>
+
+                  <div class="proto-search-filters__filter-lists">
+                    <h2 class="nhsuk-heading-s">Filter by</h2>
+                    {% set userGroup %}
+                      <form>
+                        {{ radios({
+                          "idPrefix": "example",
+                          "name": "example",
+                          "items": [
+                            {
+                              "value": "With Errors",
+                              "text": "With Errors",
+                              exclusiveGroup: "symptoms-list",
+                              checked: true
+                            },
+                            {
+                              "value": "Without Errors",
+                              "text": "Without Errors",
+                              exclusiveGroup: "symptoms-list"
+                            },
+                            {
+                              divider: "or"
+                            },
+                            {
+                              "value": "All users",
+                              "text": "Show all users",
+                              exclusive: true,
+                              exclusiveGroup: "symptoms-list"
+                            }
+                          ]
+                        }) }}
+                      </form>
+                    {% endset %}
+                    {{ details({
+                      "open": true,
+                      "text": "Users added",
+                      "HTML": userGroup
+                    }) }}
+
+                    {% set jobGroup %}
+                      <form>
+                        {{ checkboxes({
+                          "idPrefix": "example",
+                          "name": "example",
+                          "items": [
+                            {
+                              "value": "Admin / clerical",
+                              "text": "Admin / clerical"
+                            },
+                            {
+                              "value": "Allied Health Professionals",
+                              "text": "Allied Health Professionals"
+                            },
+                            {
+                              "value": "Educational Support",
+                              "text": "Educational Support"
+                            },
+                            {
+                              "value": "Nursing / midwifery",
+                              "text": "Nursing / midwifery"
+                            }
+                          ]
+                        }) }}
+                      </form>
+                    {% endset %}
+                    {{ details({
+                      "text": "Job group",
+                      "HTML": jobGroup
+                    }) }}
+
+                    {% set department %}
+                      <form>
+                        {{ checkboxes({
+                          "idPrefix": "example",
+                          "name": "example",
+                          "items": [
+                            {
+                              "value": "ICU",
+                              "text": "ICU"
+                            },
+                            {
+                              "value": "Pathology",
+                              "text": "Pathology"
+                            }
+                          ]
+                        }) }}
+                      </form>
+                    {% endset %}
+                    {{ details({
+                      "text": "Department or team",
+                      "HTML": department
+                    }) }}
+                  </div>
+                </div>
+              </div>
+
+              <div class="nhsuk-grid-column-two-thirds">
+                {# <div class="nhsuk-u-reading-width"> #}
+                  <h2 class="nhsuk-heading-s">12 of 55 users had erros</h2>
+
+                  <div class="proto-summary-list-group">
+                    {% for user in uploadUsers %}
+                      {% set name = user['firstName'] + " " + user['SecondName'] %}
+
+                      {% if user['email']['error']['isError'] == true %}
+                        {% set isEmailErrorActive = "proto-error" %}
+                        {% set email %}
+                          {{ user['email']['emailAddress'] }}
+                          <span class="nhsuk-error-message">
+                            <span class="nhsuk-u-visually-hidden">Error:</span> {{error}}
+                            {{ user['email']['error']['message'] }}
+                          </span>
+                        {% endset %}
+                      {% else %}
+                        {% set isEmailErrorActive = "" %}
+                        {% set email = user['email']['emailAddress'] %}
+                      {% endif %}
+
+                      {% if user['prn']['error']['isError'] == true %}
+                        {% set isPrnErrorActive = "proto-error" %}
+                        {% set prn %}
+                          {{ user['prn']['number'] }}
+                          <span class="nhsuk-error-message">
+                            <span class="nhsuk-u-visually-hidden">Error:</span> {{error}}
+                            {{ user['prn']['error']['message'] }}
+                          </span>
+                        {% endset %}
+                      {% else %}
+                        {% set isPrnErrorActive = "" %}
+                        {% set prn = user['prn']['number'] %}
+                      {% endif %}
+
+                      {% set userFormatted = {
+                          "name": name,
+                          "email": email,
+                          "prn": prn,
+                          "jobGroup": user['jobGroup']
+                        }
+                      %}
+
+                      {% if user['email']['error']['isError'] or user['prn']['error']['isError'] %}
+                        <div class="proto-summary-list-group__inner">
+                          {# nhsuk-summary-list--no-border #}
+                          {# nhsuk-summary-list--no-border proto-summary-list nhsuk-u-margin-bottom-3 #}
+                          {{ summaryList({
+                            classes: 'proto-summary-list nhsuk-u-margin-bottom-2',
+                            rows: [
+                              {
+                                key: {
+                                  classes: '',
+                                  text: "Name" | safe
+                                },
+                                value: {
+                                  text: userFormatted["name"] | safe
+                                }
+                              },
+                              {
+                                key: {
+                                  classes: isEmailErrorActive,
+                                  text: "Email"
+                                },
+                                value: {
+                                  text: userFormatted['email'] | safe
+                                }
+                              },
+                              {
+                                key: {
+                                  classes: isPrnErrorActive,
+                                  text: "Profesional registration number (PRN)"
+                                },
+                                value: {
+                                  text: userFormatted['prn'] | safe
+                                }
+                              },
+                              {
+                                key: {
+                                  classes: '',
+                                  text: "Job group"
+                                },
+                                value: {
+                                  text: userFormatted['jobGroup'] | safe
+                                }
+                              },
+                              {
+                                key: {
+                                  classes: '',
+                                  text: "Spreadsheet row" | safe
+                                },
+                                value: {
+                                  text: user["id"] | safe
+                                }
+                              }
+                            ]
+                          }) }}
+                          <div>
+                            <p class="nhsuk-u-margin-bottom-0"><a href="#editing-details">Edit details</a></p>
+                            {# <a href="#editing-details">Edit details</a>
+                            <a href="#editing-details">Edit details</a> #}
+                          </div>
+                          <hr class="nhsuk-u-margin-top-3 nhsuk-u-margin-bottom-6">
+                        </div>
+                      {% endif %}
+                      {#
+                        {
+                          actions: {
+                            items: [
+                              {
+                                href: "#",
+                                text: "Edit details",
+                                visuallyHiddenText: "user details"
+                              }
+                            ]
+                          }
+                        }
+                      #}
+
+                      {# {% if loop.index == 9 %}
+                        {% break %}
+                      {% endif %} #}
+                    {% endfor %}
+                  </div>
+                  {# nhsuk-summary-list--no-border proto-summary-list #}
+                  {# {% for user in uploadUsers %}
+                    {% set userFormatted = {
+                        "name": user['firstName'] + " " + user['SecondName'],
+                        "email": user['email']['emailAddress'],
+                        "prn": user['prn']['number'],
+                        "jobGroup": user['jobGroup']
+                      }
+                    %}
+
+                    {% if user['email']['error']['isError'] == false or user['prn']['error']['isError'] == false %}
+                      {{ summaryList({
+                        classes: 'nhsuk-summary-list--no-border proto-summary-list',
+                        rows: [
+                          {
+                            key: {
+                              text: "Name"
+                            },
+                            value: {
+                              text: userFormatted["name"]
+                            }
+                          },
+                          {
+                            key: {
+                              text: "Email"
+                            },
+                            value: {
+                              text: userFormatted['email']
+                            }
+                          },
+                          {
+                            key: {
+                              text: "Professional registration number (PRN)"
+                            },
+                            value: {
+                              text: userFormatted['prn']
+                            }
+                          },
+                          {
+                            key: {
+                              text: "Job group"
+                            },
+                            value: {
+                              text: userFormatted['jobGroup']
+                            }
+                          }
+                        ]
+                      }) }}
+                      <hr>
+                    {% endif %}
+                  {% endfor %} #}
+                  {# </div> #}
+                {# </div> #}
+
+                {{ pagination({
+                  "nextUrl": "#",
+                  "nextPage": "2 of 2"
+                }) }}
+              </div>
+            </div>
           </div>
 
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Email
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              {{ person['email'] }}
-            </dd>
-          </div>
-
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Professional registration number
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              {{ person['prn'] }}
-            </dd>
-          </div>
-
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Job group
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              {{ person['job-group'] }}
-            </dd>
-          </div>
-
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Programme of study / course
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              {{ person['question1'] }}
-            </dd>
-          </div>
-
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Department / team
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              {{ person['question2'] }}
-            </dd>
-          </div>
-
-        </dl>
-        {% endfor %}
+        </div>
       </div>
-
       <p class="nhsuk-u-margin-top-9">
         <a href="/prototypes/register/multiple/enrolment" class="nhsuk-button">
           Continue

@@ -1,0 +1,54 @@
+parameter: firstName
+parameter: SecondName
+parameter: email
+  parameter: emailAddress (if error use invalid email address)
+    parameter: error: boolean
+    parameter: message
+      option: 'Email isn't valid'
+      option: 'User already exists'
+parameter: prn: XXXXXXXX (8 digit numerical string)
+  parameter: error
+      parameter: error: boolean
+      parameter: message
+        option: 'PRN number is invalid'
+parameter: job-group
+  option: 'Nursing/midwifery'
+  option: 'ICU'
+parameter: framework (one or more):
+  option: Step 1
+  option: IV Therapy
+  option: Adult Critical Care IV Therapy
+  parameter: error: boolean
+    parameter: message
+      option: 'Email isn't valid'
+      option: 'User already exists'
+
+
+{
+  "id": "{{integer}}",
+  "firstName": "{{string}}",
+  "SecondName": "{{string}}",
+  "email": {
+    "emailAddress": "{{string}}", - (if error use invalid email address),
+    "error": {
+      "isError": "{{boolean}}"
+      "message": [
+        "Email isn't valid",
+        "User already exists"
+      ]
+    }
+  },
+  "prn": {
+    "number": "{{integer}}" (8 digit numerical string),
+    "error": {
+      "isError": "{{boolean}}"
+      "message": [
+        "PRN number is invalid"
+      ]
+    }
+  }
+  "jobGroup": [
+    "Nursing/midwifery",
+    "ICU"
+  ]
+}

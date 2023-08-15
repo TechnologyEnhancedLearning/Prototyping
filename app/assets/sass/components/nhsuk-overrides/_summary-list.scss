@@ -1,0 +1,34 @@
+// .proto-summary-list-group {
+//   &__inner:nth-child(even) {
+//     background-color: $color_nhsuk-white;
+//     border-radius: $global-radius;
+//     padding: 15px;
+//   }
+// }
+
+.nhsuk-summary-list.proto-summary-list {
+  // border: $global-border;
+  // border-radius: $global-radius;
+
+  .nhsuk-summary-list__row {
+    display: flex;
+  }
+  .nhsuk-summary-list__key {
+    width: 300px;
+    // padding-left: 15px;
+  }
+  .nhsuk-summary-list__value {
+    flex: 1;
+    // padding-right: 15px;
+  }
+
+  .nhsuk-summary-list__key,
+  .nhsuk-summary-list__value {
+    margin-bottom: nhsuk-spacing(1);
+
+    &.proto-error{
+      margin-top: nhsuk-spacing(1);
+      margin-bottom: nhsuk-spacing(1);
+    }
+  }
+}
