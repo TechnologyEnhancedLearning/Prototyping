@@ -26,6 +26,8 @@
   add view all button
   change sort to the order the user uploaded order "order added to spreadsheet" or "order uploaded"
   Add spreadsheet row number "ID"
+  "sense check job group and department"
+  "Make job group make sense"
   ------------------------- #}
 
   <div class="nhsuk-grid-row">
@@ -39,10 +41,10 @@
         </p>
 
         {% set errorSummaryContent %}
-          <p>12 of 55 users had errors, please update before submiting</p>
+          <p>12 of {{ uploadUsers | length }} users had errors, please update before submiting</p>
           <ul>
             <li>You can review and edit details on this page</li>
-            <li>or, check your spreadsheet and reupload it from the <a href='/prototypes/register/multiple'>previosue page</a>.</li>
+            <li>or, check your spreadsheet and reupload it from the <a href='/prototypes/register/multiple'>previous page</a>.</li>
           </ul>
         {% endset %}
 
@@ -136,37 +138,6 @@
                       "HTML": userGroup
                     }) }}
 
-                    {% set jobGroup %}
-                      <form>
-                        {{ checkboxes({
-                          "idPrefix": "example",
-                          "name": "example",
-                          "items": [
-                            {
-                              "value": "Admin / clerical",
-                              "text": "Admin / clerical"
-                            },
-                            {
-                              "value": "Allied Health Professionals",
-                              "text": "Allied Health Professionals"
-                            },
-                            {
-                              "value": "Educational Support",
-                              "text": "Educational Support"
-                            },
-                            {
-                              "value": "Nursing / midwifery",
-                              "text": "Nursing / midwifery"
-                            }
-                          ]
-                        }) }}
-                      </form>
-                    {% endset %}
-                    {{ details({
-                      "text": "Job group",
-                      "HTML": jobGroup
-                    }) }}
-
                     {% set department %}
                       <form>
                         {{ checkboxes({
@@ -186,7 +157,7 @@
                       </form>
                     {% endset %}
                     {{ details({
-                      "text": "Department or team",
+                      "text": "Job group",
                       "HTML": department
                     }) }}
                   </div>
@@ -195,7 +166,7 @@
 
               <div class="nhsuk-grid-column-two-thirds">
                 {# <div class="nhsuk-u-reading-width"> #}
-                  <h2 class="nhsuk-heading-s">12 of 55 users have erros</h2>
+                  <h2 class="nhsuk-heading-s">12 of 55 users have errors</h2>
 
                   <div class="proto-summary-list-group">
                     {% for user in uploadUsers %}
