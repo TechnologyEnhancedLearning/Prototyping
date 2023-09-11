@@ -1,0 +1,13 @@
+{% macro validation(error, content)
+
+  {% if error = true %}
+    <span class="nhsuk-error-message">
+      <span class="nhsuk-u-visually-hidden">Error:</span> {{error}}
+      {% block content %}{% endblock %}
+    </span>
+
+  {% else %}
+    {% block content %}{% endblock %}
+  {% endif %}
+
+{% endmacro %}

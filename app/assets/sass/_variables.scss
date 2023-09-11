@@ -12,6 +12,7 @@ $number-of-columns: 12;
 $column-max-width: math.div($inside-width, $number-of-columns);
 $border-rounded: 100%;
 $global-radius: 4px;
+$global-border: 1px solid $nhsuk-border-color;
 
 // it might be helpful to include a gutter variable and update the global radius to match the nhsuk button radius
 
