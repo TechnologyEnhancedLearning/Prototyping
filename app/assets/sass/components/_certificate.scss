@@ -1,0 +1,172 @@
+$certificate-page-margin: 1.5cm;
+
+@page {
+  size: A4;
+  margin: 0;
+  padding: 0;
+  margin-top: 0in;
+  margin-left: 0in;
+}
+
+@include mq($media-type: print) {
+  .certificate-container {
+    .nhsuk-width-container,
+    .nhsuk-grid-row,
+    .nhsuk-grid-column-full,
+    .certificate-container {
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+  }
+
+  .certificate {
+    * {
+      -webkit-print-color-adjust: exact !important;   /* Chrome, Safari 6 – 15.3, Edge */
+      color-adjust: exact !important;                 /* Firefox 48 – 96 */
+      print-color-adjust: exact !important;           /* Firefox 97+, Safari 15.4+ */
+    }
+  }
+}
+
+.certificate-container {
+  &__inner {
+    display: inline-block;
+  }
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 210mm;
+  min-height: 297mm;
+  margin: 0;
+  position: relative;
+  background: white;
+
+  @include mq($media-type: screen)  {
+    margin-bottom: nhsuk-spacing(5);
+    border: 1px solid $color_nhsuk-grey-1;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  @include mq($until: desktop, $media-type: screen)  {
+    min-height: initial;
+  }
+}
+
+.certificate {
+  overflow: hidden;
+
+  &__header {
+    @include light-text;
+    @include wysiwyg-content;
+
+    position: relative;
+    background-color: $color_nhsuk-blue;
+
+    &:after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      bottom: -20px;
+      left: 80px;
+      transform: rotate(45deg);
+      background-color: $color_nhsuk-blue;
+    }
+  }
+
+  &__header, &__content {
+    padding: $certificate-page-margin;
+
+    @include mq($until: desktop, $media-type: screen) {
+      padding: nhsuk-spacing(5);
+    }
+  }
+
+  &__logo {
+    width: 150px;
+    margin: 0 0 $certificate-page-margin $certificate-page-margin;
+    float: right;
+
+    @include mq($until: desktop, $media-type: screen) {
+      margin: 0 0 nhsuk-spacing(5) nhsuk-spacing(5);
+    }
+
+    @include mq($until: tablet, $media-type: screen) {
+      margin: 0 0 nhsuk-spacing(5) 0;
+      float: none;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    flex: 1;
+    justify-content: flex-start;
+    align-items: end;
+    padding: 0 $certificate-page-margin $certificate-page-margin  $certificate-page-margin;
+    position: relative;
+
+    @include mq($until: desktop, $media-type: screen) {
+      display: block;
+      padding: 0 nhsuk-spacing(5) $certificate-page-margin nhsuk-spacing(5);
+    }
+
+    &:before,
+    &:after {
+      content: '';
+      display: block;
+      height: 20px;
+      position: absolute;
+      bottom: 30px;
+      transform: skew(-40deg);
+    }
+
+    &:before {
+      width: 55%;
+      left: -8px;
+      background-color: $color_nhsuk-blue;
+    }
+
+    &:after {
+      width: 45%;
+      right: -9px;
+      background-color: $color_nhsuk-green;
+    }
+  }
+
+  &__footer-content {
+    max-width: 400px;
+    padding-right: 16px;
+
+    @include mq($until: desktop, $media-type: screen) {
+      max-width: 100%;
+      padding: 0;
+    }
+  }
+
+  &__footer-partner-logo {
+    flex: 1;
+    padding-left: 16px;
+
+    @include mq($until: desktop, $media-type: screen) {
+      max-width: 300px;
+      padding: 0;
+    }
+  }
+
+  &__footer-partner-logo-image {
+    width: 100%;
+  }
+
+  &__list {
+    @include no-list-style;
+  }
+
+  &__title--blue {
+    color: $color_nhsuk-blue;
+  }
+}
