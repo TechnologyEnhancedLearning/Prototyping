@@ -1,0 +1,57 @@
+<!-- Component imports (macros) -->
+{# {% from 'breadcrumb/macro.njk' import breadcrumb %}`
+{% from 'details/macro.njk' import details %} #}
+
+<!-- Extends the layout from /views/layout/layout.html -->
+{% extends 'layouts/layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  NHS.UK prototype kit
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+  {{ breadcrumb({
+    items: [{
+      href: "/prototypes",
+      text: "Home"
+    }]
+  }) }}
+
+  {{ hero({
+    "heading": "DLS Certificate gubbins",
+    "text": "The page design for certificates inclusive of html, css and assets"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-width-container">
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+      <h2>IV Therapy Passport - Allan King</h2>
+      {{ button({
+        "text": "Download certificate"
+      }) }}
+    </div>
+  </div>
+</div>
+
+<div class="certificate-container">
+  <div class="nhsuk-width-container">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+          <article class="certificate-container__inner">
+            {% include "prototypes/certificates/include/certificate.html" %}
+          </articel>
+        </div>
+      </div>
+  </div>
+</div>
+{% endblock %}
+
+  <!-- For adding a back link -->
+  <!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+  {% block outerContent %}
+  {% endblock %}
