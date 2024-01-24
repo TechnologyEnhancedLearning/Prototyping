@@ -31,33 +31,34 @@ $certificate-page-margin: 1.5cm;
 .certificate-container {
   &__inner {
     display: inline-block;
-  }
-}
-
-.page {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-width: 210mm;
-  min-height: 297mm;
-  margin: 0;
-  position: relative;
-  background: white;
-
-  @include mq($media-type: screen)  {
-    margin-bottom: nhsuk-spacing(5);
-    border: 1px solid $color_nhsuk-grey-1;
-    border-radius: 3px;
-    overflow: hidden;
-  }
-
-  @include mq($until: desktop, $media-type: screen)  {
-    min-height: initial;
+    max-width: 100%;
   }
 }
 
 .certificate {
   overflow: hidden;
+
+  &__page {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 210mm;
+    min-height: 297mm;
+    margin: 0;
+    position: relative;
+    background: white;
+
+    @include mq($media-type: screen)  {
+      margin-bottom: nhsuk-spacing(5);
+      border: 1px solid $color_nhsuk-grey-1;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    @include mq($until: desktop, $media-type: screen)  {
+      min-height: initial;
+    }
+  }
 
   &__header {
     @include light-text;
@@ -115,26 +116,28 @@ $certificate-page-margin: 1.5cm;
       padding: 0 nhsuk-spacing(5) $certificate-page-margin nhsuk-spacing(5);
     }
 
-    &:before,
-    &:after {
-      content: '';
-      display: block;
-      height: 20px;
-      position: absolute;
-      bottom: 30px;
-      transform: skew(-40deg);
-    }
+    &--brand-ribbon {
+      &:before,
+      &:after {
+        content: '';
+        display: block;
+        height: 20px;
+        position: absolute;
+        bottom: 30px;
+        transform: skew(-40deg);
+      }
 
-    &:before {
-      width: 55%;
-      left: -8px;
-      background-color: $color_nhsuk-blue;
-    }
+      &:before {
+        width: 55%;
+        left: -8px;
+        background-color: $color_nhsuk-blue;
+      }
 
-    &:after {
-      width: 45%;
-      right: -9px;
-      background-color: $color_nhsuk-green;
+      &:after {
+        width: 45%;
+        right: -9px;
+        background-color: $color_nhsuk-green;
+      }
     }
   }
 

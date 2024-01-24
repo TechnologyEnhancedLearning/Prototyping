@@ -1,5 +1,5 @@
 <div class="certificate">
-  <section class="page">
+  <section class="certificate__page certificate__page--1">
     <div class="certificate__header">
       <svg class="certificate__logo" width="150" height="60" viewBox="0 0 100 40" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="100" height="40" fill="#005EB8"/>
@@ -35,44 +35,11 @@
         <ul class="certificate__list nhsuk-body-s">
           <li class="certificate__list-item">Methods of preparation - 1 proficiency</li>
           <li class="certificate__list-item">Methods of administration - 1 proficiency</li>
-          <!-- <li class="certificate__list-item">Peripheral venous access devices (PVAD): midline catheter - 12 proficienciesPeripheral venous access devices (PVAD): midline catheter - 12 proficienciesPeripheral venous access devices (PVAD): midline catheter - 12 proficienciesPeripheral venous access devices (PVAD): midline catheter - 12 proficienciesPeripheral venous access devices (PVAD): midline catheter - 12 proficienciesPeripheral venous access devices (PVAD): midline catheter - 12 proficienciesPeripheral venous access devices (PVAD): midline catheter - 12 proficienciesPeripheral venous access devices (PVAD): midline catheter - 12 proficiencies</li>
-          <li class="certificate__list-item">Central venous access device (CVAD): umbilical</li>
-          <li class="certificate__list-item">venous catheter (UVC) - 16 proficiencies</li>
-          <li class="certificate__list-item">Methods of preparation - 1 proficiency</li>
-          <li class="certificate__list-item">Methods of administration - 1 proficiency</li>
-          <li class="certificate__list-item">Peripheral venous access devices (PVAD): midline catheter - 12 proficiencies</li>
-          <li class="certificate__list-item">Central venous access device (CVAD): umbilical</li>
-          <li class="certificate__list-item">venous catheter (UVC) - 16 proficiencies</li>
-          <li class="certificate__list-item">Methods of preparation - 1 proficiency</li>
-          <li class="certificate__list-item">Methods of administration - 1 proficiency</li>
-          <li class="certificate__list-item">Peripheral venous access devices (PVAD): midline catheter - 12 proficiencies</li>
-          <li class="certificate__list-item">Central venous access device (CVAD): umbilical</li>
-          <li class="certificate__list-item">venous catheter (UVC) - 16 proficiencies</li>
-          <li class="certificate__list-item">Methods of preparation - 1 proficiency</li>
-          <li class="certificate__list-item">Methods of administration - 1 proficiency</li>
-          <li class="certificate__list-item">Peripheral venous access devices (PVAD): midline catheter - 12 proficiencies</li>
-          <li class="certificate__list-item">Central venous access device (CVAD): umbilical</li>
-          <li class="certificate__list-item">venous catheter (UVC) - 16 proficiencies</li>
-          <li class="certificate__list-item">Methods of preparation - 1 proficiency</li>
-          <li class="certificate__list-item">Methods of administration - 1 proficiency</li>
-          <li class="certificate__list-item">Peripheral venous access devices (PVAD): midline catheter - 12 proficiencies</li>
-          <li class="certificate__list-item">Central venous access device (CVAD): umbilical</li>
-          <li class="certificate__list-item">venous catheter (UVC) - 16 proficiencies</li>
-          <li class="certificate__list-item">Methods of preparation - 1 proficiency</li>
-          <li class="certificate__list-item">Methods of administration - 1 proficiency</li>
-          <li class="certificate__list-item">Peripheral venous access devices (PVAD): midline catheter - 12 proficiencies</li>
-          <li class="certificate__list-item">Central venous access device (CVAD): umbilical</li>
-          <li class="certificate__list-item">venous catheter (UVC) - 16 proficiencies</li>
-          <li class="certificate__list-item">Methods of preparation - 1 proficiency</li>
-          <li class="certificate__list-item">Methods of administration - 1 proficiency</li>
-          <li class="certificate__list-item">Peripheral venous access devices (PVAD): midline catheter - 12 proficiencies</li>
-          <li class="certificate__list-item">Central venous access device (CVAD): umbilical</li>
-          <li class="certificate__list-item">venous catheter (UVC) - 16 proficiencies</li> -->
         </ul>
       </div>
     </div>
 
-    <div class="certificate__footer">
+    <div class="certificate__footer certificate__footer--brand-ribbon">
       <div class="certificate__footer-content">
         <p class="certificate__title--blue nhsuk-body nhsuk-u-margin-bottom-1">Certificate generated on 31/03/2025</p>
         <p class="nhsuk-body-s">by NHS England Digital Learning solutions on behalf of University Hospital of Morcomb Bay</p>
@@ -82,6 +49,74 @@
       </div>
     </div>
 
+  </section>
+
+  <section class="certificate__page certificate__page--2">
+    <div class="certificate__content">
+      <h2>Activity summary report</h2>
+      <!-- <br /> -->
+      <dl class="nhsuk-summary-list nhsuk-u-font-size-16">
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Activity:</dt>
+          <dd class="nhsuk-summary-list__value">@Model.CompetencySelfAssessmentCertificates.SelfAssessment</dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Name:</dt>
+          <dd class="nhsuk-summary-list__value">@Model.CompetencySelfAssessmentCertificates.LearnerName</dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Professional Registration Number:</dt>
+          <dd class="nhsuk-summary-list__value">@Model.CompetencySelfAssessmentCertificates.LearnerPRN</dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Assessment question responses:</dt>
+          <dd class="nhsuk-summary-list__value">@sumQuestions</dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Response meeting role requirements</dt>
+          <dd class="nhsuk-summary-list__value">@Model.RoleCount</dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Response meeting role requirements</dt>
+          <dd class="nhsuk-summary-list__value">@Model.RoleCount</dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Responses confirmed by assessor</dt>
+          <dd class="nhsuk-summary-list__value">@sumVerifiedCount</dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Assessors</dt>
+          <dd class="nhsuk-summary-list__value">
+            <ul>
+              @foreach (var accessor in Model.Accessors)
+              {
+                <p class="nhsuk-u-font-size-16">
+                  @accessor.AccessorName, @accessor.AccessorPRN
+                </p>
+              }
+            </ul>
+          </dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Signed Off By</dt>
+          <dd class="nhsuk-summary-list__value">@Model.CompetencySelfAssessmentCertificates.SupervisorName, @Model.CompetencySelfAssessmentCertificates.SupervisorPRN</dd>
+        </div>
+      </dl>
+    </div>
+
+    <div class="certificate__footer">
+      <div class="certificate__footer-content">
+        <p class="certificate__title--blue nhsuk-body-s nhsuk-u-margin-bottom-1">Certificate generated on @DateTime.Today.ToString("dd/MM/yyyy")</p>
+      </div>
+    </div>
   </section>
 </div>
 
