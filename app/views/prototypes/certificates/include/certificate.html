@@ -1,0 +1,122 @@
+<div class="certificate">
+  <section class="certificate__page certificate__page--1">
+    <div class="certificate__header">
+      <svg class="certificate__logo" width="150" height="60" viewBox="0 0 100 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="100" height="40" fill="#005EB8"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0V40H100V0H0ZM22.4 36L15.7 13.9H15.6L11.1 36H3L9.9 4H20.7L27.3 26.2H27.4L31.9 4H40L33.2 36H22.4ZM55.7 36L58.5 22.3H48.4L45.6 36H37L43.7 4H52.3L49.8 16.2H60L62.4 4H71L64.3 36H55.7ZM93.9 10.8C92.2 10 89.9 9.3 86.7 9.3C83.2 9.3 80.4 9.8 80.4 12.4C80.4 16.9 93.1 15.2 93.1 24.9C93.1 33.7 84.7 36 77.1 36C73.7 36 69.8 35.2 67 34.3L69.1 27.8C70.8 28.9 74.3 29.6 77.2 29.6C79.9 29.6 84.2 29.1 84.2 25.8C84.2 20.7 71.5 22.6 71.5 13.6C71.4 5.5 78.8 3 86 3C90 3 93.8 3.4 96 4.4L93.9 10.8Z" fill="white"/>
+      </svg>
+
+      <h1 class="certificate__heading">
+        <div class="nhsuk-u-margin-bottom-7">
+          <span class="nhsuk-body-m nhsuk-u-font-weight-normal nhsuk-u-margin-bottom-0">
+            This is to certify that
+          </span>
+            Allan King
+          <span class="nhsuk-body-m nhsuk-u-font-weight-normal nhsuk-u-margin-top-1">
+            NMC123456
+          </span>
+        </div>
+
+        <div>
+          <span class="nhsuk-body-m nhsuk-u-font-weight-normal nhsuk-u-margin-bottom-0">
+            has successfully completed the
+          </span>
+            IV Therapy Passport
+        </div>
+      </h1>
+
+       <p>Signed off at University Hospitals of Morecambe Bay NHS Foundation Trust by Carolyn Mawdesley NMC654321</p>
+
+       <p>on 24th March 2023</p>
+    </div>
+    <div class="certificate__content">
+      <div class="certificate__optional-proficiencies">
+        <p class="certificate__title--blue nhsuk-u-margin-bottom-3">Including the following optional proficiencies:</p>
+        <ul class="certificate__list nhsuk-body-s">
+          <li class="certificate__list-item">Methods of preparation - 1 proficiency</li>
+          <li class="certificate__list-item">Methods of administration - 1 proficiency</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="certificate__footer certificate__footer--brand-ribbon">
+      <div class="certificate__footer-content">
+        <p class="certificate__title--blue nhsuk-body nhsuk-u-margin-bottom-1">Certificate generated on 31/03/2025</p>
+        <p class="nhsuk-body-s">by NHS England Digital Learning solutions on behalf of University Hospital of Morcomb Bay</p>
+      </div>
+      <div class="certificate__footer-partner-logo nhsuk-u-margin-bottom-4">
+        <img class="certificate__footer-partner-logo-image" src="/images/fm/healthcare-image-1.jpg" alt="Image alt text goes here">
+      </div>
+    </div>
+
+  </section>
+
+  <section class="certificate__page certificate__page--2">
+    <div class="certificate__content">
+      <h2>Activity summary report</h2>
+      <!-- <br /> -->
+      <dl class="nhsuk-summary-list nhsuk-u-font-size-16">
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Activity:</dt>
+          <dd class="nhsuk-summary-list__value">@Model.CompetencySelfAssessmentCertificates.SelfAssessment</dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Name:</dt>
+          <dd class="nhsuk-summary-list__value">@Model.CompetencySelfAssessmentCertificates.LearnerName</dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Professional Registration Number:</dt>
+          <dd class="nhsuk-summary-list__value">@Model.CompetencySelfAssessmentCertificates.LearnerPRN</dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Assessment question responses:</dt>
+          <dd class="nhsuk-summary-list__value">@sumQuestions</dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Response meeting role requirements</dt>
+          <dd class="nhsuk-summary-list__value">@Model.RoleCount</dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Response meeting role requirements</dt>
+          <dd class="nhsuk-summary-list__value">@Model.RoleCount</dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Responses confirmed by assessor</dt>
+          <dd class="nhsuk-summary-list__value">@sumVerifiedCount</dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Assessors</dt>
+          <dd class="nhsuk-summary-list__value">
+            <ul>
+              @foreach (var accessor in Model.Accessors)
+              {
+                <p class="nhsuk-u-font-size-16">
+                  @accessor.AccessorName, @accessor.AccessorPRN
+                </p>
+              }
+            </ul>
+          </dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Signed Off By</dt>
+          <dd class="nhsuk-summary-list__value">@Model.CompetencySelfAssessmentCertificates.SupervisorName, @Model.CompetencySelfAssessmentCertificates.SupervisorPRN</dd>
+        </div>
+      </dl>
+    </div>
+
+    <div class="certificate__footer">
+      <div class="certificate__footer-content">
+        <p class="certificate__title--blue nhsuk-body-s nhsuk-u-margin-bottom-1">Certificate generated on @DateTime.Today.ToString("dd/MM/yyyy")</p>
+      </div>
+    </div>
+  </section>
+</div>
+

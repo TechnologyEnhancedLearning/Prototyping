@@ -1,0 +1,697 @@
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+    padding: 0;
+    margin-top: 0in;
+    margin-left: 0in;
+  }
+
+  @font-face {
+    font-display:swap;
+    font-family:"Frutiger W01";
+    font-style:normal;
+    font-weight:400;
+    src:url("https://assets.nhs.uk/fonts/FrutigerLTW01-55Roman.eot?#iefix");
+    src:url("https://assets.nhs.uk/fonts/FrutigerLTW01-55Roman.eot?#iefix") format("eot"), url("https://assets.nhs.uk/fonts/FrutigerLTW01-55Roman.woff2") format("woff2"), url("https://assets.nhs.uk/fonts/FrutigerLTW01-55Roman.woff") format("woff"), url("https://assets.nhs.uk/fonts/FrutigerLTW01-55Roman.ttf") format("truetype"), url("https://assets.nhs.uk/fonts/FrutigerLTW01-55Roman.svg#7def0e34-f28d-434f-b2ec-472bde847115") format("svg");
+  }
+
+  @font-face {
+    font-display:swap;
+    font-family:"Frutiger W01";
+    font-style:normal;
+    font-weight:600;
+    src:url("https://assets.nhs.uk/fonts/FrutigerLTW01-65Bold.eot?#iefix");
+    src:url("https://assets.nhs.uk/fonts/FrutigerLTW01-65Bold.eot?#iefix") format("eot"), url("https://assets.nhs.uk/fonts/FrutigerLTW01-65Bold.woff2") format("woff2"), url("https://assets.nhs.uk/fonts/FrutigerLTW01-65Bold.woff") format("woff"), url("https://assets.nhs.uk/fonts/FrutigerLTW01-65Bold.ttf") format("truetype"), url("https://assets.nhs.uk/fonts/FrutigerLTW01-65Bold.svg#eae74276-dd78-47e4-9b27-dac81c3411ca") format("svg");
+  }
+
+  @media print {
+    .certificate-container,
+    .certificate-container .nhsuk-width-container,
+    .certificate-container .nhsuk-grid-row,
+    .certificate-container .nhsuk-grid-column-full {
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    .certificate * {
+      -webkit-print-color-adjust: exact !important;   /* Chrome, Safari 6 – 15.3, Edge */
+      color-adjust: exact !important;                 /* Firefox 48 – 96 */
+      print-color-adjust: exact !important;           /* Firefox 97+, Safari 15.4+ */
+    }
+  }
+
+  /* NHS typography & layout containers ------------------------ */
+  .certificate h1 {
+    font-size: 2rem;
+    line-height: 1.25;
+    display: block;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 40px;
+  }
+
+  @media (min-width: 40.0625em){
+    .certificate h1 {
+      font-size: 3rem;
+      line-height: 1.16667;
+    }
+
+    .certificate h1 {
+      margin-bottom: 48px;
+    }
+  }
+
+  .certificate h2 {
+    font-size: 1.5rem;
+    line-height: 1.33333;
+    display: block;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 16px;
+  }
+
+  @media (min-width: 40.0625em){
+    .certificate h2 {
+      font-size: 2rem;
+      line-height: 1.25;
+    }
+
+    .certificate h2 {
+      margin-bottom: 24px;
+    }
+  }
+
+  .certificate p {
+    display: block;
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: inherit;
+  }
+
+  @media (min-width: 40.0625em){
+    .certificate p {
+      margin-bottom: 24px;
+      font-size: 1.1875rem;
+      line-height: 1.47368;
+    }
+  }
+
+  .certificate ul {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 16px;
+    list-style-type: none;
+    margin-top: 0;
+    list-style-type: disc;
+    padding-left: 20px;
+  }
+
+  .certificate ul > li  {
+    margin-bottom: 8px;
+  }
+
+  .certificate ul > li:last-child  {
+    margin-bottom: 0;
+  }
+
+  @media (min-width: 40.0625em){
+    .certificate ul {
+      font-size: 1.1875rem;
+      line-height: 1.47368;
+    }
+
+    .certificate ul {
+      margin-bottom: 24px;
+    }
+
+    .certificate ul > li  {
+      margin-bottom: 8px;
+    }
+  }
+
+  .certificate .nhsuk-u-font-size-16 {
+    font-size: 0.875rem !important;
+    line-height: 1.71429 !important;
+  }
+
+  @media (min-width: 40.0625em){
+    .certificate .nhsuk-u-font-size-16 {
+      font-size: 1rem !important;
+      line-height: 1.5 !important;
+    }
+  }
+
+  .certificate .nhsuk-body-s {
+    font-size: 0.875rem;
+    line-height: 1.71429;
+    display: block;
+    margin-top: 0;
+    margin-bottom: 16px;
+  }
+
+  @media (min-width: 40.0625em){
+    .certificate .nhsuk-body-s {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .certificate .nhsuk-body-s {
+      margin-bottom: 24px;
+    }
+  }
+
+  .certificate .nhsuk-body-m {
+    font-size: 1rem;
+    line-height: 1.5;
+    display: block;
+    margin-top: 0;
+    margin-bottom: 16px;
+    color: inherit;
+  }
+
+  @media (min-width: 40.0625em){
+    .certificate .nhsuk-body-m {
+      font-size: 1.1875rem;
+      line-height: 1.47368;
+    }
+
+    .certificate .nhsuk-body-m {
+      margin-bottom: 24px;
+    }
+  }
+
+  .certificate .nhsuk-u-font-weight-normal {
+    font-weight: 400 !important;
+  }
+
+  .certificate .nhsuk-u-margin-bottom-0 {
+    margin-bottom: 0 !important;
+  }
+
+  @media (min-width: 40.0625em){
+    .certificate .nhsuk-u-margin-bottom-0 {
+      margin-bottom: 0 !important;
+    }
+  }
+
+  .certificate .nhsuk-u-margin-top-1 {
+    margin-top: 4px !important;
+  }
+
+  @media (min-width: 40.0625em){
+    .certificate .nhsuk-u-margin-top-1 {
+      margin-top: 4px !important;
+    }
+  }
+
+  .certificate .nhsuk-u-margin-bottom-1 {
+    margin-bottom: 4px !important;
+  }
+
+  @media (min-width: 40.0625em){
+    .certificate .nhsuk-u-margin-bottom-1 {
+      margin-bottom: 4px !important;
+    }
+  }
+
+  .certificate .nhsuk-u-margin-bottom-3 {
+    margin-bottom: 8px !important;
+  }
+
+  @media (min-width: 40.0625em){
+    .certificate .nhsuk-u-margin-bottom-3 {
+      margin-bottom: 16px !important;
+    }
+  }
+
+  .certificate .nhsuk-u-margin-bottom-4 {
+    margin-bottom: 16px !important;
+  }
+
+  @media (min-width: 40.0625em){
+    .certificate .nhsuk-u-margin-bottom-4 {
+      margin-bottom: 24px !important;
+    }
+  }
+
+  .certificate .nhsuk-u-margin-bottom-7 {
+    margin-bottom: 40px !important;
+  }
+
+  @media (min-width: 40.0625em){
+    .certificate .nhsuk-u-margin-bottom-7 {
+      margin-bottom: 48px !important;
+    }
+  }
+
+  /* END NHS typography & layout containers ------------------------ */
+
+  /* NHS Summary list ----------------------------------- */
+  .certificate .nhsuk-summary-list {
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 0;
+    margin-bottom: 32px;
+  }
+
+  @media (min-width: 40.0625em){
+    .certificate .nhsuk-summary-list {
+      font-size: 1.1875rem;
+      line-height: 1.47368;
+    }
+
+    .certificate .nhsuk-summary-list {
+      display: table;
+      table-layout: fixed;
+      width: 100%;
+    }
+
+    .certificate .nhsuk-summary-list {
+      margin-bottom: 40px;
+    }
+  }
+
+  @media (min-width: 40.0625em){
+    .certificate .nhsuk-summary-list__row {
+      display: table-row;
+    }
+  }
+
+  .certificate .nhsuk-summary-list__key {
+    margin: 0;
+    vertical-align: top;
+  }
+
+  @media (min-width: 40.0625em){
+    .certificate .nhsuk-summary-list__key {
+      border-bottom: 1px solid #d8dde0;
+      display: table-cell;
+      padding-bottom: 8px;
+      padding-right: 24px;
+      padding-top: 8px;
+    }
+  }
+
+  .certificate .nhsuk-summary-list__key {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+
+  .certificate .nhsuk-summary-list__key {
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  @media (min-width: 40.0625em){
+    .certificate .nhsuk-summary-list__key {
+      width: 30%;
+    }
+  }
+
+  .certificate .nhsuk-summary-list__value {
+    margin: 0;
+    vertical-align: top;
+  }
+
+  .certificate .nhsuk-summary-list__value {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+
+  .certificate .nhsuk-summary-list__value > :last-child  {
+    margin-bottom: 0;
+  }
+
+  @media (min-width: 40.0625em){
+    .certificate .nhsuk-summary-list__value {
+      border-bottom: 1px solid #d8dde0;
+      display: table-cell;
+      padding-bottom: 8px;
+      padding-right: 24px;
+      padding-top: 8px;
+      width: 50%;
+    }
+  }
+  /* END NHS Summary list ----------------------------------- */
+
+  /* Custom certification styling ----------------------------------- */
+  .certificate-container {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  .certificate-container *, :before,:after {
+    -moz-box-sizing: inherit;
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+  }
+
+  .certificate-container, .certificate {
+    color:#212b32;
+    font-size:16px;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    line-height:1.5;
+    font-family:Frutiger W01, Arial, Sans-serif;
+    margin: 0;
+    min-height: 100%;
+  }
+
+  .certificate-container__inner {
+    display: inline-block;
+    max-width: 100%;
+  }
+
+  .certificate {
+    overflow: hidden;
+    -webkit-print-color-adjust: exact !important;   /* Chrome, Safari 6 – 15.3, Edge */
+    color-adjust: exact !important;                 /* Firefox 48 – 96 */
+    print-color-adjust: exact !important;           /* Firefox 97+, Safari 15.4+ */
+  }
+
+  .certificate__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .certificate__page {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 210mm;
+    min-height: 297mm;
+    margin: 0;
+    position: relative;
+    background: white;
+  }
+
+  @media screen {
+    .certificate__page {
+      margin-bottom: 32px;
+      border: 1px solid #4c6272;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+  }
+
+  @media screen and (max-width: 40.0625em) {
+    .certificate__page {
+      min-height: initial;
+    }
+  }
+
+  .certificate__header {
+    color: #ffffff;
+    position: relative;
+    background-color: #005eb8;
+  }
+
+  .certificate__header {
+    padding: 1.5cm;
+  }
+
+  @media screen and (max-width: 40.0625em) {
+    .certificate__header {
+      padding: 32px;
+    }
+  }
+
+  .certificate__header > :last-child  {
+    margin-bottom: 0;
+  }
+
+  .certificate__header:after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    bottom: -20px;
+    left: 80px;
+    transform: rotate(45deg);
+    background-color: #005eb8;
+  }
+
+  .certificate__content {
+    padding: 1.5cm;
+  }
+
+  @media screen and (max-width: 40.0625em) {
+    .certificate__content {
+      padding: 32px;
+    }
+  }
+
+  .certificate__footer {
+    display: flex;
+    flex: 1;
+    justify-content: flex-start;
+    align-items: end;
+    padding: 0 1.5cm 1.5cm 1.5cm;
+    position: relative;
+  }
+
+  @media screen and (max-width: 40.0625em) {
+    .certificate__footer {
+      display: block;
+      padding: 0 32px 32px 32px;
+    }
+  }
+
+  .certificate__footer-content {
+    max-width: 400px;
+    padding-right: 16px;
+  }
+
+  .certificate__footer-partner-logo {
+    flex: 1;
+    padding-left: 0 0 0 16px;
+  }
+
+  @media screen and (max-width: 40.0625em) {
+    .certificate__footer-partner-logo {
+      padding: 16px 0 32px 0;
+    }
+  }
+
+  .certificate__footer-partner-logo-image {
+    width: 100%;
+  }
+
+  .certificate__footer--brand-ribbon:before,
+  .certificate__footer--brand-ribbon:after {
+    content: "";
+    display: block;
+    height: 20px;
+    position: absolute;
+    bottom: 30px;
+    transform: skew(-40deg);
+  }
+
+  .certificate__footer--brand-ribbon:before {
+    width: 55%;
+    left: -8px;
+    background-color: #005eb8;
+  }
+
+  .certificate__footer--brand-ribbon:after {
+    width: 45%;
+    right: -9px;
+    background-color: #007f3b;
+  }
+
+  .certificate__logo {
+    width: 150px;
+    margin: 0 0 1.5cm 1.5cm;
+    float: right;
+  }
+
+  .certificate .certificate__title--blue {
+    color: #005eb8;
+  }
+  /* END Custom certification styling ----------------------------------- */
+</style>
+
+<div class="certificate-container">
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full">
+        <article class="certificate-container__inner">
+          <div class="certificate">
+            <section class="certificate__page certificate__page--1">
+              <div class="certificate__header">
+                <svg class="certificate__logo" width="150" height="60" viewBox="0 0 100 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="100" height="40" fill="#005EB8">
+                  </rect>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0V40H100V0H0ZM22.4 36L15.7 13.9H15.6L11.1 36H3L9.9 4H20.7L27.3 26.2H27.4L31.9 4H40L33.2 36H22.4ZM55.7 36L58.5 22.3H48.4L45.6 36H37L43.7 4H52.3L49.8 16.2H60L62.4 4H71L64.3 36H55.7ZM93.9 10.8C92.2 10 89.9 9.3 86.7 9.3C83.2 9.3 80.4 9.8 80.4 12.4C80.4 16.9 93.1 15.2 93.1 24.9C93.1 33.7 84.7 36 77.1 36C73.7 36 69.8 35.2 67 34.3L69.1 27.8C70.8 28.9 74.3 29.6 77.2 29.6C79.9 29.6 84.2 29.1 84.2 25.8C84.2 20.7 71.5 22.6 71.5 13.6C71.4 5.5 78.8 3 86 3C90 3 93.8 3.4 96 4.4L93.9 10.8Z" fill="white">
+                  </path>
+                </svg>
+                <h1 class="certificate__heading">
+                  <div class="nhsuk-u-margin-bottom-7">
+                    <span class="nhsuk-body-m nhsuk-u-font-weight-normal nhsuk-u-margin-bottom-0">
+                      This is to certify that
+                    </span>
+                    @Model.CompetencySelfAssessmentCertificates.LearnerName
+                    <span class="nhsuk-body-m nhsuk-u-font-weight-normal nhsuk-u-margin-top-1">
+                      @Model.CompetencySelfAssessmentCertificates.LearnerPRN
+                    </span>
+                  </div>
+                  <div>
+                    <span class="nhsuk-body-m nhsuk-u-font-weight-normal nhsuk-u-margin-bottom-0">
+                      has successfully completed the
+                    </span>
+                    @Model.CompetencySelfAssessmentCertificates.SelfAssessment
+                  </div>
+                </h1>
+                <p>
+                  Signed off at @Model.CompetencySelfAssessmentCertificates.CentreName by @Model.CompetencySelfAssessmentCertificates.SupervisorName @Model.CompetencySelfAssessmentCertificates.SupervisorPRN
+                </p>
+                <p>
+                  @Model.CompetencySelfAssessmentCertificates.FormattedDate
+                </p>
+              </div>
+              <div class="certificate__content">
+                <div class="certificate__optional-proficiencies">
+                  <p class="certificate__title--blue nhsuk-u-margin-bottom-3">
+                    Including the following optional proficiencies:
+                  </p>
+                  <ul class="certificate__list nhsuk-body-s">
+                    @foreach (var entry in Model.CompetencyCountSelfAssessmentCertificate)
+                    {
+                      <li class="certificate__list-item">
+                        @entry.CompetencyGroup - @entry.OptionalCompetencyCount
+                        @if (@entry.OptionalCompetencyCount == 1)
+                        {
+                          @Model.CompetencySelfAssessmentCertificates.Vocabulary
+                        }
+                        else
+                        {
+                          @Model.VocabPlural
+                        }
+                      </li>
+                    }
+                  </ul>
+                </div>
+              </div>
+              <div class="certificate__footer certificate__footer--brand-ribbon">
+                <div class="certificate__footer-content">
+                  <p class="certificate__title--blue nhsuk-body nhsuk-u-margin-bottom-1">
+                    Certificate generated on @DateTime.Today.ToString("dd/MM/yyyy")
+                  </p>
+                  <p class="nhsuk-body-s">
+                    by NHS England Digital Learning solutions on behalf of @Model.CompetencySelfAssessmentCertificates.CentreName
+                  </p>
+                </div>
+                <div class="certificate__footer-partner-logo nhsuk-u-margin-bottom-4">
+                  <img class="certificate__footer-partner-logo-image" src="https://www.hee.nhs.uk/sites/default/files/styles/image_658_witdh/public/Capital-Nurse-Logo.jpg?itok=8hlRIj8r" alt="Image alt text goes here">
+                </div>
+              </div>
+            </section>
+
+            <section class="certificate__page certificate__page--2">
+              <div class="certificate__content">
+                <h2>
+                  Activity summary report
+                </h2>
+                <dl class="nhsuk-summary-list nhsuk-u-font-size-16">
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                      Activity:
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                      @Model.CompetencySelfAssessmentCertificates.SelfAssessment
+                    </dd>
+                  </div>
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                      Name:
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                      @Model.CompetencySelfAssessmentCertificates.LearnerName
+                    </dd>
+                  </div>
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                      Professional Registration Number:
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                      @Model.CompetencySelfAssessmentCertificates.LearnerPRN
+                    </dd>
+                  </div>
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                      Assessment question responses:
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                      @sumQuestions
+                    </dd>
+                  </div>
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                      Response meeting role requirements
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                      @Model.RoleCount
+                    </dd>
+                  </div>
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                      Response meeting role requirements
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                      @Model.RoleCount
+                    </dd>
+                  </div>
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                      Responses confirmed by assessor
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                      @sumVerifiedCount
+                    </dd>
+                  </div>
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                      Assessors
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                      <ul>
+                        @foreach (var accessor in Model.Accessors)
+                        {
+                          <p class="nhsuk-u-font-size-16">
+                            @accessor.AccessorName, @accessor.AccessorPRN
+                          </p>
+                        }
+                      </ul>
+                    </dd>
+                  </div>
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                      Signed Off By
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                      @Model.CompetencySelfAssessmentCertificates.SupervisorName, @Model.CompetencySelfAssessmentCertificates.SupervisorPRN
+                    </dd>
+                  </div>
+                </dl>
+              </div>
+              <div class="certificate__footer">
+                <div class="certificate__footer-content">
+                  <p class="certificate__title--blue nhsuk-body-s nhsuk-u-margin-bottom-1">
+                    Certificate generated on @DateTime.Today.ToString("dd/MM/yyyy")
+                  </p>
+                </div>
+              </div>
+            </section>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
