@@ -1,0 +1,168 @@
+// function: nhsuk-px-to-rem($value)
+// @mixin reading-width()
+// @include nhsuk-responsive-margin(7, "bottom");
+// @include nhsuk-responsive-margin(7, "top");
+// @include nhsuk-responsive-padding(5);
+// function: nhsuk-spacing(2)
+// @mixin nhsuk-font($size, $weight: normal, $line-height: false)
+// @include nhsuk-typography-weight-bold;
+
+// Separate learning log listing, nav and wrapper into three elements to better show what belongs where and create a clearer hierarchy
+
+$this: &;
+
+.learning-conversations {}
+
+.learning-log-navigation {
+  // margin-bottom: nhsuk-spacing(3);
+  padding-bottom: nhsuk-spacing(2);
+  border-bottom: 1px solid $color_nhsuk-grey-2;
+
+  @include mq($from: desktop) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding-bottom: nhsuk-spacing(1);
+  }
+
+  &__activity-filter {}
+
+  &__activity-filter-title {
+    @include nhsuk-font(32, $weight: bold);
+  }
+
+  &__activity-filter-list {
+    @include no-list-style;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    // gap: 8px;
+
+    & > {
+
+    }
+
+
+
+    margin-bottom: nhsuk-spacing(2);
+  }
+
+  &__filter-title {
+    @include nhsuk-font(16, $weight: bold);
+
+    margin-bottom: nhsuk-spacing(2);
+  }
+
+  &__activity-filter-list-heading {
+    @include nhsuk-font(16, $weight: bold);
+
+    margin-right: 8px;
+  }
+
+  @at-root .learning-log & { // this is basically a
+    &__activity-filter-list-item {
+      margin: 4px 0;
+      padding: 0 4px;
+    }
+  }
+
+  &__order-filter {
+    @include nhsuk-font(16, $weight: bold);
+  }
+}
+
+.learning-log {
+  &__list {
+    @include no-list-style;
+  }
+
+  &__list-item {
+    padding: nhsuk-spacing(3) 0;
+
+    &:not(:first-child):not(&--sign-off) {
+      border-top: 1px solid $color_nhsuk-grey-3;
+    }
+
+    &--sign-off {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: nhsuk-spacing(4);
+      color: $color_nhsuk-green;
+      font-weight: $nhsuk-font-bold;
+
+      &:after {
+        content:"";
+        display: block;
+        flex: 1;
+        flex-basis: 300px;
+        height: 3px;
+        margin: 0 0 nhsuk-spacing(2) 0;
+        background: $color_nhsuk-green;
+      }
+
+      & + * {
+        border: 0 !important;
+      }
+    }
+  }
+
+  &__list-item-header {
+    display: flex;
+    margin-bottom: nhsuk-spacing(3);
+  }
+
+  &__list-item-header-content {
+
+  }
+
+  &__list-item-initials-wrapper {
+    @include mq($from: desktop) {
+      padding-left: 80px;
+      position: relative;
+    }
+  }
+
+  &__list-item-initials {
+    @include nhsuk-font(14, $weight: normal, $line-height: 0);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    margin-right: nhsuk-spacing(3);
+    border-radius: 50px;
+    background-color: $color_nhsuk-green;
+    color: $color_nhsuk-white;
+
+    @include mq($from: desktop) {
+      @include nhsuk-font(19, $weight: normal, $line-height: 0);
+
+      width: 50px;
+      height: 50px;
+      margin-right: 30px;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    &--blue {
+     background-color: $color_nhsuk-blue;
+    }
+  }
+
+  &__list-item-details {
+    @include reading-width();
+
+    margin-bottom: 0;
+
+    @include mq($from: desktop) {
+      margin-left: 80px;
+    }
+  }
+}

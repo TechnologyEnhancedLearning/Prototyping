@@ -1,0 +1,244 @@
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layouts/layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  DLS prototype
+{% endblock %}
+
+{% block header %}
+  {{ header({
+    "service": {
+        "name": "Digital Learning Solutions Prototype"
+      },
+      "homeHref": "/",
+      "showNav": "false",
+      "classes": "",
+      "primaryLinks": []
+    })
+  }}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+
+      <div class="nhsuk-grid-column-full">
+        <!-- Change the page heading -->
+        <h1>IV Therapy passport</h1>
+      </div>
+
+      <div class="nhsuk-grid-column-full">
+        <!-- opening description -->
+        <div class="content-group">
+          <div class="nhsuk-u-reading-width">
+            <p class="nhsuk-body-l">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, odio inventore. Corrupti vero in incidunt, officiis voluptatem excepturi nisi. Repellat corrupti beatae eligendi.</p>
+          </div>
+        </div>
+
+        <!-- On page navigation -->
+        <!-- <nav class="on-page-nav"></nav> -->
+        {% include "prototypes/learning-conversations/include/in-page-nav.html" %}
+
+        <section>
+          <h2>Learning conversations</h2>
+
+          <!-- Learning conversations description -->
+          <div class="content-group">
+            <div class="nhsuk-u-reading-width">
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, odio inventore. Corrupti vero in incidunt, officiis voluptatem excepturi nisi. Repellat corrupti beatae eligendi.</p>
+              {{ details({
+                "classes": "nhsuk-u-margin-bottom-6",
+                "text": "Learning conversations are here to help you and your supervisor",
+                "HTML": ""
+              }) }}
+
+              {{ button({
+                "classes": "nhsuk-u-margin-bottom-8",
+                "text": "Record Learning conversation"
+              }) }}
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+          <div class="learning-log">
+            <h3>Your learning conversations</h3>
+
+
+            <div class="learning-log-navigation">
+              <nav class="learning-log-navigation__activity-filter">
+                <!-- <label for="activity-filter"></label> -->
+                <div class="learning-log-navigation__filter-title">Activity</div>
+                <ul class="learning-log-navigation__activity-filter-list">
+                  <span class="learning-log-navigation__activity-filter-list-heading">Show</span>
+                  <li class="learning-log-navigation__activity-filter-list-item">
+                    <a href="#">{{ tag({
+                      text: "All",
+                      classes: "nhsuk-tag--blue proto-tag--small"
+                    })}}</a>
+                  </li>
+                  <li class="learning-log-navigation__activity-filter-list-item">
+                    <a href="#">{{ tag({
+                      text: "Confirmed",
+                      classes: "nhsuk-tag--white proto-tag--small"
+                    })}}</a>
+                  </li>
+                  <li class="learning-log-navigation__activity-filter-list-item">
+                    <a href="#">{{ tag({
+                      text: "Sent for review",
+                      classes: "nhsuk-tag--white proto-tag--small"
+                    })}}</a>
+                  </li>
+                  <li class="learning-log-navigation__activity-filter-list-item">
+                    <a href="#">{{ tag({
+                      text: "Review requested",
+                      classes: "nhsuk-tag--white proto-tag--small"
+                    })}}</a>
+                  </li>
+                  <li class="learning-log-navigation__activity-filter-list-item">
+                    <a href="#">{{ tag({
+                      text: "In draft",
+                      classes: "nhsuk-tag--white proto-tag--small"
+                    })}}</a>
+                </li>
+                </ul>
+              </nav>
+
+              <nav class="learning-log__order-filter">
+                <div class="learning-log__filter-title">Order: Newest first</div>
+                <!-- <label for="order-filter"></label> -->
+                <!-- <ul>
+                  <li></li>
+                  <li></li>
+                </ul> -->
+              </nav>
+            </div>
+
+
+
+            <ol class="learning-log__list">
+              <li class="learning-log__list-item">
+                <div class="learning-log__list-item-header">
+                  <div class="learning-log__list-item-initials-wrapper">
+                    <div class="learning-log__list-item-initials">
+                      AK
+                    </div>
+                  </div>
+                  <div class="learning-log__list-item-header-content">
+                    {{ tag({
+                      text: "Sent for review",
+                      classes: "nhsuk-tag--green"
+                    })}}
+                    on 07/03/23 to Learner Name (Learner)
+                  </div>
+                </div>
+                {{ details({
+                  "classes": "learning-log__list-item-details",
+                  "text": "Lorem ipsum dolor sit, amet consectetur",
+                  "HTML": ""
+                }) }}
+              </li>
+
+              <li class="learning-log__list-item learning-log__list-item--sign-off">
+                Self assessment signed off on 07/03/23
+              </li>
+
+              <li class="learning-log__list-item">
+                <div class="learning-log__list-item-header">
+                  <div class="learning-log__list-item-initials-wrapper">
+                    <div class="learning-log__list-item-initials learning-log__list-item-initials--blue">
+                      MW
+                    </div>
+                  </div>
+                  <div class="learning-log__list-item-header-content">
+                    {{ tag({
+                      text: "Confirmed",
+                      classes: "proto-tag--dark-green"
+                    })}}
+                    on 07/03/23 to Learner Name (Learner)
+                  </div>
+                </div>
+                {{ details({
+                  "classes": "learning-log__list-item-details",
+                  "text": "Lorem ipsum dolor sit, amet consectetur",
+                  "HTML": ""
+                }) }}
+              </li>
+
+              <li class="learning-log__list-item">
+                <div class="learning-log__list-item-header">
+                  <div class="learning-log__list-item-initials-wrapper">
+                    <div class="learning-log__list-item-initials learning-log__list-item-initials--blue">
+                      AK
+                    </div>
+                  </div>
+                  <div class="learning-log__list-item-header-content">
+                    {{ tag({
+                      text: "Review requested",
+                      classes: "nhsuk-tag--yellow"
+                    })}}
+                    Allan King (Assessor) has asked you to review this conversation on 07/03/23
+                  </div>
+                </div>
+                {{ details({
+                  "classes": "learning-log__list-item-details",
+                  "text": "Lorem ipsum dolor sit, amet consectetur",
+                  "HTML": ""
+                }) }}
+              </li>
+
+              <li class="learning-log__list-item">
+                <div class="learning-log__list-item-header">
+                  <div class="learning-log__list-item-initials-wrapper">
+                    <div class="learning-log__list-item-initials learning-log__list-item-initials--blue">
+                      MW
+                    </div>
+                  </div>
+                  <div class="learning-log__list-item-header-content">
+                    {{ tag({
+                      text: "In draft",
+                      classes: "nhsuk-tag--grey"
+                    })}}
+                    on 07/03/23 to Learner Name (Learner)
+                  </div>
+                </div>
+                {{ details({
+                  "classes": "learning-log__list-item-details",
+                  "text": "Lorem ipsum dolor sit, amet consectetur",
+                  "HTML": ""
+                }) }}
+              </li>
+            </ol>
+
+          </div>
+
+
+
+
+
+
+
+
+
+
+        </section>
+      </div>
+    </div>
+  </div>
+{% endblock %}
