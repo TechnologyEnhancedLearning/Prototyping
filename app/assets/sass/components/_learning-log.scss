@@ -1,80 +1,54 @@
-// function: nhsuk-px-to-rem($value)
-// @mixin reading-width()
-// @include nhsuk-responsive-margin(7, "bottom");
-// @include nhsuk-responsive-margin(7, "top");
-// @include nhsuk-responsive-padding(5);
-// function: nhsuk-spacing(2)
-// @mixin nhsuk-font($size, $weight: normal, $line-height: false)
-// @include nhsuk-typography-weight-bold;
+.learning-log {
+  &__filters {
+    display: none;
+    padding-bottom: nhsuk-spacing(2);
+    border-bottom: 1px solid $color_nhsuk-grey-2;
 
-// Separate learning log listing, nav and wrapper into three elements to better show what belongs where and create a clearer hierarchy
+    .js-enabled & {
+      display: block;
 
-$this: &;
-
-.learning-conversations {}
-
-.learning-log-navigation {
-  // margin-bottom: nhsuk-spacing(3);
-  padding-bottom: nhsuk-spacing(2);
-  border-bottom: 1px solid $color_nhsuk-grey-2;
-
-  @include mq($from: desktop) {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    padding-bottom: nhsuk-spacing(1);
-  }
-
-  &__activity-filter {}
-
-  &__activity-filter-title {
-    @include nhsuk-font(32, $weight: bold);
-  }
-
-  &__activity-filter-list {
-    @include no-list-style;
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    flex-wrap: wrap;
-    // gap: 8px;
-
-    & > {
-
+      @include mq($from: desktop) {
+        display: flex;
+      }
     }
 
-
-
-    margin-bottom: nhsuk-spacing(2);
-  }
-
-  &__filter-title {
-    @include nhsuk-font(16, $weight: bold);
-
-    margin-bottom: nhsuk-spacing(2);
-  }
-
-  &__activity-filter-list-heading {
-    @include nhsuk-font(16, $weight: bold);
-
-    margin-right: 8px;
-  }
-
-  @at-root .learning-log & { // this is basically a
-    &__activity-filter-list-item {
-      margin: 4px 0;
-      padding: 0 4px;
+    @include mq($from: desktop) {
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      align-items: end;
+      padding-bottom: nhsuk-spacing(1);
     }
   }
 
   &__order-filter {
-    @include nhsuk-font(16, $weight: bold);
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: start;
+    align-items: center;
+    flex: 0;
+    margin: nhsuk-spacing(2) 0;
   }
-}
 
-.learning-log {
+  &__order-filter-label {
+    @include nhsuk-font(16, $weight: bold);
+
+    margin: 0 nhsuk-spacing(2) 0 0;
+  }
+
+  &__order-filter-select {
+    @include nhsuk-font(16);
+
+    max-width: 100%;
+    height: auto;
+    margin: nhsuk-spacing(1) 0;
+    padding: nhsuk-spacing(1);
+
+    @include mq($from: desktop) {
+      margin: 0;
+    }
+  }
+
   &__list {
     @include no-list-style;
   }
@@ -91,7 +65,8 @@ $this: &;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: nhsuk-spacing(4);
+      gap: nhsuk-spacing(2);
+      margin: nhsuk-spacing(2) 0 nhsuk-spacing(3);
       color: $color_nhsuk-green;
       font-weight: $nhsuk-font-bold;
 
@@ -100,69 +75,13 @@ $this: &;
         display: block;
         flex: 1;
         flex-basis: 300px;
-        height: 3px;
-        margin: 0 0 nhsuk-spacing(2) 0;
+        height: 2px;
         background: $color_nhsuk-green;
       }
 
       & + * {
         border: 0 !important;
       }
-    }
-  }
-
-  &__list-item-header {
-    display: flex;
-    margin-bottom: nhsuk-spacing(3);
-  }
-
-  &__list-item-header-content {
-
-  }
-
-  &__list-item-initials-wrapper {
-    @include mq($from: desktop) {
-      padding-left: 80px;
-      position: relative;
-    }
-  }
-
-  &__list-item-initials {
-    @include nhsuk-font(14, $weight: normal, $line-height: 0);
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 35px;
-    height: 35px;
-    margin-right: nhsuk-spacing(3);
-    border-radius: 50px;
-    background-color: $color_nhsuk-green;
-    color: $color_nhsuk-white;
-
-    @include mq($from: desktop) {
-      @include nhsuk-font(19, $weight: normal, $line-height: 0);
-
-      width: 50px;
-      height: 50px;
-      margin-right: 30px;
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
-
-    &--blue {
-     background-color: $color_nhsuk-blue;
-    }
-  }
-
-  &__list-item-details {
-    @include reading-width();
-
-    margin-bottom: 0;
-
-    @include mq($from: desktop) {
-      margin-left: 80px;
     }
   }
 }

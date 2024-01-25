@@ -4,15 +4,4 @@
     border-color: shade($color_nhsuk-green, 40%);
     color: $color_nhsuk-white;
   }
-
-  &--small {
-    // @include mq($from: desktop) {
-      border: none;
-      // padding: 1px 6px;
-      border-radius: 3px;
-      // text-decoration: underline;
-      // color: $color_nhsuk-blue;
-      border: 1px solid $color_nhsuk-grey-3;
-    // }
-  }
 }

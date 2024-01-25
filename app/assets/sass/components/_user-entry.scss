@@ -1,0 +1,58 @@
+.user-entry {
+  &__header {
+    display: flex;
+    margin-bottom: nhsuk-spacing(3);
+  }
+
+  &__header-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: nhsuk-spacing(3);
+  }
+
+  &__profile-wrapper {
+    @include mq($from: desktop) {
+      padding-left: 80px;
+      position: relative;
+    }
+  }
+
+  &__profile {
+    @include nhsuk-font(14, $weight: normal, $line-height: 0);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    margin-right: nhsuk-spacing(3);
+    border-radius: 50px;
+    background-color: $color_nhsuk-green;
+    color: $color_nhsuk-white;
+
+    @include mq($from: desktop) {
+      @include nhsuk-font(19, $weight: normal, $line-height: 0);
+
+      width: 50px;
+      height: 50px;
+      margin-right: 30px;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    &--blue {
+    background-color: $color_nhsuk-blue;
+    }
+  }
+
+  &__content {
+    @include reading-width();
+
+    margin-bottom: 0;
+
+    @include mq($from: desktop) {
+      margin-left: 80px;
+    }
+  }
+}

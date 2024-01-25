@@ -6,20 +6,22 @@
 @import 'components/related-nav';
 
 ///////////////////////////////////////////
-// Prototype custome css
+// Prototype custom css
 ///////////////////////////////////////////
 
 @import 'variables';
 @import 'functions';
 @import 'mixins';
 
-@import 'components/utitlties';
+@import 'components/utilities';
 @import 'components/picture';
 @import 'components/featured-media';
 @import 'components/search';
 @import 'components/in-page-nav';
 @import 'components/certificate';
 @import 'components/learning-log';
+@import 'components/quick-filters';
+@import 'components/user-entry';
 
 @import 'components/nhsuk-overrides/summary-list';
 @import 'components/nhsuk-overrides/tag';
