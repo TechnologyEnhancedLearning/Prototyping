@@ -5,9 +5,7 @@
   }
 
   &__header-content {
-    display: flex;
-    flex-wrap: wrap;
-    gap: nhsuk-spacing(3);
+    padding-top: nhsuk-spacing(1);
   }
 
   &__profile-wrapper {
