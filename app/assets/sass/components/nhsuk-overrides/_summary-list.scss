@@ -1,71 +1,73 @@
-// .proto-summary-list-group {
-//   &__inner:nth-child(even) {
-//     background-color: $color_nhsuk-white;
-//     border-radius: $global-radius;
-//     padding: 15px;
-//   }
-// }
-
-// border: $global-border;
-// border-radius: $global-radius;
-
-.nhsuk-summary-list.proto-summary-list {
-
-  .nhsuk-summary-list__row {
-    display: flex;
-  }
-  .nhsuk-summary-list__key {
-    width: 300px;
-  }
-  .nhsuk-summary-list__value {
-    flex: 1;
-  }
-
-  .nhsuk-summary-list__key,
-  .nhsuk-summary-list__value {
-    margin-bottom: nhsuk-spacing(1);
-
-    &.proto-error{
-      margin-top: nhsuk-spacing(1);
-      margin-bottom: nhsuk-spacing(1);
-    }
+.proto-summary-list-group {
+  &__inner:nth-child(even) {
+    background-color: $color_nhsuk-white;
+    border-radius: $global-radius;
+    padding: 15px;
   }
 }
 
 .nhsuk-summary-list.proto-summary-list--multiline-description {
+  @extend .nhsuk-summary-list--no-border;
 
   .nhsuk-summary-list__row {
-    margin-bottom: 16px;
-    padding-bottom: 16px;
+    margin-bottom: nhsuk-spacing(1);
+    padding-bottom: nhsuk-spacing(1);
     border-bottom: $global-border;
 
     @include breakpoint(6) {
       display: grid;
-      grid-template-columns: 250px auto 100px;
+      grid-template-columns: 180px 1fr auto;
+      grid-template-rows: auto;
+      grid-auto-flow: column dense;
     }
+
+    @include breakpoint(9) {
+      grid-template-columns: 300px 1fr auto;
+    }
+  }
+
+  .nhsuk-summary-list__key,
+  .nhsuk-summary-list__value,
+  .nhsuk-summary-list__actions {
+    display: block;
+    width: 100%;
+    padding-top: 4px;
+    padding-bottom: 4px;
   }
 
   .nhsuk-summary-list__key {
     @include breakpoint(6){
-      grid-column-start: 1;
-      width: 250px;
+      grid-row: 1 / 1000; // This is a workaround to make sure that the content takes up the full height of the column without effecting, or being effected by, other grid areas (up to 1000 grid rows in a single .nhsuk-summary-list__row).
+      grid-column: 1;
+      margin-bottom: 0;
+      padding-right: nhsuk-spacing(4);
     }
   }
 
   .nhsuk-summary-list__value {
+    margin-bottom: 0;
+    padding-right: 0;
+
     @include breakpoint(6){
-      grid-column-start: 2;
-      width: 100%;
+      grid-column: 2;
     }
   }
 
   .nhsuk-summary-list__actions {
+    margin-top: nhsuk-spacing(3);
     margin-bottom: 0;
 
     @include breakpoint(6){
-      grid-row-start: 1;
-      grid-column-start: 3;
-      width: 100px;
+      grid-column: 3;
+      width: 120px;
+      margin-top: 0;
+      padding-left: nhsuk-spacing(4);
+    }
+
+    @include breakpoint(6){
+      grid-column: 3;
+      width: 200px;
+      margin-top: 0;
     }
   }
 }

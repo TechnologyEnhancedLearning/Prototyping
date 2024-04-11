@@ -1,0 +1,66 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layouts/layout.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  DLS prototype
+{% endblock %}
+
+{% block header %}
+  {{ header({
+    "service": {
+        "name": "Digital Learning Solutions Prototype"
+      },
+      "homeHref": "/",
+      "showNav": "false",
+      "classes": "",
+      "primaryLinks": []
+    })
+  }}
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+  {{ hero({
+    "heading": "Elements",
+    "text": "HTML prototypes for Digital Learning Solutions services."
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full">
+        <ul class="nhsuk-grid-row nhsuk-card-group">
+          <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
+            {{ card({
+              "href": "elements/summary-list",
+              "clickable": "true",
+              "heading": "Summary list",
+              "headingClasses": "nhsuk-heading-s",
+              "description": ""
+            }) }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+
+

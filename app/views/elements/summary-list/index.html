@@ -1,0 +1,270 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layouts/layout.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  DLS prototype
+{% endblock %}
+
+{% block header %}
+  {{ header({
+    "service": {
+        "name": "Digital Learning Solutions Prototype"
+      },
+      "homeHref": "/",
+      "showNav": "false",
+      "classes": "",
+      "primaryLinks": []
+    })
+  }}
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+  <!-- {{ hero({
+    "heading": "DLS prototype kit",
+    "text": "HTML prototypes for Digital Learning Solutions services."
+  }) }} -->
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full">
+        <h1>Summary list</h1>
+
+        <div class="content-group nhsuk-u-margin-bottom-6 nhsuk-u-reading-width">
+          <h2>Modified summary list</h2>
+
+          <p>this addresses three main points:</p>
+          <ul>
+            <li>Removing the boarder from Key, Value and action (DTs and DDs) and setting on the row means the border maintains a consistent width regardless of every item needing an action.</li>
+            <li>This implementation allows the use of multiple values (DDs).</li>
+            <li>Setting a fixed on the title DL items are a consistent length across multiple Summary lists (DLs) on a page.</li>
+          </ul>
+        </div>
+
+        <div class="content-group nhsuk-u-margin-bottom-6">
+          <h3>Example 1</h3>
+          <dl class="nhsuk-summary-list proto-summary-list--multiline-description">
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Users Users Users Users Users Users Users Users Users Users Users</dt>
+              <dd class="nhsuk-summary-list__value">55 delegates uploaded</dd>
+              <dd class="nhsuk-summary-list__value">6 users already exist in the system</dd>
+              <dd class="nhsuk-summary-list__value">49 new user to be added</dd>
+              <dd class="nhsuk-summary-list__actions">
+                <a href="/prototypes/register/multiple/enrolment">Review<span class="nhsuk-u-visually-hidden"> users</span></a>
+              </dd>
+            </div>
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Self assessment enrolment</dt>
+              <dd class="nhsuk-summary-list__value">These delegates will not be enroled onto a self assessment</dd>
+            </div>
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Role</dt>
+              <dd class="nhsuk-summary-list__value">Learner</dd>
+              <dd class="nhsuk-summary-list__actions">
+                <a href="/prototypes/register/multiple/enrolment">Change<span class="nhsuk-u-visually-hidden"> role</span></a>
+              </dd>
+            </div>
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Welcome email</dt>
+              <dd class="nhsuk-summary-list__value">Welcome email will be sent on: 06 / 11 / 2023</dd>
+              <dd class="nhsuk-summary-list__actions">
+                <a href="/prototypes/register/multiple/enrolment">Change<span class="nhsuk-u-visually-hidden"> enrolment</span></a>
+              </dd>
+            </div>
+          </dl>
+        </div>
+
+
+        <div class="content-group nhsuk-u-margin-bottom-6">
+          <h3>Example 2</h3>
+          <dl class="nhsuk-summary-list nhsuk-summary-list--no-border proto-summary-list--multiline-description">
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Users</dt>
+              <dd class="nhsuk-summary-list__value">55 delegates uploaded</dd>
+            </div>
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Self assessment enrolment</dt>
+              <dd class="nhsuk-summary-list__value">These delegates will not be enroled onto a self assessment These delegates will not be enroled onto a self assessment</dd>
+            </div>
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Role</dt>
+              <dd class="nhsuk-summary-list__value">Learner</dd>
+            </div>
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Welcome email</dt>
+              <dd class="nhsuk-summary-list__value">Welcome email will be sent on: 06 / 11 / 2023</dd>
+            </div>
+          </dl>
+        </div>
+
+
+        <div class="content-group nhsuk-u-margin-bottom-6">
+          <h2>Current design system implementation of summary list</h2>
+          <h3>Example 1</h3>
+          <p class="nhsuk-u-reading-width">When removing an action from a single row in an DL containing multiple rows of items containing actions you get an inconsistent border style.</p>
+
+          {{ summaryList({
+            rows: [
+              {
+                key: {
+                  text: "Name"
+                },
+                value: {
+                  text: "Karen Francis"
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "#",
+                      text: "Change",
+                      visuallyHiddenText: "name"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "Date of birth"
+                },
+                value: {
+                  text: "15 March 1984"
+                }
+              },
+              {
+                key: {
+                  text: "Contact information"
+                },
+                value: {
+                  html: "73 Roman Rd<br>Leeds<br> LS2 5ZN"
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "#",
+                      text: "Change",
+                      visuallyHiddenText: "contact information"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "Contact details"
+                },
+                value: {
+                  html: '<p>07700 900362</p><p>karen.francis@example.com</p>'
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "#",
+                      text: "Change",
+                      visuallyHiddenText: "contact details"
+                    }
+                  ]
+                }
+              }
+            ]
+          }) }}
+        <div>
+        <div class="content-group nhsuk-u-margin-bottom-6">
+          <h3>Example 2</h3>
+          <p class="nhsuk-u-reading-width">The alignment of the Values (Definition Description, DD) changes when there is no action present. If you have multiple lists on a page this can create an inconsistent layout.</p>
+
+          {{ summaryList({
+            rows: [
+              {
+                key: {
+                  text: "Name"
+                },
+                value: {
+                  text: "Karen Francis"
+                }
+              },
+              {
+                key: {
+                  text: "Date of birth"
+                },
+                value: {
+                  text: "15 March 1984"
+                }
+              },
+              {
+                key: {
+                  text: "Contact information"
+                },
+                value: {
+                  html: "73 Roman Rd<br>Leeds<br> LS2 5ZN"
+                }
+              },
+              {
+                key: {
+                  text: "Contact details"
+                },
+                value: {
+                  html: '<p>07700 900362</p><p>karen.francis@example.com</p>'
+                }
+              }
+            ]
+          }) }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+
+
+        <hr class="nhsuk-u-margin-bottom-3 nhsuk-u-margin-top-6">
+
+        <dl class="nhsuk-summary-list nhsuk-summary-list--no-border proto-summary-list--multiline-description nhsuk-">
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">Users</dt>
+            <dd class="nhsuk-summary-list__value">{{ uploadUsers | length }} delegates uploaded</dd>
+            <dd class="nhsuk-summary-list__value">6 users already exist in the system</dd>
+            <dd class="nhsuk-summary-list__value">49 new user to be added</dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="/prototypes/register/multiple/enrolment">Review<span class="nhsuk-u-visually-hidden"> users</span></a>
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">Self assessment enrolment</dt>
+            <dd class="nhsuk-summary-list__value">These delegates will not be enroled onto a self assessment</dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="/prototypes/register/multiple/enrolment">Change<span class="nhsuk-u-visually-hidden"> enrolment</span></a>
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">Role</dt>
+            <dd class="nhsuk-summary-list__value">Learner</dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="/prototypes/register/multiple/enrolment">Change<span class="nhsuk-u-visually-hidden"> role</span></a>
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">Welcome email</dt>
+            <dd class="nhsuk-summary-list__value">Welcome email will be sent on: 06 / 11 / 2023</dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="/prototypes/register/multiple/enrolment">Change<span class="nhsuk-u-visually-hidden"> enrolment</span></a>
+            </dd>
+          </div>
+        </dl>
