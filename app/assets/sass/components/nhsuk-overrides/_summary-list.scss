@@ -6,7 +6,7 @@
   }
 }
 
-.nhsuk-summary-list.proto-summary-list--multiline-description {
+.nhsuk-summary-list.proto-summary-list--fixed-width-titles {
   @extend .nhsuk-summary-list--no-border;
 
   .nhsuk-summary-list__row {
@@ -14,15 +14,15 @@
     padding-bottom: nhsuk-spacing(1);
     border-bottom: $global-border;
 
-    @include breakpoint(6) {
+    @include mq($from: tablet) {
       display: grid;
       grid-template-columns: 180px 1fr auto;
       grid-template-rows: auto;
       grid-auto-flow: column dense;
     }
 
-    @include breakpoint(9) {
-      grid-template-columns: 300px 1fr auto;
+    @include mq($from: desktop) {
+      grid-template-columns: 250px 1fr auto;
     }
   }
 
@@ -36,9 +36,9 @@
   }
 
   .nhsuk-summary-list__key {
-    @include breakpoint(6){
-      grid-row: 1 / 1000; // This is a workaround to make sure that the content takes up the full height of the column without effecting, or being effected by, other grid areas (up to 1000 grid rows in a single .nhsuk-summary-list__row).
+    @include mq($from: tablet) {
       grid-column: 1;
+      grid-row: 1 / 1000; // This is a workaround to make sure that the content takes up the full height of the column without effecting, or being effected by, other grid areas (up to 1000 grid rows in a single .nhsuk-summary-list__row).
       margin-bottom: 0;
       padding-right: nhsuk-spacing(4);
     }
@@ -48,7 +48,7 @@
     margin-bottom: 0;
     padding-right: 0;
 
-    @include breakpoint(6){
+    @include mq($from: tablet) {
       grid-column: 2;
     }
   }
@@ -57,17 +57,15 @@
     margin-top: nhsuk-spacing(3);
     margin-bottom: 0;
 
-    @include breakpoint(6){
+    @include mq($from: tablet) {
       grid-column: 3;
       width: 120px;
       margin-top: 0;
       padding-left: nhsuk-spacing(4);
     }
 
-    @include breakpoint(6){
-      grid-column: 3;
+    @include mq($from: desktop) {
       width: 200px;
-      margin-top: 0;
     }
   }
 }
