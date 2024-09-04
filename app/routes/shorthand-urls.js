@@ -5,7 +5,7 @@ const shorthandPairs = {
   '/admin-home': '/prototypes/admin-frameworks',
   '/login': '/prototypes/login-journey',
   '/proficiencies': '/prototypes/proficiencies-journey',
-  '/register-delegates': '/register-delegates',
+  '/register-delegates': '/prototypes/register',
 };
 
 // Middleware to rewrite shorthand URLs
