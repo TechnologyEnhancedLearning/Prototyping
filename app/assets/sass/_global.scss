@@ -1,0 +1,5 @@
+.content-group {
+  @include reading-width();
+
+  margin-bottom: nhsuk-spacing(6);
+}
