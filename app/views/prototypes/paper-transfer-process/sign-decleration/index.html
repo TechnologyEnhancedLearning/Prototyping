@@ -1,0 +1,65 @@
+{% extends 'layouts/layout.html' %}
+<!-- {% from 'button/macro.njk' import button %}
+{% from 'radios/macro.njk' import radios %} -->
+
+{% set html_style = 'background-color: #f0f4f5;' %}
+{% from 'components/task-list/macro.njk' import taskList %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full">
+        {{ backLink({
+          href: "/paper-transfer",
+          text: "Go back"
+        }) }}
+
+        <div class="content-group">
+          <span class="nhsuk-caption-l">IV therap passport</span>
+          <h1>Declaration of practice and transferable skills</h1>
+
+          <p>I certify that I am clinically proficient in safely administering intravenous medication and have completed the IV Therapy Passport pathway.</p>
+          <p>My achieved proficiencies, as detailed in the Record of Achievement, are transferable if I move to another organisation. </p>
+          <p>As an NMC or HCPC registrant, I am responsible and accountable for my IV therapy practice and will consult a senior staff member if I lack the necessary knowledge or skills.</p>
+          <p>I commit to following organisational practice guidelines and policies.</p>
+        </div>
+
+        <form action="/paper-transfer" method="post" class="form">
+          <div class="content-group">
+            {{ checkboxes({
+              idPrefix: "example",
+              name: "example",
+              items: [
+                {
+                  value: "sign",
+                  text: "I agree with the declaration of practice and transferable skills "
+                }
+              ]
+            }) }}
+          </div>
+
+          <div class="content-group">
+            {{ button({
+              text: "Save and continue",
+              name: "declarationtCompleted",
+              value: "completed"
+            }) }}
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+
+

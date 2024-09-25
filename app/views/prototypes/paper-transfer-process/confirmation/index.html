@@ -1,0 +1,52 @@
+{% extends 'layouts/layout.html' %}
+<!-- {% from 'button/macro.njk' import button %}
+{% from 'radios/macro.njk' import radios %} -->
+
+{% set html_style = 'background-color: #f0f4f5;' %}
+{% from 'components/task-list/macro.njk' import taskList %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full">
+        {{ backLink({
+          href: "/paper-transfer",
+          text: "Go back"
+        }) }}
+
+        {# CONTENT - discuss the content of this page #}
+        <h1>Paper assessment submitted for review</h1>
+
+        <div class="content-group">
+          <p>The information you have provided has been sent to your educator or manager for review</p>
+
+          <h2>What happens next</h2>
+          <p>You will recive an email shortly confirming your paper assessment information has been sent to your educator or manager</p>
+          <p>Once your educator has reviewed the information you have submitted you will be emailed with confirmation of the outcome</p>
+        </div>
+
+        <div class="content-group">
+
+          {# TODO - Add final page to send users after completing a prototype #}
+          {{ button({
+            text: "Go back to assessment home page",
+            href: "/finished"
+          }) }}
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+
+

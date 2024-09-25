@@ -1,0 +1,337 @@
+{% extends 'layouts/layout.html' %}
+{% from 'components/task-list/macro.njk' import taskList %}
+
+{% block beforeContent %}
+{# TODO - Update breadcrumb hrefs to point to file paths #}
+{{ breadcrumb({
+  items: [{
+    href: "#",
+    text: "Current activities"
+  },{
+    href: "#",
+    text: "IV Therapy Passport"
+  }]
+}) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full">
+
+        <div class="content-group">
+          <h1>Paper assessment information</h1>
+
+          <p>Before you start your will need to add a few details. You will need information from your paper assessment document and you will need to know the details of the healthcare professional who signed off your paper document.</p>
+          <p>This should take approximately 10 and 15 minutes to complete.</p>
+        </div>
+
+        <div class="content-group">
+          {% set paperAssessmentGuidance %}
+            Including:
+              <ul>
+                <li>the name of the healthcare professional who signed of your paper assessment</li>
+                <li>their registration number (PRN)</li>
+                <li>the date it was signed off</li>
+                <li>the organisation that signed it off</li>
+              </ul>
+          {% endset %}
+
+
+          {# Paper Assessment information -------------------------------------- #}
+          {{ taskList({
+            idPrefix: "paperAssessmentInformation",
+            classes: "nhsuk-u-margin-bottom-0",
+            items: [
+              {
+                title: {
+                  text: "Have you completed a paper assessment?"
+                },
+                href: "/paper-transfer/have-you-completed-a-paper-assessment",
+                status: {
+                  text: "Yes",
+                  classes: "nhsuk-task-list__status--completed"
+                }
+              }
+            ]
+          }) }}
+
+          {# Paper Assessment information -------------------------------------- #}
+          {% if data['paperAssessmentInformationCompleted'] %}
+            {{ taskList({
+              idPrefix: "paperAssessmentInformation",
+              classes: "nhsuk-u-margin-bottom-0",
+              items: [
+              {
+                title: {
+                  text: "Provide information from paper assessment"
+                },
+                hint: {
+                  html: paperAssessmentGuidance
+                },
+                href: "/paper-transfer/paper-assessment-information",
+                status: {
+                  text: "complete",
+                  classes: "nhsuk-task-list__status--completed"
+                }
+              }
+              ]
+            }) }}
+          {% else %}
+            {{ taskList({
+              idPrefix: "before-you-start",
+              classes: "nhsuk-u-margin-bottom-0",
+              items: [
+                {
+                  title: {
+                    text: "Provide information from paper assessment"
+                  },
+                  href: "/paper-transfer/paper-assessment-information",
+                status: {
+                  tag: {
+                    text: "Incomplete",
+                    classes: "nhsuk-tag--blue"
+                  }
+                }
+                }
+              ]
+            }) }}
+          {% endif %}
+
+          {# Record additional proficiencies from paper assessment -------------------------------------- #}
+          {% if data['proficienciesCompleted'] %}
+            {{ taskList({
+              idPrefix: "proficiencies",
+
+              classes: "nhsuk-u-margin-bottom-0", items: [
+                {
+                  title: {
+                    text: "Record additional proficiencies from paper assessment"
+                  },
+                  hint: {
+                    text: "Please ensure that you include any additional proficiencies you achieved in your paper assessment. This will help ensure that your assessment is accurately recorded and recognised."
+                  },
+                  href: "/paper-transfer/additional-proficiencies",
+                  status: {
+                    text: "Complete",
+                    classes: "nhsuk-task-list__status--completed"
+                  }
+                }
+              ]
+            }) }}
+          {% else %}
+            {{ taskList({
+              idPrefix: "proficiencies",
+              classes: "nhsuk-u-margin-bottom-0",
+              items: [
+                {
+                  title: {
+                    text: "Record additional proficiencies from paper assessment"
+                  },
+                  hint: {
+                    text: "Please ensure that you include any additional proficiencies you achieved in your paper assessment. This will help ensure that your assessment is accurately recorded and recognised."
+                  },
+                  href: "/paper-transfer/additional-proficiencies",
+                  status: {
+                    tag: {
+                      text: "Incomplete",
+                      classes: "nhsuk-tag--blue"
+                    }
+                  }
+                }
+              ]
+            }) }}
+          {% endif %}
+
+          {# Upload a copy of your signed off paper assessment -------------------------------------- #}
+          {% if data['UploadCompleted'] %}
+            {{ taskList({
+              idPrefix: "before-you-start",
+              classes: "nhsuk-u-margin-bottom-0",
+              items: [
+                {
+                  title: {
+                    text: "Upload a copy of your signed off paper assessment"
+                  },
+                  href: "/paper-transfer/upload",
+                  status: {
+                    text: "Complete",
+                    classes: "nhsuk-task-list__status--completed"
+                  }
+                }
+              ]
+            }) }}
+          {% else %}
+            {{ taskList({
+              idPrefix: "before-you-start",
+              classes: "nhsuk-u-margin-bottom-0",
+              items: [
+                {
+                  title: {
+                    text: "Upload a copy of your signed off paper assessment"
+                  },
+                  href: "/paper-transfer/upload",
+                  status: {
+                    tag: {
+                      text: "Incomplete",
+                      classes: "nhsuk-tag--blue"
+                    }
+                  }
+                }
+              ]
+            }) }}
+          {% endif %}
+
+          {# Review declarationt -------------------------------------- #}
+          {% if data['declarationtCompleted'] %}
+            {{ taskList({
+              idPrefix: "before-you-start",
+              classes: "nhsuk-u-margin-bottom-0",
+              items: [
+                {
+                  title: {
+                    text: "Review and acknowledge the declaration of practice and transferable skills"
+                  },
+                  href: "/paper-transfer/sign-decleration",
+                  status: {
+                    text: "Complete",
+                    classes: "nhsuk-task-list__status--completed"
+                  }
+                }
+              ]
+            }) }}
+          {% elif data['paperAssessmentInformationCompleted'] and data['proficienciesCompleted'] and data['UploadCompleted'] %}
+            {{ taskList({
+              idPrefix: "before-you-start",
+              classes: "nhsuk-u-margin-bottom-0",
+              items: [
+                {
+                  title: {
+                    text: "Review and acknowledge the declaration of practice and transferable skills"
+                  },
+                  href: "/paper-transfer/sign-decleration",
+                  status: {
+                    tag: {
+                      text: "Incomplete",
+                      classes: "nhsuk-tag--blue"
+                    }
+                  }
+                }
+              ]
+            }) }}
+          {% else %}
+            {{ taskList({
+              idPrefix: "before-you-start",
+              classes: "nhsuk-u-margin-bottom-0",
+              items: [
+                {
+                  title: {
+                    text: "Review and acknowledge the declaration of practice and transferable skills"
+                  },
+                  status: {
+                    text: "Cannot start yet",
+                    classes: "nhsuk-task-list__status--cannot-start-yet"
+                  }
+                }
+              ]
+            }) }}
+          {% endif %}
+
+
+
+
+
+          {# {{ taskList({
+            idPrefix: "before-you-start",
+            items: [
+              {
+                title: {
+                  text: "Have you completed a paper assessment?"
+                },
+                href: "/paper-transfer/have-you-completed-a-paper-assessment",
+                status: {
+                  text: "Yes",
+                  classes: "nhsuk-task-list__status--completed"
+                }
+              },
+              {
+                title: {
+                  text: "Provide information from paper assessment"
+                },
+                hint: {
+                  html: paperAssessmentGuidance
+                },
+                href: "/paper-transfer/paper-assessment-information",
+                status: {
+                  tag: {
+                    text: data['paperAssessmentInformationCompleted'] or "Incomplete",
+                    classes: paperAssessmentInformationClass
+                  }
+                }
+              },
+              {
+                title: {
+                  text: "Record additional proficiencies from paper assessment"
+                },
+                hint: {
+                  text: "Please ensure that you include any additional proficiencies you achieved in your paper assessment. This will help ensure that your assessment is accurately recorded and recognised."
+                },
+                href: "/paper-transfer/additional-proficiencies",
+                status: {
+                  tag: {
+                    text: "Incomplete",
+                    classes: "nhsuk-tag--blue"
+                  }
+                }
+              },
+              {
+                title: {
+                  text: "Upload a copy of your signed off paper assessment"
+                },
+                href: "/paper-transfer/upload",
+                status: {
+                  tag: {
+                    text: "Incomplete",
+                    classes: "nhsuk-tag--blue"
+                  }
+                }
+              },
+              {
+                title: {
+                  text: "Review and acknowledge the declaration of practice and transferable skills"
+                },
+                status: {
+                  text: "Cannot start yet",
+                  classes: "nhsuk-task-list__status--cannot-start-yet"
+                }
+              }
+            ]
+          }) }} #}
+        </div>
+
+        {# TODO - Review button info. Maybe seoerate the review fromt he submit #}
+
+        <div class="content-group">
+          {{ button({
+            text: "Review information is correct and submit",
+            href: "/paper-transfer/review-and-submit"
+          }) }}
+
+          {{ button({
+            text: "Save for later",
+            href: "#save-for-later",
+            classes: "nhsuk-button--secondary"
+          }) }}
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+
+

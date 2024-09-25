@@ -1,0 +1,68 @@
+{% extends 'layouts/layout.html' %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-width-container">
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+      {{ backLink({
+        href: "./",
+        text: "Go back"
+      }) }}
+
+      <h1>Upload signed off paper assessment declaration</h1>
+
+      {# {{ warningCallout({
+        heading: "Your paper document",
+        HTML: "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed provident qui esse explicabo non assumenda neque numquam id tenetur magni, tempora eius quaerat nobis dolore fuga, eaque facilis repellat? Quasi.</p>"
+      }) }} #}
+
+      {# CONTENT - Add text to example expander to further illustrate whats being asked of a user #}
+      {% set uploadExample %}
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed provident qui esse explicabo non assumenda neque numquam id tenetur magni, tempora eius quaerat nobis dolore fuga, eaque facilis repellat? Quasi.</p>
+        <img src="/images/paper-process/cert-example-dos.png" alt="">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed provident qui esse explicabo non assumenda neque numquam id tenetur magni, tempora eius quaerat nobis dolore fuga, eaque facilis repellat? Quasi.</p>
+        <img src="/images/paper-process/cert-example-donts.png" alt="">
+      {% endset %}
+
+      <div class="content-group">
+        <p>Please upload the signed off declaration page which has your signature and the healthcare professional’s signature.</p>
+         {{ details({
+            text: "Example of document to upload",
+            HTML: uploadExample
+          }) }}
+      </div>
+
+      <form action="/paper-transfer" method="post" class="form">
+        <div class="content-group">
+          <h2>Upload file</h2>
+
+          {# CONTENT - make it clear that we only want an image (pdf or jpg) like a photo of their sign off document - look into best practice #}
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label nhsuk-u-margin-bottom-2" for="example">
+              Upload only pages of assessment with signed decleration
+            </label>
+            <input class="nhsuk-input" id="declerationDocUpload" name="declerationDocUpload" type="file">
+          </div>
+
+        <div class="content-group">
+          {{ button({
+            text: "Upload and continue",
+            name: "UploadCompleted",
+            value: "completed"
+          }) }}
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+
+

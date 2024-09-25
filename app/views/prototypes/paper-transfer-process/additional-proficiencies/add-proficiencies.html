@@ -1,0 +1,266 @@
+{% extends 'layouts/layout.html' %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full">
+        {{ backLink({
+          href: "/paper-transfer/additional-proficiencies",
+          text: "Go back"
+        }) }}
+
+        <div class="content-group">
+          <h1>Additional proficiencies</h1>
+
+          <p>There are 4 methods of preparation and 4 methods of administration.</p>
+          <p>You must select:</p>
+          <ul>
+            <li>at least 1 method of preparation</li>
+            <li>at least 1 method of administration</li>
+            <li>all methods that are relevant and required for your role</li>
+          </ul>
+
+          <p>There is a choice of vascular access device (VAD) proficiencies.</p>
+          <p>You must select:</p>
+          <ul>
+            <li>at least 1 VAD proficiency</li>
+            <li>all VAD proficiencies relevant or required for your role</li>
+          </ul>
+
+          <p>Optional VAD proficiencies can be added over time if your scope of practice changes</p>
+        </div>
+
+        <h2>Select optional proficiencies relevant to you</h2>
+
+        <form action="/paper-transfer" method="post" class="form">
+          <div class="content-group">
+
+            {# TODO - FIX METHODS #}
+            <h3>Methods of preparation</h3>
+            {{ checkboxes({
+              idPrefix: "preparation",
+              name: "preparation",
+              items: [
+                {
+                  value: "14a",
+                  text: "14a. Reconstitute IV medication from powder"
+                },
+                {
+                  value: "14b",
+                  text: "14b. Draw up liquid IV medication, dilute if required in a syringe"
+                },
+                {
+                  value: "14c",
+                  text: "14c. Add IV medication to a bag for infusion"
+                },
+                {
+                  value: "14d",
+                  text: "14d. Use pre-prepared IV medication"
+                }
+              ]
+            }) }}
+          </div>
+
+          <div class="content-group">
+
+            {# TODO - FIX PERIPHERAL #}
+            <h3>Peripheral administration</h3>
+            {{ checkboxes({
+              idPrefix: "peripheral",
+              name: "pperipheral",
+              items: [
+                {
+                  value: "14a",
+                  text: "14a. Reconstitute IV medication from powder"
+                },
+                {
+                  value: "14b",
+                  text: "14b. Draw up liquid IV medication, dilute if required in a syringe"
+                },
+                {
+                  value: "14c",
+                  text: "14c. Add IV medication to a bag for infusion"
+                },
+                {
+                  value: "14d",
+                  text: "14d. Use pre-prepared IV medication"
+                }
+              ]
+            }) }}
+          </div>
+
+          <div class="content-group">
+            <div class="nhsuk-checkboxes__item nhsuk-u-margin-bottom-6">
+                <input type="checkbox" id="pvad-peripheral-checkbox" name="pvad-peripheral" value="Peripheral venous access devices (PVAD): peripheral cannula" class="nhsuk-checkboxes__input" aria-details="pvad-peripheral-description">
+                <label for="pvad-peripheral-checkbox" class="nhsuk-checkboxes__label nhsuk-label"><h3 class="nhsuk-u-margin-bottom-2">Peripheral venous access devices (PVAD): peripheral cannula</h3></label>
+                <div id="pvad-peripheral-description" class="nhsuk-checkboxes__description">
+                  {{ details({
+                    text: "What’s included in this competencies group",
+                    HTML: "
+                      <ul>
+                        <li>Correctly identify device and provide rationale on suitability for the patient</li>
+                        <li>Identify gauge size and discuss site selection and recommended dwell time</li>
+                        <li>Identify and discuss potential risks and complications of the device and action to take</li>
+                        <li>Assess device site and dressing by inspection</li>
+                        <li>Apply visual infusion phlebitis (VIP) criteria and decision making around suitability of the device for use</li>
+                        <li>Confirm patency of PVAD by flushing with a push pause technique ending with positive pressure, giving rationale</li>
+                        <li>Discuss causes of, and action, should device occlusion be detected</li>
+                        <li>Maintain accurate documentation, including VIP score, catheter site care and specific interventions</li>
+                      </ul>
+                    "
+                  }) }}
+                </div>
+            </div>
+
+            <div class="nhsuk-checkboxes__item nhsuk-u-margin-bottom-6">
+                <input type="checkbox" id="pvad-midline-checkbox" name="pvad-midline" value="Peripheral venous access devices (PVAD): midline catheter" class="nhsuk-checkboxes__input" aria-details="pvad-midline-description">
+                <label for="pvad-midline-checkbox" class="nhsuk-checkboxes__label nhsuk-label"><h3 class="nhsuk-u-margin-bottom-2">Peripheral venous access devices (PVAD): midline catheter</h3></label>
+                <div id="pvad-midline-description" class="nhsuk-checkboxes__description">
+                  {{ details({
+                    text: "What’s included in this competencies group",
+                    HTML: "
+                      <ul>
+                        <li>Correctly identify device and provide rationale on suitability for the patient</li>
+                        <li>Discuss tip location, and recommended dwell time</li>
+                        <li>Demonstrate measurement of catheter length and discuss implication of change in length</li>
+                        <li>Identify and discuss potential risks and complications of the device and action to take</li>
+                        <li>Assess device site and dressing by inspection</li>
+                        <li>Apply visual infusion phlebitis (VIP) criteria and decision making around suitability of the device for use</li>
+                        <li>Confirm patency of PVAD by flushing with a push pause technique ending with positive pressure, giving rationale</li>
+                        <li>Discuss causes of, and action, should device occlusion be detected</li>
+                        <li>Maintain accurate documentation, including VIP score, catheter site care and specific interventions</li>
+                      </ul>
+                    "
+                  }) }}
+                </div>
+            </div>
+
+            <div class="nhsuk-checkboxes__item nhsuk-u-margin-bottom-6">
+                <input type="checkbox" id="cvc-short-term-checkbox" name="cvc-short-term" value="Central Venous Access Devices (CVAD): central venous catheter (CVC) short term non skin tunnelled" class="nhsuk-checkboxes__input" aria-details="cvc-short-term-description">
+                <label for="cvc-short-term-checkbox" class="nhsuk-checkboxes__label nhsuk-label"><h3 class="nhsuk-u-margin-bottom-2">Central Venous Access Devices (CVAD): central venous catheter (CVC) short term non skin tunnelled</h3></label>
+                <div id="cvc-short-term-description" class="nhsuk-checkboxes__description">
+                  {{ details({
+                    text: "What’s included in this competencies group",
+                    HTML: "
+                      <ul>
+                        <li>Provide rationale for CVC placement and suitability for patient</li>
+                        <li>Identify and discuss potential risks and complications of the device and action to take</li>
+                        <li>Assess external length of the catheter and explain action if evidence of migration exists, referring to organisational guidance</li>
+                        <li>Assess CVC site, lumens and dressing by inspection, discussing with rationale the suitability of the catheter for use</li>
+                        <li>Confirm patency of CVC prior to use; discuss when and why aspirating prior to flushing is advised. Flush using a push pause technique ending with positive pressure, providing rationale</li>
+                        <li>Explain causes and procedure should the catheter have sluggish flow or be occluded, referring to organisational guidance</li>
+                        <li>Maintain accurate documentation and records of accessing the catheter, needle free connector change and drug administration</li>
+                      </ul>
+                    "
+                  }) }}
+                </div>
+            </div>
+
+            <div class="nhsuk-checkboxes__item nhsuk-u-margin-bottom-6">
+                <input type="checkbox" id="cvc-long-term-checkbox" name="cvc-long-term" value="Central Venous Access Devices (CVAD): central venous catheter (CVC) long term skin tunnelled" class="nhsuk-checkboxes__input" aria-details="cvc-long-term-description">
+                <label for="cvc-long-term-checkbox" class="nhsuk-checkboxes__label nhsuk-label"><h3 class="nhsuk-u-margin-bottom-2">Central Venous Access Devices (CVAD): central venous catheter (CVC) long term skin tunnelled</h3></label>
+                <div id="cvc-long-term-description" class="nhsuk-checkboxes__description">
+                  {{ details({
+                    text: "What’s included in this competencies group",
+                    HTML: "
+                      <ul>
+                        <li>Provide rationale for CVC placement and suitability for patient</li>
+                        <li>Identify and discuss potential risks and complications of the device and action to take</li>
+                        <li>Assess external length of the catheter and explain action if evidence of migration exists, referring to organisational guidance</li>
+                        <li>Assess CVC site, lumens and dressing by inspection, discussing with rationale the suitability of the catheter for use</li>
+                        <li>Confirm patency of CVC prior to use; discuss when and why aspirating prior to flushing is advised. Flush using a push pause technique ending with positive pressure, providing rationale</li>
+                        <li>Explain causes and procedure should the catheter have sluggish flow or be occluded, referring to organisational guidance</li>
+                        <li>Maintain accurate documentation and records of accessing the catheter, needle free connector change and drug administration</li>
+                      </ul>
+                    "
+                  }) }}
+                </div>
+            </div>
+
+            <div class="nhsuk-checkboxes__item nhsuk-u-margin-bottom-6">
+                <input type="checkbox" id="cvc-picc-checkbox" name="cvc-picc" value="Central Venous Access Devices (CVAD): central venous catheter (CVC) percutaneously inserted central catheter (PICC)" class="nhsuk-checkboxes__input" aria-details="cvc-picc-description">
+                <label for="cvc-picc-checkbox" class="nhsuk-checkboxes__label nhsuk-label"><h3 class="nhsuk-u-margin-bottom-2">Central Venous Access Devices (CVAD): central venous catheter (CVC) percutaneously inserted central catheter (PICC)</h3></label>
+                <div id="cvc-picc-description" class="nhsuk-checkboxes__description">
+                  {{ details({
+                    text: "What’s included in this competencies group",
+                    HTML: "
+                      <ul>
+                        <li>Provide rationale for CVC placement and suitability for patient</li>
+                        <li>Identify and discuss potential risks and complications of the device and action to take</li>
+                        <li>Assess external length of the catheter and explain action if evidence of migration exists, referring to organisational guidance</li>
+                        <li>Assess CVC site, lumens and dressing by inspection, discussing with rationale the suitability of the catheter for use</li>
+                        <li>Confirm patency of CVC prior to use; discuss when and why aspirating prior to flushing is advised. Flush using a push pause technique ending with positive pressure, providing rationale</li>
+                        <li>Explain causes and procedure should the catheter have sluggish flow or be occluded, referring to organisational guidance</li>
+                        <li>Maintain accurate documentation and records of accessing the catheter, needle free connector change and drug administration</li>
+                      </ul>
+                    "
+                  }) }}
+                </div>
+            </div>
+
+            <div class="nhsuk-checkboxes__item nhsuk-u-margin-bottom-6">
+                <input type="checkbox" id="implanted-port-checkbox" name="implanted-port" value="Central venous access device (CVAD): implanted central venous catheter (port)" class="nhsuk-checkboxes__input" aria-details="implanted-port-description">
+                <label for="implanted-port-checkbox" class="nhsuk-checkboxes__label nhsuk-label"><h3 class="nhsuk-u-margin-bottom-2">Central venous access device (CVAD): implanted central venous catheter (port)</h3></label>
+                <div id="implanted-port-description" class="nhsuk-checkboxes__description">
+                  {{ details({
+                    text: "What’s included in this competencies group",
+                    HTML: "
+                      <ul>
+                        <li>Provide rationale for port placement and suitability for the patient</li>
+                        <li>Identify and discuss potential risks and complications of the device and action to take</li>
+                        <li>Assess port site and access needle; outlining indicators of risk or concern during inspection and assessment</li>
+                        <li>Confirm patency of the port and needle position by good blood return on aspiration</li>
+                        <li>Demonstrate the correct ‘push-pause’ technique when flushing the port and ending with positive pressure</li>
+                        <li>Maintain accurate documentation and records of accessing port</li>
+                      </ul>
+                    "
+                  }) }}
+                </div>
+            </div>
+
+            <div class="nhsuk-checkboxes__item nhsuk-u-margin-bottom-6">
+                <input type="checkbox" id="uvc-checkbox" name="uvc" value="Central venous access device (CVAD): umbilical venous catheter (UVC)" class="nhsuk-checkboxes__input" aria-details="uvc-description">
+                <label for="uvc-checkbox" class="nhsuk-checkboxes__label nhsuk-label"><h3 class="nhsuk-u-margin-bottom-2">Central venous access device (CVAD): umbilical venous catheter (UVC)</h3></label>
+                <div id="uvc-description" class="nhsuk-checkboxes__description">
+                  {{ details({
+                    text: "What’s included in this competencies group",
+                    HTML: "
+                      <ul>
+                        <li>Provide rationale for UVC placement and suitability for patient</li>
+                        <li>Identify and discuss potential risks and complications of the device and action to take</li>
+                        <li>Assess external length of the catheter and explain action if evidence of migration exists, referring to organisational guidance</li>
+                        <li>Assess UVC site, lumens and ensure line is secure, discussing with rationale the suitability of the catheter for use</li>
+                        <li>Confirm patency of UVC prior to use. Flush using the correct concentration of flush solution and volume. Flush using a push pause technique ending with positive pressure, providing rationale</li>
+                        <li>Explain causes and procedure should the catheter have sluggish flow or is occluded, referring to organisational guidance</li>
+                        <li>Maintain accurate documentation and records of the accessing line and drug administration</li>
+                      </ul>
+                    "
+                  }) }}
+                </div>
+            </div>
+
+          </div>
+
+          <div class="content-group">
+            {{ button({
+              text: "Save and continue",
+              name: "proficienciesCompleted",
+              value: "completed"
+            }) }}
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+
+

@@ -1,0 +1,136 @@
+{% extends 'layouts/layout.html' %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full">
+        {{ backLink({
+          href: "/paper-transfer",
+          text: "Go back"
+        }) }}
+
+        <h1>Check information is correct and send for review</h1>
+
+        <div class="content-group">
+          <p>Please find below a summary of your paper assessment information.</p>
+        </div>
+
+        <h2>Summary</h2>
+        <dl class="nhsuk-summary-list nhsuk-summary-list--no-border proto-summary-list--fixed-width-titles nhsuk-">
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">Name of educator or supervisor</dt>
+            <dd class="nhsuk-summary-list__value">{{ data['educatorName'] }}</dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="#">Review<span class="nhsuk-u-visually-hidden">Name of educator or supervisor</span></a>
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">Educators or supervisors registration number (PRN)</dt>
+            <dd class="nhsuk-summary-list__value">{{ data['educatorPRN'] }}</dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="#">Change<span class="nhsuk-u-visually-hidden"> xxx </span></a>
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">Organisation</dt>
+            <dd class="nhsuk-summary-list__value">{{ data['organisationSignedOff'] }}</dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="#">Change<span class="nhsuk-u-visually-hidden"> xxx </span></a>
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">Sign-off date</dt>
+            <dd class="nhsuk-summary-list__value">{{ data['dateSignedOff-day'] }} / {{ data['dateSignedOff-month'] }} / {{ data['dateSignedOff-year'] }}</dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="#">Change<span class="nhsuk-u-visually-hidden"> xxx </span></a>
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">Additional proficiencies</dt>
+            <dd class="nhsuk-summary-list__value">
+              <ul>
+
+                {# TODO - fix these profisiencies so #}
+                {% if data['preparation-14a'] %}
+                  <li>{{ data['preparation-14a'] }}</li>
+                  <p>sksdfksfksdhfklsdihf</p>
+                {% endif %}
+                {% if data['preparation-14b'] %}
+                  <li>{{ data['preparation-14b'] }}</li>
+                {% endif %}
+                {% if data['preparation-14c'] %}
+                  <li>{{ data['preparation-1ca'] }}</li>
+                {% endif %}
+                {% if data['preparation-14d'] %}
+                  <li>{{ data['preparation-14d'] }}</li>
+                {% endif %}
+
+
+
+
+
+                {% if data['pvad-midline'] %}
+                  <li>{{ data['pvad-midline'] }}</li>
+                {% endif %}
+                {% if data['cvc-short-term'] %}
+                  <li>{{ data['cvc-short-term'] }}</li>
+                {% endif %}
+                {% if data['cvc-long-term'] %}
+                  <li>{{ data['cvc-long-term'] }}</li>
+                {% endif %}
+                {% if data['cvc-picc'] %}
+                  <li>{{ data['cvc-picc'] }}</li>
+                {% endif %}
+                {% if data['implanted-port'] %}
+                  <li>{{ data['implanted-port'] }}</li>
+                {% endif %}
+                {% if data['uvc'] %}
+                  <li>{{ data['uvc'] }}</li>
+                {% endif %}
+              </ul>
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="#">Change<span class="nhsuk-u-visually-hidden"> xxx </span></a>
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">Upload signed off paper document</dt>
+            <dd class="nhsuk-summary-list__value">
+              <img src="{{ data['declerationDocUpload'] }}" alt="">
+              <div class="nhsuk-u-margin-bottom-2"><img src="/images/paper-process/paper-mockup.png" alt=""></div>
+              <div><a href="{{ data['declerationDocUpload'] }}">{{ data['declerationDocUpload'] }} (open's in a new tab)</a></div>
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="#">Change<span class="nhsuk-u-visually-hidden"> xxx </span></a>
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">Deceleration</dt>
+            <dd class="nhsuk-summary-list__value">Signed on 30th September 2024</dd>  {# TODO - replace with todays date function #}
+            <dd class="nhsuk-summary-list__actions">
+              <a href="#">Change<span class="nhsuk-u-visually-hidden"> xxx </span></a>
+            </dd>
+          </div>
+        </dl>
+
+        <div class="content-group">
+          {{ button({
+            text: "Confirm and send for review",
+            href: "/paper-transfer/confirmation"
+          }) }}
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+
+

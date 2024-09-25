@@ -1,0 +1,104 @@
+{% extends 'layouts/layout.html' %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full">
+        {{ backLink({
+          href: "/paper-transfer",
+          text: "Go back"
+        }) }}
+
+        <h1>Provide information from paper assessment</h1>
+
+        <form action="/paper-transfer" method="post" class="form">
+          <div class="nhsuk-form-group">
+
+            {# CONTENT - Ask Angelina to discsuss this content with Jacqueline and Julie - this infprmatio needs to be generic #}
+
+            <div class="content-group">
+              {{ input({
+                label: {
+                  text: "The full name of educator or supervisor who signed off your paper document"
+                },
+                id: "educatorName",
+                name: "educatorName",
+                value: data['educatorName']
+              }) }}
+            </div>
+
+            <div class="content-group">
+              {{ input({
+                label: {
+                  text: "Educators or supervisors registration number (PRN)"
+                },
+                id: "educatorPRN",
+                name: "educatorPRN",
+                value: data['educatorPRN']
+              }) }}
+            </div>
+
+            <div class="content-group">
+              {{ input({
+                label: {
+                  text: "Organisation where your paper assessment was signed off"
+                },
+                id: "organisationSignedOff",
+                name: "organisationSignedOff",
+                value: data['organisationSignedOff']
+              }) }}
+            </div>
+
+            {# CONTENT - We could say something along the lines of "Please enter a dat after the first publish date" #}
+
+            <div class="content-group">
+              {{ dateInput({
+                id: "example",
+                namePrefix: "dateSignedOff",
+                fieldset: {
+                  legend: {
+                    text: "When was your paper assessment signed off?"
+                  }
+                },
+                hint: {
+                  text: "Please enter a dat after the first publish date. For example, 15 3 1984"
+                },
+                items: [
+                  {
+                    name: "day",
+                    value: data['dateSignedOff-day'],
+                    classes: "nhsuk-input--width-2"
+                  },
+                  {
+                    name: "month",
+                    classes: "nhsuk-input--width-2"
+                  },
+                  {
+                    name: "year",
+                    classes: "nhsuk-input--width-4"
+                  }
+                ]
+              }) }}
+            </div>
+
+          </div>
+          <div class="content-group">
+            {{ button({
+              text: "Save and continue",
+              name: "paperAssessmentInformationCompleted",
+              value: "completed"
+            }) }}
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
