@@ -1,3 +1,21 @@
+.nhsuk-width-container {
+  max-width: 1144px;
+
+  @media only screen and (max-width: 1208px) and (min-width: 960px) {
+    margin-left: 32px;
+    margin-right: 32px;
+  }
+
+  &--full-width {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+.nhsuk-header__navigation {
+  max-width: initial;
+}
+
 .content-group {
   @include reading-width();
 
