@@ -1,6 +1,10 @@
 {% extends 'layouts/layout.html' %}
 {% from 'components/task-list/macro.njk' import taskList %}
 
+{% block header %}
+  {% include "includes/dls-header-iv-therapy.html" %}
+{% endblock %}
+
 {% block beforeContent %}
 {# TODO - Update breadcrumb hrefs to point to file paths #}
 {{ breadcrumb({
