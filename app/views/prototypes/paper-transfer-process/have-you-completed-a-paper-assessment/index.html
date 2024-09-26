@@ -12,13 +12,23 @@
           text: "Go back"
         }) }}
 
-        {# CONTENT - We meed to make sure that it's clear that we are only accepting the current assessment standard #}
-
         <div class="content-group">
           <h1>Paper assessment</h1>
 
           <p>If you have already completed a paper assessment for the IV Therapy Passport, you may be eligible for immediate approval for a digital assessment.</p>
           <p>This will need approval from your supervisors, assessor and educator manager. If you have not set up any supervisors you’ll be asked to do this next.</p>
+        </div>
+
+        <div class="content-group">
+          {{ details({
+            text: "Approval criteria",
+            HTML: "
+            <ul>
+              <li>A completed paper assessment</li>
+              <li>Assessments published between ---.</li>
+            </ul>
+            "
+          }) }}
         </div>
 
         <div class="content-group">

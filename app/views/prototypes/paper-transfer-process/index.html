@@ -66,9 +66,6 @@
                 title: {
                   text: "Provide information from paper assessment"
                 },
-                hint: {
-                  html: paperAssessmentGuidance
-                },
                 href: "/paper-transfer/paper-assessment-information",
                 status: {
                   text: "complete",
@@ -83,10 +80,10 @@
               classes: "nhsuk-u-margin-bottom-0",
               items: [
                 {
-                  title: {
-                    text: "Provide information from paper assessment"
-                  },
-                  href: "/paper-transfer/paper-assessment-information",
+                title: {
+                  text: "Provide information from paper assessment"
+                },
+                href: "/paper-transfer/paper-assessment-information",
                 status: {
                   tag: {
                     text: "Incomplete",
@@ -108,9 +105,6 @@
                   title: {
                     text: "Record additional proficiencies from paper assessment"
                   },
-                  hint: {
-                    text: "Please ensure that you include any additional proficiencies you achieved in your paper assessment. This will help ensure that your assessment is accurately recorded and recognised."
-                  },
                   href: "/paper-transfer/additional-proficiencies",
                   status: {
                     text: "Complete",
@@ -127,9 +121,6 @@
                 {
                   title: {
                     text: "Record additional proficiencies from paper assessment"
-                  },
-                  hint: {
-                    text: "Please ensure that you include any additional proficiencies you achieved in your paper assessment. This will help ensure that your assessment is accurately recorded and recognised."
                   },
                   href: "/paper-transfer/additional-proficiencies",
                   status: {
@@ -190,7 +181,7 @@
               items: [
                 {
                   title: {
-                    text: "Review and acknowledge the declaration of practice and transferable skills"
+                    text: "Review and agree decleration"
                   },
                   href: "/paper-transfer/sign-decleration",
                   status: {
@@ -207,7 +198,7 @@
               items: [
                 {
                   title: {
-                    text: "Review and acknowledge the declaration of practice and transferable skills"
+                    text: "Review and agree decleration"
                   },
                   href: "/paper-transfer/sign-decleration",
                   status: {
@@ -226,7 +217,7 @@
               items: [
                 {
                   title: {
-                    text: "Review and acknowledge the declaration of practice and transferable skills"
+                    text: "Review and agree decleration"
                   },
                   status: {
                     text: "Cannot start yet",
@@ -237,9 +228,43 @@
             }) }}
           {% endif %}
 
-
-
-
+          {# Review summary and submit -------------------------------------- #}
+          {% if data['paperAssessmentInformationCompleted'] and data['proficienciesCompleted'] and data['UploadCompleted'] and data['declarationtCompleted'] %}
+            {{ taskList({
+              idPrefix: "before-you-start",
+              classes: "nhsuk-u-margin-bottom-0",
+              items: [
+                {
+                  title: {
+                    text: "Review information is correct and submit"
+                  },
+                  href: "/paper-transfer/review-and-submit",
+                  status: {
+                    tag: {
+                      text: "Incomplete",
+                      classes: "nhsuk-tag--blue"
+                    }
+                  }
+                }
+              ]
+            }) }}
+          {% else %}
+            {{ taskList({
+              idPrefix: "before-you-start",
+              classes: "nhsuk-u-margin-bottom-0",
+              items: [
+                {
+                  title: {
+                    text: "Review information is correct and submit"
+                  },
+                  status: {
+                    text: "Cannot start yet",
+                    classes: "nhsuk-task-list__status--cannot-start-yet"
+                  }
+                }
+              ]
+            }) }}
+          {% endif %}
 
           {# {{ taskList({
             idPrefix: "before-you-start",
@@ -298,7 +323,7 @@
               },
               {
                 title: {
-                  text: "Review and acknowledge the declaration of practice and transferable skills"
+                  text: "Review and agree decleration"
                 },
                 status: {
                   text: "Cannot start yet",
@@ -309,13 +334,11 @@
           }) }} #}
         </div>
 
-        {# TODO - Review button info. Maybe seoerate the review fromt he submit #}
-
         <div class="content-group">
-          {{ button({
+          {# {{ button({
             text: "Review information is correct and submit",
             href: "/paper-transfer/review-and-submit"
-          }) }}
+          }) }} #}
 
           {{ button({
             text: "Save for later",

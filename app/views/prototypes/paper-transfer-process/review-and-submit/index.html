@@ -24,7 +24,7 @@
             <dt class="nhsuk-summary-list__key">Name of educator or supervisor</dt>
             <dd class="nhsuk-summary-list__value">{{ data['educatorName'] }}</dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="#">Review<span class="nhsuk-u-visually-hidden">Name of educator or supervisor</span></a>
+              <a href="#">Change<span class="nhsuk-u-visually-hidden">Name of educator or supervisor</span></a>
             </dd>
           </div>
           <div class="nhsuk-summary-list__row">
@@ -42,8 +42,8 @@
             </dd>
           </div>
           <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">Sign-off date</dt>
-            <dd class="nhsuk-summary-list__value">{{ data['dateSignedOff-day'] }} / {{ data['dateSignedOff-month'] }} / {{ data['dateSignedOff-year'] }}</dd>
+            <dt class="nhsuk-summary-list__key">Signed off date</dt>
+            <dd class="nhsuk-summary-list__value">{{ data['dateSignedOff-day'] }}-{{ data['dateSignedOff-month'] }}-{{ data['dateSignedOff-year'] }}</dd>
             <dd class="nhsuk-summary-list__actions">
               <a href="#">Change<span class="nhsuk-u-visually-hidden"> xxx </span></a>
             </dd>
@@ -99,22 +99,24 @@
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">Upload signed off paper document</dt>
             <dd class="nhsuk-summary-list__value">
-              <img src="{{ data['declerationDocUpload'] }}" alt="">
+              <img src="{{ data['declarationDocUpload'] }}" alt="">
               <div class="nhsuk-u-margin-bottom-2"><img src="/images/paper-process/paper-mockup.png" alt=""></div>
-              <div><a href="{{ data['declerationDocUpload'] }}">{{ data['declerationDocUpload'] }} (open's in a new tab)</a></div>
+              <div><a href="{{ data['declarationDocUpload'] }}">{{ data['declarationDocUpload'] }} (open's in a new tab)</a></div>
             </dd>
             <dd class="nhsuk-summary-list__actions">
               <a href="#">Change<span class="nhsuk-u-visually-hidden"> xxx </span></a>
             </dd>
           </div>
           <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">Deceleration</dt>
-            <dd class="nhsuk-summary-list__value">Signed on 30th September 2024</dd>  {# TODO - replace with todays date function #}
+            <dt class="nhsuk-summary-list__key">Declaration</dt>
+            <dd class="nhsuk-summary-list__value">Signed <span id="current-date"></span></dd>
             <dd class="nhsuk-summary-list__actions">
               <a href="#">Change<span class="nhsuk-u-visually-hidden"> xxx </span></a>
             </dd>
           </div>
         </dl>
+
+        {# CONTENT - Should we have some pre-amble saying who it's going to be sent to and what thyey'll do? #}
 
         <div class="content-group">
           {{ button({
@@ -130,6 +132,16 @@
 {% endblock %}
 
 {% block outerContent %}
+{% endblock %}
+
+{% block pageScripts %}
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      const formattedDate = new Date().toLocaleDateString('en-US', options);
+      document.getElementById('current-date').textContent = formattedDate;
+    });
+  </script>
 {% endblock %}
 
 

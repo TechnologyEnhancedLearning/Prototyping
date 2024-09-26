@@ -14,17 +14,23 @@
 
       <h1>Upload signed off paper assessment declaration</h1>
 
-      {# {{ warningCallout({
-        heading: "Your paper document",
-        HTML: "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed provident qui esse explicabo non assumenda neque numquam id tenetur magni, tempora eius quaerat nobis dolore fuga, eaque facilis repellat? Quasi.</p>"
-      }) }} #}
+      {{ warningCallout({
+        heading: "Keep your paper document",
+        HTML: "<p>Retaining your paper document is important for audit purposes, allowing each skill to be verified if necessary. Additionally, if you transfer to another Trust, they may require this document for reference.</p>"
+      }) }}
 
-      {# CONTENT - Add text to example expander to further illustrate whats being asked of a user #}
       {% set uploadExample %}
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed provident qui esse explicabo non assumenda neque numquam id tenetur magni, tempora eius quaerat nobis dolore fuga, eaque facilis repellat? Quasi.</p>
-        <img src="/images/paper-process/cert-example-dos.png" alt="">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed provident qui esse explicabo non assumenda neque numquam id tenetur magni, tempora eius quaerat nobis dolore fuga, eaque facilis repellat? Quasi.</p>
-        <img src="/images/paper-process/cert-example-donts.png" alt="">
+        <p>You only need to upload the signed off page from your assessment document. Figure 1</p>
+        <figure class="proto-figure">
+          {# NOTE - look into zoom funciton for images #}
+          <img src="/images/paper-process/cert-example-dos.png" alt="">
+          <figcaption class="proto-figure__figcaption">Figure 1 example of signed off pages</figcaption>
+        </figure>
+        <p>You are not required to include any other pages. Figure 2</p>
+        <figure class="proto-figure">
+          <img src="/images/paper-process/cert-example-donts.png" alt="">
+          <figcaption class="proto-figure__figcaption">Figure 2 example of pages not require</figcaption>
+        </figure>
       {% endset %}
 
       <div class="content-group">
@@ -44,7 +50,7 @@
             <label class="nhsuk-label nhsuk-u-margin-bottom-2" for="example">
               Upload only pages of assessment with signed decleration
             </label>
-            <input class="nhsuk-input" id="declerationDocUpload" name="declerationDocUpload" type="file">
+            <input class="nhsuk-input" id="declarationDocUpload" name="declarationDocUpload" type="file">
           </div>
 
         <div class="content-group">
