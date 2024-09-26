@@ -53,25 +53,35 @@
             <dd class="nhsuk-summary-list__value">
               <ul>
 
-                {# TODO - fix these profisiencies so #}
+                {# Methods of preparation #}
                 {% if data['preparation-14a'] %}
                   <li>{{ data['preparation-14a'] }}</li>
-                  <p>sksdfksfksdhfklsdihf</p>
                 {% endif %}
                 {% if data['preparation-14b'] %}
                   <li>{{ data['preparation-14b'] }}</li>
                 {% endif %}
                 {% if data['preparation-14c'] %}
-                  <li>{{ data['preparation-1ca'] }}</li>
+                  <li>{{ data['preparation-14c'] }}</li>
                 {% endif %}
                 {% if data['preparation-14d'] %}
                   <li>{{ data['preparation-14d'] }}</li>
                 {% endif %}
 
+                {# Peripheral administration #}
+                {% if data['peripheral-14a'] %}
+                  <li>{{ data['peripheral-14a'] }}</li>
+                {% endif %}
+                {% if data['peripheral-14b'] %}
+                  <li>{{ data['peripheral-14b'] }}</li>
+                {% endif %}
+                {% if data['peripheral-14c'] %}
+                  <li>{{ data['peripheral-14c'] }}</li>
+                {% endif %}
+                {% if data['peripheral-14d'] %}
+                  <li>{{ data['peripheral-14d'] }}</li>
+                {% endif %}
 
-
-
-
+                {# The rest #}
                 {% if data['pvad-midline'] %}
                   <li>{{ data['pvad-midline'] }}</li>
                 {% endif %}

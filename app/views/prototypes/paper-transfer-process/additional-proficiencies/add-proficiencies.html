@@ -15,49 +15,38 @@
         <div class="content-group">
           <h1>Additional proficiencies</h1>
 
-          <p>There are 4 methods of preparation and 4 methods of administration.</p>
-          <p>You must select:</p>
-          <ul>
-            <li>at least 1 method of preparation</li>
-            <li>at least 1 method of administration</li>
-            <li>all methods that are relevant and required for your role</li>
-          </ul>
+          {{ warningCallout({
+            heading: "Record additional proficiencies",
+            HTML: "<p>Please ensure that you only include additional proficiencies you achieved in your paper assessment. This will help ensure that your assessment is accurately recorded and recognised.</p>"
+          }) }}
 
-          <p>There is a choice of vascular access device (VAD) proficiencies.</p>
-          <p>You must select:</p>
-          <ul>
-            <li>at least 1 VAD proficiency</li>
-            <li>all VAD proficiencies relevant or required for your role</li>
-          </ul>
-
-          <p>Optional VAD proficiencies can be added over time if your scope of practice changes</p>
-        </div>
-
-        <h2>Select optional proficiencies relevant to you</h2>
+        <h2>Additional proficiencies</h2>
 
         <form action="/paper-transfer" method="post" class="form">
           <div class="content-group">
-
-            {# TODO - FIX METHODS #}
             <h3>Methods of preparation</h3>
             {{ checkboxes({
               idPrefix: "preparation",
               name: "preparation",
               items: [
                 {
-                  value: "14a",
+                  name: "preparation-14a",
+                  value: "Methods of preparation: 14a. Reconstitute IV medication from powder",
                   text: "14a. Reconstitute IV medication from powder"
                 },
                 {
-                  value: "14b",
+                  name: "preparation-14b",
+                  value: "Methods of preparation: 14b. Draw up liquid IV medication, dilute if required in a syringe",
                   text: "14b. Draw up liquid IV medication, dilute if required in a syringe"
                 },
                 {
-                  value: "14c",
+                  name: "preparation-14c",
+                  value: "Methods of preparation: 14c. Add IV medication to a bag for infusion",
                   text: "14c. Add IV medication to a bag for infusion"
                 },
                 {
-                  value: "14d",
+                  name: "preparation-14d",
+                  value: "Methods of preparation: 14d. Use pre-prepared IV medication",
                   text: "14d. Use pre-prepared IV medication"
                 }
               ]
@@ -65,27 +54,29 @@
           </div>
 
           <div class="content-group">
-
-            {# TODO - FIX PERIPHERAL #}
             <h3>Peripheral administration</h3>
             {{ checkboxes({
               idPrefix: "peripheral",
-              name: "pperipheral",
+              name: "peripheral",
               items: [
                 {
-                  value: "14a",
+                  value: "Peripheral administration: 14a. Reconstitute IV medication from powder",
+                  name: "peripheral-14a",
                   text: "14a. Reconstitute IV medication from powder"
                 },
                 {
-                  value: "14b",
+                  value: "Peripheral administration: 14b. Draw up liquid IV medication, dilute if required in a syringe",
+                  name: "peripheral-14b",
                   text: "14b. Draw up liquid IV medication, dilute if required in a syringe"
                 },
                 {
-                  value: "14c",
+                  value: "Peripheral administration: 14c. Add IV medication to a bag for infusion",
+                  name: "peripheral-14c",
                   text: "14c. Add IV medication to a bag for infusion"
                 },
                 {
-                  value: "14d",
+                  value: "Peripheral administration: 14d. Use pre-prepared IV medication",
+                  name: "peripheral-14d",
                   text: "14d. Use pre-prepared IV medication"
                 }
               ]
