@@ -14,36 +14,24 @@
   // }
 }
 
-// TODO - This needs to be moved into a forms partial
-/* file upload button */
-input[type="file"] {
-  height: auto;
-  padding: 4px 4px 6px;
-  border-radius: $global-radius;
-  border-color: $nhsuk-form-border-color;
-
-  &::file-selector-button {
-    height: 40px;
-    margin-right: 16px;
-    padding: 0 16px;
-    border: 1px solid $color_nhsuk-grey-4;
-    border-radius: $global-radius;
-    background-color: $color_nhsuk-white;
-    box-shadow: 0px 2px 0px $color_nhsuk-grey-4;
-    transition: background-color 200ms;
-    color: $nhsuk-link-color;
-    text-decoration: underline;
-    cursor: pointer;
-  }
-
-  &::file-selector-button:hover,
-  &::file-selector-button:active {
-    color: $color_nhsuk-dark-pink;
-    text-decoration: none;
-  }
-}
-
 img {
   max-width: 100%;
   // margin-bottom: nhsuk-spacing(4);
+}
+
+.proto-figure {
+  margin: 0;
+  margin-bottom: nhsuk-spacing(4);
+  padding: 0;
+
+  &__figcaption {
+    @extend %nhsuk-body-s;
+
+    margin: 0;
+    color: $nhsuk-secondary-text-color;
+  }
+
+  * + * {
+    margin: 0;
+  }
 }
