@@ -18,10 +18,12 @@
 
       <h1>Upload signed off paper assessment declaration</h1>
 
-      {{ warningCallout({
-        heading: "Keep your paper document",
-        HTML: "<p>Retaining your paper document is important for audit purposes, allowing each skill to be verified if necessary. Additionally, if you transfer to another Trust, they may require this document for reference.</p>"
-      }) }}
+      <div class="content-group">
+        {{ warningCallout({
+          heading: "Keep your paper document",
+          HTML: "<p>Retaining your paper document is important for audit purposes, allowing each skill to be verified if necessary. Additionally, if you transfer to another Trust, they may require this document for reference.</p>"
+        }) }}
+      </div>
 
       {% set uploadExample %}
         <p>You only need to upload the signed off page from your assessment document. Figure 1</p>
