@@ -28,39 +28,39 @@
           }) }}
         </div>
 
-        <div class="content-group">
-          <p>If you need to add any new additional proficiencies as part of a change to your role you will need to add these after your paper assessment is accepted.</p>
-          {{ radios({
-            idPrefix: "example",
-            name: "example",
-            fieldset: {
-              legend: {
-                text: "Do you need to record additional proficiencies from your paper assessment?",
-                classes: "nhsuk-fieldset__legend--m"
-              }
-            },
-            items: [
-              {
-                value: "yes",
-                text: "Yes"
+        <form action="/additional-proficiencies-answer" method="post" class="form">
+          <div class="content-group">
+            <p>If you need to add any new additional proficiencies as part of a change to your role you will need to add these after your paper assessment is accepted.</p>
+            {{ radios({
+              idPrefix: "addAdditionalProficiencies",
+              name: "addAdditionalProficiencies",
+              fieldset: {
+                legend: {
+                  text: "Do you need to record additional proficiencies from your paper assessment?",
+                  classes: "nhsuk-fieldset__legend--m"
+                }
               },
-              {
-                value: "no",
-                text: "No"
-              }
-            ]
-          }) }}
+              items: [
+                {
+                  value: "yes",
+                  text: "Yes"
+                },
+                {
+                  value: "no",
+                  text: "No"
+                }
+              ]
+            }) }}
 
-          {# TODO - capture No if sleceted #}
-        </div>
+            {# TODO - capture No if sleceted #}
+          </div>
 
-        <div class="content-group">
-          {{ button({
-            text: "Continue",
-            href: "/paper-transfer/additional-proficiencies/add-proficiencies"
-          }) }}
-        </div>
-
+          <div class="content-group">
+            {{ button({
+              text: "Continue"
+            }) }}
+          </div>
+        </form>
       </div>
     </div>
   </div>

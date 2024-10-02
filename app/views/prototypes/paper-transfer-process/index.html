@@ -9,11 +9,11 @@
 {# TODO - Update breadcrumb hrefs to point to file paths #}
 {{ breadcrumb({
   items: [{
-    href: "#",
+    href: "/paper-transfer/_dls-parts",
     text: "Current activities"
   },{
     href: "#",
-    text: "IV Therapy Passport"
+    text: data['frameworkName']
   }]
 }) }}
 {% endblock %}
@@ -26,7 +26,7 @@
         <div class="content-group">
           <h1>Paper assessment information</h1>
 
-          <p>Before you start your will need to add a few details. You will need information from your paper assessment document and you will need to know the details of the healthcare professional who signed off your paper document.</p>
+          <p>Before you start you will need to add a few details. You will need information from your paper assessment document and you will need to know the details of the healthcare professional who signed off your paper document.</p>
           <p>This should take approximately 10 and 15 minutes to complete.</p>
         </div>
 
@@ -72,7 +72,7 @@
                 },
                 href: "/paper-transfer/paper-assessment-information",
                 status: {
-                  text: "complete",
+                  text: "Complete",
                   classes: "nhsuk-task-list__status--completed"
                 }
               }
