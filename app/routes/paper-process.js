@@ -25,4 +25,16 @@ router.post('/additional-proficiencies-answer', (req, res) => {
   }
 });
 
+router.post('/confirmed', (req, res) => {
+  const framework = req.session.data['frameworkName']
+  let frameworkPostfix = framework ? framework.replace(/\s+/g, '-').toLowerCase() : null;
+  let frameworkPath = '#';
+
+  if(framework) {
+    frameworkPath = `/paper-transfer/_dls-parts/about-${frameworkPostfix}`
+  }
+
+  res.redirect(frameworkPath);
+});
+
 module.exports = router;

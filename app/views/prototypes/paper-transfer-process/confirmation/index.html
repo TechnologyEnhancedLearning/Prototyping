@@ -21,14 +21,13 @@
           <p>Once your educator or supervisor has reviewed the information you will reccive a confirmtion emailed detailing the outcome.</p>
         </div>
 
-        <div class="content-group">
-
-          {# TODO - Add final page to send users after completing a prototype #}
-          {{ button({
-            text: "Go back to assessment home page",
-            href: "/paper-transfer/_dls-parts/iv-therapy"
-          }) }}
-        </div>
+        <form action="/confirmed" method="post" class="form">
+          <div class="content-group">
+            {{ button({
+              text: "Go back to assessment home page"
+            }) }}
+          </div>
+      </form>
 
       </div>
     </div>
