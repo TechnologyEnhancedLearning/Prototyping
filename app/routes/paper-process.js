@@ -3,7 +3,6 @@ const router = express.Router();
 
 router.post('/choose-framework', (req, res) => {
   const framework = req.session.data['frameworkName'].replace(/\s+/g, '-').toLowerCase();
-  // str.replace(/\s+/g, '-').toLowerCase();
 
   res.redirect(`/paper-transfer/_dls-parts/about-${framework}`);
 });

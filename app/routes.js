@@ -10,8 +10,8 @@ const registrationRoutes = require(`./routes/registration.js`);
 const paperProcessRoutes = require(`./routes/paper-process.js`);
 
 router.use('/', globalRoutes);
-router.use('/', registrationRoutes);
 router.use('/', shorthandUrlRoutes);
+router.use('/', registrationRoutes);
 router.use('/', paperProcessRoutes);
 
 module.exports = router;
