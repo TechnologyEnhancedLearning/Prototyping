@@ -1,0 +1,56 @@
+{# <div class="progress progress__box">
+  <div class="progress__title">
+    <h3>Your progress</h3>
+  </div>
+
+  <p class="progress__content">Looks like you've just started your assessment, you may want to check if you're required to add any additional proficiencies to your assessment.</p>
+
+  <dl class="progress__details">
+    <div class="progress__details-group">
+      <dt class="progress__details-title">72 Proficiencies:</dt>
+      <dd class="progress__details-description">0 Self assessed</dd>
+      <dd class="progress__details-description">0 Confirmed</dd>
+    </div>
+  </dl>
+
+  <div class="progress__progress-bar"></div>
+
+  {{ details({
+    text: "Understanding the sign-off process",
+    HTML: "
+    <p>An NHS number is a 10 digit number, like 485 777 3456.</p>
+      <p>You can find your NHS number by logging in to a GP online service or on any document the NHS has sent you, such as your:</p>
+      <ul>
+          <li>prescriptions</li>
+          <li>test results</li>
+          <li>hospital referral letters</li>
+          <li>appointment letters</li>
+      </ul>
+      <p>Ask your GP surgery for help if you can't find your NHS number.</p>
+    "
+  }) }}
+
+  {{ button({
+    text: "Manage confirmation requests",
+    classes: "progress__action"
+  }) }}
+</div> #}
+
+<div class="progress progress__box progress__box--notification">
+  <h3 class="progress__title">Paper to digital transfer request</h3>
+
+  <p class="progress__content">Allan King has requested to transfer their paper certificate to the dls as a digital record of their achievement</p>
+
+  {{ details({
+    text: "What is a paper to digital sign of request?",
+    HTML: "
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis nostrum eius, soluta voluptates vero unde! Quos voluptatibus quis illo alias vel ducimus dignissimos at temporibus cumque molestias aut, omnis earum?</p>
+    "
+  }) }}
+
+  {{ button({
+    text: "Review request",
+    href: "/paper-transfer/admin/review-and-submit",
+    classes: "progress__action"
+  }) }}
+</div>

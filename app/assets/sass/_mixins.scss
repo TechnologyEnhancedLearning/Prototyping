@@ -80,13 +80,44 @@
   }
 }
 
-// This function removes the white space above a heading creating equal space visually at the top and bottom of an element without offsetting opther margins or padding.
-// This is used when a heading is the first item in a box
-// This will need updating to take in the responsive nhs responsive line-height function.
+// This function removes the white space above a heading creating equal space visually at the top and bottom of an element without offsetting other margins or padding.
+// This is used when a heading is the first item in a box with equal spacing.
+// Original
 // @mixin adjust-heading {
 //   margin-top: -($heading-line-height - 1) + em;
 //   line-height: $heading-line-height;
 // }
+// nhsuk-typography-responsive adapted to be able to change the negative margin across nhsuk breakpoints
+@mixin adjust-heading($size, $override-line-height: false, $important: false) {
+  @if not map-has-key($nhsuk-typography-scale, $size) {
+    @error "Unknown font size `#{$size}` - expected a point from the typography scale.";
+  }
+
+  $font-map: map-get($nhsuk-typography-scale, $size);
+
+  @each $breakpoint, $breakpoint-map in $font-map {
+    $font-size: map-get($breakpoint-map, "font-size");
+
+    $line-height: _nhsuk-line-height(
+      $line-height: if($override-line-height, $override-line-height, map-get($breakpoint-map, "line-height")),
+      $font-size: $font-size
+    );
+
+    @if $breakpoint == null {
+      margin-top: -($line-height - 1) + em;
+      line-height: $line-height;
+    } @else if $breakpoint == "print" {
+      @include govuk-media-query($media-type: print) {
+        line-height: $line-height;
+      }
+    } @else {
+      @include govuk-media-query($from: $breakpoint) {
+        margin-top: -($line-height - 1) + em;
+        line-height: $line-height;
+      }
+    }
+  }
+}
 
 @mixin no-list-style {
   margin: 0;

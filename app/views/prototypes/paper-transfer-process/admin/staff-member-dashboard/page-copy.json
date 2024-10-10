@@ -1,0 +1,513 @@
+[
+  {
+    "proficiencyGroup": "Prerequisites to supervised clinical practice",
+    "selfAssessed": "4 / 4",
+    "confirmed": "4 / 4",
+    "proficiencies": [
+      {
+        "proficiency": "Met organisational requisites to administer non intravenous medication",
+        "assessment": {
+          "selfAssessmentStatus": "Yes (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "actions": "Review"
+      },
+      {
+        "proficiency": "Complete equipment training and assessment including volumetric and syringe infusion pump training",
+        "assessment": {
+          "selfAssessmentStatus": "Yes (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "actions": "Review"
+      },
+      {
+        "proficiency": "Complete infection prevention and control, and aseptic technique training and assessment",
+        "assessment": {
+          "selfAssessmentStatus": "Yes (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "actions": "Review"
+      },
+      {
+        "proficiency": "Read and understand organisational policy and guidance on administration of intravenous medication",
+        "assessment": {
+          "selfAssessmentStatus": "Yes (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "actions": "Review"
+      }
+    ]
+  },
+  {
+    "proficiencyGroup": "Record of learning and knowledge assessment",
+    "selfAssessed": "2 / 2",
+    "confirmed": "2 / 2",
+    "proficiencies": [
+      {
+        "proficiency": "Step 1: Complete IV Therapy Passport e-learning on e-learning for Healthcare (e-LfH)",
+        "assessment": {
+          "selfAssessmentStatus": "Yes (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "actions": "Review"
+      },
+      {
+        "proficiency": "Step 2: Pass IV Therapy Passport eAssessments on e-learning for Healthcare (e-LfH)",
+        "assessment": {
+          "selfAssessmentStatus": "Yes (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "actions": "Review"
+      }
+    ]
+  },
+  {
+    "proficiencyGroup": "Patient",
+    "selfAssessed": "6 / 6",
+    "confirmed": "6 / 6",
+    "proficiencies": [
+      {
+        "proficiency": "1. Greet and positively identify the patient (right patient) against prescription",
+        "optionalPractiseAssessment1": {
+          "assessmentStatus": "Achieved (role expectations not specified)",
+          "confirmationStatus": "Confirmed"
+        },
+        "firstAssessmentOutcome": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "finalAssessmentOutcome": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "actions": "Review"
+      },
+      {
+        "proficiency": "2. Explain procedure to patient, and family where appropriate, and ensure patient is in a suitable and comfortable position",
+        "optionalPractiseAssessment1": {
+          "assessmentStatus": "Achieved (role expectations not specified)",
+          "confirmationStatus": "Confirmed"
+        },
+        "firstAssessmentOutcome": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "finalAssessmentOutcome": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "actions": "Review"
+      },
+      {
+        "proficiency": "3. Ensure informed consent is obtained from the patient or someone with parental responsibility where this is appropriate",
+        "optionalPractiseAssessment1": {
+          "assessmentStatus": "Achieved (role expectations not specified)",
+          "confirmationStatus": "Confirmed"
+        },
+        "firstAssessmentOutcome": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "finalAssessmentOutcome": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "actions": "Review"
+      }
+    ]
+  },
+  {
+    "proficiencyGroup": "Planning",
+    "selfAssessed": "12 / 12",
+    "confirmed": "12 / 12",
+    "proficiencies": [
+      {
+        "proficiency": "4. Assess patient's prescription to ensure it is clear, unambiguous, and due at this date and time (right time)",
+        "optionalPractiseAssessment1": {
+          "assessmentStatus": "Achieved (role expectations not specified)",
+          "confirmationStatus": "Confirmed"
+        },
+        "firstAssessmentOutcome": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "finalAssessmentOutcome": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "actions": "Review"
+      },
+      {
+        "proficiency": "5. Assess allergy status as documented, and by patient discussion if appropriate",
+        "optionalPractiseAssessment1": {
+          "assessmentStatus": "Achieved (role expectations not specified)",
+          "confirmationStatus": "Confirmed"
+        },
+        "firstAssessmentOutcome": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "finalAssessmentOutcome": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "actions": "Review"
+      },
+      {
+        "proficiency": "6. Access medicines guidance, reference material and advice",
+        "optionalPractiseAssessment1": {
+          "assessmentStatus": "Achieved (role expectations not specified)",
+          "confirmationStatus": "Confirmed"
+        },
+        "firstAssessmentOutcome": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "finalAssessmentOutcome": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "actions": "Review"
+      },
+      {
+        "proficiency": "7. Demonstrate appropriate knowledge of medicine to be administered",
+        "optionalPractiseAssessment1": {
+          "assessmentStatus": "Achieved (role expectations not specified)",
+          "confirmationStatus": "Confirmed"
+        },
+        "firstAssessmentOutcome": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "finalAssessmentOutcome": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "actions": "Review"
+      },
+      {
+        "proficiency": "8. Identify and assess suitable vascular access device, site or lumen for administration with rationale, considering compatibility with concurrent medicines and fluids (right route)",
+        "optionalPractiseAssessment1": {
+          "assessmentStatus": "Achieved (role expectations not specified)",
+          "confirmationStatus": "Confirmed"
+        },
+        "firstAssessmentOutcome": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "finalAssessmentOutcome": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "actions": "Review"
+      },
+      {
+        "proficiency": "9. Discuss actions to be taken in the event of a prescribing or administration error",
+        "optionalPractiseAssessment1": {
+          "assessmentStatus": "Achieved (role expectations not specified)",
+          "confirmationStatus": "Confirmed"
+        },
+        "firstAssessmentOutcome": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "finalAssessmentOutcome": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "actions": "Review"
+      }
+    ]
+  },
+  {
+    "proficiencyGroup": "Correctly prepare medicine for the patient",
+    "selfAssessed": "8 / 8",
+    "confirmed": "8 / 8",
+    "proficiencies": [
+      {
+        "proficiency": "10. Assemble all required equipment",
+        "optionalPractiseAssessment1": {
+          "assessmentStatus": "Achieved (role expectations not specified)",
+          "confirmationStatus": "Confirmed"
+        },
+        "firstAssessmentOutcome": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "finalAssessmentOutcome": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "actions": "Review"
+      },
+      {
+        "proficiency": "11. Check medicine, diluents and flush against prescription (right drug)",
+        "optionalPractiseAssessment1": {
+          "assessmentStatus": "Achieved (role expectations not specified)",
+          "confirmationStatus": "Confirmed"
+        },
+        "firstAssessmentOutcome": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "finalAssessmentOutcome": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "actions": "Review"
+      },
+      {
+        "proficiency": "12. Check drug dose against prescription and calculate this accurately during reconstitution, considering displacement value and resulting concentration as applicable (right dose)",
+        "optionalPractiseAssessment1": {
+          "assessmentStatus": "Achieved (role expectations not specified)",
+          "confirmationStatus": "Confirmed"
+        },
+        "firstAssessmentOutcome": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "finalAssessmentOutcome": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "actions": "Review"
+      },
+      {
+        "proficiency": "13. Follow organisational infection prevention guidance and aseptic technique during preparation",
+        "optionalPractiseAssessment1": {
+          "assessmentStatus": "Achieved (role expectations not specified)",
+          "confirmationStatus": "Confirmed"
+        },
+        "firstAssessmentOutcome": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "finalAssessmentOutcome": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "actions": "Review"
+      }
+    ]
+  },
+  {
+    "proficiencyGroup": "Administration",
+    "selfAssessed": "8 / 8",
+    "confirmed": "8 / 8",
+    "proficiencies": [
+      {
+        "proficiency": "19. Follow organisational infection prevention guidance and aseptic technique during administration",
+        "optionalPractiseAssessment1": {
+          "assessmentStatus": "Achieved (role expectations not specified)",
+          "confirmationStatus": "Confirmed"
+        },
+        "firstAssessmentOutcome": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "finalAssessmentOutcome": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "actions": "Review"
+      },
+      {
+        "proficiency": "20. Decontaminate the vascular access device / needle free device on the access device",
+        "optionalPractiseAssessment1": {
+          "assessmentStatus": "Achieved (role expectations not specified)",
+          "confirmationStatus": "Confirmed"
+        },
+        "firstAssessmentOutcome": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "finalAssessmentOutcome": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "actions": "Review"
+      },
+      {
+        "proficiency": "21. Confirm patency of vascular access device using an appropriate technique for the device in use",
+        "optionalPractiseAssessment1": {
+          "assessmentStatus": "Achieved (role expectations not specified)",
+          "confirmationStatus": "Confirmed"
+        },
+        "firstAssessmentOutcome": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "finalAssessmentOutcome": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "actions": "Review"
+      },
+      {
+        "proficiency": "22. Discuss action should catheter occlusion be detected",
+        "optionalPractiseAssessment1": {
+          "assessmentStatus": "Achieved (role expectations not specified)",
+          "confirmationStatus": "Confirmed"
+        },
+        "firstAssessmentOutcome": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "finalAssessmentOutcome": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "actions": "Review"
+      }
+    ]
+  },
+  {
+    "proficiencyGroup": "Peripheral venous access devices (PVAD): midline catheter",
+    "selfAssessed": "2 / 2",
+    "confirmed": "2 / 2",
+    "proficiencies": [
+      {
+        "proficiency": "9. Maintain accurate documentation, including VIP score, catheter site care and specific interventions",
+        "optionalPractiseAssessment1": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "firstAssessmentOutcome": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "finalAssessmentOutcome": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "actions": "Review"
+      }
+    ]
+  },
+  {
+    "proficiencyGroup": "Central Venous Access Devices (CVAD): central venous catheter (CVC) short term non skin tunnelled",
+    "selfAssessed": "16 / 16",
+    "confirmed": "16 / 16",
+    "proficiencies": [
+      {
+        "proficiency": "1. Provide rationale for CVC placement and suitability for patient",
+        "optionalPractiseAssessment1": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "firstAssessmentOutcome": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "finalAssessmentOutcome": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "actions": "Review"
+      },
+      {
+        "proficiency": "2. Identify and discuss potential risks and complications of the device and action to take",
+        "optionalPractiseAssessment1": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "firstAssessmentOutcome": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "finalAssessmentOutcome": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "actions": "Review"
+      },
+      {
+        "proficiency": "3. Assess external length of the catheter and explain action if evidence of migration exists, referring to organisational guidance",
+        "optionalPractiseAssessment1": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "firstAssessmentOutcome": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "finalAssessmentOutcome": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "actions": "Review"
+      },
+      {
+        "proficiency": "4. Assess CVC site, lumens and dressing by inspection, discussing with rationale the suitability of the catheter for use",
+        "optionalPractiseAssessment1": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "firstAssessmentOutcome": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "finalAssessmentOutcome": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "actions": "Review"
+      },
+      {
+        "proficiency": "5. Confirm patency of CVC prior to use; discuss when and why aspirating prior to flushing is advised. Flush using a push pause technique ending with positive pressure, providing rationale",
+        "optionalPractiseAssessment1": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "firstAssessmentOutcome": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "finalAssessmentOutcome": {
+          "assessmentStatus": "Achieved (fully meeting role expectations)",
+          "confirmationStatus": "Confirmed"
+        },
+        "actions": "Review"
+      }
+    ]
+  },
+  {
+    "proficiencyGroup": "Central Venous Access Devices (CVAD): central venous catheter (CVC) long term skin tunnelled",
+    "selfAssessed": "0 / 16",
+    "confirmed": "0 / 16",
+    "proficiencies": [
+      {
+        "proficiency": "1. Provide rationale for CVC placement and suitability for patient",
+        "optionalPractiseAssessment1": {
+          "assessmentStatus": "Not Achieved",
+          "confirmationStatus": "Pending"
+        },
+        "firstAssessmentOutcome": {
+          "assessmentStatus": "Pending",
+          "confirmationStatus": "Pending"
+        },
+        "finalAssessmentOutcome": {
+          "assessmentStatus": "Pending",
+          "confirmationStatus": "Pending"
+        },
+        "actions": "Review"
+      },
+      {
+        "proficiency": "2. Identify and discuss potential risks and complications of the device and action to take",
+        "optionalPractiseAssessment1": {
+          "assessmentStatus": "Not Achieved",
+          "confirmationStatus": "Pending"
+        },
+        "firstAssessmentOutcome": {
+          "assessmentStatus": "Pending",
+          "confirmationStatus": "Pending"
+        },
+        "finalAssessmentOutcome": {
+          "assessmentStatus": "Pending",
+          "confirmationStatus": "Pending"
+        },
+        "actions": "Review"
+      }
+    ]
+  }
+]

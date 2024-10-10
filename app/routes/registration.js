@@ -37,16 +37,4 @@ router.post('/register/single/promotion', (req, res) => {
 });
 */
 
-// Clear all data in session if you open /examples/passing-data/clear-data
-router.post('/restart', (req, res) => {
-  req.session.data = {};
-  res.redirect('/prototypes/register');
-});
-
-// Clear all data in session if you open /examples/passing-data/clear-data
-router.post('/cancel', (req, res) => {
-  req.session.data = {};
-  res.redirect('/prototypes/register');
-});
-
 module.exports = router;

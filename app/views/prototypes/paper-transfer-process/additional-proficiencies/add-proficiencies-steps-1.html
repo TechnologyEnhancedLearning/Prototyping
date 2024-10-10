@@ -1,0 +1,102 @@
+{% extends 'layouts/layout.html' %}
+
+{% block header %}
+  {% include "includes/dls-header-iv-therapy.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full">
+        {{ backLink({
+          href: "/paper-transfer/additional-proficiencies",
+          text: "Go back"
+        }) }}
+
+        <div class="content-group">
+          <h1>Additional proficiencies</h1>
+
+          {{ warningCallout({
+            heading: "Record additional proficiencies",
+            HTML: "<p>Please ensure that you only include additional proficiencies you achieved in your paper assessment. This will help ensure that your assessment is accurately recorded and recognised.</p>"
+          }) }}
+
+        <h2>Select proficiencies</h2>
+
+        <form action="/paper-transfer" method="post" class="form">
+
+
+          <div class="content-group">
+            <div class="nhsuk-checkboxes__item nhsuk-u-margin-bottom-6">
+              <input type="checkbox" id="renal-rrt-checkbox" name="stepsAdditionalProficiencies" value="Renal system - Renal replacement therapy (RRT)" class="nhsuk-checkboxes__input" aria-details="renal-rrt-description">
+              <label for="renal-rrt-checkbox" class="nhsuk-checkboxes__label nhsuk-label proto-checkboxes__label"><h3 class="nhsuk-u-margin-bottom-2">Renal system - Renal replacement therapy (RRT)</h3></label>
+              <div id="renal-rrt-description" class="nhsuk-checkboxes__description">
+                {# <p>Included in Renal system - Renal replacement therapy (RRT) proficiency</p>
+                <ul>
+                  <li>The indications for renal replacement therapy (RRT)</li>
+                  <li>Terms ultrafiltration, convection and diffusion</li>
+                  <li>Types of renal replacement therapy (RRT) available</li>
+                  <li>Complications associated with renal replacement therapy (RRT) and how these can be managed/prevented</li>
+                  <li>Assist with vascular catheter line insertion, maintaining asepsis</li>
+                  <li>Prepare the equipment required</li>
+                  <li>Set up the filter ready for use</li>
+                  <li>Explain the importance of correctly setting the fluid access/loss setting</li>
+                  <li>Explain the use of anticoagulation, the types used, how to make them up and the starting doses of each</li>
+                  <li>Connect the patient to the treatment therapy utilising an aseptic technique</li>
+                  <li>Change prescribed filtration fluids, and empty effluent bags adhering to infection prevention principles</li>
+                  <li>Record appropriate filter pressures and explain their relevance, including signs of filter clotting</li>
+                  <li>Identify the main alarm categories and their relevance</li>
+                  <li>Perform point of care testing (as appropriate) and adjust anticoagulant accordingly</li>
+                  <li>Identify what selections are available to end treatment and demonstrates how to end treatment, appropriately disposing of waste products according to local infection prevention guidelines</li>
+                  <li>Clean filtration machine in line with local policy and store as appropriate</li>
+                </ul> #}
+                {{ details({
+                  text: "What’s included in this proficiency",
+                  HTML: "
+                  <ul>
+                    <li>The indications for renal replacement therapy (RRT)</li>
+                    <li>Terms ultrafiltration, convection and diffusion</li>
+                    <li>Types of renal replacement therapy (RRT) available</li>
+                    <li>Complications associated with renal replacement therapy (RRT) and how these can be managed/prevented</li>
+                    <li>Assist with vascular catheter line insertion, maintaining asepsis</li>
+                    <li>Prepare the equipment required</li>
+                    <li>Set up the filter ready for use</li>
+                    <li>Explain the importance of correctly setting the fluid access/loss setting</li>
+                    <li>Explain the use of anticoagulation, the types used, how to make them up and the starting doses of each</li>
+                    <li>Connect the patient to the treatment therapy utilising an aseptic technique</li>
+                    <li>Change prescribed filtration fluids, and empty effluent bags adhering to infection prevention principles</li>
+                    <li>Record appropriate filter pressures and explain their relevance, including signs of filter clotting</li>
+                    <li>Identify the main alarm categories and their relevance</li>
+                    <li>Perform point of care testing (as appropriate) and adjust anticoagulant accordingly</li>
+                    <li>Identify what selections are available to end treatment and demonstrates how to end treatment, appropriately disposing of waste products according to local infection prevention guidelines</li>
+                    <li>Clean filtration machine in line with local policy and store as appropriate</li>
+                  </ul>
+                  "
+                }) }}
+              </div>
+            </div>
+          </div>
+
+          <div class="content-group">
+            {{ button({
+              text: "Save and continue",
+              name: "proficienciesCompleted",
+              value: "completed"
+            }) }}
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+
+

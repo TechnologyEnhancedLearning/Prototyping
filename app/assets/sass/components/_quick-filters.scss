@@ -1,0 +1,60 @@
+.quick-filters {
+  &__title {
+    @include nhsuk-font(32, $weight: bold);
+  }
+
+  &__list {
+    @include no-list-style;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: nhsuk-spacing(2);
+  }
+
+  &__filter-title {
+    @include nhsuk-font(19, $weight: bold);
+
+    margin-bottom: nhsuk-spacing(2);
+  }
+
+  &__list-heading {
+    @include nhsuk-font(16, $weight: bold);
+
+    margin-right: 8px;
+  }
+
+  &__list-item {
+    margin: nhsuk-spacing(1) 0 !important;
+    padding: 0 nhsuk-spacing(1);
+  }
+
+  &__order-filter {
+    @include nhsuk-font(16, $weight: bold);
+  }
+
+  &__button {
+    @include nhsuk-font($size: 16, $weight: bold, $line-height: 1);
+
+    display: inline-block;
+    padding: nhsuk-spacing(1) nhsuk-spacing(2);
+    border: 1px solid $color_nhsuk-grey-3;
+    border-radius: 3px;
+    outline: 2px solid transparent;
+    outline-offset: -2px;
+    background-color: $color_nhsuk-white;
+    color: $color_nhsuk-black;
+    text-decoration: none;
+
+    &:focus {
+      @include nhsuk-focused-button;
+    }
+
+    &--active {
+      background-color: tint($color_nhsuk-blue, 80%);
+      border-color: shade($color_nhsuk-blue, 30%);
+      color: shade($color_nhsuk-blue, 30%);
+    }
+  }
+}

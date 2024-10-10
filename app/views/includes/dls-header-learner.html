@@ -1,0 +1,114 @@
+<!-- <link rel="stylesheet" href="/dsl_wwwroot/css/index.css"> -->
+<!-- <link rel="stylesheet" href="/dsl_wwwroot/css/layout.css"> -->
+
+<header>
+  <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+
+  <input type="hidden" id="CookieConsentPostPath" value="/v2/CookieConsent/ConfirmCookieConsent">
+
+  <a class="nhsuk-skip-link" href="#maincontent">Skip to main content</a>
+  {# <div class="dls-alert-banner">
+    <div class="nhsuk-width-container">
+      <div class="hee-banner__message nhsuk-u-padding-top-4">
+        <p class="nhsuk-body-s">Need help getting started with nursing passports on DLS? Visit our dedicated <a href="#" target="_blank">support page</a> (opens a new tab)</p>
+      </div>
+    </div>
+  </div> #}
+  <div class="nhsuk-header nhsuk-header--organisation nhsuk-header--white">
+    <div class="nhsuk-width-container nhsuk-header__container">
+      <div class="nhsuk-header__logo">
+        <a class="nhsuk-header__link nhsuk-header__link--service" href="#" aria-label="NHS Digital Learning Solutions - Learning Portal">
+          <svg class="nhsuk-logo" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="NHS Logo" focusable="false" viewBox="0 0 40 16">
+            <title>NHS</title>
+            <path class="nhsuk-logo__background" d="M0 0h40v16H0z"></path>
+            <path class="nhsuk-logo__text" d="M3.9 1.5h4.4l2.6 9h.1l1.8-9h3.3l-2.8 13H9l-2.7-9h-.1l-1.8 9H1.1M17.3 1.5h3.6l-1 4.9h4L25 1.5h3.5l-2.7 13h-3.5l1.1-5.6h-4.1l-1.2 5.6h-3.4M37.7 4.4c-.7-.3-1.6-.6-2.9-.6-1.4 0-2.5.2-2.5 1.3 0 1.8 5.1 1.2 5.1 5.1 0 3.6-3.3 4.5-6.4 4.5-1.3 0-2.9-.3-4-.7l.8-2.7c.7.4 2.1.7 3.2.7s2.8-.2 2.8-1.5c0-2.1-5.1-1.3-5.1-5 0-3.4 2.9-4.4 5.8-4.4 1.6 0 3.1.2 4 .6"></path>
+            <image src="https://assets.nhs.uk/images/nhs-logo.png" width="40" height="16" xlink:href=""></image>
+          </svg>
+
+          <span class="nhsuk-header__service-name">Digital Learning Solutions Learning Portal</span>
+        </a>
+      </div>
+
+      <div class="nhsuk-header__content" id="content-header">
+        <div class="nhsuk-header__menu">
+          <button class="nhsuk-header__menu-toggle" id="toggle-menu" aria-controls="header-navigation" aria-label="Open menu">Menu</button>
+        </div>
+      </div>
+      <img class="centre-brand-logo" src="data:image/gif;base64,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" alt="NHS England logo">
+
+    </div>
+
+    <nav class="nhsuk-header__navigation" id="header-navigation" aria-label="Primary navigation" aria-labelledby="label-navigation">
+      <div class="nhsuk-width-container">
+        <p class="nhsuk-header__navigation-title">
+          <span id="label-navigation">Menu</span>
+          <button class="nhsuk-header__navigation-close" id="close-menu">
+            <svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"></path>
+            </svg>
+
+            <span class="nhsuk-u-visually-hidden">Close menu</span>
+          </button>
+        </p>
+        <ul class="nhsuk-header__navigation-list">
+
+          <li class="nhsuk-header__navigation-item selected">
+            <a class="nhsuk-header__navigation-link" href="#">
+              Current activities
+              <svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"></path>
+              </svg>
+
+            </a>
+          </li>
+          <li class="nhsuk-header__navigation-item ">
+            <a class="nhsuk-header__navigation-link" href="#">
+              Completed activities
+              <svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"></path>
+              </svg>
+
+            </a>
+          </li>
+          <li class="nhsuk-header__navigation-item ">
+            <a class="nhsuk-header__navigation-link" href="#">
+              Available activities
+              <svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"></path>
+              </svg>
+
+            </a>
+          </li>
+          <li class="nhsuk-header__navigation-item ">
+            <a class="nhsuk-header__navigation-link" href="#">
+              My account
+              <svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"></path>
+              </svg>
+
+            </a>
+          </li>
+
+
+        </ul>
+      </div>
+    </nav>
+
+    <div class="visual-separator "></div>
+
+    <div class="feedback-bar">
+
+      <div class="nhsuk-width-container nhsuk-header_container nhsuk-width-container--feedback nhsuk-body-s nhsuk-u-margin-bottom-0">
+        <div class="govuk-phase-banner__content feedback-wrapper">
+          <div class="govuk-tag govuk-phase-banner__content__tag feedback-tag">
+            Feedback
+          </div>
+          <a href="#">Give page feedback</a>
+          or <a href="#" target="_blank">join our research panel</a> - this website is in
+          <a href="#" target="_blank">Beta</a>, your feedback will help us improve this platform.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</header>
