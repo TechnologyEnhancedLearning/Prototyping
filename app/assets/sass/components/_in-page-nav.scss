@@ -1,8 +1,7 @@
 .proto-in-page-nav {
   $this: &;
 
-  border-top: 1px solid $color_nhsuk-grey-4;
-  border-bottom: 1px solid $color_nhsuk-grey-4;
+  border-bottom: 1px solid $color_nhsuk-grey-3;
   margin-bottom: nhsuk-spacing(6);
 
   &__list {
@@ -11,7 +10,12 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    // width: 100%;
+    flex-wrap: wrap;
+    width: 100%;
+
+    @include mq($until: tablet) {
+      display: block;
+    }
 
     #{$this}__item:hover {
       &:after {
@@ -21,7 +25,7 @@
         bottom: 0;
         right: 0;
         left: 0;
-        height: nhsuk-spacing(2);
+        height: 6px;
         background-color: $color_nhsuk-blue;
       }
     }
@@ -42,7 +46,6 @@
   }
 
   &__item--active {
-    // border-bottom: 10px solid $color_nhsuk-blue;
     position: relative;
 
     &:after {
@@ -52,16 +55,32 @@
       bottom: 0;
       right: 0;
       left: 0;
-      height: nhsuk-spacing(2);
+      height: 6px;
       background-color: $color_nhsuk-blue;
     }
   }
 
-  &__link {
-    // margin-right: 0;
+  &__item--more-options {
+    margin-left: auto;
 
-    #{$this}__item--active & {
-      font-weight: 600;
+    #{$this}__link {
+      display: inline-block;
+      margin-left: 32px;
+      position: relative;
+
+
+      &:before {
+        content: '︙';
+        display: block;
+        height: 36px;
+        padding: 0;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: -32px;
+        font-weight: 900;
+        font-size: 24px;
+      }
     }
   }
 }
