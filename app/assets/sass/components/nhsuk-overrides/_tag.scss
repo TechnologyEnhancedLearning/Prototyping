@@ -1,0 +1,7 @@
+.nhsuk-tag.proto-tag {
+  &--dark-green {
+    background-color: $color_nhsuk-green;
+    border-color: shade($color_nhsuk-green, 40%);
+    color: $color_nhsuk-white;
+  }
+}

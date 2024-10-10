@@ -1,0 +1,87 @@
+.learning-log {
+  &__filters {
+    display: none;
+    padding-bottom: nhsuk-spacing(2);
+    border-bottom: 1px solid $color_nhsuk-grey-2;
+
+    .js-enabled & {
+      display: block;
+
+      @include mq($from: desktop) {
+        display: flex;
+      }
+    }
+
+    @include mq($from: desktop) {
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      align-items: end;
+      padding-bottom: nhsuk-spacing(1);
+    }
+  }
+
+  &__order-filter {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: start;
+    align-items: center;
+    flex: 0;
+    margin: nhsuk-spacing(2) 0;
+  }
+
+  &__order-filter-label {
+    @include nhsuk-font(16, $weight: bold);
+
+    margin: 0 nhsuk-spacing(2) 0 0;
+  }
+
+  &__order-filter-select {
+    @include nhsuk-font(16);
+
+    max-width: 100%;
+    height: auto;
+    margin: nhsuk-spacing(1) 0;
+    padding: nhsuk-spacing(1);
+
+    @include mq($from: desktop) {
+      margin: 0;
+    }
+  }
+
+  &__list {
+    @include no-list-style;
+  }
+
+  &__list-item {
+    padding: nhsuk-spacing(3) 0;
+
+    &:not(:first-child):not(&--sign-off) {
+      border-top: 1px solid $color_nhsuk-grey-3;
+    }
+
+    &--sign-off {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: nhsuk-spacing(2);
+      margin: nhsuk-spacing(2) 0 nhsuk-spacing(3);
+      color: $color_nhsuk-green;
+      font-weight: $nhsuk-font-bold;
+
+      &:after {
+        content:"";
+        display: block;
+        flex: 1;
+        flex-basis: 300px;
+        height: 2px;
+        background: $color_nhsuk-green;
+      }
+
+      & + * {
+        border: 0 !important;
+      }
+    }
+  }
+}
