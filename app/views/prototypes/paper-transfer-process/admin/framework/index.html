@@ -178,22 +178,22 @@ This loop should first consider the task list component and then the extended ex
             </span>
             <div class="proto-details__summary-text-more-info">
 
-              <div class="progress progress-pips">
-                <dl class="progress__details">
-                  <div class="progress__details-group">
-                    <dt class="progress__details-title">Proficiencies:</dt>
-                    <dd class="progress__details-description">0 of {{proficiencies['proficiencyGroup']['proficiencies'].length}} Self assessed</dd>
-                    <dd class="progress__details-description">0 Confirmed</dd>
+              <!-- <div class="progress"> -->
+                <dl class="progress-summary">
+                  <div class="progress-summary__group">
+                    <dt class="progress-summary__title">Contains {{proficiencies['proficiencyGroup']['proficiencies'].length}} proficiencies:</dt>
+                    <dd class="progress-summary__description">0 Self assessed</dd>
+                    <dd class="progress-summary__description">0 Confirmed</dd>
                   </div>
                 </dl>
 
-                <div class="progress progress-pips__pips-wrapper">
+                <div class="progress-pips">
                 {% for i in range(0, proficiencies['proficiencyGroup']['proficiencies'].length) -%}
                   <div class="progress-pips__pip"></div>
                 {%- endfor %}
                 </div>
 
-              </div>
+              <!-- </div> -->
             </div>
 
           </summary>
