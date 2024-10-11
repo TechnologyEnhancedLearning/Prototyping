@@ -19,38 +19,31 @@
         <h1>Check information is correct and send for review</h1>
 
         <div class="content-group">
-          <p>Please find below a summary of your paper assessment information.</p>
+          <p>Please find below a summary of Allan Kings’s paper assessment information.</p>
+          <p>Review this information on this page and check it is correct tot he best of your knowledge:</p>
         </div>
 
         <h2>Summary</h2>
         <dl class="nhsuk-summary-list nhsuk-summary-list--no-border proto-summary-list--fixed-width-titles nhsuk-">
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">Name of educator or supervisor</dt>
-            <dd class="nhsuk-summary-list__value">{{ data['educatorName'] }}</dd>
-            <dd class="nhsuk-summary-list__actions">
-              <a href="/paper-transfer/paper-assessment-information">Change<span class="nhsuk-u-visually-hidden">Name of educator or supervisor</span></a>
-            </dd>
+            <dd class="nhsuk-summary-list__value">{{ data['educatorName'] or 'Jane Jones' }}</dd>
+
           </div>
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">Educators or supervisors registration number (PRN)</dt>
-            <dd class="nhsuk-summary-list__value">{{ data['educatorPRN'] }}</dd>
-            <dd class="nhsuk-summary-list__actions">
-              <a href="/paper-transfer/paper-assessment-information">Change<span class="nhsuk-u-visually-hidden"> xxx </span></a>
-            </dd>
+            <dd class="nhsuk-summary-list__value">{{ data['educatorPRN'] or 'xxx xxx' }}</dd>
+
           </div>
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">Organisation</dt>
-            <dd class="nhsuk-summary-list__value">{{ data['organisationSignedOff'] }}</dd>
-            <dd class="nhsuk-summary-list__actions">
-              <a href="/paper-transfer/paper-assessment-information">Change<span class="nhsuk-u-visually-hidden"> xxx </span></a>
-            </dd>
+            <dd class="nhsuk-summary-list__value">{{ data['organisationSignedOff'] or 'Shrewsbury and Telford Hospital NHS Trust' }}</dd>
+
           </div>
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">Signed off date</dt>
-            <dd class="nhsuk-summary-list__value">{{ data['dateSignedOff-day'] }}-{{ data['dateSignedOff-month'] }}-{{ data['dateSignedOff-year'] }}</dd>
-            <dd class="nhsuk-summary-list__actions">
-              <a href="/paper-transfer/paper-assessment-information">Change<span class="nhsuk-u-visually-hidden"> xxx </span></a>
-            </dd>
+            <dd class="nhsuk-summary-list__value">{{ data['dateSignedOff-day'] or '11' }}-{{ data['dateSignedOff-month'] or '10' }}-{{ data['dateSignedOff-year'] or '2024' }}</dd>
+
           </div>
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">Additional proficiencies</dt>
@@ -69,9 +62,7 @@
               {% endif %}
               </ul>
             </dd>
-            <dd class="nhsuk-summary-list__actions">
-              <a href="/paper-transfer/additional-proficiencies">Change<span class="nhsuk-u-visually-hidden"> xxx </span></a>
-            </dd>
+
           </div>
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">Upload signed off paper document</dt>
@@ -80,27 +71,37 @@
               <div class="nhsuk-u-margin-bottom-2"><img src="/images/paper-process/paper-mockup.png" alt=""></div>
               <div><a href="{{ data['declarationDocUpload'] }}">{{ data['declarationDocUpload'] }} (open's in a new tab)</a></div>
             </dd>
-            <dd class="nhsuk-summary-list__actions">
-              <a href="/paper-transfer/upload">Change<span class="nhsuk-u-visually-hidden"> xxx </span></a>
-            </dd>
           </div>
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">Declaration</dt>
             <dd class="nhsuk-summary-list__value">Signed <span id="current-date"></span></dd>
-            <dd class="nhsuk-summary-list__actions">
-              <a href="/paper-transfer/sign-decleration">Change<span class="nhsuk-u-visually-hidden"> xxx </span></a>
-            </dd>
           </div>
         </dl>
 
         {# CONTENT - Should we have some pre-amble saying who it's going to be sent to and what thyey'll do? #}
 
-        <div class="content-group">
-          {{ button({
-            text: "Confirm and send for review",
-            href: "/paper-transfer/admin/sign-decleration"
-          }) }}
-        </div>
+        <form action="/paper-transfer/admin/sign-decleration" method="post" class="form">
+          <div class="content-group">
+            {{ checkboxes({
+              idPrefix: "example",
+              name: "informationReviewed",
+              items: [
+                {
+                  value: "yes",
+                  text: "I have reviewed the information above "
+                }
+              ]
+            }) }}
+          </div>
+
+          <div class="content-group">
+            {{ button({
+              text: "Continue",
+              name: "declarationtChecked",
+              value: "checked"
+            }) }}
+          </div>
+        </form>
 
       </div>
     </div>
