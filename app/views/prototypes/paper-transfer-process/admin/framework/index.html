@@ -1,6 +1,7 @@
 {%- from "data/frameworks/iv-therapy-proficiencies.njk" import ivTherapyProficiencies %}
 {%- from "summary-list/macro.njk" import summaryList %}
 {% from 'components/task-list/macro.njk' import taskList %}
+{% from 'components/progress-card.njk' import progressCard %}
 
 {# TODO - add new framework design excluding the details of each item #}
 
@@ -56,7 +57,13 @@ This loop should first consider the task list component and then the extended ex
     <section>
       <h2>Proficiencies</h2>
 
-      {% include "includes/progress.html" %}
+      {% if data['approval'] == 'approved' %}
+        {{ progressCard(state="complete") }}
+      {% elif data['approval'] == 'rejected' %}
+        {{ progressCard(state="in progress") }}
+      {% else %}
+        {{ progressCard(state="notification") }}
+      {% endif %}
 
       <div class="in-page-search">
         <div class="nhsuk-grid-row">
