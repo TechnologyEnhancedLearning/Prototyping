@@ -122,7 +122,6 @@ This loop should first consider the task list component and then the extended ex
         </div>
       </div>
 
-
       {# proficiencyGroup: {
         title: "Prerequisites to supervised clinical practice",
         numberOfProficiencies: "4",
@@ -168,28 +167,31 @@ This loop should first consider the task list component and then the extended ex
 
         <details class="nhsuk-details nhsuk-expander proto-summary-expander">
           <summary class="nhsuk-details__summary">
-            <span class="nhsuk-details__summary-text proto-details__summary-text">
-              <div class="nhsuk-details__summary-text-content">{{ proficiencies['proficiencyGroup']['title']}}</div>
+            <div class="proto-details__summary-text-wrapper">
+              <span class="nhsuk-details__summary-text">
+                <div class="nhsuk-details__summary-text-content">{{ proficiencies['proficiencyGroup']['title']}}</div>
+              </span>
 
               {{ tag({
                 text: "Not started",
                 classes: "nhsuk-tag--blue proto-details__summary-text-tag"
               })}}
-            </span>
+            </div>
+
             <div class="proto-details__summary-text-more-info">
 
               <!-- <div class="progress"> -->
-                <dl class="progress-summary">
+                <dl class="progress-summary nhsuk-u-margin-top-2">
                   <div class="progress-summary__group">
                     <dt class="progress-summary__title">Contains {{proficiencies['proficiencyGroup']['proficiencies'].length}} proficiencies:</dt>
-                    <dd class="progress-summary__description">0 Self assessed</dd>
-                    <dd class="progress-summary__description">0 Confirmed</dd>
+                    <dd class="progress-summary__description">{% if data['approval'] == 'approved' %}{{proficiencies['proficiencyGroup']['proficiencies'].length}}{% else %}0{% endif %} Self assessed</dd>
+                    <dd class="progress-summary__description">{% if data['approval'] == 'approved' %}{{proficiencies['proficiencyGroup']['proficiencies'].length}}{% else %}0{% endif %} Confirmed</dd>
                   </div>
                 </dl>
 
                 <div class="progress-pips">
                 {% for i in range(0, proficiencies['proficiencyGroup']['proficiencies'].length) -%}
-                  <div class="progress-pips__pip"></div>
+                  <div class="progress-pips__pip{% if data['approval'] == 'approved' %} progress-pips__pip--complete{% endif %}"></div>
                 {%- endfor %}
                 </div>
 

@@ -1,11 +1,15 @@
 .nhsuk-expander.proto-summary-expander {
 
-  .proto-details {
-    &__summary-text {
+  .nhsuk-details {
+    &__summary-text-wrapper {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
       max-width: 100%;
+    }
+
+    &__summary-text {
+      flex: 1;
 
       &:before {
         top: 3px;
@@ -17,18 +21,30 @@
       display: inline-block;
       width: 100%;
     }
+  }
+}
 
-    &__summary-text-tag {
-      // flex: 0;
-      text-decoration: none !important;
-      &:active,
-      &:hover {
-        text-decoration: none !important;
-      }
-    }
+.proto-details {
+  &__summary-text-wrapper {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 100%;
 
-    &__summary-text-more-info {
-      padding: 4px 4px 4px 38px;
+    @include mq($from: tablet) {
+      flex-direction: row;
     }
+  }
+
+  &__summary-text-tag {
+    @include mq($until: tablet) {
+      margin-bottom: nhsuk-spacing(2);
+    }
+  }
+
+
+  &__summary-text-more-info {
+    padding: 4px 4px 4px 38px;
   }
 }

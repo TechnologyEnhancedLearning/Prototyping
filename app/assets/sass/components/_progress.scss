@@ -55,10 +55,14 @@
   max-width: 100%;
 
   &__group {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    flex-direction: row;
+    display: block;
+
+    @include mq($from: tablet) {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      width: 100%;
+    }
   }
 
   &__title,
@@ -67,6 +71,13 @@
 
     font-weight: 600;
     color: $nhsuk-text-color;
+  }
+
+  &__description {
+
+    @include mq($until: tablet) {
+      margin-left: 0;
+    }
   }
 }
 
@@ -82,5 +93,10 @@
     margin-right: 6px;
     border-radius: 100%;
     border: 1px solid $color_nhsuk-green;
+    background-color: $color_nhsuk-white;
+
+    &--complete {
+      background-color: $color_nhsuk-green;
+    }
   }
 }
