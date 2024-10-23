@@ -4,7 +4,7 @@ const router = express.Router();
 router.post('/choose-framework', (req, res) => {
   const framework = req.session.data['frameworkName'].replace(/\s+/g, '-').toLowerCase();
 
-  res.redirect(`/paper-transfer/_dls-parts/about-${framework}`);
+  res.redirect(`/paper-transfer/learner/_dls-parts/about-${framework}`);
 });
 
 
@@ -12,10 +12,10 @@ router.post('/additional-proficiencies-answer', (req, res) => {
   const answer = req.session.data['addAdditionalProficiencies'];
   const framework = req.session.data['frameworkName']
   let frameworkPostfix = framework ? framework.replace(/\s+/g, '-').toLowerCase() : null;
-  let frameworkPath = '/paper-transfer/additional-proficiencies/add-proficiencies';
+  let frameworkPath = '/paper-transfer/learner/additional-proficiencies/add-proficiencies';
 
   if(framework) {
-    frameworkPath = `/paper-transfer/additional-proficiencies/add-proficiencies-${frameworkPostfix}`
+    frameworkPath = `/paper-transfer/learner/additional-proficiencies/add-proficiencies-${frameworkPostfix}`
   }
 
   if (answer === 'yes') {
@@ -31,7 +31,7 @@ router.post('/confirmed', (req, res) => {
   let frameworkPath = '#';
 
   if(framework) {
-    frameworkPath = `/paper-transfer/_dls-parts/about-${frameworkPostfix}`
+    frameworkPath = `/paper-transfer/learner/_dls-parts/about-${frameworkPostfix}`
   }
 
   res.redirect(frameworkPath);

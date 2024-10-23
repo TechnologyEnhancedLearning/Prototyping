@@ -9,7 +9,7 @@
 {# TODO - Update breadcrumb hrefs to point to file paths #}
 {{ breadcrumb({
   items: [{
-    href: "/paper-transfer/_dls-parts",
+    href: "/paper-transfer/learner/_dls-parts",
     text: "Current activities"
   },{
     href: "#",
@@ -51,7 +51,7 @@
                 title: {
                   text: "Have you completed a paper assessment?"
                 },
-                href: "/paper-transfer/have-you-completed-a-paper-assessment",
+                href: "/paper-transfer/learner/have-you-completed-a-paper-assessment",
                 status: {
                   text: "Yes",
                   classes: "nhsuk-task-list__status--completed"
@@ -70,7 +70,7 @@
                 title: {
                   text: "Provide information from paper assessment"
                 },
-                href: "/paper-transfer/paper-assessment-information",
+                href: "/paper-transfer/learner/paper-assessment-information",
                 status: {
                   text: "Complete",
                   classes: "nhsuk-task-list__status--completed"
@@ -87,7 +87,7 @@
                 title: {
                   text: "Provide information from paper assessment"
                 },
-                href: "/paper-transfer/paper-assessment-information",
+                href: "/paper-transfer/learner/paper-assessment-information",
                 status: {
                   tag: {
                     text: "Incomplete",
@@ -109,7 +109,7 @@
                   title: {
                     text: "Record additional proficiencies from paper assessment"
                   },
-                  href: "/paper-transfer/additional-proficiencies",
+                  href: "/paper-transfer/learner/additional-proficiencies",
                   status: {
                     text: "Complete",
                     classes: "nhsuk-task-list__status--completed"
@@ -126,7 +126,7 @@
                   title: {
                     text: "Record additional proficiencies from paper assessment"
                   },
-                  href: "/paper-transfer/additional-proficiencies",
+                  href: "/paper-transfer/learner/additional-proficiencies",
                   status: {
                     tag: {
                       text: "Incomplete",
@@ -148,7 +148,7 @@
                   title: {
                     text: "Upload a copy of your signed off paper assessment"
                   },
-                  href: "/paper-transfer/upload",
+                  href: "/paper-transfer/learner/upload",
                   status: {
                     text: "Complete",
                     classes: "nhsuk-task-list__status--completed"
@@ -165,7 +165,7 @@
                   title: {
                     text: "Upload a copy of your signed off paper assessment"
                   },
-                  href: "/paper-transfer/upload",
+                  href: "/paper-transfer/learner/upload",
                   status: {
                     tag: {
                       text: "Incomplete",
@@ -187,7 +187,7 @@
                   title: {
                     text: "Review and agree decleration"
                   },
-                  href: "/paper-transfer/sign-decleration",
+                  href: "/paper-transfer/learner/sign-decleration",
                   status: {
                     text: "Complete",
                     classes: "nhsuk-task-list__status--completed"
@@ -204,7 +204,7 @@
                   title: {
                     text: "Review and agree decleration"
                   },
-                  href: "/paper-transfer/sign-decleration",
+                  href: "/paper-transfer/learner/sign-decleration",
                   status: {
                     tag: {
                       text: "Incomplete",
@@ -242,7 +242,7 @@
                   title: {
                     text: "Review information is correct and submit"
                   },
-                  href: "/paper-transfer/review-and-submit",
+                  href: "/paper-transfer/learner/review-and-submit",
                   status: {
                     tag: {
                       text: "Incomplete",
@@ -277,7 +277,7 @@
                 title: {
                   text: "Have you completed a paper assessment?"
                 },
-                href: "/paper-transfer/have-you-completed-a-paper-assessment",
+                href: "/paper-transfer/learner/have-you-completed-a-paper-assessment",
                 status: {
                   text: "Yes",
                   classes: "nhsuk-task-list__status--completed"
@@ -290,7 +290,7 @@
                 hint: {
                   html: paperAssessmentGuidance
                 },
-                href: "/paper-transfer/paper-assessment-information",
+                href: "/paper-transfer/learner/paper-assessment-information",
                 status: {
                   tag: {
                     text: data['paperAssessmentInformationCompleted'] or "Incomplete",
@@ -305,7 +305,7 @@
                 hint: {
                   text: "Please ensure that you include any additional proficiencies you achieved in your paper assessment. This will help ensure that your assessment is accurately recorded and recognised."
                 },
-                href: "/paper-transfer/additional-proficiencies",
+                href: "/paper-transfer/learner/additional-proficiencies",
                 status: {
                   tag: {
                     text: "Incomplete",
@@ -317,7 +317,7 @@
                 title: {
                   text: "Upload a copy of your signed off paper assessment"
                 },
-                href: "/paper-transfer/upload",
+                href: "/paper-transfer/learner/upload",
                 status: {
                   tag: {
                     text: "Incomplete",
@@ -341,12 +341,12 @@
         <div class="content-group">
           {# {{ button({
             text: "Review information is correct and submit",
-            href: "/paper-transfer/review-and-submit"
+            href: "/paper-transfer/learner/review-and-submit"
           }) }} #}
 
           {{ button({
             text: "Save for later",
-            href: "/paper-transfer/_dls-parts",
+            href: "/paper-transfer/learner/_dls-parts",
             classes: "nhsuk-button--secondary"
           }) }}
         </div>
