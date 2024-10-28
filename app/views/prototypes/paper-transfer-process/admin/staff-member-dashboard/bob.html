@@ -5,6 +5,22 @@
 {% endblock %}
 
 {% block beforeContent %}
+{{ breadcrumb({
+  items: [
+    {
+      href: "/paper-transfer/admin",
+      text: "Home"
+    },
+    {
+      href: "/paper-transfer/admin/supervisor-dashboard",
+      text: "Supervisor"
+    },
+    {
+      href: "/paper-transfer/admin/my-staff",
+      text: "My staff"
+    }
+  ]
+}) }}
 {% endblock %}
 
 {% block content %}
@@ -19,7 +35,7 @@
       <details class="nhsuk-details nhsuk-expander">
         <summary class="nhsuk-details__summary">
         <h1 class="nhsuk-details__summary-text nhsuk-u-margin-bottom-0">
-          Allan King
+          Bob ross
         </h1>
         </summary>
         <div class="nhsuk-details__text">
@@ -84,7 +100,7 @@
             DLS Role
           </dt>
           <dd class="nhsuk-summary-list__value">
-            Supervisor
+            Learner
           </dd>
           </div>
         </dl>
@@ -141,20 +157,23 @@
           <span class="nhsuk-table-responsive__heading">
             Status
           </span>
-          <strong class="nhsuk-tag nhsuk-tag--pink status-tag">
-            Sign-off requested
+          <strong class="nhsuk-tag status-tag">
+            Ongoing
           </strong>
           </td>
           <td class="nhsuk-table__cell nhsuk-u-font-size-16">
           <span class="nhsuk-table-responsive__heading">
             Actions
           </span>
-          <a>
-            Review
-          </a>
-          <a>
+          <div><a href="#">
+            Send reminder
+          </a></div>
+          <div><a href="#">
+            View
+          </a></div>
+          <div><a href="#">
             Stop supervising
-          </a>
+          </a></div>
           </td>
         </tr>
         <tr class="nhsuk-table__row">
@@ -182,20 +201,23 @@
           <span class="nhsuk-table-responsive__heading">
             Status
           </span>
-          <strong class="nhsuk-tag nhsuk-tag--orange status-tag">
-            Results to confirm
+          <strong class="nhsuk-tag status-tag">
+            Ongoing
           </strong>
           </td>
           <td class="nhsuk-table__cell nhsuk-u-font-size-16">
           <span class="nhsuk-table-responsive__heading">
             Actions
           </span>
-          <a>
-            Review
-          </a>
-          <a>
+          <div><a href="#">
+            Send reminder
+          </a></div>
+          <div><a href="#">
+            View
+          </a></div>
+          <div><a href="#">
             Stop supervising
-          </a>
+          </a></div>
           </td>
         </tr>
         </tbody>

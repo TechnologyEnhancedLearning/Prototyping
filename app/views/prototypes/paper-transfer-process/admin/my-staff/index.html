@@ -5,6 +5,18 @@
 {% endblock %}
 
 {% block beforeContent %}
+  {{ breadcrumb({
+    items: [
+      {
+        href: "/paper-transfer/admin",
+        text: "Home"
+      },
+      {
+        href: "/paper-transfer/admin/supervisor-dashboard",
+        text: "Supervisor"
+      }
+    ]
+  }) }}
 {% endblock %}
 
 {% block content %}
@@ -99,7 +111,7 @@
                     2 matching results. Page 1 of 1.
                   </span>
                   <div id="searchable-elements">
-                    <div class="searchable-element nhsuk-panel" id="4878-card">
+                    {# <div class="searchable-element nhsuk-panel" id="4878-card">
                       <details class="nhsuk-details nhsuk-expander nhsuk-u-margin-bottom-0">
                         <summary class="nhsuk-details__summary">
                           <div class="nhsuk-grid-row">
@@ -192,15 +204,15 @@
                               </div>
                             </dl>
                           </div>
-                          <a class="nhsuk-button nhsuk-button--danger nhsuk-u-margin-top-4 button-small">
+                          <a class="nhsuk-button nhsuk-button--danger nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-4 button-small">
                             Remove staff member
                           </a>
                         </div>
                       </details>
                       <a href="/paper-transfer/admin/framework" class="nhsuk-button nhsuk-u-margin-left-4 nhsuk-u-margin-top-0">
-                        View self assessments (2)
+                        View self assessments (0)
                       </a>
-                    </div>
+                    </div> #}
                     <div class="searchable-element nhsuk-panel" id="36827-card">
                       <details class="nhsuk-details nhsuk-expander nhsuk-u-margin-bottom-0">
                         <summary class="nhsuk-details__summary">
@@ -208,7 +220,7 @@
                             <div class="nhsuk-grid-column-three-quarters searchable-element-title">
                               <span class="nhsuk-details__summary-text" id="36827-name">
                                 <text>
-                                  Claire Wroe (claire.wroe@nhs.net)
+                                  Bob Ross (bob.ross@nhs.net)
                                 </text>
                               </span>
                             </div>
@@ -298,12 +310,119 @@
                               </div>
                             </dl>
                           </div>
-                          <a class="nhsuk-button nhsuk-button--danger nhsuk-u-margin-top-4 button-small">
+                          <a class="nhsuk-button nhsuk-button--danger nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-4 button-small">
                             Remove staff member
                           </a>
                         </div>
                       </details>
-                      <a class="nhsuk-button nhsuk-u-margin-left-4 nhsuk-u-margin-top-0">
+                      <a href="/paper-transfer/admin/staff-member-dashboard/bob" class="nhsuk-button nhsuk-u-margin-left-4 nhsuk-u-margin-top-0">
+                        View self assessments (2)
+                      </a>
+                    </div>
+                    <div class="searchable-element nhsuk-panel" id="2700-card">
+                      <details class="nhsuk-details nhsuk-expander nhsuk-u-margin-bottom-0">
+                        <summary class="nhsuk-details__summary">
+                          <div class="nhsuk-grid-row">
+                            <div class="nhsuk-grid-column-three-quarters searchable-element-title">
+                              <span class="nhsuk-details__summary-text" id="2700-name">
+                                <text>
+                                  James King (james.king@nhs.net)
+                                </text>
+                              </span>
+                            </div>
+                          </div>
+                          <div class="nhsuk-grid-row nhsuk-u-margin-top-2">
+                            <div class="nhsuk-grid-column-full card-background">
+                            </div>
+                          </div>
+                        </summary>
+                        <div class="nhsuk-details__text">
+                          <div class="nhsuk-u-padding-left-3">
+                            <dl class="nhsuk-summary-list">
+                              <div class="nhsuk-summary-list__row">
+                                <dt class="nhsuk-summary-list__key">
+                                  Added
+                                </dt>
+                                <dd class="nhsuk-summary-list__value">
+                                  13/02/2023
+                                </dd>
+                                <dd class="nhsuk-summary-list__actions">
+                                </dd>
+                              </div>
+                              <div class="nhsuk-summary-list__row">
+                                <dt class="nhsuk-summary-list__key">
+                                  Professional Registration Number
+                                </dt>
+                                <dd class="nhsuk-summary-list__value">
+                                </dd>
+                              </div>
+                              <div class="nhsuk-summary-list__row">
+                                <dt class="nhsuk-summary-list__key">
+                                  Delegate ID
+                                </dt>
+                                <dd class="nhsuk-summary-list__value">
+                                  JL2329
+                                </dd>
+                              </div>
+                              <div class="nhsuk-summary-list__row">
+                                <dt class="nhsuk-summary-list__key">
+                                  Job Group
+                                </dt>
+                                <dd class="nhsuk-summary-list__value">
+                                  Other
+                                </dd>
+                              </div>
+                              <div class="nhsuk-summary-list__row">
+                                <dt class="nhsuk-summary-list__key">
+                                  Programme of study / course
+                                </dt>
+                                <dd class="nhsuk-summary-list__value">
+                                  Other
+                                </dd>
+                              </div>
+                              <div class="nhsuk-summary-list__row">
+                                <dt class="nhsuk-summary-list__key">
+                                  Organisation / company
+                                </dt>
+                                <dd class="nhsuk-summary-list__value">
+                                </dd>
+                              </div>
+                              <div class="nhsuk-summary-list__row">
+                                <dt class="nhsuk-summary-list__key">
+                                  Department / team
+                                </dt>
+                                <dd class="nhsuk-summary-list__value">
+                                </dd>
+                              </div>
+                              <div class="nhsuk-summary-list__row">
+                                <dt class="nhsuk-summary-list__key">
+                                  DLS Role
+                                </dt>
+                                <dd class="nhsuk-summary-list__value">
+                                  Supervisor
+                                </dd>
+                              </div>
+                              <div class="nhsuk-summary-list__row">
+                                <dt class="nhsuk-summary-list__key">
+                                  Delegate Status
+                                </dt>
+                                <dd class="nhsuk-summary-list__value">
+                                  <span class="float-right-additional-information">
+                                    <strong class="nhsuk-tag nhsuk-tag--green">
+                                      Active
+                                    </strong>
+                                  </span>
+                                </dd>
+                              </div>
+                            </dl>
+                          </div>
+                          <a class="nhsuk-button nhsuk-button--danger nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-4 button-small">
+                            Remove staff member
+                          </a>
+                        </div>
+                      </details>
+                      {# href="/paper-transfer/admin/framework" #}
+                      <a href="/paper-transfer/admin/staff-member-dashboard/james" class="nhsuk-button nhsuk-u-margin-left-4 nhsuk-u-margin-top-0">
                         View self assessments (1)
                       </a>
                     </div>
@@ -404,13 +523,13 @@
                               </div>
                             </dl>
                           </div>
-                          <a class="nhsuk-button nhsuk-button--danger nhsuk-u-margin-top-4 button-small">
+                          <a class="nhsuk-button nhsuk-button--danger nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-4 button-small">
                             Remove staff member
                           </a>
                         </div>
                       </details>
-                      <a class="nhsuk-button nhsuk-u-margin-left-4 nhsuk-u-margin-top-0">
-                        View self assessments (5)
+                      <a  href="/paper-transfer/admin/staff-member-dashboard/judy" class="nhsuk-button nhsuk-u-margin-left-4 nhsuk-u-margin-top-0">
+                        View self assessments (2)
                       </a>
                     </div>
                   </div>

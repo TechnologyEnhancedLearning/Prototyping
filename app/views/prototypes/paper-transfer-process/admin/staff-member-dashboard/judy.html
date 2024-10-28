@@ -1,0 +1,231 @@
+{% extends 'layouts/layout.html' %}
+
+{% block header %}
+  {% include "includes/dls-header-iv-therapy.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ breadcrumb({
+  items: [
+    {
+      href: "/paper-transfer/admin",
+      text: "Home"
+    },
+    {
+      href: "/paper-transfer/admin/supervisor-dashboard",
+      text: "Supervisor"
+    },
+    {
+      href: "/paper-transfer/admin/my-staff",
+      text: "My staff"
+    }
+  ]
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-width-container">
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <!-- <main class="nhsuk-main-wrapper" id="maincontent">
+      <link/>
+      <link/> -->
+      <details class="nhsuk-details nhsuk-expander">
+        <summary class="nhsuk-details__summary">
+        <h1 class="nhsuk-details__summary-text nhsuk-u-margin-bottom-0">
+          Judy Larbie
+        </h1>
+        </summary>
+        <div class="nhsuk-details__text">
+        <dl class="nhsuk-summary-list">
+          <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Added
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            04/04/2023
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+          </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Professional Registration Number
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+          </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Delegate ID
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            AK1968
+          </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Job Group
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            Other
+          </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Programme of study / course
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            IV Therapy Passport
+          </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Organisation / company
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+          </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Department / team
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+          </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            DLS Role
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            Learner
+          </dd>
+          </div>
+        </dl>
+        </div>
+      </details>
+      <table class="nhsuk-table-responsive">
+        <caption class="nhsuk-table__caption">
+        <h2>
+          Self assessments
+        </h2>
+        </caption>
+        <thead class="nhsuk-table__head">
+        <tr>
+          <th class="">
+          Self Assessment
+          </th>
+          <th class="">
+          Role links
+          </th>
+          <th class="">
+          Last activity
+          </th>
+          <th class="">
+          Status
+          </th>
+          <th class="">
+          Actions
+          </th>
+        </tr>
+        </thead>
+        <tbody class="nhsuk-table__body">
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell nhsuk-u-font-size-16">
+          <span class="nhsuk-table-responsive__heading">
+            Self Assessment
+          </span>
+          IV Therapy Passport
+          </td>
+          <td class="nhsuk-table__cell nhsuk-u-font-size-16">
+          <span class="nhsuk-table-responsive__heading">
+            Role links
+          </span>
+          None/Generic
+          </td>
+          <td class="nhsuk-table__cell nhsuk-u-font-size-16">
+          <span class="nhsuk-table-responsive__heading">
+            Last activity
+          </span>
+          26/09/2024
+          <br/>
+          (200 launches)
+          </td>
+          <td class="nhsuk-table__cell nhsuk-u-font-size-16">
+          <span class="nhsuk-table-responsive__heading">
+            Status
+          </span>
+          <strong class="nhsuk-tag nhsuk-tag--pink status-tag">
+            Sign-off requested
+          </strong>
+          </td>
+          <td class="nhsuk-table__cell nhsuk-u-font-size-16">
+          <span class="nhsuk-table-responsive__heading">
+            Actions
+          </span>
+          <a href="#">
+            Review
+          </a>
+          <a href="#">
+            Stop supervising
+          </a>
+          </td>
+        </tr>
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell nhsuk-u-font-size-16">
+          <span class="nhsuk-table-responsive__heading">
+            Self Assessment
+          </span>
+          Step 1 Proficiencies - National Proficiency Framework for Registered Nurses in Adult Critical Care
+          </td>
+          <td class="nhsuk-table__cell nhsuk-u-font-size-16">
+          <span class="nhsuk-table-responsive__heading">
+            Role links
+          </span>
+          None/Generic
+          </td>
+          <td class="nhsuk-table__cell nhsuk-u-font-size-16">
+          <span class="nhsuk-table-responsive__heading">
+            Last activity
+          </span>
+          02/10/2024
+          <br/>
+          (52 launches)
+          </td>
+          <td class="nhsuk-table__cell nhsuk-u-font-size-16">
+          <span class="nhsuk-table-responsive__heading">
+            Status
+          </span>
+          <strong class="nhsuk-tag nhsuk-tag--orange status-tag">
+            Results to confirm
+          </strong>
+          </td>
+          <td class="nhsuk-table__cell nhsuk-u-font-size-16">
+          <span class="nhsuk-table-responsive__heading">
+            Actions
+          </span>
+          <a href="#">
+            Review
+          </a>
+          <a href="#">
+            Stop supervising
+          </a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <a class="nhsuk-button nhsuk-u-margin-top-4">
+        Enrol on self assessment
+      </a>
+      <!-- </main> -->
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}

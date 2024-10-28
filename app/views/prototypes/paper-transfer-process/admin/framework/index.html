@@ -19,6 +19,26 @@ This loop should first consider the task list component and then the extended ex
 {% endblock %}
 
 {% block beforeContent %}
+  {{ breadcrumb({
+    items: [
+      {
+        href: "/paper-transfer/admin",
+        text: "Home"
+      },
+      {
+        href: "/paper-transfer/admin/supervisor-dashboard",
+        text: "Supervisor"
+      },
+      {
+        href: "/paper-transfer/admin/my-staff",
+        text: "My staff"
+      },
+      {
+        href: "/paper-transfer/admin/staff-member-dashboard/james",
+        text: "James King"
+      }
+    ]
+  }) }}
 {% endblock %}
 
 {% block content %}
@@ -28,7 +48,7 @@ This loop should first consider the task list component and then the extended ex
 
     <!-- <main class="nhsuk-main-wrapper" id="maincontent"> -->
       <h1>
-        Allan's IV Therapy passport
+        James's IV Therapy passport
       </h1>
     <!-- </main> -->
 
@@ -172,10 +192,17 @@ This loop should first consider the task list component and then the extended ex
                 <div class="nhsuk-details__summary-text-content">{{ proficiencies['proficiencyGroup']['title']}}</div>
               </span>
 
-              {{ tag({
-                text: "Not started",
-                classes: "nhsuk-tag--blue proto-details__summary-text-tag"
-              })}}
+              {% if data['approval'] == 'approved' %}
+                <div class="nhsuk-task-list__status nhsuk-task-list__status--completed">
+                  Complete
+                </div>
+              {% else %}
+                {{ tag({
+                  text: "Not started",
+                  classes: "nhsuk-tag--blue proto-details__summary-text-tag"
+                })}}
+              {% endif %}
+
             </div>
 
             <div class="proto-details__summary-text-more-info">
@@ -208,24 +235,43 @@ This loop should first consider the task list component and then the extended ex
 
 
               {% for tasks in proficiencies['proficiencyGroup']['proficiencies'] %}
-                {{ taskList({
-                  idPrefix: taskListId,
-                  classes: "nhsuk-u-margin-bottom-0",
-                  items: [
-                    {
-                      title: {
-                        text: tasks['proficiencyTilte']
-                      },
-                      href: "#",
-                      status: {
-                        tag: {
-                          text: "Incomplete",
-                          classes: "nhsuk-tag--blue"
+                {% if data['approval'] == 'approved' %}
+                  {{ taskList({
+                    idPrefix: taskListId,
+                    classes: "nhsuk-u-margin-bottom-0",
+                    items: [
+                      {
+                        title: {
+                          text: tasks['proficiencyTilte']
+                        },
+                        href: "#",
+                        status: {
+                          text: "Confirmed",
+                          classes: "nhsuk-task-list__status--completed"
                         }
                       }
-                    }
-                  ]
-                }) }}
+                    ]
+                  }) }}
+                {% else %}
+                  {{ taskList({
+                    idPrefix: taskListId,
+                    classes: "nhsuk-u-margin-bottom-0",
+                    items: [
+                      {
+                        title: {
+                          text: tasks['proficiencyTilte']
+                        },
+                        href: "#",
+                        status: {
+                          tag: {
+                            text: "Incomplete",
+                            classes: "nhsuk-tag--blue"
+                          }
+                        }
+                      }
+                    ]
+                  }) }}
+                {% endif %}
               {% endfor %}
           </div>
         </details>
