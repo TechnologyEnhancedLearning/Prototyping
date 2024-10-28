@@ -62,9 +62,41 @@
 
       {{ button({
         text: "Review request",
-        href: "/paper-transfer/admin/review-and-submit",
+        href: "/paper-transfer/admin/before-you-start",
         classes: "progress__action"
       }) }}
+    </div>
+
+  {% elif (state == 'notification-transfer-complete') %}
+    <div class="progress progress--notification">
+      <div class="progress__header">
+        <h3 class="progress__title">Paper to digital transfer</h3>
+        <p class="progress__header-date"><b>Accepted on:</b> 07/10/2024</p>
+      </div>
+
+      <p class="progress__content">Request to transfer paper assessment to dls as a digital record of their achievement accepted.</p>
+
+      <h4>What happens next?</h4>
+      <ul>
+        <li>Any <a href="#">additional proficiencies</a> required for their role will need to be added</li>
+        <li>These proficiencies will need to be assessed</li>
+        <li>After all proficiencies have been signed off the learner will be able to seek final assessment sign off</li>
+        <li>If the learner doesn't need to include an additional proficiencies they can seek final sign off strait away</li>
+      </ul>
+
+
+      {{ details({
+        text: "What is a paper to digital sign-off request?",
+        HTML: "
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis nostrum eius, soluta voluptates vero unde! Quos voluptatibus quis illo alias vel ducimus dignissimos at temporibus cumque molestias aut, omnis earum?</p>
+        "
+      }) }}
+
+      {# {{ button({
+        text: "Review request",
+        href: "/paper-transfer/admin/before-you-start",
+        classes: "progress__action"
+      }) }} #}
     </div>
 
   {% elif (state ==='complete') %}

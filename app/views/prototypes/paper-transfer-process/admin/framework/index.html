@@ -78,7 +78,8 @@ This loop should first consider the task list component and then the extended ex
       <h2>Proficiencies</h2>
 
       {% if data['approval'] == 'approved' %}
-        {{ progressCard(state="complete") }}
+        {# {{ progressCard(state="complete") }} #}
+        {{ progressCard(state="notification-transfer-complete") }}
       {% elif data['approval'] == 'rejected' %}
         {{ progressCard(state="in progress") }}
       {% else %}
