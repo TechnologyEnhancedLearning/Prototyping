@@ -23,7 +23,8 @@
           <p>This will need approval from your supervisors, assessor and educator manager. If you have not set up any supervisors you’ll be asked to do this next.</p>
         </div>
 
-        <div class="content-group">
+        {# TODO - Discuss this content to understadn if we need to add approval criteria to the main content #}
+        {# <div class="content-group">
           {{ details({
             text: "Approval criteria",
             HTML: "
@@ -33,10 +34,9 @@
             </ul>
             "
           }) }}
-        </div>
+        </div> #}
 
         <div class="content-group">
-          {# TODO - Make no work so we have visual confirmaiton #}
           {{ radios({
             idPrefix: "example",
             name: "example",

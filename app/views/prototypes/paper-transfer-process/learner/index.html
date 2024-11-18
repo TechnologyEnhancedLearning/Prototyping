@@ -99,7 +99,7 @@
             }) }}
           {% endif %}
 
-          {# Record additional proficiencies from paper assessment -------------------------------------- #}
+          {# Record completed proficiencies from paper assessment -------------------------------------- #}
           {% if data['proficienciesCompleted'] %}
             {{ taskList({
               idPrefix: "proficiencies",
@@ -269,88 +269,7 @@
               ]
             }) }}
           {% endif %}
-
-          {# {{ taskList({
-            idPrefix: "before-you-start",
-            items: [
-              {
-                title: {
-                  text: "Have you completed a paper assessment?"
-                },
-                href: "/paper-transfer/learner/have-you-completed-a-paper-assessment",
-                status: {
-                  text: "Yes",
-                  classes: "nhsuk-task-list__status--completed"
-                }
-              },
-              {
-                title: {
-                  text: "Provide information from paper assessment"
-                },
-                hint: {
-                  html: paperAssessmentGuidance
-                },
-                href: "/paper-transfer/learner/paper-assessment-information",
-                status: {
-                  tag: {
-                    text: data['paperAssessmentInformationCompleted'] or "Incomplete",
-                    classes: paperAssessmentInformationClass
-                  }
-                }
-              },
-              {
-                title: {
-                  text: "Record additional proficiencies from paper assessment"
-                },
-                hint: {
-                  text: "Please ensure that you include any additional proficiencies you achieved in your paper assessment. This will help ensure that your assessment is accurately recorded and recognised."
-                },
-                href: "/paper-transfer/learner/additional-proficiencies",
-                status: {
-                  tag: {
-                    text: "Incomplete",
-                    classes: "nhsuk-tag--blue"
-                  }
-                }
-              },
-              {
-                title: {
-                  text: "Upload a copy of your signed off paper assessment"
-                },
-                href: "/paper-transfer/learner/upload",
-                status: {
-                  tag: {
-                    text: "Incomplete",
-                    classes: "nhsuk-tag--blue"
-                  }
-                }
-              },
-              {
-                title: {
-                  text: "Review and agree decleration"
-                },
-                status: {
-                  text: "Cannot start yet",
-                  classes: "nhsuk-task-list__status--cannot-start-yet"
-                }
-              }
-            ]
-          }) }} #}
         </div>
-
-        <div class="content-group">
-          {# {{ button({
-            text: "Review information is correct and submit",
-            href: "/paper-transfer/learner/review-and-submit"
-          }) }} #}
-
-          {{ button({
-            text: "Save for later",
-            href: "/paper-transfer/learner/_dls-parts",
-            classes: "nhsuk-button--secondary"
-          }) }}
-        </div>
-
       </div>
     </div>
   </div>
