@@ -1,0 +1,228 @@
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layouts/layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  DLS prototype
+{% endblock %}
+
+{% block header %}
+  {{ header({
+    "service": {
+        "name": "Digital Learning Solutions Prototype"
+      },
+      "homeHref": "/",
+      "showNav": "false",
+      "classes": "",
+      "primaryLinks": []
+    })
+  }}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+
+      <div class="nhsuk-grid-column-full">
+        <h1>IV Therapy passport</h1>
+      </div>
+
+      <div class="nhsuk-grid-column-full">
+        <div class="content-group">
+          <div class="nhsuk-u-reading-width">
+            <p class="nhsuk-body-l">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, odio inventore. Corrupti vero in incidunt, officiis voluptatem excepturi nisi. Repellat corrupti beatae eligendi.</p>
+          </div>
+        </div>
+
+        <!-- On page navigation doesn't function and needs replacing with LH implementation or similar -->
+        {% include "prototypes/learning-conversations/include/in-page-nav.html" %}
+        <!-- On page navigation doesn't function and needs replacing with LH implementation or similar -->
+
+        <section>
+          <h2>Learning conversations</h2>
+
+          <div class="content-group">
+            <div class="nhsuk-u-reading-width">
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, odio inventore. Corrupti vero in incidunt, officiis voluptatem excepturi nisi. Repellat corrupti beatae eligendi.</p>
+              {{ details({
+                "classes": "nhsuk-u-margin-bottom-6",
+                "text": "Learning conversations are here to help you and your supervisor",
+                "HTML": ""
+              }) }}
+
+              {{ button({
+                "classes": "nhsuk-u-margin-bottom-8",
+                "text": "Record Learning conversation"
+              }) }}
+            </div>
+          </div>
+            <!-- learning-log -->
+          <div class="learning-log">
+            <h3>Your learning conversations</h3>
+
+            <!-- learning-log__filters -->
+            <div class="learning-log__filters">
+
+              <!-- learning-log__activity-filter -->
+              <!-- quick-filters -->
+              <nav class="learning-log__activity-filter quick-filters">
+                <div class="quick-filters__filter-title">Activity</div>
+
+                <ul class="quick-filters__list">
+                  <span class="quick-filters__list-heading">Show</span>
+
+                  <li class="quick-filters__list-item">
+                    <button class="quick-filters__button quick-filters__button--active">
+                      <span>All</span>
+                    </button>
+                  </li>
+                  <li class="quick-filters__list-item">
+                    <button class="quick-filters__button">
+                      <span>Confirmed</span>
+                    </button>
+                  </li>
+                  <li class="quick-filters__list-item">
+                    <button class="quick-filters__button">
+                      <span>Sent for review</span>
+                    </button>
+                  </li>
+                  <li class="quick-filters__list-item">
+                    <button class="quick-filters__button">
+                      <span>Review requested</span>
+                    </button>
+                  </li>
+                  <li class="quick-filters__list-item">
+                    <button class="quick-filters__button">
+                      <span>In draft</span>
+                    </button>
+                  </li>
+                </ul>
+              </nav>
+
+              <!-- learning-log__order-filter -->
+              <nav class="learning-log__order-filter">
+                <label class="nhsuk-label learning-log__order-filter-label" for="order-learning-log">Order:</label>
+                <select class="nhsuk-select learning-log__order-filter-select" name="order-learning-log" id="order-learning-log">
+                  <option value="Newest first">Newest first</option>
+                  <option value="Newest first">Newest last</option>
+                </select>
+              </nav>
+            </div>
+
+            <ol class="learning-log__list">
+              <li class="learning-log__list-item">
+                <div class="user-entry">
+                  <div class="user-entry__header">
+                    <div class="user-entry__profile-wrapper">
+                      <div class="user-entry__profile user-entry__profile--blue">
+                        MW
+                      </div>
+                    </div>
+                    <div class="user-entry__header-content">
+                      {{ tag({
+                        text: "Sent for review",
+                        classes: "nhsuk-tag--green nhsuk-u-margin-right-2"
+                      })}}
+                      <span>on 07/03/23 to Allan King (Learner)</span>
+                    </div>
+                  </div>
+                  {{ details({
+                    "classes": "user-entry__content",
+                    "text": "Lorem ipsum dolor sit, amet consectetur",
+                    "HTML": ""
+                  }) }}
+                </div>
+              </li>
+
+              <li class="learning-log__list-item learning-log__list-item--sign-off">
+                Self assessment signed off on 07/03/23
+              </li>
+
+              <li class="learning-log__list-item">
+                <div class="user-entry">
+                  <div class="user-entry__header">
+                    <div class="user-entry__profile-wrapper">
+                      <div class="user-entry__profile">
+                        AK
+                      </div>
+                    </div>
+                    <div class="user-entry__header-content">
+                      {{ tag({
+                        text: "Confirmed",
+                        classes: "proto-tag--dark-green nhsuk-u-margin-right-2"
+                      })}}
+                      <span>on 07/03/23 by Mathew Wilkins (Assessor)</span>
+                    </div>
+                  </div>
+                  {{ details({
+                    "classes": "user-entry__content",
+                    "text": "Lorem ipsum dolor sit, amet consectetur",
+                    "HTML": ""
+                  }) }}
+                </div>
+              </li>
+
+              <li class="learning-log__list-item">
+                <div class="user-entry">
+                  <div class="user-entry__header">
+                    <div class="user-entry__profile-wrapper">
+                      <div class="user-entry__profile user-entry__profile--blue">
+                        MW
+                      </div>
+                    </div>
+                    <div class="user-entry__header-content">
+                      {{ tag({
+                        text: "Review requested",
+                        classes: "nhsuk-tag--yellow nhsuk-u-margin-right-2"
+                      })}}
+                      <span>Mathew Wilkins (Assessor) has asked you to review this conversation on 07/03/23</span>
+                    </div>
+                  </div>
+                  {{ details({
+                    "classes": "user-entry__content",
+                    "text": "Lorem ipsum dolor sit, amet consectetur",
+                    "HTML": ""
+                  }) }}
+                </div>
+              </li>
+
+              <li class="learning-log__list-item">
+                <div class="user-entry">
+                  <div class="user-entry__header">
+                    <div class="user-entry__profile-wrapper">
+                      <div class="user-entry__profile user-entry__profile--blue">
+                        MW
+                      </div>
+                    </div>
+                    <div class="user-entry__header-content">
+                      {{ tag({
+                        text: "In draft",
+                        classes: "nhsuk-tag--grey nhsuk-u-margin-right-2"
+                      })}}
+                    </div>
+                  </div>
+                  {{ details({
+                    "classes": "user-entry__content",
+                    "text": "Lorem ipsum dolor sit, amet consectetur",
+                    "HTML": ""
+                  }) }}
+                </div>
+              </li>
+            </ol>
+
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+{% endblock %}
