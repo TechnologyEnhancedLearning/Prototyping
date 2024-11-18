@@ -12,6 +12,7 @@
 @import 'variables';
 @import 'functions';
 @import 'mixins';
+@import 'global';
 
 @import 'components/utilities';
 @import 'components/picture';
@@ -22,7 +23,7 @@
 @import 'components/learning-log';
 @import 'components/quick-filters';
 @import 'components/user-entry';
-
+@import 'components/task-list';
 @import 'components/nhsuk-overrides/summary-list';
 @import 'components/nhsuk-overrides/tag';
 

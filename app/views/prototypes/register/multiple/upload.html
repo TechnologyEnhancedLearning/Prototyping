@@ -12,7 +12,7 @@
 
 {% block outerContent %}
   {{ backLink({
-    "href": "/prototypes/register/multiple",
+    "href": "/register-delegates/multiple",
     "text": "Go back",
     "classes": "nhsuk-width-container nhsuk-u-margin-top-4"
   }) }}
@@ -44,7 +44,7 @@
           <p>12 of {{ uploadUsers | length }} users had errors, please update before submiting</p>
           <ul>
             <li>You can review and edit details on this page</li>
-            <li>or, check your spreadsheet and reupload it from the <a href='/prototypes/register/multiple'>previous page</a>.</li>
+            <li>or, check your spreadsheet and reupload it from the <a href='/register-delegates/multiple'>previous page</a>.</li>
           </ul>
         {% endset %}
 
@@ -57,7 +57,7 @@
           ]
         }) }}
         {# <p>
-          Review and edit details in-page, or check your spreadsheet, then <b><a href='/prototypes/register/multiple'>go back</a></b> and reupload it.
+          Review and edit details in-page, or check your spreadsheet, then <b><a href='/register-delegates/multiple'>go back</a></b> and reupload it.
         </p> #}
       </div>
 
@@ -354,7 +354,7 @@
         </div>
       </div>
       <p class="nhsuk-u-margin-top-9">
-        <a href="/prototypes/register/multiple/enrolment" class="nhsuk-button">
+        <a href="/register-delegates/multiple/enrolment" class="nhsuk-button">
           Continue
         </a>
       </p>
