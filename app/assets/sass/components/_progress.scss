@@ -1,0 +1,102 @@
+.progress {
+  margin-bottom: nhsuk-spacing(5);
+  padding: nhsuk-spacing(5);
+  border-radius: $global-radius;
+  border: 1px solid $nhsuk-border-color;
+  background-color: $color_nhsuk-white;
+
+  &--notification {
+    background-color: $tel-page-blue;
+  }
+
+  &--complete {
+    @include light-text;
+    background-color: $color_nhsuk-blue;
+  }
+
+  & > *:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  &__header {
+    @include mq($from: tablet) {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      flex-wrap: wrap
+    }
+  }
+
+  &__header-title {
+    @include adjust-heading(24); // this needs to match the heading size so if this used a h2 instead of a h3 this may need to be defined as a modifier
+  }
+
+  &__header-date {
+    @extend .nhsuk-u-font-size-16;
+  }
+
+  // &__content {}
+
+  // &__progress-summary {}
+
+  &__progress-bar {
+    width: 100%;
+    height: 8px;
+    margin-right: 6px;
+    margin-bottom: nhsuk-spacing(3);
+    border-radius: 6px;
+    border: 1px solid $color_nhsuk-green;
+  }
+
+  // &__action {}
+}
+
+.progress-summary {
+  max-width: 100%;
+
+  &__group {
+    display: block;
+
+    @include mq($from: tablet) {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      width: 100%;
+    }
+  }
+
+  &__title,
+  &__description {
+    @extend .nhsuk-u-font-size-16;
+
+    font-weight: 600;
+    color: $nhsuk-text-color;
+  }
+
+  &__description {
+
+    @include mq($until: tablet) {
+      margin-left: 0;
+    }
+  }
+}
+
+.progress-pips {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  flex-direction: row;
+
+  &__pip {
+    width: 8px;
+    height: 8px;
+    margin-right: 6px;
+    border-radius: 100%;
+    border: 1px solid $color_nhsuk-green;
+    background-color: $color_nhsuk-white;
+
+    &--complete {
+      background-color: $color_nhsuk-green;
+    }
+  }
+}

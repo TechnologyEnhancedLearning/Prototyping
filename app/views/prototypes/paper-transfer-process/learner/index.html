@@ -1,0 +1,293 @@
+{% extends 'layouts/layout.html' %}
+{% from 'components/task-list/macro.njk' import taskList %}
+
+{% block header %}
+  {% include "includes/dls-header-iv-therapy.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{# TODO - Update breadcrumb hrefs to point to file paths #}
+{{ breadcrumb({
+  items: [{
+    href: "/paper-transfer/learner/_dls-parts",
+    text: "Current activities"
+  },{
+    href: "#",
+    text: data['frameworkName']
+  }]
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-width-container">
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <div class="content-group">
+        <h1>Paper assessment information</h1>
+
+        <p>Before you start you will need to add a few details. You will need information from your paper assessment document and you will need to know the details of the healthcare professional who signed off your paper document.</p>
+        <p>This should take approximately 10 and 15 minutes to complete.</p>
+      </div>
+
+      <div class="content-group">
+        {% set paperAssessmentGuidance %}
+        Including:
+        <ul>
+          <li>the name of the healthcare professional who signed of your paper assessment</li>
+          <li>their registration number (PRN)</li>
+          <li>the date it was signed off</li>
+          <li>the organisation that signed it off</li>
+        </ul>
+        {% endset %}
+
+
+        {# Paper Assessment information -------------------------------------- #}
+        {{ taskList({
+          idPrefix: "paperAssessmentInformation",
+          classes: "nhsuk-u-margin-bottom-0",
+          items: [
+          {
+            title: {
+              text: "Have you completed a paper assessment?"
+            },
+            href: "/paper-transfer/learner/have-you-completed-a-paper-assessment",
+            status: {
+              tag: {
+                text: "Yes",
+                classes: "nhsuk-tag--green"
+              }
+            }
+          }
+          ]
+        }) }}
+
+        {# Paper Assessment information -------------------------------------- #}
+        {% if data['paperAssessmentInformationCompleted'] %}
+        {{ taskList({
+          idPrefix: "paperAssessmentInformation",
+          classes: "nhsuk-u-margin-bottom-0",
+          items: [
+          {
+            title: {
+              text: "Provide information from paper assessment"
+            },
+            href: "/paper-transfer/learner/paper-assessment-information",
+            status: {
+              tag: {
+                text: "Complete",
+                classes: "nhsuk-tag--green"
+              }
+            }
+          }
+          ]
+        }) }}
+        {% else %}
+        {{ taskList({
+          idPrefix: "before-you-start",
+          classes: "nhsuk-u-margin-bottom-0",
+          items: [
+          {
+            title: {
+              text: "Provide information from paper assessment"
+            },
+            href: "/paper-transfer/learner/paper-assessment-information",
+            status: {
+              tag: {
+                text: "Incomplete",
+                classes: "nhsuk-tag--blue"
+              }
+            }
+          }
+          ]
+        }) }}
+        {% endif %}
+
+        {# Record completed proficiencies from paper assessment -------------------------------------- #}
+        {% if data['proficienciesCompleted'] %}
+        {{ taskList({
+          idPrefix: "proficiencies",
+
+          classes: "nhsuk-u-margin-bottom-0", items: [
+          {
+            title: {
+              text: "Record completed proficiencies from paper assessment"
+            },
+            href: "/additional-proficiencies-answer",
+            status: {
+              tag: {
+                text: "Complete",
+                classes: "nhsuk-tag--green"
+              }
+            }
+          }
+          ]
+        }) }}
+        {% else %}
+        {{ taskList({
+          idPrefix: "proficiencies",
+          classes: "nhsuk-u-margin-bottom-0",
+          items: [
+          {
+            title: {
+              text: "Record completed proficiencies from paper assessment"
+            },
+            href: "/additional-proficiencies-answer",
+            status: {
+              tag: {
+                text: "Incomplete",
+                classes: "nhsuk-tag--blue"
+              }
+            }
+          }
+          ]
+        }) }}
+        {% endif %}
+
+        {# Upload a copy of your signed off paper assessment -------------------------------------- #}
+        {% if data['UploadCompleted'] %}
+        {{ taskList({
+          idPrefix: "before-you-start",
+          classes: "nhsuk-u-margin-bottom-0",
+          items: [
+          {
+            title: {
+              text: "Upload a copy of your signed off paper assessment"
+            },
+            href: "/paper-transfer/learner/upload",
+            status: {
+              tag: {
+                text: "Complete",
+                classes: "nhsuk-tag--green"
+              }
+            }
+          }
+          ]
+        }) }}
+        {% else %}
+        {{ taskList({
+          idPrefix: "before-you-start",
+          classes: "nhsuk-u-margin-bottom-0",
+          items: [
+          {
+            title: {
+              text: "Upload a copy of your signed off paper assessment"
+            },
+            href: "/paper-transfer/learner/upload",
+            status: {
+              tag: {
+                text: "Incomplete",
+                classes: "nhsuk-tag--blue"
+              }
+            }
+          }
+          ]
+        }) }}
+        {% endif %}
+
+        {# Review declarationt -------------------------------------- #}
+        {% if data['declarationtCompleted'] %}
+        {{ taskList({
+          idPrefix: "before-you-start",
+          classes: "nhsuk-u-margin-bottom-0",
+          items: [
+          {
+            title: {
+              text: "Review and agree decleration"
+            },
+            href: "/paper-transfer/learner/sign-decleration",
+            status: {
+              tag: {
+                text: "Complete",
+                classes: "nhsuk-tag--green"
+              }
+            }
+          }
+          ]
+        }) }}
+        {% elif data['paperAssessmentInformationCompleted'] and data['proficienciesCompleted'] and data['UploadCompleted'] %}
+        {{ taskList({
+          idPrefix: "before-you-start",
+          classes: "nhsuk-u-margin-bottom-0",
+          items: [
+          {
+            title: {
+              text: "Review and agree decleration"
+            },
+            href: "/paper-transfer/learner/sign-decleration",
+            status: {
+              tag: {
+                text: "Incomplete",
+                classes: "nhsuk-tag--blue"
+              }
+            }
+          }
+          ]
+        }) }}
+        {% else %}
+        {{ taskList({
+          idPrefix: "before-you-start",
+          classes: "nhsuk-u-margin-bottom-0",
+          items: [
+          {
+            title: {
+              text: "Review and agree decleration"
+            },
+            status: {
+              text: "Cannot start yet",
+              classes: "nhsuk-task-list__status--cannot-start-yet"
+            }
+          }
+          ]
+        }) }}
+        {% endif %}
+
+        {# Review summary and submit -------------------------------------- #}
+        {% if data['paperAssessmentInformationCompleted'] and data['proficienciesCompleted'] and data['UploadCompleted'] and data['declarationtCompleted'] %}
+        {{ taskList({
+          idPrefix: "before-you-start",
+          classes: "nhsuk-u-margin-bottom-0",
+          items: [
+          {
+            title: {
+              text: "Review information is correct and submit"
+            },
+            href: "/paper-transfer/learner/review-and-submit",
+            status: {
+              tag: {
+                text: "Incomplete",
+                classes: "nhsuk-tag--blue"
+              }
+            }
+          }
+          ]
+        }) }}
+        {% else %}
+        {{ taskList({
+          idPrefix: "before-you-start",
+          classes: "nhsuk-u-margin-bottom-0",
+          items: [
+          {
+            title: {
+              text: "Review information is correct and submit"
+            },
+            status: {
+              text: "Cannot start yet",
+              classes: "nhsuk-task-list__status--cannot-start-yet"
+            }
+          }
+          ]
+        }) }}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+
+

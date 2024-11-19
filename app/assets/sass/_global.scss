@@ -1,5 +1,59 @@
+.nhsuk-width-container {
+  max-width: 1144px;
+
+  @media only screen and (max-width: 1208px) and (min-width: 960px) {
+    margin-left: 32px;
+    margin-right: 32px;
+  }
+
+  &--full-width {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+.nhsuk-header__navigation {
+  max-width: initial;
+}
+
 .content-group {
   @include reading-width();
 
   margin-bottom: nhsuk-spacing(6);
+
+  // Overrides the standard p bottom margin before a list to show a closer typographic relationship to the previous content
+  p + ul,
+  p + ol {
+    margin-top: -#{nhsuk-spacing(3)};
+  }
+
+  // .nhsuk-button + .nhsuk-button {
+  //   margin-left: nhsuk-spacing(4);
+  // }
+}
+
+img {
+  max-width: 100%;
+  // margin-bottom: nhsuk-spacing(4);
+}
+
+.proto-figure {
+  margin: 0;
+  margin-bottom: nhsuk-spacing(4);
+  padding: 0;
+
+  &__figcaption {
+    @extend %nhsuk-body-s;
+
+    margin: 0;
+    color: $nhsuk-secondary-text-color;
+  }
+
+  * + * {
+    margin: 0;
+  }
+}
+
+.proto-checkboxes__label {
+  padding: 4px 12px 4px;
 }

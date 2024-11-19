@@ -1,0 +1,121 @@
+{%- from 'button/macro.njk' import button %}
+{%- from 'details/macro.njk' import details %}
+
+{# TODO - This should be rebuilt so it's content editable #}
+
+{% macro progressCard(state) %}
+  {% if (state == 'in progress') %}
+    <div class="progress">
+      <div class="progress__header">
+        <h3 class="progress__title">Learners progress</h3>
+        <p class="progress__header-date"><b>Started on:</b> 07/10/2024</p>
+      </div>
+
+      <p class="progress__content">Looks like you've just started your assessment, you may want to check if you're required to add any additional proficiencies to your assessment.</p>
+
+      <dl class="progress__progress-summary progress-summary">
+        <div class="progress-summary__group">
+          <dt class="progress-summary__title">72 Proficiencies:</dt>
+          <dd class="progress-summary__description">0 Self assessed</dd>
+          <dd class="progress-summary__description">0 Confirmed</dd>
+        </div>
+      </dl>
+
+      <div class="progress__progress-bar"></div>
+
+      {{ details({
+        text: "Understanding the sign-off process",
+        HTML: "
+        <p>An NHS number is a 10 digit number, like 485 777 3456.</p>
+          <p>You can find your NHS number by logging in to a GP online service or on any document the NHS has sent you, such as your:</p>
+          <ul>
+              <li>prescriptions</li>
+              <li>test results</li>
+              <li>hospital referral letters</li>
+              <li>appointment letters</li>
+          </ul>
+          <p>Ask your GP surgery for help if you can't find your NHS number.</p>
+        "
+      }) }}
+
+      {{ button({
+        text: "Manage confirmation requests",
+        classes: "progress__action"
+      }) }}
+    </div>
+
+  {% elif (state == 'notification') %}
+    <div class="progress progress--notification">
+      <div class="progress__header">
+        <h3 class="progress__title">Paper to digital transfer request</h3>
+        <p class="progress__header-date"><b>Sent on:</b> 07/10/2024</p>
+      </div>
+
+      <p class="progress__content">James King has requested to transfer their paper certificate to the dls as a digital record of their achievement.</p>
+
+      {{ details({
+        text: "What is a paper to digital sign-off request?",
+        HTML: "
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis nostrum eius, soluta voluptates vero unde! Quos voluptatibus quis illo alias vel ducimus dignissimos at temporibus cumque molestias aut, omnis earum?</p>
+        "
+      }) }}
+
+      {{ button({
+        text: "Review request",
+        href: "/paper-transfer/admin/before-you-start",
+        classes: "progress__action"
+      }) }}
+    </div>
+
+  {% elif (state == 'notification-transfer-complete') %}
+    <div class="progress progress--notification">
+      <div class="progress__header">
+        <h3 class="progress__title">Paper to digital transfer</h3>
+        <p class="progress__header-date"><b>Accepted on:</b> 07/10/2024</p>
+      </div>
+
+      <p class="progress__content">Request to transfer paper assessment to dls as a digital record of their achievement accepted.</p>
+
+      <h4>What happens next?</h4>
+      <ul>
+        <li>Any <a href="#">additional proficiencies</a> required for their role will need to be added</li>
+        <li>These proficiencies will need to be assessed</li>
+        <li>After all proficiencies have been signed off the learner will be able to seek final assessment sign off</li>
+        <li>If the learner doesn't need to include an additional proficiencies they can seek final sign off strait away</li>
+      </ul>
+
+
+      {{ details({
+        text: "What is a paper to digital sign-off request?",
+        HTML: "
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis nostrum eius, soluta voluptates vero unde! Quos voluptatibus quis illo alias vel ducimus dignissimos at temporibus cumque molestias aut, omnis earum?</p>
+        "
+      }) }}
+
+      {# {{ button({
+        text: "Review request",
+        href: "/paper-transfer/admin/before-you-start",
+        classes: "progress__action"
+      }) }} #}
+    </div>
+
+  {% elif (state ==='complete') %}
+    {# TODO - replace with learner name #}
+    {# TODO - replace content with some defaults and options to edit content #}
+    <div class="progress progress--complete">
+      <div class="progress__header">
+        <h3 class="progress__header-title">Assessment complete!</h3>
+        <p class="progress__header-date"><b>Signed off on:</b> 07/10/2024</p>
+      </div>
+
+      <p class="progress__content">James King has completed their IV therapy passport</p>
+
+      {{ button({
+        text: "View certificate",
+        href: "#",
+        classes: "progress__action"
+      }) }}
+    </div>
+  {% endif %}
+
+{% endmacro %}

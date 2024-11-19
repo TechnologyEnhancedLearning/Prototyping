@@ -1,0 +1,187 @@
+{% extends 'layouts/layout.html' %}
+
+{% block header %}
+  {% include "includes/dls-header-learner.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-width-container">
+  <link rel="stylesheet" href="https://www.dls.nhs.uk/v2/css/learningPortal/current.css">
+
+  <div class="nhsuk-grid-row" id="js-styling-hidden-area-while-loading">
+    <div class="nhsuk-grid-column-full">
+      <h1 id="page-heading">My Current Activities</h1>
+      <h2 class="page-subheading word-break">Need Help? For IT skills contact: 123456 Open 09:00 to 17:00. IV Therapy Passport queries contact: ivpassport.your.org@nhs.net</h2>
+
+      <div class="search-sort-container">
+        <div class="search-container">
+          <form>
+            <input type="hidden" name="sortBy" value="LastAccessed">
+            <input type="hidden" name="sortDirection" value="Descending">
+            <input type="hidden" name="itemsPerPage" value="10">
+            <div class="search-box-container" id="search">
+              <label class="nhsuk-u-visually-hidden" for="search-field">
+                Search
+              </label>
+
+              <input class="search-box nhsuk-input" id="search-field" name="searchString" type="search" placeholder="Search">
+              <button class="nhsuk-button search-submit" type="submit">
+                <svg class="nhsuk-icon nhsuk-icon__search">
+                  <path d="M19.71 18.29l-4.11-4.1a7 7 0 1 0-1.41 1.41l4.1 4.11a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42zM5 10a5 5 0 1 1 5 5 5 5 0 0 1-5-5z"></path>
+                </svg>
+                <span class="nhsuk-u-visually-hidden">Search</span>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div class="sort-container">
+          <form>
+            <input type="hidden" name="searchString">
+            <input type="hidden" name="itemsPerPage" value="10">
+            <label class="nhsuk-label--s nhsuk-u-margin-bottom-1">Sort by</label>
+            <div class="sort-box-container">
+              <select class="nhsuk-select sort-by-dropdown" id="select-sort-by" name="SortBy">
+                <option value="Name">Activity Name</option>
+                <option value="StartedDate">Enrolled Date</option>
+                <option value="LastAccessed" selected>Last Accessed Date</option>
+                <option value="CompleteByDate">Complete By Date</option>
+                <option value="HasDiagnostic,DiagnosticScore">Diagnostic Score</option>
+                <option value="IsAssessed,Passes">Passed Sections</option>
+              </select>
+
+              <div class="sort-order-button-container">
+                <select class="nhsuk-select sort-direction-dropdown" id="select-sort-direction" name="SortDirection">
+                  <option value="Ascending">Ascending</option>
+                  <option value="Descending" selected>Descending</option>
+                </select>
+
+                <button class="nhsuk-button sort-submit" type="submit">
+                  Sort
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <hr class="nhsuk-u-margin-top-3 nhsuk-u-margin-bottom-4">
+      <p class="nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0">
+        <span class="results-count">2 matching results&nbsp;</span>
+      </p>
+
+      <div id="searchable-elements">
+        <form action="/choose-framework" method="post" class="form">
+          <!-- Activity - IV Therapy -->
+          <div class="searchable-element nhsuk-panel" id="6-sa-card">
+            <details class="nhsuk-details nhsuk-expander nhsuk-u-margin-bottom-0">
+              <summary class="nhsuk-details__summary nhsuk-u-padding-top-0 nhsuk-u-padding-left-0">
+                <span class="nhsuk-details__summary-text searchable-element-title" id="6-name-sa">IV Therapy Passport</span>
+              </summary>
+              <div class="nhsuk-details__text nhsuk-u-padding-left-0">
+                <dl class="nhsuk-summary-list">
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">Enrolled at</dt>
+                    <dd class="nhsuk-summary-list__value">##NHSE Demo Centre##</dd>
+                  </div>
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">Enrolled</dt>
+                    <dd class="nhsuk-summary-list__value">30/09/2024</dd>
+                  </div>
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">Last access</dt>
+                    <dd class="nhsuk-summary-list__value"></dd>
+                  </div>
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">Complete by</dt>
+                    <dd class="nhsuk-summary-list__value">No complete by date set</dd>
+                  </div>
+                </dl>
+              </div>
+            </details>
+
+            <div class="nhsuk-grid-row">
+              <div class="nhsuk-grid-column-full">
+                <!-- TODO - add frameworkPostfix to name to launch button-->
+
+                {{ button({
+                  text: "Launch self-assessment",
+                  name: "frameworkName",
+                  value: "IV Therapy",
+                  classes:"nhsuk-u-margin-right-2 nhsuk-u-margin-bottom-2"
+                }) }}
+                <!-- <a class="nhsuk-button nhsuk-u-margin-right-2 nhsuk-u-margin-bottom-2" href="/paper-transfer/learner/_dls-parts/iv-therapy">Launch self-assessment</a> -->
+                <a class="nhsuk-button delete-button nhsuk-u-margin-bottom-2" href="#">Remove</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Activity - Step 1 Proficiencies -->
+          <div class="searchable-element nhsuk-panel" id="7-sa-card">
+            <details class="nhsuk-details nhsuk-expander nhsuk-u-margin-bottom-0">
+              <summary class="nhsuk-details__summary nhsuk-u-padding-top-0 nhsuk-u-padding-left-0">
+                <span class="nhsuk-details__summary-text searchable-element-title" id="7-name-sa">Step 1 Proficiencies - National Proficiency Framework for Registered Nurses in Adult Critical Care</span>
+              </summary>
+              <div class="nhsuk-details__text nhsuk-u-padding-left-0">
+                <div class="nhsuk-u-padding-left-3">
+                  <div class="nhsuk-grid-row">
+                    <div class="nhsuk-grid-column-three-quarters tags">
+                      <div class="card-filter-tag">
+                        <strong class="nhsuk-tag nhsuk-tag--blue">Self assessment</strong>
+                      </div>
+                      <div class="card-filter-tag">
+                        <strong class="nhsuk-tag nhsuk-tag--grey">Competency assessment</strong>
+                      </div>
+                    </div>
+                  </div>
+                  <dl class="nhsuk-summary-list">
+                    <div class="nhsuk-summary-list__row">
+                      <dt class="nhsuk-summary-list__key">Enrolled at</dt>
+                      <dd class="nhsuk-summary-list__value">##NHSE Demo Centre##</dd>
+                    </div>
+                    <div class="nhsuk-summary-list__row">
+                      <dt class="nhsuk-summary-list__key">Enrolled</dt>
+                      <dd class="nhsuk-summary-list__value">30/09/2024</dd>
+                    </div>
+                    <div class="nhsuk-summary-list__row">
+                      <dt class="nhsuk-summary-list__key">Last access</dt>
+                      <dd class="nhsuk-summary-list__value"></dd>
+                    </div>
+                    <div class="nhsuk-summary-list__row">
+                      <dt class="nhsuk-summary-list__key">Complete by</dt>
+                      <dd class="nhsuk-summary-list__value">No complete by date set</dd>
+                    </div>
+                  </dl>
+                </div>
+              </div>
+            </details>
+
+            <div class="nhsuk-grid-row">
+              <div class="nhsuk-grid-column-full">
+
+                <!-- TODO - add frameworkPostfix to name to launch button-->
+                {{ button({
+                  text: "Launch self-assessment",
+                  name: "frameworkName",
+                  value: "Steps 1",
+                  classes:"nhsuk-u-margin-right-2 nhsuk-u-margin-bottom-2"
+                }) }}
+                <!-- <a class="nhsuk-button nhsuk-u-margin-right-2 nhsuk-u-margin-bottom-2" href="#">Launch self assessment</a> -->
+                <a class="nhsuk-button delete-button nhsuk-u-margin-bottom-2" href="#">Remove</a>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}

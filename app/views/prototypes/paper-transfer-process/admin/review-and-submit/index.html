@@ -1,0 +1,130 @@
+{% extends 'layouts/layout.html' %}
+
+{% block header %}
+  {% include "includes/dls-header-supervisor.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full">
+        {{ backLink({
+          href: "/paper-transfer/admin/before-you-start",
+          text: "Go back"
+        }) }}
+
+        <h1>Check information is correct and send for review</h1>
+
+        <div class="content-group">
+          <p>Please find below a summary of Allan Kings’s paper assessment information for their IV Therapy passport.</p>
+          <p>Review this information on this page and check it is correct to the best of your knowledge:</p>
+        </div>
+
+        <h2>Summary</h2>
+        <dl class="nhsuk-summary-list nhsuk-summary-list--no-border proto-summary-list--fixed-width-titles nhsuk-">
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">Name of educator or supervisor</dt>
+            <dd class="nhsuk-summary-list__value">{{ data['educatorName'] or 'Jane Jones' }}</dd>
+
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">Educators or supervisors registration number (PRN)</dt>
+            <dd class="nhsuk-summary-list__value">{{ data['educatorPRN'] or 'xxx xxx' }}</dd>
+
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">Organisation</dt>
+            <dd class="nhsuk-summary-list__value">{{ data['organisationSignedOff'] or 'Shrewsbury and Telford Hospital NHS Trust' }}</dd>
+
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">Signed off date</dt>
+            <dd class="nhsuk-summary-list__value">{{ data['dateSignedOff-day'] or '11' }}-{{ data['dateSignedOff-month'] or '10' }}-{{ data['dateSignedOff-year'] or '2024' }}</dd>
+
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">Additional proficiencies</dt>
+            <dd class="nhsuk-summary-list__value">
+              <ul>
+              {% if data['stepsAdditionalProficiencies'] %}
+                {% for item in data['stepsAdditionalProficiencies'] %}
+                  <li>{{ item }}</li>
+                {% endfor %}
+              {% elif data['ivTherapyAdditionalProficiencies'] %}
+                {% for item in data['ivTherapyAdditionalProficiencies'] %}
+                  <li>{{ item }}</li>
+                {% endfor %}
+              {% else %}
+                <li>Methods of preparation: 14a. Reconstitute IV medication from powder</li>
+                <li>Methods of administration: 23a. Administer a timed bolus at correct rate</li>
+                <li>Peripheral venous access devices (PVAD): midline catheter</li>
+                <li>Central Venous Access Devices (CVAD): central venous catheter (CVC) short term non skin tunnelled</li>
+                <li>Central Venous Access Devices (CVAD): central venous catheter (CVC) long term skin tunnelled</li>
+              {% endif %}
+              </ul>
+            </dd>
+
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">Upload signed off paper document</dt>
+            <dd class="nhsuk-summary-list__value">
+              <img src="{{ data['declarationDocUpload'] }}" alt="">
+              <div class="nhsuk-u-margin-bottom-2"><img src="/images/paper-process/paper-mockup.png" alt=""></div>
+              <div><a href="{{ data['declarationDocUpload'] }}">{{ data['declarationDocUpload'] }} (open's in a new tab)</a></div>
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">Declaration</dt>
+            <dd class="nhsuk-summary-list__value">Signed <span id="current-date"></span></dd>
+          </div>
+        </dl>
+
+        {# CONTENT - Should we have some pre-amble saying who it's going to be sent to and what thyey'll do? #}
+
+        <form action="/paper-transfer/admin/sign-decleration" method="post" class="form">
+          <div class="content-group">
+            {{ checkboxes({
+              idPrefix: "example",
+              name: "informationReviewed",
+              items: [
+                {
+                  value: "yes",
+                  text: "I have reviewed the information above "
+                }
+              ]
+            }) }}
+          </div>
+
+          <div class="content-group">
+            {{ button({
+              text: "Continue",
+              name: "declarationtChecked",
+              value: "checked"
+            }) }}
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block pageScripts %}
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      const formattedDate = new Date().toLocaleDateString('en-US', options);
+      document.getElementById('current-date').textContent = formattedDate;
+    });
+  </script>
+{% endblock %}
+
+
+

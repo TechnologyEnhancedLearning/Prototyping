@@ -1,10 +1,6 @@
 // Import NHS.UK frontend library
 @import 'nhsuk-frontend/packages/nhsuk';
 
-// Components that are not in the NHS.UK frontend library
-@import 'components/list-border';
-@import 'components/related-nav';
-
 ///////////////////////////////////////////
 // Prototype custom css
 ///////////////////////////////////////////
@@ -12,19 +8,32 @@
 @import 'variables';
 @import 'functions';
 @import 'mixins';
-@import 'global';
+@import 'global';  // Global general styles and overrides
 
-@import 'components/utilities';
-@import 'components/picture';
-@import 'components/featured-media';
-@import 'components/search';
-@import 'components/in-page-nav';
+// Custom prototyping components
 @import 'components/certificate';
+@import 'components/featured-media';
+@import 'components/form-elements';
 @import 'components/learning-log';
+@import 'components/picture';
+@import 'components/progress';
 @import 'components/quick-filters';
-@import 'components/user-entry';
+@import 'components/search';
 @import 'components/task-list';
+@import 'components/user-entry';
+@import 'components/utilities';
+
+// Half baked prototyping components
+@import 'components/in-page-nav';
+@import 'components/related-nav';
+@import 'components/search';
+
+// NHSUK front-end overrides
+@import 'components/nhsuk-overrides/card';
+@import 'components/nhsuk-overrides/expander';
+@import 'components/nhsuk-overrides/list-border';
 @import 'components/nhsuk-overrides/summary-list';
+@import 'components/nhsuk-overrides/task-list';
 @import 'components/nhsuk-overrides/tag';
 
 ///////////////////////////////////////////

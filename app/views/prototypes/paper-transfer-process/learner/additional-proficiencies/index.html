@@ -1,0 +1,75 @@
+{% extends 'layouts/layout.html' %}
+
+{% block header %}
+  {% include "includes/dls-header-iv-therapy.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full">
+        {{ backLink({
+          href: "/paper-transfer/learner/",
+          text: "Go back"
+        }) }}
+
+        <h1>Record additional proficiencies</h1>
+
+        <div class="content-group">
+          {{ details({
+            text: "What are additional proficiencies? ",
+            HTML: "
+              <p>Additional proficiencies refer to specific skills or competencies that are not part of the standard requirements for this assessment but may be added based on your role, specialisation or the needs of your workplace.</p>
+              <p>You may know these as optional proficiencies, chapters or domains, for example.</p>
+            "
+          }) }}
+        </div>
+
+        <form action="/additional-proficiencies-answer" method="post" class="form">
+          <div class="content-group">
+            <p>If you need to add any new additional proficiencies as part of a change to your role you will need to add these after your paper assessment is accepted.</p>
+            {{ radios({
+              idPrefix: "addAdditionalProficiencies",
+              name: "addAdditionalProficiencies",
+              fieldset: {
+                legend: {
+                  text: "Do you need to record additional proficiencies from your paper assessment?",
+                  classes: "nhsuk-fieldset__legend--m"
+                }
+              },
+              items: [
+                {
+                  value: "yes",
+                  text: "Yes"
+                },
+                {
+                  value: "no",
+                  text: "No"
+                }
+              ]
+            }) }}
+
+            {# TODO - capture No if sleceted #}
+            {# TODO - No needs to change state in task to a completion #}
+          </div>
+
+          <div class="content-group">
+            {{ button({
+              text: "Continue"
+            }) }}
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+
+

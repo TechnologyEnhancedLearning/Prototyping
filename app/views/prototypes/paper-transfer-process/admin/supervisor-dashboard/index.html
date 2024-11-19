@@ -1,0 +1,81 @@
+{% extends 'layouts/layout.html' %}
+
+{% block header %}
+{% include "includes/dls-header-supervisor.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ breadcrumb({
+  items: [
+    {
+      href: "/paper-transfer/admin",
+      text: "Home"
+    }
+  ]
+}) }}
+{% endblock %}
+
+{% block content %}
+{# TODO:
+  Improvment - two colums at dsktop
+  Improvment - re-style todo list to be a contained card and have it define function first the description
+  Improvment - My staff is a single link. Understand if this si meant to be more and re-design based on outcome
+  Improvment - Remove contact info or move into expander
+#}
+
+<link rel="stylesheet" href="https://www.dls.nhs.uk/v2/css/frameworks/frameworksShared.css?v=678_XEjDIwvLH2W8Elbf7ULn6xKeUfR-QwtRL4vz2pM">
+
+ <div class="nhsuk-width-container">
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <h1>
+        Supervisor Dashboard
+      </h1>
+      <h2 class="page-subheading word-break">
+        Need Help? For IT skills contact: 123456 Open 09:00 to 17:00. IV Therapy Passport queries contact: ivpassport.your.org@nhs.net
+      </h2>
+      <ul class="nhsuk-grid-row nhsuk-card-group">
+        <li class="nhsuk-grid-column-full nhsuk-card-group__item">
+        <div class="nhsuk-card">
+          <div class="nhsuk-card__content">
+          <p class="nhsuk-heading-xl nhsuk-u-font-size-32 nhsuk-u-margin-bottom-3">
+            3 Staff
+          </p>
+          <ul class="nhsuk-contents-list__list">
+            <li class="nhsuk-contents-list__item">
+            <a href="/paper-transfer/admin/my-staff" class="nhsuk-contents-list__link nhsuk-link--no-visited-state">
+              View My Staff List
+            </a>
+            </li>
+          </ul>
+          </div>
+        </div>
+        </li>
+      </ul>
+      <h2>
+        Your to do list
+      </h2>
+      <ul class="nhsuk-contents-list__list">
+        <li class="nhsuk-contents-list__item">
+        <a href="/paper-transfer/admin/before-you-start" class="nhsuk-link--no-visited-state">
+          Review and sign-off James King's Paper to digital transfer for their IV Therapy passport.
+        </a>
+        . Requested 06/10/2024
+        </li>
+        <li class="nhsuk-contents-list__item">
+        <a href="#" class="nhsuk-link--no-visited-state">
+          Confirm self-assessment results for Bob Ross's Step 1 Proficiencies - National Proficiency Framework for Registered Nurses in Adult Critical Care
+        </a>
+        . Requested 24/09/2024
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}

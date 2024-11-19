@@ -1,0 +1,289 @@
+{%- from "data/frameworks/iv-therapy-proficiencies.njk" import ivTherapyProficiencies %}
+{%- from "summary-list/macro.njk" import summaryList %}
+{% from 'components/task-list/macro.njk' import taskList %}
+{% from 'components/progress-card.njk' import progressCard %}
+
+{# TODO - add new framework design excluding the details of each item #}
+
+{#
+This is likely going to be a for in loop
+I think I can push all the page info to session data using roots and loop over it
+This loop should first consider the task list component and then the extended exapnder component
+#}
+
+
+{% extends 'layouts/layout.html' %}
+
+{% block header %}
+{% include "includes/dls-header-supervisor.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ breadcrumb({
+    items: [
+      {
+        href: "/paper-transfer/admin",
+        text: "Home"
+      },
+      {
+        href: "/paper-transfer/admin/supervisor-dashboard",
+        text: "Supervisor"
+      },
+      {
+        href: "/paper-transfer/admin/my-staff",
+        text: "My staff"
+      },
+      {
+        href: "/paper-transfer/admin/staff-member-dashboard/james",
+        text: "James King"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-width-container">
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+    <!-- <main class="nhsuk-main-wrapper" id="maincontent"> -->
+      <h1>
+        James's IV Therapy passport
+      </h1>
+    <!-- </main> -->
+
+    {# TODO - This wants to be a component #}
+    <div class="proto-in-page-nav">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+          <ul class="proto-in-page-nav__list">
+            <li class="proto-in-page-nav__item proto-in-page-nav__item--active">
+              Proficiencies
+            </li>
+            <li class="proto-in-page-nav__item">
+              <a class="proto-in-page-nav__link" href="#">Add additional proficiencies</a>
+            </li>
+            <li class="proto-in-page-nav__item">
+              <a class="proto-in-page-nav__link" href="#">Manage confirmation requests</a>
+            </li>
+            <li class="proto-in-page-nav__item proto-in-page-nav__item--more-options">
+              <a class="proto-in-page-nav__link" href="#">More options</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <section>
+      <h2>Proficiencies</h2>
+
+      {% if data['approval'] == 'approved' %}
+        {# {{ progressCard(state="complete") }} #}
+        {{ progressCard(state="notification-transfer-complete") }}
+      {% elif data['approval'] == 'rejected' %}
+        {{ progressCard(state="in progress") }}
+      {% else %}
+        {{ progressCard(state="notification") }}
+      {% endif %}
+
+      <div class="in-page-search">
+        <div class="nhsuk-grid-row">
+          <div class="nhsuk-grid-column-full">
+            <div class="nhsuk-grid-row">
+              <div class="nhsuk-grid-column-two-thirds">
+                {% include "includes/search.html" %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {# TODO - Use a more general name space for these filters #}
+      <div class="learning-log">
+        <div class="learning-log__filters nhsuk-u-margin-bottom-5">
+
+          <!-- learning-log__activity-filter -->
+          <!-- quick-filters -->
+          <nav class="learning-log__activity-filter quick-filters">
+            <h3>Filter</h3>
+            <ul class="quick-filters__list">
+              <span class="quick-filters__list-heading">Show</span>
+
+              <li class="quick-filters__list-item">
+                <button class="quick-filters__button quick-filters__button--active">
+                  <span>All</span>
+                </button>
+              </li>
+              <li class="quick-filters__list-item">
+                <button class="quick-filters__button">
+                  <span>Incomplete</span>
+                </button>
+              </li>
+              <li class="quick-filters__list-item">
+                <button class="quick-filters__button">
+                  <span>Sent for review</span>
+                </button>
+              </li>
+              <li class="quick-filters__list-item">
+                <button class="quick-filters__button">
+                  <span>Confirmed</span>
+                </button>
+              </li>
+            </ul>
+          </nav>
+
+          <!-- learning-log__order-filter -->
+          <nav class="learning-log__order-filter">
+            <label class="nhsuk-label learning-log__order-filter-label" for="order-learning-log">Order:</label>
+            <select class="nhsuk-select learning-log__order-filter-select" name="order-learning-log" id="order-learning-log">
+              <option value="Newest first">Newest first</option>
+              <option value="Newest first">Newest last</option>
+            </select>
+          </nav>
+        </div>
+      </div>
+
+      {# proficiencyGroup: {
+        title: "Prerequisites to supervised clinical practice",
+        numberOfProficiencies: "4",
+        proficienciesConfirmed: "4",
+        proficiencies: [
+          {
+            proficiency: "Met organisational requisites to administer non intravenous medication",
+            assessment: {
+              selfAssessmentStatus: "Yes (fully meeting role expectations)",
+              confirmationStatus: "Confirmed"
+            },
+            actions: "Review"
+          },
+          {
+            proficiency: "Complete equipment training and assessment including volumetric and syringe infusion pump training",
+            assessment: {
+              selfAssessmentStatus: "Yes (fully meeting role expectations)",
+              confirmationStatus: "Confirmed"
+            },
+            actions: "Review"
+          },
+          {
+            proficiency: "Complete infection prevention and control, and aseptic technique training and assessment",
+            assessment: {
+              selfAssessmentStatus: "Yes (fully meeting role expectations)",
+              confirmationStatus: "Confirmed"
+            },
+            actions: "Review"
+          },
+          {
+            proficiency: "Read and understand organisational policy and guidance on administration of intravenous medication",
+            assessment: {
+              selfAssessmentStatus: "Yes (fully meeting role expectations)",
+              confirmationStatus: "Confirmed"
+            },
+            actions: "Review"
+          }
+        ]
+      } #}
+
+
+      {% for proficiencies in ivTherapyProficiencies %}
+
+        <details class="nhsuk-details nhsuk-expander proto-summary-expander">
+          <summary class="nhsuk-details__summary">
+            <div class="proto-details__summary-text-wrapper">
+              <span class="nhsuk-details__summary-text">
+                <div class="nhsuk-details__summary-text-content">{{ proficiencies['proficiencyGroup']['title']}}</div>
+              </span>
+
+              {% if data['approval'] == 'approved' %}
+                <div class="nhsuk-task-list__status nhsuk-task-list__status--completed">
+                  Complete
+                </div>
+              {% else %}
+                {{ tag({
+                  text: "Not started",
+                  classes: "nhsuk-tag--blue proto-details__summary-text-tag"
+                })}}
+              {% endif %}
+
+            </div>
+
+            <div class="proto-details__summary-text-more-info">
+
+              <!-- <div class="progress"> -->
+                <dl class="progress-summary nhsuk-u-margin-top-2">
+                  <div class="progress-summary__group">
+                    <dt class="progress-summary__title">Contains {{proficiencies['proficiencyGroup']['proficiencies'].length}} proficiencies:</dt>
+                    <dd class="progress-summary__description">{% if data['approval'] == 'approved' %}{{proficiencies['proficiencyGroup']['proficiencies'].length}}{% else %}0{% endif %} Self assessed</dd>
+                    <dd class="progress-summary__description">{% if data['approval'] == 'approved' %}{{proficiencies['proficiencyGroup']['proficiencies'].length}}{% else %}0{% endif %} Confirmed</dd>
+                  </div>
+                </dl>
+
+                <div class="progress-pips">
+                {% for i in range(0, proficiencies['proficiencyGroup']['proficiencies'].length) -%}
+                  <div class="progress-pips__pip{% if data['approval'] == 'approved' %} progress-pips__pip--complete{% endif %}"></div>
+                {%- endfor %}
+                </div>
+
+              <!-- </div> -->
+            </div>
+
+          </summary>
+          <div class="nhsuk-details__text">
+              {% set taskListId = tasks['proficiencyTilte'] | lower | replace(" ", "-") %}
+
+              {# {% for tasks in proficiencies['proficiencyGroup']['proficiencies'] %}
+                {# TODO - make task list ites a variable that can be used in a single instance of task list #}
+              {# {% endfor %} #}
+
+
+              {% for tasks in proficiencies['proficiencyGroup']['proficiencies'] %}
+                {% if data['approval'] == 'approved' %}
+                  {{ taskList({
+                    idPrefix: taskListId,
+                    classes: "nhsuk-u-margin-bottom-0",
+                    items: [
+                      {
+                        title: {
+                          text: tasks['proficiencyTilte']
+                        },
+                        href: "#",
+                        status: {
+                          text: "Confirmed",
+                          classes: "nhsuk-task-list__status--completed"
+                        }
+                      }
+                    ]
+                  }) }}
+                {% else %}
+                  {{ taskList({
+                    idPrefix: taskListId,
+                    classes: "nhsuk-u-margin-bottom-0",
+                    items: [
+                      {
+                        title: {
+                          text: tasks['proficiencyTilte']
+                        },
+                        href: "#",
+                        status: {
+                          tag: {
+                            text: "Incomplete",
+                            classes: "nhsuk-tag--blue"
+                          }
+                        }
+                      }
+                    ]
+                  }) }}
+                {% endif %}
+              {% endfor %}
+          </div>
+        </details>
+      {% endfor %}
+
+    </section>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}

@@ -5,17 +5,13 @@ const path = require('path');
 
 // Add your routes here - above the module.exports line
 const globalRoutes = require(`./routes/global.js`);
+const shorthandUrlRoutes = require(`./routes/shorthand-urls.js`);
 const registrationRoutes = require(`./routes/registration.js`);
-const shorthandUrls = require(`./routes/shorthand-urls.js`);
-
-// function logRequest(req, res, next) {
-//   console.log('log something');
-//   next();
-// }
-// router.use(logRequest);
+const paperProcessRoutes = require(`./routes/paper-process.js`);
 
 router.use('/', globalRoutes);
+router.use('/', shorthandUrlRoutes);
 router.use('/', registrationRoutes);
-router.use('/', shorthandUrls);
+router.use('/', paperProcessRoutes);
 
 module.exports = router;

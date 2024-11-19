@@ -1,0 +1,45 @@
+{% extends 'layouts/layout.html' %}
+
+{% block header %}
+{% include "includes/dls-header-supervisor.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full">
+        {{ backLink({
+          href: "/#",
+          text: "Go back"
+        }) }}
+        <!-- paper-transfer/admin/supervisor-dashboard -->
+
+        <div class="content-group">
+          <h1>Paper assessment transfer</h1>
+
+          <h2>Before you start</h2>
+          <p>You should:</p>
+          <ul>
+            <li>Review the paper assessment with the learner</li>
+            <li>Identify any additional proficiencies required by the role</li>
+            <li>And, understand their strength, weaknesses and identify any actions or areas for improvement</li>
+          </ul>
+        </div>
+
+        <div class="content-group">
+          {{ button({
+            text: "Continue",
+            href: "/paper-transfer/admin/review-and-submit"
+          }) }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}

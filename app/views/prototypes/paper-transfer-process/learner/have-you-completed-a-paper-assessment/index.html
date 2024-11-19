@@ -1,0 +1,79 @@
+{% extends 'layouts/layout.html' %}
+
+{% block header %}
+  {% include "includes/dls-header-iv-therapy.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full">
+        {{ backLink({
+          href: "/paper-transfer/learner/",
+          text: "Go back"
+        }) }}
+
+        <div class="content-group">
+          <h1>Paper assessment</h1>
+
+          <p>If you have already completed a paper assessment for the IV Therapy Passport, you may be eligible for immediate approval for a digital assessment.</p>
+          <p>This will need approval from your supervisors, assessor and educator manager. If you have not set up any supervisors you’ll be asked to do this next.</p>
+        </div>
+
+        {# TODO - Discuss this content to understadn if we need to add approval criteria to the main content #}
+        {# <div class="content-group">
+          {{ details({
+            text: "Approval criteria",
+            HTML: "
+            <ul>
+              <li>A completed paper assessment</li>
+              <li>Assessments published between ---.</li>
+            </ul>
+            "
+          }) }}
+        </div> #}
+
+        <div class="content-group">
+          {{ radios({
+            idPrefix: "example",
+            name: "example",
+            fieldset: {
+              legend: {
+                text: "Have you completed a paper assessment?",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: false
+              }
+            },
+            items: [
+              {
+                value: "yes",
+                text: "Yes"
+              },
+              {
+                value: "no",
+                text: "No"
+              }
+            ]
+          }) }}
+        </div>
+        <div class="content-group">
+          {{ button({
+            text: "Save and continue",
+            href: "/paper-transfer/learner/"
+          }) }}
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+
+

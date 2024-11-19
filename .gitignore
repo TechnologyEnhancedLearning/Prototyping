@@ -71,3 +71,7 @@ coverage
 
 # files prefixed with reference
 reference*
+
+# Notes
+NOTES.md
+

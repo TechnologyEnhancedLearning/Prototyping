@@ -1,0 +1,101 @@
+{% extends 'layouts/layout.html' %}
+
+{% block header %}
+  {% include "includes/dls-header-iv-therapy.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-width-container">
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+      {{ backLink({
+        href: "./",
+        text: "Go back"
+      }) }}
+
+      <h1>Upload signed off paper assessment declaration</h1>
+
+      <div class="content-group">
+        {{ warningCallout({
+          heading: "Keep your paper document",
+          HTML: "<p>Retaining your paper document is important for audit purposes, allowing each skill to be verified if necessary. Additionally, if you transfer to another Trust, they may require this document for reference.</p>"
+        }) }}
+      </div>
+
+      {% set uploadExample %}
+        <p>You only need to upload the signed off page from your assessment document. Figure 1</p>
+        <figure class="proto-figure">
+          {# NOTE - look into zoom funciton for images #}
+          <img src="/images/paper-process/cert-example-dos.png" alt="">
+          <figcaption class="proto-figure__figcaption">Figure 1 example of signed off pages</figcaption>
+        </figure>
+        <p>You are not required to include any other pages. Figure 2</p>
+        <figure class="proto-figure">
+          <img src="/images/paper-process/cert-example-donts.png" alt="">
+          <figcaption class="proto-figure__figcaption">Figure 2 example of pages not require</figcaption>
+        </figure>
+      {% endset %}
+
+      <div class="content-group">
+        <p>Please upload the signed off declaration page which has your signature and the healthcare professional’s signature.</p>
+         <!-- {{ details({
+            text: "Example of document to upload",
+            HTML: uploadExample
+          }) }} -->
+      </div>
+      <h2>Example of document to upload</h2>
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-one-half">
+          <div class="content-group">
+            <figure class="proto-figure">
+              <img src="/images/paper-process/cert-example-dos.png" alt="">
+              <figcaption class="proto-figure__figcaption">Figure 1 example of signed off pages</figcaption>
+            </figure>
+            <p>You only need to upload the signed off page from your assessment document. Figure 1</p>
+          </div>
+        </div>
+
+        <div class="nhsuk-grid-column-one-half">
+          <div class="content-group">
+            <figure class="proto-figure">
+              <img src="/images/paper-process/cert-example-donts.png" alt="">
+              <figcaption class="proto-figure__figcaption">Figure 2 example of pages not require</figcaption>
+            </figure>
+            <p>You are not required to include any other pages. Figure 2</p>
+          </div>
+        </div>
+      </div>
+
+      <form action=/paper-transfer/learner/ method="post" class="form">
+        <div class="content-group">
+          <h2>Upload only the page with the final signed declaration</h2>
+
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label nhsuk-u-margin-bottom-2" for="example">
+              As per figure 1
+            </label>
+            <input class="nhsuk-input" id="declarationDocUpload" name="declarationDocUpload" type="file">
+          </div>
+
+        <div class="content-group">
+          {{ button({
+            text: "Upload and continue",
+            name: "UploadCompleted",
+            value: "completed"
+          }) }}
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+
+
