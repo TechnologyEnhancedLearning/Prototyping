@@ -7,23 +7,24 @@ router.post('/choose-framework', (req, res) => {
   res.redirect(`/paper-transfer/learner/_dls-parts/about-${framework}`);
 });
 
-
-router.post('/additional-proficiencies-answer', (req, res) => {
+router.get('/additional-proficiencies-answer', (req, res) => {
   const answer = req.session.data['addAdditionalProficiencies'];
   const framework = req.session.data['frameworkName']
   let frameworkPostfix = framework ? framework.replace(/\s+/g, '-').toLowerCase() : null;
   let frameworkPath = '/paper-transfer/learner/additional-proficiencies/add-proficiencies';
 
+  console.log(frameworkPostfix);
+  console.log(frameworkPath);
+
   if(framework) {
     frameworkPath = `/paper-transfer/learner/additional-proficiencies/add-proficiencies-${frameworkPostfix}`
+  } else {
+    frameworkPath = `/paper-transfer/learner/additional-proficiencies/add-proficiencies-iv-therapy`
   }
 
-  if (answer === 'yes') {
-    res.redirect(frameworkPath);
-  } else {
-    res.redirect(`/paper-transfer`);
-  }
+  res.redirect(frameworkPath);
 });
+
 
 router.post('/confirmed', (req, res) => {
   const framework = req.session.data['frameworkName']

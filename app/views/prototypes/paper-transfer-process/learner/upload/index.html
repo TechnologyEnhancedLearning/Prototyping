@@ -41,20 +41,41 @@
 
       <div class="content-group">
         <p>Please upload the signed off declaration page which has your signature and the healthcare professional’s signature.</p>
-         {{ details({
+         <!-- {{ details({
             text: "Example of document to upload",
             HTML: uploadExample
-          }) }}
+          }) }} -->
+      </div>
+      <h2>Example of document to upload</h2>
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-one-half">
+          <div class="content-group">
+            <figure class="proto-figure">
+              <img src="/images/paper-process/cert-example-dos.png" alt="">
+              <figcaption class="proto-figure__figcaption">Figure 1 example of signed off pages</figcaption>
+            </figure>
+            <p>You only need to upload the signed off page from your assessment document. Figure 1</p>
+          </div>
+        </div>
+
+        <div class="nhsuk-grid-column-one-half">
+          <div class="content-group">
+            <figure class="proto-figure">
+              <img src="/images/paper-process/cert-example-donts.png" alt="">
+              <figcaption class="proto-figure__figcaption">Figure 2 example of pages not require</figcaption>
+            </figure>
+            <p>You are not required to include any other pages. Figure 2</p>
+          </div>
+        </div>
       </div>
 
       <form action=/paper-transfer/learner/ method="post" class="form">
         <div class="content-group">
-          <h2>Upload file</h2>
+          <h2>Upload only the page with the final signed declaration</h2>
 
-          {# CONTENT - make it clear that we only want an image (pdf or jpg) like a photo of their sign off document - look into best practice #}
           <div class="nhsuk-form-group">
             <label class="nhsuk-label nhsuk-u-margin-bottom-2" for="example">
-              Upload only pages of assessment with signed decleration
+              As per figure 1
             </label>
             <input class="nhsuk-input" id="declarationDocUpload" name="declarationDocUpload" type="file">
           </div>
