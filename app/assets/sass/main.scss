@@ -19,7 +19,6 @@
 @import 'components/progress';
 @import 'components/quick-filters';
 @import 'components/search';
-@import 'components/task-list';
 @import 'components/user-entry';
 @import 'components/utilities';
 
@@ -33,7 +32,7 @@
 @import 'components/nhsuk-overrides/expander';
 @import 'components/nhsuk-overrides/list-border';
 @import 'components/nhsuk-overrides/summary-list';
-@import 'components/nhsuk-overrides/task-list';
+@import 'components/nhsuk-overrides/task-list'; // Overrides will need to be extracted after updating nhsuk front-end
 @import 'components/nhsuk-overrides/tag';
 
 ///////////////////////////////////////////
