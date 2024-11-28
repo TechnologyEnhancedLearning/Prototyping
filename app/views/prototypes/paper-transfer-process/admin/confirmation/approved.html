@@ -1,0 +1,48 @@
+{% extends 'layouts/layout.html' %}
+
+{% block header %}
+  {% include "includes/dls-header-iv-therapy.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full">
+        <h1>Paper assessment transfer to digital review completed</h1>
+
+        <div class="content-group">
+          <p>You have reviewed and accepted James kings request to transfer thier paper assessment to dls as a digital record of their achievement.</p>
+          <p>Competencies reviewed as part of this request have been marked as complete and they now have access to the same assessment information digitally on DLS</p>
+
+          <h2>What happens next</h2>
+          <ul>
+            <li>James King will recive an email confirming their paper assessment has been reviewed and accepted</li>
+            <li>Any <a href="#">additional proficiencies</a> required for their role will need to be added</li>
+            <li>A final sign-off is still required to confirm that the learner is competent to practice in their role.</li>
+            <li>If the learner doesn't need to include any additional proficiencies they can seek final sign off strait away</li>
+          </ul>
+        </div>
+
+        <div class="content-group">
+          {{ button({
+            text: "Go back to supervisor dashboard",
+            href: "/paper-transfer/admin"
+          }) }}
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+
+

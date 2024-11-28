@@ -1,0 +1,47 @@
+{% extends 'layouts/layout.html' %}
+
+{% block header %}
+  {% include "includes/dls-header-iv-therapy.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full">
+        <h1>Paper assessment transfer to digital review completed</h1>
+
+        <div class="content-group">
+          <p>Request to transfer paper assessment to dls as a digital record of their achievement has been rejected.</p>
+
+          <h2>What happens next</h2>
+          <p>The feedback provided has been emailed to the James King.</p>
+
+          {{ card({
+            descriptionHtml: data['rejectionFeedback']
+          }) }}
+
+          <p>The email includes details of the rejection and outlines possible next steps.</p>
+        </div>
+
+        <div class="content-group">
+          {{ button({
+            text: "Go back to supervisor dashboard",
+            href: "/paper-transfer/admin"
+          }) }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+
+

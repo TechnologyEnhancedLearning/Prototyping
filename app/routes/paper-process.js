@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
+/* Learner ------------------------------------------------------------- */
 router.post('/choose-framework', (req, res) => {
   const framework = req.session.data['frameworkName'].replace(/\s+/g, '-').toLowerCase();
 
@@ -25,7 +26,6 @@ router.get('/additional-proficiencies-answer', (req, res) => {
   res.redirect(frameworkPath);
 });
 
-
 router.post('/confirmed', (req, res) => {
   const framework = req.session.data['frameworkName']
   let frameworkPostfix = framework ? framework.replace(/\s+/g, '-').toLowerCase() : null;
@@ -36,6 +36,20 @@ router.post('/confirmed', (req, res) => {
   }
 
   res.redirect(frameworkPath);
+});
+
+/* Supervisor ------------------------------------------------------------- */
+router.get('/supervisor-review-outcome', (req, res) => {
+  const supervisorReviewOutcome = req.session.data['supervisorReviewOutcome'] ? req.session.data['supervisorReviewOutcome'].replace(/\s+/g, '-').toLowerCase() : null;
+  let supervisorReviewOutcomePath = `/paper-transfer/admin/confirmation/${supervisorReviewOutcome}`
+
+  if(!supervisorReviewOutcome) {
+    supervisorReviewOutcomePath = `/paper-transfer/admin/confirmation/approved`
+  }
+
+  console.log(supervisorReviewOutcomePath);
+
+  res.redirect(supervisorReviewOutcomePath);
 });
 
 module.exports = router;
