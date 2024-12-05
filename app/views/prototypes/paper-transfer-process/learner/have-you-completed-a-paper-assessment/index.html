@@ -17,24 +17,15 @@
         }) }}
 
         <div class="content-group">
-          <h1>Paper assessment</h1>
+          <h1>Assessment options</h1>
 
-          <p>If you have already completed a paper assessment for the IV Therapy Passport, you may be eligible for immediate approval for a digital assessment.</p>
-          <p>This will need approval from your supervisors, assessor and educator manager. If you have not set up any supervisors you’ll be asked to do this next.</p>
+           <p>You can start a new assessment or transfer your paper assessment.</p>
+            <ul>
+              <li>If you are new to the IV Therapy Passport you will need to start a new assessment.</li>
+              <li>If you have already completed a paper assessment for the IV Therapy Passport, you may be eligible for immediate approval for a digital assessment.</li>
+            </ul>
         </div>
 
-        {# TODO - Discuss this content to understadn if we need to add approval criteria to the main content #}
-        {# <div class="content-group">
-          {{ details({
-            text: "Approval criteria",
-            HTML: "
-            <ul>
-              <li>A completed paper assessment</li>
-              <li>Assessments published between ---.</li>
-            </ul>
-            "
-          }) }}
-        </div> #}
 
         <div class="content-group">
           {{ radios({
@@ -42,19 +33,19 @@
             name: "example",
             fieldset: {
               legend: {
-                text: "Have you completed a paper assessment?",
+                text: "Select an option",
                 classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: false
+                isPageHeading: true
               }
             },
             items: [
               {
-                value: "yes",
-                text: "Yes"
+                value: "no",
+                text: "Start a new assessment"
               },
               {
-                value: "no",
-                text: "No"
+                value: "yes",
+                text: "Transfer a paper assessment"
               }
             ]
           }) }}

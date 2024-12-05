@@ -6,16 +6,6 @@
 {% endblock %}
 
 {% block beforeContent %}
-{# TODO - Update breadcrumb hrefs to point to file paths #}
-{{ breadcrumb({
-  items: [{
-    href: "/paper-transfer/learner/_dls-parts",
-    text: "Current activities"
-  },{
-    href: "#",
-    text: data['frameworkName']
-  }]
-}) }}
 {% endblock %}
 
 {% block content %}
@@ -24,9 +14,30 @@
     <div class="nhsuk-grid-column-full">
 
       <div class="content-group">
-        <h1>Paper assessment information</h1>
+        {{ backLink({
+          href: "/paper-transfer/learner/",
+          text: "Go back to assessment option"
+        }) }}
 
-        <p>Before you start you will need to add a few details. You will need information from your paper assessment document and you will need to know the details of the healthcare professional who signed off your paper document.</p>
+        <h1>Transfer a paper assessment</h1>
+
+        <p>Before you start:</p>
+        <ul>
+          <li>ensure you meet the transfer approval criteria</li>
+          <li>have your paper assessment to hand</li>
+        </ul>
+
+        {{ details({
+          text: "Paper assement transfer approval criteria",
+          HTML: "
+            <ul>
+              <li>You will need to have completed all core proficiecnes in your paper assessment.</li>
+              <li>Your're IV Therap Passport will need to be completed to the current captial Nurse standard.</li>
+              <li>This will need approval from your supervisors, assessor and educator manager.</li>
+            </ul>
+          "
+        }) }}
+
         <p>This should take approximately 10 and 15 minutes to complete.</p>
       </div>
 
@@ -40,27 +51,6 @@
           <li>the organisation that signed it off</li>
         </ul>
         {% endset %}
-
-
-        {# Paper Assessment information -------------------------------------- #}
-        {{ taskList({
-          idPrefix: "paperAssessmentInformation",
-          classes: "nhsuk-u-margin-bottom-0",
-          items: [
-          {
-            title: {
-              text: "Have you completed a paper assessment?"
-            },
-            href: "/paper-transfer/learner/have-you-completed-a-paper-assessment",
-            status: {
-              tag: {
-                text: "Yes",
-                classes: "nhsuk-tag--green"
-              }
-            }
-          }
-          ]
-        }) }}
 
         {# Paper Assessment information -------------------------------------- #}
         {% if data['paperAssessmentInformationCompleted'] %}
