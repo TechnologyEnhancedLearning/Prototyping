@@ -17,30 +17,16 @@
         }) }}
 
         <div class="content-group">
-          <h1>Paper assessment transfer sign-off </h1>
-
-          <p>I certify that this individual is deemed safe and proficient to administer IV medication using the methods and vascular access devices recorded in the Record of Achievement. They have also successfully completed the IV Therapy Passport pathway.</p>
-          <p>By signing off this IV Therapy Passport, you are confirming that the learner has:</p>
-          <ul>
-            <li>completed both Step 1 (elearning) and Step 2 (eAssessments), as documented in the Record of Learning and Knowledge Assessment</li>
-            <li>achieved proficiency in at least 1 optional proficiency from each category: Methods of Preparation, Methods of Administration, and Vascular Access Devices</li>
-            <li>achieved proficiency in all optional proficiencies required for their role.</li>
-            <li>been assessed by competent assessors, authorised by their line manager, to supervise and assess IV medication administration</li>
-          </ul>
-
-          <p>This sign-off acknowledges the transfer of assessment records from the paper-based process and confirms that all requirements have been met as recorded in the learner’s IV Therapy Passport.</p>
+          <h1>Paper assessment transfer approval</h1>
+          <p>This approval acknowledges the transfer of assessment records from the paper-based process to digital and confirms that all requirements have been met as recorded in the learner’s IV Therapy Passport.</p>
         </div>
 
-        <form action="/paper-transfer/admin/framework" method="post" class="form">
+        <form action="/supervisor-review-outcome" method="post" class="form">
           <div class="content-group">
-
-            {% from 'radios/macro.njk' import radios %}
-            {% from 'input/macro.njk' import input %}
-
             {% set ReasonHtml %}
               {{ textarea({
-                name: "example",
-                id: "example",
+                name: "rejectionFeedback",
+                id: "rejectionFeedback",
                 label: {
                   text: "Provide feedback"
                 },
@@ -51,8 +37,8 @@
             {% endset -%}
 
             {{ radios({
-              idPrefix: "approval",
-              name: "approval",
+              idPrefix: "supervisorReviewOutcome",
+              name: "supervisorReviewOutcome",
               items: [
                 {
                   value: "approved",
@@ -71,9 +57,7 @@
 
           <div class="content-group">
             {{ button({
-              text: "Save and continue",
-              name: "declarationtCompleted",
-              value: "completed"
+              text: "Confirm and submit"
             }) }}
           </div>
         </form>

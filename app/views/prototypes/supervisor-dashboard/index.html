@@ -1,0 +1,84 @@
+{% extends 'layouts/layout-help-footer.html' %}
+
+{% block header %}
+{% include "includes/dls-header-supervisor.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ breadcrumb({
+  items: [
+  {
+    href: "/paper-transfer/admin",
+    text: "Home"
+  }
+  ]
+}) }}
+{% endblock %}
+
+{% block content %}
+{# TODO:
+  Improvment - two colums at dsktop
+  Improvment - re-style todo list to be a contained card and have it define function first the description
+  Improvment - My staff is a single link. Understand if this si meant to be more and re-design based on outcome
+  Improvment - Remove contact info or move into expander
+  #}
+
+  <link rel="stylesheet" href="https://www.dls.nhs.uk/v2/css/frameworks/frameworksShared.css?v=678_XEjDIwvLH2W8Elbf7ULn6xKeUfR-QwtRL4vz2pM">
+
+  {% set toDoList %}
+    <h2>Your to do list</h2>
+    <ul>
+      <li>
+        <a href="/paper-transfer/admin/what-is-a-paper-to-digital-sign-off" class="nhsuk-link--no-visited-state">
+          Review and sign-off James King's Paper to digital transfer for their IV Therapy passport.
+        </a>
+        . Requested 06/10/2024
+      </li>
+      <li>
+        <a href="#" class="nhsuk-link--no-visited-state">
+          Confirm self-assessment results for Bob Ross's Step 1 Proficiencies - National Proficiency Framework for Registered Nurses in Adult Critical Care
+        </a>
+        . Requested 24/09/2024
+      </li>
+    </ul>
+  {% endset %}
+
+  {% set myStaffList %}
+    {% include "prototypes/supervisor-dashboard/my-staff-content.html" %}
+  {% endset %}
+
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full">
+
+        <h1>
+          Supervisor Dashboard
+        </h1>
+
+
+  {{ button({
+    text: "Add a member of staff"
+  }) }}
+
+        <div class="nhsuk-grid-row">
+          <div class="nhsuk-grid-column-one-third">
+
+            {{ toDoList | safe }}
+
+          </div>
+          <div class="nhsuk-grid-column-two-thirds nhsuk-u-reading-width">
+
+            {{ myStaffList | safe }}
+
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+  {% endblock %}
+
+  {% block outerContent %}
+  {% endblock %}

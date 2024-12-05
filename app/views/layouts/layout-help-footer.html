@@ -1,0 +1,104 @@
+<!--
+  This is the main layout where you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Extends the layout from /docs/views/template.html -->
+{% extends "template.html" %}
+
+<!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+{% block headCSS %}
+  <link href="/css/main.css" rel="stylesheet">
+{% endblock %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  DLS prototype
+{% endblock %}
+
+<!-- Edit the header -->
+<!-- Header code examples can be found at https://service-manual.nhs.uk/design-system/components/header -->
+{% block header %}
+  {{ header({
+      "service": {
+        "name": "Digital Learning Solutions Prototype"
+      },
+      "homeHref": "./",
+      "showNav": "true",
+      "classes": "",
+      "primaryLinks": [
+        {
+          "url"  : "#",
+          "label" : 'My learning'
+        },
+        {
+          'url' : '#',
+          'label' : 'Manage a framework'
+        },
+        {
+          'url'  : '#',
+          'label' : 'Find your centre'
+        },
+        {
+          'url'  : '#',
+          'label' : 'Notifications'
+        },
+        {
+          'url'  : '#',
+          'label' : 'My account'
+        },
+        {
+          'url' : '/login',
+          'label' : 'Log out'
+        }
+      ]
+    })
+  }}
+{% endblock %}
+
+<!-- Edit the footer -->
+<!-- Footer code examples can be found at https://service-manual.nhs.uk/design-system/components/footer -->
+{% block footer %}
+<footer role="contentinfo">
+  <div class="nhsuk-footer" id="nhsuk-footer">
+    <div class="nhsuk-width-container">
+      <h2 class="nhsuk-heading-xs nhsuk-u-margin-bottom-2 nhsuk-u-secondary-text-color">Need help?</h2>
+      <p class="nhsuk-u-font-size-16 nhsuk-u-secondary-text-color">
+        For IT skills contact: 123456 Open 09:00 to 17:00. IV Therapy Passport queries contact: ivpassport.your.org@nhs.net
+      </p>
+
+      <h2 class="nhsuk-u-visually-hidden">Support links</h2>
+      <ul class="nhsuk-footer__list">
+        <li class="nhsuk-footer__list-item nhsuk-footer-default__list-item">
+          <a class="nhsuk-footer__list-item-link" href="#">Accessibility statement</a>
+        </li>
+        <li class="nhsuk-footer__list-item nhsuk-footer-default__list-item">
+          <a class="nhsuk-footer__list-item-link" href="#">Contact us</a>
+        </li>
+        <li class="nhsuk-footer__list-item nhsuk-footer-default__list-item">
+          <a class="nhsuk-footer__list-item-link" href="#">Cookies</a>
+        </li>
+        <li class="nhsuk-footer__list-item nhsuk-footer-default__list-item">
+          <a class="nhsuk-footer__list-item-link" href="#">Privacy policy</a>
+        </li>
+        <li class="nhsuk-footer__list-item nhsuk-footer-default__list-item">
+          <a class="nhsuk-footer__list-item-link" href="#">Terms and conditions</a>
+        </li>
+      </ul>
+      <div>
+        <p class="nhsuk-footer__copyright">© NHS England</p>
+      </div>
+    </div>
+  </div>
+</footer>
+{% endblock %}
+
+{% block bodyEnd %}
+  {% block scripts %}
+    <!-- Custom JavaScript files can be added to this file -->
+    {% include "includes/scripts.html" %}
+    <!-- For adding page specific JavsScript -->
+    {% block pageScripts %}{% endblock %}
+  {% endblock %}
+{% endblock %}

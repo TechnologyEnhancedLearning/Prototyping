@@ -83,7 +83,7 @@ This loop should first consider the task list component and then the extended ex
       {% elif data['approval'] == 'rejected' %}
         {{ progressCard(state="in progress") }}
       {% else %}
-        {{ progressCard(state="notification") }}
+        {{ progressCard(state="notification-transfer-complete") }}
       {% endif %}
 
       <div class="in-page-search">

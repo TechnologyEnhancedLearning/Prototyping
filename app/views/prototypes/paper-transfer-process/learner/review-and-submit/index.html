@@ -74,7 +74,7 @@
             </dd>
           </div>
           <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">Upload signed off paper document</dt>
+            <dt class="nhsuk-summary-list__key">Signed off page from paper document</dt>
             <dd class="nhsuk-summary-list__value">
               <img src="{{ data['declarationDocUpload'] }}" alt="">
               <div class="nhsuk-u-margin-bottom-2"><img src="/images/paper-process/paper-mockup.png" alt=""></div>
@@ -86,7 +86,7 @@
           </div>
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">Declaration</dt>
-            <dd class="nhsuk-summary-list__value">Signed <span id="current-date"></span></dd>
+            <dd class="nhsuk-summary-list__value">Signed off practice and transferable skills on 27-11-2024</dd>
             <dd class="nhsuk-summary-list__actions">
               <a href="/paper-transfer/learner/sign-decleration">Change<span class="nhsuk-u-visually-hidden"> xxx </span></a>
             </dd>
@@ -112,10 +112,11 @@
 {% endblock %}
 
 {% block pageScripts %}
+  {# <span id="current-date"></span > #}
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      const options = { year: 'numeric', month: 'long', day: 'numeric' };
-      const formattedDate = new Date().toLocaleDateString('en-US', options);
+      const options = { day: 'numeric', month: 'numeric', year: 'numeric' };
+      const formattedDate = new Date().toLocaleDateString('en-GB', options);
       document.getElementById('current-date').textContent = formattedDate;
     });
   </script>
