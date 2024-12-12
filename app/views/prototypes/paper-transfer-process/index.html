@@ -1,0 +1,69 @@
+<!-- Component imports (macros) -->
+{# {% from 'breadcrumb/macro.njk' import breadcrumb %}`
+{% from 'details/macro.njk' import details %} #}
+
+<!-- Extends the layout from /views/layout/layout.html -->
+{% extends 'layouts/layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  NHS.UK prototype kit
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+  {{ breadcrumb({
+    items: [{
+      href: "/admin-home",
+      text: "Home"
+    },{
+      href: "/admin-home/select-a-framework",
+      text: "Select a framework"
+    },{
+      href: "/admin-home/select-a-framework/framework-dashboard",
+      text: "IV Therapy passport"
+    }]
+  }) }}
+
+  {{ hero({
+    "heading": "Paper to digital transfer process",
+    "text": "Allowing user who have completed a paper competency assessment to transfer their assessment to digital"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full">
+
+        {% from "components/listing.njk" import listing %}
+
+        {% set selectAFramework = [{
+            "heading": "Learner transfer journey",
+            "href": "/paper-transfer/learner/_dls-parts",
+            "content": "A learner is assigned a self assessment by a supervisor"
+          },{
+            "heading": "Admin transfer journey",
+            "href": "/paper-transfer/admin",
+            "content": "Supervisor receives paper to digital transfer request for review from a learner"
+          },{
+            "heading": "Learners transfer not accepted page",
+            "href": "/paper-transfer/learner-transfer-not-accepted",
+            "content": "Paper to digital transfer request is not accepted by supervisor and learner receives feedback and the option to amend their request"
+          }]
+        %}
+
+        {{ listing(selectAFramework) }}
+
+      </div>
+    </div>
+  </div>
+
+  {% endblock %}
+
+  <!-- For adding a back link -->
+  <!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+  {% block outerContent %}
+  {% endblock %}

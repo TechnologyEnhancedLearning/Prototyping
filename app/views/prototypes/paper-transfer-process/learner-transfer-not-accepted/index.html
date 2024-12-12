@@ -1,0 +1,119 @@
+{% extends 'layouts/layout.html' %}
+{% from 'components/task-list/macro.njk' import taskList %}
+
+{% block header %}
+  {% include "includes/dls-header-iv-therapy.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-width-container">
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+      {{ backLink({
+        href: "/paper-transfer/learner/",
+        text: "Go back to assessment option"
+      }) }}
+
+      <h1>The transfer of your paper assessment has not been accepted</h1>
+
+      <div class="content-group">
+
+        <div class="content-group">
+          <p>[Educator or manager's name (role)] has provided the following feedback:</p>
+
+          {{ details({
+            classes: "nhsuk-expander",
+            text: "Feedback",
+            HTML: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim assumenda dolorem mollitia at animi."
+          }) }}
+
+          <p>Depending on the outcome of the review you may wish to:</p>
+          <ul>
+            <li>amend your paper assessment transfer request below</li>
+            <li><a>start a new digital assessment</a></li>
+          </ul>
+
+        </div>
+      </div>
+
+      <div class="content-group">
+        <h2>Paper assessment information</h2>
+
+        {{ taskList({
+          idPrefix: "paperAssessmentInformation",
+          classes: "nhsuk-u-margin-bottom-0",
+          items: [
+          {
+            title: {
+              text: "Provide information from paper assessment"
+            },
+            href: "/paper-transfer/learner/paper-assessment-information",
+            status: {
+              tag: {
+                text: "Complete",
+                classes: "nhsuk-tag--green"
+              }
+            }
+          },{
+            title: {
+              text: "Record completed proficiencies from paper assessment"
+            },
+            href: "/additional-proficiencies-answer",
+            status: {
+              tag: {
+                text: "Complete",
+                classes: "nhsuk-tag--green"
+              }
+            }
+          },{
+            title: {
+              text: "Upload a copy of your signed off paper assessment"
+            },
+            href: "/paper-transfer/learner/upload",
+            status: {
+              tag: {
+                text: "Complete",
+                classes: "nhsuk-tag--green"
+              }
+            }
+          },{
+            title: {
+              text: "Review and agree decleration"
+            },
+            href: "/paper-transfer/learner/sign-decleration",
+            status: {
+              tag: {
+                text: "Complete",
+                classes: "nhsuk-tag--green"
+              }
+            }
+          },{
+            title: {
+              text: "Review information is correct and submit"
+            },
+            href: "/paper-transfer/learner/review-and-submit",
+            status: {
+              tag: {
+                text: "Complete",
+                classes: "nhsuk-tag--green"
+              }
+            }
+          }
+          ]
+        }) }}
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+
+
