@@ -33,6 +33,8 @@ router.post('/confirmed', (req, res) => {
 
   if(framework) {
     frameworkPath = `/paper-transfer/learner/_dls-parts/about-${frameworkPostfix}`
+  } else {
+    frameworkPath = `/paper-transfer/learner/_dls-parts`
   }
 
   res.redirect(frameworkPath);
