@@ -1,0 +1,74 @@
+@mixin adjust-heading {
+  margin-top: -($heading-line-height - 1) + em;
+  line-height: $heading-line-height;
+}
+
+@mixin adjust-heading($size, $important: false) {
+  // Check for a font map exactly matching the given size
+  $font-map: map.get($nhsuk-typography-scale, $size);
+
+  // No match? Try with string type (e.g. $size: "16" not 16)
+  @if not $font-map {
+    @each $font-size in map.keys($nhsuk-typography-scale) {
+      @if not $font-map and "#{$font-size}" == "#{$size}" {
+        $font-map: map.get($nhsuk-typography-scale, $font-size);
+      }
+    }
+  }
+
+  // Still no match? Throw error
+  @if not $font-map {
+    @error "Unknown font size `#{$size}` - expected a point from the typography scale.";
+  }
+
+  // Check for a deprecation within the typography scale
+  $deprecation: map.get($font-map, "deprecation");
+
+  @if $deprecation {
+    // Warn on deprecated font sizes unless flagged for internal use
+    @if not $size-internal-use-only {
+      @include nhsuk-warning(map.get($deprecation, "key"), map.get($deprecation, "message"));
+    }
+
+    // remove the deprecation map keys so they do not break the breakpoint loop
+    $font-map: map.remove($font-map, "deprecation");
+  }
+
+  @each $breakpoint, $breakpoint-map in $font-map {
+    $font-size: map.get($breakpoint-map, "font-size");
+    $font-size-rem: nhsuk-px-to-rem($font-size);
+
+    // $calculated-line-height is a separate variable from $line-height,
+    // as otherwise the value would get redefined with each loop and
+    // eventually break nhsuk-line-height.
+    //
+    // We continue to call the param $line-height to stay consistent with the
+    // naming with nhsuk-font.
+    $calculated-line-height: nhsuk-line-height(
+      $line-height: if($line-height, $line-height, map.get($breakpoint-map, "line-height")),
+      $font-size: $font-size
+    );
+
+    // Mark rules as !important if $important is true - this will result in
+    // these variables becoming strings, so this needs to happen *after* they
+    // are used in calculations
+    $calculated-line-height: $calculated-line-height if($important, !important, null);
+
+    & {
+      // @if not $breakpoint {
+      //   margin-top: -($calculated-line-height - 1) + em;
+      //   line-height: $calculated-line-height;
+      // } @else if $breakpoint == "print" {
+      //   @include nhsuk-media-query($media-type: print) {
+      //     margin-top: -($calculated-line-height - 1) + em;
+      //     line-height: $calculated-line-height;
+      //   }
+      // } @else {
+        @include nhsuk-media-query($from: $breakpoint) {
+          margin-top: -($calculated-line-height);
+          line-height: $calculated-line-height;
+        }
+      // }
+    }
+  }
+}

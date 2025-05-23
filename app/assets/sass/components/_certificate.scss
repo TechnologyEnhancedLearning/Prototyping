@@ -8,7 +8,7 @@ $certificate-page-margin: 1.5cm;
   margin-left: 0in;
 }
 
-@include mq($media-type: print) {
+@include nhsuk-media-query($media-type: print) {
   .certificate-container {
     .nhsuk-width-container,
     .nhsuk-grid-row,
@@ -48,14 +48,14 @@ $certificate-page-margin: 1.5cm;
     position: relative;
     background: white;
 
-    @include mq($media-type: screen)  {
+    @include nhsuk-media-query($media-type: screen)  {
       margin-bottom: nhsuk-spacing(5);
       border: 1px solid $color_nhsuk-grey-1;
       border-radius: 3px;
       overflow: hidden;
     }
 
-    @include mq($until: desktop, $media-type: screen)  {
+    @include nhsuk-media-query($until: desktop, $media-type: screen)  {
       min-height: initial;
     }
   }
@@ -83,7 +83,7 @@ $certificate-page-margin: 1.5cm;
   &__header, &__content {
     padding: $certificate-page-margin;
 
-    @include mq($until: desktop, $media-type: screen) {
+    @include nhsuk-media-query($until: desktop, $media-type: screen) {
       padding: nhsuk-spacing(5);
     }
   }
@@ -93,11 +93,11 @@ $certificate-page-margin: 1.5cm;
     margin: 0 0 $certificate-page-margin $certificate-page-margin;
     float: right;
 
-    @include mq($until: desktop, $media-type: screen) {
+    @include nhsuk-media-query($until: desktop, $media-type: screen) {
       margin: 0 0 nhsuk-spacing(5) nhsuk-spacing(5);
     }
 
-    @include mq($until: tablet, $media-type: screen) {
+    @include nhsuk-media-query($until: tablet, $media-type: screen) {
       margin: 0 0 nhsuk-spacing(5) 0;
       float: none;
     }
@@ -111,7 +111,7 @@ $certificate-page-margin: 1.5cm;
     padding: 0 $certificate-page-margin $certificate-page-margin  $certificate-page-margin;
     position: relative;
 
-    @include mq($until: desktop, $media-type: screen) {
+    @include nhsuk-media-query($until: desktop, $media-type: screen) {
       display: block;
       padding: 0 nhsuk-spacing(5) $certificate-page-margin nhsuk-spacing(5);
     }
@@ -145,7 +145,7 @@ $certificate-page-margin: 1.5cm;
     max-width: 400px;
     padding-right: 16px;
 
-    @include mq($until: desktop, $media-type: screen) {
+    @include nhsuk-media-query($until: desktop, $media-type: screen) {
       max-width: 100%;
       padding: 0;
     }
@@ -155,7 +155,7 @@ $certificate-page-margin: 1.5cm;
     flex: 1;
     padding-left: 16px;
 
-    @include mq($until: desktop, $media-type: screen) {
+    @include nhsuk-media-query($until: desktop, $media-type: screen) {
       max-width: 300px;
       padding: 0;
     }

@@ -1,3 +1,4 @@
+// NOTE remove after updating to use tel-frontend
 .nhsuk-width-container {
   max-width: 1144px;
 
@@ -17,7 +18,7 @@
 }
 
 .content-group {
-  @include reading-width();
+  @include nhsuk-reading-width();
 
   margin-bottom: nhsuk-spacing(6);
 

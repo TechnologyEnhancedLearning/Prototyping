@@ -9,7 +9,7 @@
   }
 
   &__profile-wrapper {
-    @include mq($from: desktop) {
+    @include nhsuk-media-query($from: desktop) {
       padding-left: 80px;
       position: relative;
     }
@@ -28,7 +28,7 @@
     background-color: $color_nhsuk-green;
     color: $color_nhsuk-white;
 
-    @include mq($from: desktop) {
+    @include nhsuk-media-query($from: desktop) {
       @include nhsuk-font(19, $weight: normal, $line-height: 0);
 
       width: 50px;
@@ -45,11 +45,11 @@
   }
 
   &__content {
-    @include reading-width();
+    @include nhsuk-reading-width();
 
     margin-bottom: 0;
 
-    @include mq($from: desktop) {
+    @include nhsuk-media-query($from: desktop) {
       margin-left: 80px;
     }
   }

@@ -19,7 +19,7 @@
   }
 
   &__header {
-    @include mq($from: tablet) {
+    @include nhsuk-media-query($from: tablet) {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
@@ -28,7 +28,7 @@
   }
 
   &__header-title {
-    @include adjust-heading(24); // this needs to match the heading size so if this used a h2 instead of a h3 this may need to be defined as a modifier
+    @include adjust-heading(26); // this needs to match the heading size so if this used a h2 instead of a h3 this may need to be defined as a modifier
   }
 
   &__header-date {
@@ -57,7 +57,7 @@
   &__group {
     display: block;
 
-    @include mq($from: tablet) {
+    @include nhsuk-media-query($from: tablet) {
       display: flex;
       align-items: center;
       flex-direction: row;
@@ -75,7 +75,7 @@
 
   &__description {
 
-    @include mq($until: tablet) {
+    @include nhsuk-media-query($until: tablet) {
       margin-left: 0;
     }
   }

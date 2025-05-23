@@ -32,13 +32,13 @@
     align-items: flex-start;
     max-width: 100%;
 
-    @include mq($from: tablet) {
+    @include nhsuk-media-query($from: tablet) {
       flex-direction: row;
     }
   }
 
   &__summary-text-tag {
-    @include mq($until: tablet) {
+    @include nhsuk-media-query($until: tablet) {
       margin-bottom: nhsuk-spacing(2);
     }
   }
