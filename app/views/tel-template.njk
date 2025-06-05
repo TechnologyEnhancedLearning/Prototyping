@@ -1,5 +1,7 @@
 {% extends "template.njk" %}
 
+{# Note: I need to fix the breadcrumb. It appear that in one of the versions the breadcrumb no longer creates its on site width container #}
+
 {%- from 'action-link/macro.njk' import actionLink %}
 {%- from 'back-link/macro.njk' import backLink %}
 {%- from 'breadcrumb/macro.njk' import breadcrumb %}
@@ -38,7 +40,7 @@
 
 {% set assetPath = '/nhsuk-frontend/assets' %}
 
-{# Overwrites the main block to include tel / prototype specific classes #}
+{# Overwrites the main block to include tel full width classes. This allows the inclusion of the nhsuk-width-container on a component level #}
 {% block main %}
   <div class="nhsuk-width-container tel-width-container tel-width-container--full-width {%- if containerClasses %} {{ containerClasses }}{% endif %}">
     {% block beforeContent %}{% endblock %}
