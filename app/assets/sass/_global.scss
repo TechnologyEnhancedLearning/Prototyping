@@ -2,7 +2,9 @@
 $nhsuk-page-width: 1200px;
 
 .nhsuk-width-container, // NOTE remove after updating to use tel-frontend
-.tel-width-container {
+.tel-width-container,
+.nhsuk-header__container,
+.nhsuk-navigation {
   max-width: $nhsuk-page-width;
 
   @media only screen and (max-width: 1208px) and (min-width: 960px) {
