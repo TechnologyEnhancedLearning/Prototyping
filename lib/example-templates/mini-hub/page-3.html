@@ -5,16 +5,18 @@
 {% endblock %}
 
 {% block beforeContent %}
-  {{ breadcrumb({
-    items: [
-      {
-        href: "/",
-        text: "Home"
-      }
-    ],
-    href: "/example-templates/mini-hub",
-    text: "Main page"
-  }) }}
+  <div class="nhsuk-width-container">
+    {{ breadcrumb({
+      items: [
+        {
+          href: "/",
+          text: "Home"
+        }
+      ],
+      href: "/example-templates/mini-hub",
+      text: "Main page"
+    }) }}
+  </div>
 {% endblock %}
 
 {% block content %}

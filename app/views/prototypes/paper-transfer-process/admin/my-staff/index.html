@@ -5,18 +5,20 @@
 {% endblock %}
 
 {% block beforeContent %}
-  {{ breadcrumb({
-    items: [
-      {
-        href: "/paper-transfer/admin",
-        text: "Home"
-      },
-      {
-        href: "/paper-transfer/admin/supervisor-dashboard",
-        text: "Supervisor"
-      }
-    ]
-  }) }}
+  <div class="nhsuk-width-container">
+    {{ breadcrumb({
+      items: [
+        {
+          href: "/paper-transfer/admin",
+          text: "Home"
+        },
+        {
+          href: "/paper-transfer/admin/supervisor-dashboard",
+          text: "Supervisor"
+        }
+      ]
+    }) }}
+  </div>
 {% endblock %}
 
 {% block content %}
