@@ -29,7 +29,7 @@ $nhsuk-task-list-hover-color: darken($color_nhsuk-grey-5, 6%);
   padding-bottom: calc(nhsuk-spacing(2) + 4px);
   border-bottom: 1px solid $nhsuk-border-color;
 
-  @include mq($from: tablet) {
+  @include nhsuk-media-query($from: tablet) {
     display: flex;
     align-items: start;
     flex-wrap: wrap;
@@ -53,7 +53,7 @@ $nhsuk-task-list-hover-color: darken($color_nhsuk-grey-5, 6%);
   margin: 1px 0;
   color: $nhsuk-text-color;
 
-  @include mq($from: tablet) {
+  @include nhsuk-media-query($from: tablet) {
     flex: 1;
   }
 }
@@ -63,7 +63,7 @@ $nhsuk-task-list-hover-color: darken($color_nhsuk-grey-5, 6%);
   padding: nhsuk-spacing(2) 0 0;
   color: $nhsuk-text-color;
 
-  @include mq($from: tablet) {
+  @include nhsuk-media-query($from: tablet) {
     padding: 0 0 nhsuk-spacing(2) 0;
     text-align: right;
   }
@@ -79,7 +79,7 @@ $nhsuk-task-list-hover-color: darken($color_nhsuk-grey-5, 6%);
   padding: calc(nhsuk-spacing(1) + 2px) 0 nhsuk-spacing(1);
   text-decoration: none;
 
-  @include mq($from: tablet) {
+  @include nhsuk-media-query($from: tablet) {
     padding-left: calc(nhsuk-spacing(1) + 2px) 0 nhsuk-spacing(1) nhsuk-spacing(2);
   }
 }

@@ -19,26 +19,28 @@ This loop should first consider the task list component and then the extended ex
 {% endblock %}
 
 {% block beforeContent %}
-  {{ breadcrumb({
-    items: [
-      {
-        href: "/paper-transfer/admin",
-        text: "Home"
-      },
-      {
-        href: "/paper-transfer/admin/supervisor-dashboard",
-        text: "Supervisor"
-      },
-      {
-        href: "/paper-transfer/admin/my-staff",
-        text: "My staff"
-      },
-      {
-        href: "/paper-transfer/admin/staff-member-dashboard/james",
-        text: "James King"
-      }
-    ]
-  }) }}
+  <div class="nhsuk-width-container">
+    {{ breadcrumb({
+      items: [
+        {
+          href: "/paper-transfer/admin",
+          text: "Home"
+        },
+        {
+          href: "/paper-transfer/admin/supervisor-dashboard",
+          text: "Supervisor"
+        },
+        {
+          href: "/paper-transfer/admin/my-staff",
+          text: "My staff"
+        },
+        {
+          href: "/paper-transfer/admin/staff-member-dashboard/james",
+          text: "James King"
+        }
+      ]
+    }) }}
+  </div>
 {% endblock %}
 
 {% block content %}

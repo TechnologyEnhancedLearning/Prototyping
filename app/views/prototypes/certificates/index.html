@@ -13,12 +13,14 @@
 <!-- For adding a breadcrumb -->
 <!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
 {% block beforeContent %}
-  {{ breadcrumb({
-    items: [{
-      href: "/prototypes",
-      text: "Home"
-    }]
-  }) }}
+  <div class="nhsuk-width-container">
+    {{ breadcrumb({
+      items: [{
+        href: "/prototypes",
+        text: "Home"
+      }]
+    }) }}
+  </div>
 
   {{ hero({
     "heading": "DLS Certificate gubbins",

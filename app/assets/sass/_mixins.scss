@@ -87,33 +87,50 @@
 //   margin-top: -($heading-line-height - 1) + em;
 //   line-height: $heading-line-height;
 // }
-// nhsuk-typography-responsive adapted to be able to change the negative margin across nhsuk breakpoints
-@mixin adjust-heading($size, $override-line-height: false, $important: false) {
-  @if not map-has-key($nhsuk-typography-scale, $size) {
-    @error "Unknown font size `#{$size}` - expected a point from the typography scale.";
+
+@mixin adjust-heading($size, $line-heigh: false, $important: false) {
+  // Check for a font map exactly matching the given size
+  $font-map: map-get($nhsuk-typography-scale, $size);
+
+  // No match? Try with string type (e.g. $size: "16" not 16)
+  @if not $font-map {
+    @each $font-size in map.keys($nhsuk-typography-scale) {
+      @if not $font-map and "#{$font-size}" == "#{$size}" {
+        $font-map: map.get($nhsuk-typography-scale, $font-size);
+      }
+    }
   }
 
-  $font-map: map-get($nhsuk-typography-scale, $size);
+  // Still no match? Throw error
+  @if not $font-map {
+    @error "Unknown font size `#{$size}` - expected a point from the typography scale.";
+  }
 
   @each $breakpoint, $breakpoint-map in $font-map {
     $font-size: map-get($breakpoint-map, "font-size");
 
-    $line-height: _nhsuk-line-height(
-      $line-height: if($override-line-height, $override-line-height, map-get($breakpoint-map, "line-height")),
+    $calculated-line-height: nhsuk-line-height(
+      $line-height: map-get($breakpoint-map, "line-height"),
       $font-size: $font-size
     );
 
-    @if $breakpoint == null {
-      margin-top: -($line-height - 1) + em;
-      line-height: $line-height;
-    } @else if $breakpoint == "print" {
-      @include govuk-media-query($media-type: print) {
-        line-height: $line-height;
-      }
-    } @else {
-      @include govuk-media-query($from: $breakpoint) {
-        margin-top: -($line-height - 1) + em;
-        line-height: $line-height;
+    $calculated-top-margin-offset: -($calculated-line-height - 1) * 1em if($important, !important, null);
+    $calculated-line-height: $calculated-line-height if($important, !important, null);
+
+    & {
+      @if not $breakpoint {
+        margin-top: $calculated-top-margin-offset;
+        line-height: $calculated-line-height;
+      } @else if $breakpoint == "print" {
+        @include nhsuk-media-query($media-type: print) {
+          margin-top: $calculated-top-margin-offset;
+          line-height: $calculated-line-height;
+        }
+      } @else {
+        @include nhsuk-media-query($from: $breakpoint) {
+          margin-top: $calculated-top-margin-offset;
+          line-height: $calculated-line-height;
+        }
       }
     }
   }

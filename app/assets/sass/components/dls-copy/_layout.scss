@@ -32,11 +32,11 @@
 // }
 
 // .nhsuk-header__navigation-item.selected {
-//   @include mq($from: large-desktop) {
+//   @include nhsuk-media-query($from: large-desktop) {
 //     box-shadow: inset 0 -4px 0 #d8dde0;
 //   }
 
-//   @include mq($until: large-desktop) {
+//   @include nhsuk-media-query($until: large-desktop) {
 //     a {
 //       font-weight: bold;
 //     }
@@ -68,7 +68,7 @@
 //     width: auto;
 //     height: auto;
 
-//     @include mq($from: large-desktop) {
+//     @include nhsuk-media-query($from: large-desktop) {
 //       display: flex;
 //     }
 //   }
@@ -79,7 +79,7 @@
   max-width: 280px;
   max-height: 75px;
 
-  @include mq($until: large-desktop) {
+  @include nhsuk-media-query($until: large-desktop) {
     display: none;
   }
 }
@@ -97,7 +97,7 @@
 //   width: 100%;
 //   background-color: #005eb8;
 
-//   @include mq($from: large-desktop) {
+//   @include nhsuk-media-query($from: large-desktop) {
 //     display: none;
 //   }
 
@@ -133,7 +133,7 @@
 //   transform: var(--center);
 
 //   &.page-has-side-nav-menu {
-//     @include mq($from: desktop) {
+//     @include nhsuk-media-query($from: desktop) {
 //       left: 55%;
 //     }
 //   }
@@ -145,7 +145,7 @@
 //   left: 50%;
 
 //   &.page-has-side-nav-menu {
-//     @include mq($from: desktop) {
+//     @include nhsuk-media-query($from: desktop) {
 //       left: 55%;
 //     }
 //   }
@@ -291,15 +291,15 @@
 
 // .nhsuk-button--danger {
 //   background-color: $color_nhsuk-red;
-//   box-shadow: 0 4px 0 shade($color_nhsuk-red, 50%);
+//   box-shadow: 0 4px 0 nhsuk-shade($color_nhsuk-red, 50%);
 //   margin-bottom: 16px !important;
 
 //   &:hover {
-//     background-color: shade($color_nhsuk-red, 20%);
+//     background-color: nhsuk-shade($color_nhsuk-red, 20%);
 //   }
 
 //   &:active {
-//     background-color: shade($color_nhsuk-red, 50%);
+//     background-color: nhsuk-shade($color_nhsuk-red, 50%);
 //   }
 // }
 
@@ -313,7 +313,7 @@
 // }
 
 // .nhsuk-header__link--service {
-//   @include mq($from: large-desktop) {
+//   @include nhsuk-media-query($from: large-desktop) {
 //     align-items: unset;
 //   }
 // }
@@ -353,7 +353,7 @@
 //   }
 // }
 
-// @media only screen and (max-width: $mq-tablet) {
+// @media only screen and (max-width: $nhsuk-media-query-tablet) {
 //   .nhsuk-table-responsive .nhsuk-table__body .nhsuk-table__row td li {
 //     text-align: justify;
 //   }

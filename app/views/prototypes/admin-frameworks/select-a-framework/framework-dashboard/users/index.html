@@ -13,18 +13,20 @@
 <!-- For adding a breadcrumb -->
 <!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
 {% block beforeContent %}
-  {{ breadcrumb({
-    items: [{
-      href: "/admin-home",
-      text: "Home"
-    },{
-      href: "/admin-home/select-a-framework",
-      text: "Select a framework"
-    },{
-      href: "/admin-home/select-a-framework/framework-dashboard",
-      text: "IV Therapy passport"
-    }]
-  }) }}
+  <div class="nhsuk-width-container">
+    {{ breadcrumb({
+      items: [{
+        href: "/admin-home",
+        text: "Home"
+      },{
+        href: "/admin-home/select-a-framework",
+        text: "Select a framework"
+      },{
+        href: "/admin-home/select-a-framework/framework-dashboard",
+        text: "IV Therapy passport"
+      }]
+    }) }}
+  </div>
 
   {{ hero({
     "heading": "Users",

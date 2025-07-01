@@ -7,12 +7,12 @@
     .js-enabled & {
       display: block;
 
-      @include mq($from: desktop) {
+      @include nhsuk-media-query($from: desktop) {
         display: flex;
       }
     }
 
-    @include mq($from: desktop) {
+    @include nhsuk-media-query($from: desktop) {
       flex-direction: row;
       flex-wrap: nowrap;
       justify-content: space-between;
@@ -44,7 +44,7 @@
     margin: nhsuk-spacing(1) 0;
     padding: nhsuk-spacing(1);
 
-    @include mq($from: desktop) {
+    @include nhsuk-media-query($from: desktop) {
       margin: 0;
     }
   }

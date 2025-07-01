@@ -1,6 +1,6 @@
 .quick-filters {
   &__title {
-    @include nhsuk-font(32, $weight: bold);
+    @include nhsuk-font(36, $weight: bold);
   }
 
   &__list {
@@ -52,9 +52,9 @@
     }
 
     &--active {
-      background-color: tint($color_nhsuk-blue, 80%);
-      border-color: shade($color_nhsuk-blue, 30%);
-      color: shade($color_nhsuk-blue, 30%);
+      background-color: nhsuk-tint($color_nhsuk-blue, 80%);
+      border-color: nhsuk-shade($color_nhsuk-blue, 30%);
+      color: nhsuk-shade($color_nhsuk-blue, 30%);
     }
   }
 }

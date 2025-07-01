@@ -18,10 +18,12 @@ Welcome - DLS prototype
 <!-- For adding a breadcrumb -->
 <!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
 {% block beforeContent %}
-  {{ breadcrumb({
-    href: "/admin-home",
-    text: "Home"
-  }) }}
+  <div class="nhsuk-width-container">
+    {{ breadcrumb({
+      href: "/admin-home",
+      text: "Home"
+    }) }}
+  </div>
 {% endblock %}
 
 <!-- For adding a back link -->

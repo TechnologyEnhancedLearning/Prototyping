@@ -1,5 +1,11 @@
-.nhsuk-width-container {
-  max-width: 1144px;
+// NOTE remove after updating to use tel-frontend
+$nhsuk-page-width: 1200px;
+
+.nhsuk-width-container, // NOTE remove after updating to use tel-frontend
+.tel-width-container,
+.nhsuk-header__container,
+.nhsuk-navigation {
+  max-width: $nhsuk-page-width;
 
   @media only screen and (max-width: 1208px) and (min-width: 960px) {
     margin-left: 32px;
@@ -7,8 +13,9 @@
   }
 
   &--full-width {
-    margin-left: auto !important;
-    margin-right: auto !important;
+    max-width: initial;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
@@ -17,7 +24,7 @@
 }
 
 .content-group {
-  @include reading-width();
+  @include nhsuk-reading-width();
 
   margin-bottom: nhsuk-spacing(6);
 

@@ -5,14 +5,14 @@
 {% endblock %}
 
 {% block beforeContent %}
-{{ breadcrumb({
-  items: [
-  {
-    href: "/paper-transfer/admin",
-    text: "Home"
-  }
-  ]
-}) }}
+  <div class="nhsuk-width-container">
+    {{ breadcrumb({
+    items: [{
+      href: "/paper-transfer/admin",
+      text: "Home"
+    }]
+    }) }}
+  </div>
 {% endblock %}
 
 {% block content %}

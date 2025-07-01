@@ -22,13 +22,15 @@
 {% block beforeContent %}
   {# Change home breadcrumb to the start of the prototype journey to #}
   {# "proficiencies-journey" #}
-  {{ breadcrumb({
-    items: [
-    {
-      href: "/proficiencies",
-      text: "Home"
-    }
-  ]}) }}
+
+  <div class="nhsuk-width-container">
+    {{ breadcrumb({
+      items: [{
+        href: "/proficiencies",
+        text: "Home"
+      }]
+    }) }}
+  </div>
 {% endblock %}
 
 <!-- For adding a back link -->

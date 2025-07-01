@@ -40,7 +40,7 @@
     font-size: $nhsuk-base-font-size;
   }
 
-  // @include mq($until: tablet) {
+  // @include nhsuk-media-query($until: tablet) {
     border-bottom: 1px solid $color_nhsuk-grey-3;
     border-left: 1px solid $color_nhsuk-grey-3;
     border-right: 0;
@@ -55,14 +55,14 @@
     z-index: 1;
   // }
 
-  // @include mq($from: tablet) {
+  // @include nhsuk-media-query($from: tablet) {
   //   border: 1px solid $color_nhsuk-white;
   //   font-size: $nhsuk-base-font-size;
   //   height: nhsuk-spacing(6); /* [2] */
   //   width: 200px; /* [2] */
   // }
 
-  // @include mq($from: desktop) {
+  // @include nhsuk-media-query($from: desktop) {
   //   width: 235px;
   // }
 }
@@ -87,7 +87,7 @@
     cursor: pointer;
   }
 
-  // @include mq($until: tablet) {
+  // @include nhsuk-media-query($until: tablet) {
     background-color: $color_nhsuk-green;
     height: 52px; /* [2] */
     margin: 0;
@@ -123,7 +123,7 @@
     }
   // }
 
-  // @include mq($from: tablet) {
+  // @include nhsuk-media-query($from: tablet) {
   //   background-color: $color_nhsuk-grey-5;
   //   display: block;
   //   height: nhsuk-spacing(6); /* [2] */
@@ -135,7 +135,7 @@
   //   }
 
   //   &:hover {
-  //     background-color: $color_shade_nhsuk-blue-35;
+  //     background-color: $color_nhsuk-shade_nhsuk-blue-35;
   //     border: 1px solid $color_nhsuk-white;
 
   //     .proto-icon__search {
@@ -149,7 +149,7 @@
   //   }
 
   //   &:active {
-  //     background-color: $color_shade_nhsuk-blue-50;
+  //     background-color: $color_nhsuk-shade_nhsuk-blue-50;
   //     border: 0;
 
   //     .proto-icon__search {

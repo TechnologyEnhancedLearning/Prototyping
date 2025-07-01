@@ -1,6 +1,6 @@
 .nhsuk-card {
   .beta-card__content {
-    @include mq($from: tablet) {
+    @include nhsuk-media-query($from: tablet) {
       padding-right: 75px;
     }
   }
@@ -8,7 +8,7 @@
   .beta-hub-arrow {
     display: none;
 
-    @include mq($from: tablet) {
+    @include nhsuk-media-query($from: tablet) {
       display: block;
       margin-top: -8px;
       position: absolute;
