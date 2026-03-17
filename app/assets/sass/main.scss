@@ -1,42 +1,32 @@
 // Import NHS.UK frontend library
-@import 'node_modules/nhsuk-frontend/packages/nhsuk';
+@import "nhsuk-frontend/dist/nhsuk";
 
-///////////////////////////////////////////
-// Prototype custom css
-///////////////////////////////////////////
+// Custom prototype css
+@import "variables";
+@import "functions";
+@import "mixins";
+@import "global";
 
-@import 'variables';
-@import 'functions';
-@import 'mixins';
-@import 'global';  // Global general styles and overrides
 
 // Custom prototyping components
-@import 'components/certificate';
+// @import 'components/certificate';
+@import 'components/definition-list';
+// @import 'components/tel-list';
+
 @import 'components/featured-media';
-@import 'components/form-elements';
-@import 'components/learning-log';
+// @import 'components/form-elements';
+// @import 'components/icons';
+// @import 'components/learning-log';
+@import 'components/panel';
 @import 'components/picture';
-@import 'components/progress';
+// @import 'components/progress';
 @import 'components/quick-filters';
-@import 'components/search';
-@import 'components/user-entry';
+// @import 'components/search';
+// @import 'components/rating';
+// @import 'components/user-entry';
 @import 'components/utilities';
 
 // Half baked prototyping components
-@import 'components/in-page-nav';
-@import 'components/related-nav';
-@import 'components/search';
-
-// NHSUK front-end overrides
-@import 'components/nhsuk-overrides/card';
-@import 'components/nhsuk-overrides/expander';
-@import 'components/nhsuk-overrides/list-border';
-@import 'components/nhsuk-overrides/summary-list';
-@import 'components/nhsuk-overrides/task-list'; // Overrides will need to be extracted after updating nhsuk front-end
-@import 'components/nhsuk-overrides/tag';
-
-///////////////////////////////////////////
-// DLS css
-///////////////////////////////////////////
-
-@import 'components/dls-copy/layout';
+// @import 'components/in-page-nav';
+// @import 'components/related-nav';
+// @import 'components/search';

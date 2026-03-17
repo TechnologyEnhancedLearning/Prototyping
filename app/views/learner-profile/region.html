@@ -1,0 +1,50 @@
+{# NOTE: Region needs to come off the back off of selecting other or Home working in place of work #}
+
+{% extends 'layout.html' %}
+
+{%- from 'radios/macro.njk' import radios %}
+{%- from 'button/macro.njk' import button %}
+{%- from 'back-link/macro.njk' import backLink %}
+
+{% set pageName = "Region" %}
+
+{% block beforeContent %}
+  {{ backLink({ href: "/learner-profile/task-list", text: "Back" }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-width-container">
+    <main class="nhsuk-main-wrapper" id="maincontent">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+          <div class="nhsuk-u-reading-width">
+            <form action="/learner-profile/region" method="post">
+            {{ radios({
+              idPrefix: "region",
+              name: "region",
+              fieldset: {
+                legend: {
+                  text: "Select your region",
+                  classes: "nhsuk-fieldset__legend--l",
+                  isPageHeading: true
+                }
+              },
+              items: [
+                { value: "east-midlands", text: "East Midlands" },
+                { value: "london", text: "London" },
+                { value: "north-east", text: "North East" },
+                { value: "north-west", text: "North West" },
+                { value: "south-east", text: "South East" },
+                { value: "south-west", text: "South West" },
+                { value: "west-midlands", text: "West Midlands" },
+                { value: "yorkshire-humber", text: "Yorkshire and the Humber" }
+              ]
+            }) }}
+            {{ button({ text: "Continue" }) }}
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}

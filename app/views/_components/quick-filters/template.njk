@@ -1,0 +1,66 @@
+{% from "../macros/attributes.njk" import nhsukAttributes %}
+
+{%- set useLinks = params.useLinks if params.useLinks is not undefined else false -%}
+{# {%- set listHeading = params.listHeading if params.listHeading is not undefined else "Show" -%} #}
+
+
+{# NOTE: This needs to be expanded to include some logging function and be moved out to a scripts file a be detected with a return statment #}
+<script>
+  // Toggle on click (handles elements added later too)
+  document.addEventListener('click', function (e) {
+    const btn = e.target.closest('.quick-filters__button');
+    if (!btn) return;
+    btn.classList.toggle('quick-filters__button--active');
+  });
+
+  // Optional: keyboard support if it's not a native <button>
+  document.addEventListener('keydown', function (e) {
+    const btn = e.target.closest('.quick-filters__button');
+    if (!btn) return;
+    // Space or Enter toggles
+    if (e.key === ' ' || e.key === 'Enter') {
+      e.preventDefault();
+      btn.classList.toggle('quick-filters__button--active');
+    }
+  });
+</script>
+
+<nav class="quick-filters{%- if params.classes %} {{ params.classes }}{% endif %}" {{- nhsukAttributes(params.attributes) }}>
+  {% if params.filterTitle %}
+    <div class="quick-filters__filter-title">{{ params.filterTitle }}</div>
+  {% endif %}
+
+  <ul class="quick-filters__list{%- if params.listClasses %} {{ params.listClasses }}{% endif %}">
+    {% if listHeading and listHeading is not sameas(false) %}
+      <span class="quick-filters__list-heading">{{ listHeading }}</span>
+    {% endif %}
+
+    {% if caller %}
+      {{ caller() }}
+    {% else %}
+      {% for item in params.items %}
+        <li class="quick-filters__list-item{%- if item.classes %} {{ item.classes }}{% endif %}">
+          {% if useLinks %}
+            {%- set href = item.href if item.href else "#" -%}
+            <a href="{{ href }}" class="quick-filters__button{%- if item.active %} quick-filters__button--active{% endif %}{%- if item.buttonClasses %} {{ item.buttonClasses }}{% endif %}" {{- nhsukAttributes(item.attributes) }}>
+              {% if item.html %}
+                {{ item.html | safe | trim | indent(14) }}
+              {% else %}
+                <span>{{ item.text }}</span>
+              {% endif %}
+            </a>
+          {% else %}
+            {%- set buttonType = item.type if item.type else "button" -%}
+            <button type="{{ buttonType }}" class="quick-filters__button{%- if item.active %} quick-filters__button--active{% endif %}{%- if item.buttonClasses %} {{ item.buttonClasses }}{% endif %}" {{- nhsukAttributes(item.attributes) }}>
+              {% if item.html %}
+                {{ item.html | safe | trim | indent(14) }}
+              {% else %}
+                <span>{{ item.text }}</span>
+              {% endif %}
+            </button>
+          {% endif %}
+        </li>
+      {% endfor %}
+    {% endif %}
+  </ul>
+</nav>

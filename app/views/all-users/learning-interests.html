@@ -1,0 +1,89 @@
+{% extends 'layout.html' %}
+
+{% from "_data/learning-interests/nhs-roles.njk" import NHS_ROLE_INTERESTS %}
+
+{%- from '_components/quick-filters/macro.njk' import quickFilters %}
+{%- from 'input/macro.njk' import input %}
+{%- from 'button/macro.njk' import button %}
+{%- from 'back-link/macro.njk' import backLink %}
+
+
+
+{% set pageName = "Learning interests" %}
+
+{% block beforeContent %}
+  {{ backLink({ href: "/learner-profile/task-list", text: "Back" }) }}
+{% endblock %}
+
+
+{% for key, role in NHS_ROLE_INTERESTS %}
+  <li class="quick-filters__list-item">
+    <button type="button" class="quick-filters__button" data-role-key="{{ key }}">
+      <span>{{ role.label }}</span>
+    </button>
+  </li>
+{% endfor %}
+
+
+{# {% set filterItems %}
+{% for key, role in NHS_ROLE_INTERESTS %}
+  {% set filterItems = filterItems + [{
+    text: role.label,
+    attributes: {
+      "data-role-key": key
+    }
+  }] %}
+{% endfor %}
+{% endset %} #}
+
+{% block content %}
+  <div class="nhsuk-width-container">
+    <main class="nhsuk-main-wrapper" id="maincontent">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+          <div class="nhsuk-u-reading-width">
+            <h1 class="nhsuk-heading-xl">Find topics relevant to you</h1>
+            <p>Select 3 or more topics to personalise your learning (optional).</p>
+            <form action="/all-users/learning-interests" method="post">
+              {{ input({
+                label: { text: "", classes: "" },
+                id: "interest-search",
+                name: "interestSearch",
+                placeholder: "Search",
+                classes: "nhsuk-input"
+              }) }}
+
+              {% call quickFilters({
+                classes: "",
+                filterTitle: "Interests",
+                listHeading: "Show"
+              }) %}
+                {% for key, role in NHS_ROLE_INTERESTS %}
+                  <li class="quick-filters__list-item">
+                    <button type="button" class="quick-filters__button" data-role-key="{{ key }}">
+                      <span>{{ role.label }}</span>
+                    </button>
+                  </li>
+                {% endfor %}
+              {% endcall %}
+
+              {# {{ quickFilters({
+                classes: "learning-log__activity-filter",
+                filterTitle: "Interests",
+                listHeading: "Show",
+                items: filterItems
+              }) }} #}
+
+              <div class="nhsuk-u-margin-top-4">
+                <p><a class="nhsuk-link" href="#">Show more</a></p>
+              </div>
+
+              {{ button({ text: "Continue" }) }}
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+
+{%- from 'input/macro.njk' import input %}
+{%- from 'button/macro.njk' import button %}
+{%- from 'back-link/macro.njk' import backLink %}
+{%- from 'details/macro.njk' import details %}
+
+{% set pageName = "Your role" %}
+
+{% block beforeContent %}
+  {# {{ backLink({ href: "/create-account/account-ready", text: "Back" }) }} #}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-width-container">
+    <main class="nhsuk-main-wrapper" id="maincontent">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+          <div class="nhsuk-u-reading-width">
+            <h1 class="nhsuk-heading-xl">Your role</h1>
+            {# <p class="nhsuk-body-m">Search for your current role.</p> #}
+            {# <p class="nhsuk-hint">Use a generic term to best describe your role.</p> #}
+            <form action="/learner-profile/your-role-search" method="post">
+              {# {{ input({
+                label: { text: "", classes: "" },
+                id: "role-search",
+                name: "roleSearch",
+                value: "",
+                classes: "nhsuk-input",
+                placeholder: "midwife"
+              }) }} #}
+
+              {{ input({
+                label: {
+                  text: "Search for your current role",
+                  classes: "nhsuk-label--m"
+                },
+                classes: "",
+                hint: {
+                  text: "Use a generic term to best describe your role"
+                },
+                id: "role-search",
+                name: "roleSearch",
+                value: "",
+                classes: "nhsuk-input",
+                inputmode: "text",
+                spellcheck: false
+              }) }}
+
+              {{ button({ text: "Search" }) }}
+            </form>
+            {# {{ details({
+              summaryText: "Why do I need to provide details about my role?",
+              html: "<p>In the future, resources will be recommended to you based on your role.</p>"
+            }) }} #}
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}

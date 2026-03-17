@@ -1,0 +1,42 @@
+{# TODO: Capture email address from previouse step and copy into first line on this page #}
+{# TODO email address probably doens't need to be an <a> tag. Maybe just bold it #}
+
+{% extends 'layout.html' %}
+
+{%- from 'button/macro.njk' import button %}
+{%- from 'back-link/macro.njk' import backLink %}
+
+{% set pageName = "Check your email" %}
+{% set user = data.user | default({}) %}
+{% set profile = user.profile | default({}) %}
+<!-- {% set tasks = user.tasks | default({}) %} -->
+<!-- {% set startDate = ((profile.startMonth or '') + ' ' + (profile.startYear or '')) | trim %} -->
+
+{% block beforeContent %}
+  {{ backLink({ href: "/create-account/email-address", text: "Back" }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-width-container">
+    <main class="nhsuk-main-wrapper" id="maincontent">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+          <div class="nhsuk-u-reading-width">
+            <h1 class="nhsuk-heading-xl">Check your email</h1>
+            <p>We've emailed a verification link to <a href="">{{ profile.emailAddress or "test@email-address.com"}}</a>. {# the address you provided. #}</p>
+            <ul class="nhsuk-list nhsuk-list--bullet">
+              <li>Open the email and select the link to confirm your account.</li>
+              <li>Check your spam or junk folder if the email has not arrived in the next 30&nbsp;minutes.</li>
+              <li>The link <b>expires in 4&nbsp;hours.</b></li>
+            </ul>
+            <p>If you need to change your email, you'll need to start again.</p>
+            <form action="/create-account/email-sent" method="post">
+              {{ button({ text: "Resend email verification" }) }}
+            </form>
+            <p>If you need to change your email, you’ll need to <a href="/create-account/email-address">start again</a>.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}

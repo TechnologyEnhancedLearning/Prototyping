@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+{%- from 'input/macro.njk' import input %}
+{%- from 'button/macro.njk' import button %}
+{%- from 'back-link/macro.njk' import backLink %}
+
+{#
+  Page to capture the user's professional registration number (PRN).
+  The page mirrors the mock‑up, prompting for a single PRN/PIN and a hint to
+  explain that this may also be known as an NMC number.  Content is
+  wrapped in a reading‑width container【148225817585091†L350-L371】.
+#}
+
+{% set pageName = "Enter PRN" %}
+
+{% block beforeContent %}
+  {{ backLink({ href: "/learner-profile/task-list", text: "Back" }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-width-container">
+    <main class="nhsuk-main-wrapper" id="maincontent">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+          <div class="nhsuk-u-reading-width">
+            <h1 class="nhsuk-heading-xl">Enter your professional registration number (PRN)</h1>
+            <p>You may know this as your NMC number or PIN.</p>
+            <form action="/learner-profile/enter-prn" method="post">
+              {{ input({
+                label: { text: "Professional registration number (PRN)", classes: "nhsuk-label--m" },
+                id: "prn",
+                name: "prn",
+                placeholder: "99A9999A"
+              }) }}
+              {{ button({ text: "Continue" }) }}
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}

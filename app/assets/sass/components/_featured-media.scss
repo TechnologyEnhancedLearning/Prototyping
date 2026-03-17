@@ -38,9 +38,9 @@
     }
   }
 
-  // &__heading {
-  //   @include adjust-heading;
-  // }
+  &__heading {
+    @include adjust-heading($size: 48);
+  }
 
   &__media {
     @include breakpoint(6) {

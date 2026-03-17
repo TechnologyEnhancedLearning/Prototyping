@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+
+{%- from 'input/macro.njk' import input %}
+{%- from 'button/macro.njk' import button %}
+{%- from 'back-link/macro.njk' import backLink %}
+
+{#
+  Collects an optional secondary email address from the user.  This page
+  follows the mock‑up by explaining why a secondary address is needed to
+  help verify identity in account recovery.  Users can continue or
+  indicate they do not have a secondary email.
+#}
+
+{% set pageName = "Secondary email" %}
+
+{% block beforeContent %}
+  {# The secondary email page is accessed from the task list. The back link
+     should return the user to the task list rather than the previous optional
+     step. #}
+  {{ backLink({ href: "/learner-profile/task-list", text: "Back" }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-width-container">
+    <main class="nhsuk-main-wrapper" id="maincontent">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+          <h1>Account secondary email address</h1>
+          <div class="nhsuk-u-reading-width">
+            <p>We need to take a secondary email address to help so that we are able to verify who you are if we need help you recover your account in the future.</p>
+            <form action="/all-users/secondary-email" method="post">
+              {{ input({
+                label: { text: "Secondary email address (optional)", classes: "nhsuk-label--s" },
+                id: "secondary-email",
+                name: "secondaryEmail",
+                type: "email",
+                autocomplete: "email"
+              }) }}
+              {{ button({ text: "Continue" }) }}
+            </form>
+            <p><a class="nhsuk-link" href="/all-users/link-social">Don't have a secondary email?</a></p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}

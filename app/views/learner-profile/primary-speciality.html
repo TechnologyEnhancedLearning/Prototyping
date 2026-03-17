@@ -1,0 +1,57 @@
+{% extends 'layout.html' %}
+
+{%- from 'input/macro.njk' import input %}
+{%- from 'button/macro.njk' import button %}
+{%- from 'back-link/macro.njk' import backLink %}
+
+{#
+  Page where users can search for and set their primary speciality.  A
+  search box is provided along with an option for “Not applicable”.
+  The layout follows the NHS design system by using form group and
+  radio classes and constraining the content to the reading width【148225817585091†L350-L371】.
+#}
+
+{% set pageName = "Primary speciality" %}
+
+{% block beforeContent %}
+  {{ backLink({ href: "/learner-profile/task-list", text: "Back" }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-width-container">
+    <main class="nhsuk-main-wrapper" id="maincontent">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+          <div class="nhsuk-u-reading-width">
+            <h1 class="nhsuk-heading-xl">Search for your primary specialty</h1>
+            <p class="nhsuk-hint">Use a generic term to best describe your primary specialty or select ‘not applicable’ if not relevant to you.</p>
+            <form action="/learner-profile/primary-speciality" method="post">
+              {{ input({
+                label: { text: "", classes: "" },
+                id: "speciality-search",
+                name: "specialitySearch",
+                value: "",
+                classes: "nhsuk-input",
+                placeholder: "lorem ipsum"
+              }) }}
+              <div class="nhsuk-form-group">
+                <fieldset class="nhsuk-fieldset">
+                  <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                    <span class="nhsuk-fieldset__heading">&nbsp;</span>
+                  </legend>
+                  <div class="nhsuk-radios">
+                    <div class="nhsuk-radios__item">
+                      <input class="nhsuk-radios__input" id="speciality-na" name="speciality" type="radio" value="na">
+                      <label class="nhsuk-label nhsuk-radios__label" for="speciality-na">Not applicable</label>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+              {{ button({ text: "Continue" }) }}
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}

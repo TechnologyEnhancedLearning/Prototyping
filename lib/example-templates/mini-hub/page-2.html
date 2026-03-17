@@ -1,22 +1,18 @@
-{% extends 'layouts/layout.html' %}
+{% extends "layout.html" %}
 
-{% block pageTitle %}
-  Mini hub - Page two
-{% endblock %}
+{% set pageName = "Mini hub - Page two" %}
 
 {% block beforeContent %}
-  <div class="nhsuk-width-container">
-    {{ breadcrumb({
-      items: [
-        {
-          href: "/",
-          text: "Home"
-        }
-      ],
-      href: "/example-templates/mini-hub",
-      text: "Main page"
-    }) }}
-  </div>
+  {{ breadcrumb({
+    items: [
+      {
+        href: "/",
+        text: "Home"
+      }
+    ],
+    href: "/example-templates/mini-hub",
+    text: "Main page"
+  }) }}
 {% endblock %}
 
 {% block content %}
@@ -59,10 +55,10 @@
       </p>
 
       {{ pagination({
-        "previousUrl": "/example-templates/mini-hub",
-        "previousPage": "Main page",
-        "nextUrl": "/example-templates/mini-hub/page-3",
-        "nextPage": "Page two"
+        previousUrl: "/example-templates/mini-hub",
+        previousPage: "Main page",
+        nextUrl: "/example-templates/mini-hub/page-3",
+        nextPage: "Page two"
       }) }}
 
     </div>

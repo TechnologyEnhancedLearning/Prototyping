@@ -1,0 +1,35 @@
+{# TODO: wrap content in content-group wrapper #}
+{# TODO: re-direct "Start exploring now" to logged-in homepage / dashboard #}
+
+{% extends 'layout.html' %}
+
+{%- from 'button/macro.njk' import button %}
+{%- from 'back-link/macro.njk' import backLink %}
+
+{% set pageName = "Account ready" %}
+
+{% block beforeContent %}
+  {# NOTE: consider adding home breadcrumb #}
+  {# {{ backLink({ href: "/create-account/about-you", text: "Back to: About you" }) }} #}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-width-container">
+    <main class="nhsuk-main-wrapper" id="maincontent">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+          <div class="nhsuk-u-reading-width">
+            <h1 class="nhsuk-heading-xl">Your account is ready to go</h1>
+            <p>Your account has been created and you can start using the Learning Hub right away.</p>
+            <p>Before you start, there are a few optional steps that can help us tailor the content and improve your experience.</p>
+            <p>Finishing account creation should take 2 to 5 minutes. You can do these now, or come back to them later.</p>
+            <p>
+              {{ button({ text: "Continue setup", href: "/learner-profile/your-role", classes: "nhsuk-u-margin-right-3"}) }}
+              <a class="nhsuk-button nhsuk-button--secondary" href="/">Start exploring now</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}

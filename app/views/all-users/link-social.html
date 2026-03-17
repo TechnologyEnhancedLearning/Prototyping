@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{%- from 'button/macro.njk' import button %}
+{%- from 'back-link/macro.njk' import backLink %}
+
+{#
+  Invites users to link their LinkedIn account.  The page mirrors the
+  mock‑up by explaining how a linked profile will be used and that the
+  feature is under development.  Users can sign in to LinkedIn, continue
+  or skip the step.  Content is wrapped with the reading‑width class【148225817585091†L350-L371】.
+#}
+
+{% set pageName = "Link social account" %}
+
+{% block beforeContent %}
+  {# The link social page is accessed from the task list. The back link
+     should return to the task list rather than the previous optional step. #}
+  {{ backLink({ href: "/learner-profile/task-list", text: "Back" }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-width-container">
+    <main class="nhsuk-main-wrapper" id="maincontent">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+          <h1 class="nhsuk-heading-xl">Link your LinkedIn account</h1>
+          <div class="nhsuk-u-reading-width">
+            <p>We will use your account to populate your profile picture, and in the future we will integrate with with your social feed and profile.</p>
+            <p><a class="nhsuk-button nhsuk-button--secondary" href="#">Sign in to your LinkedIn account</a></p>
+            {# NOTE" We might want to satte more intent here #}
+            <p>We are developing this feature.</p>
+            <form action="/all-users/link-social" method="post">
+              {{ button({ text: "Continue" }) }}
+            </form>
+            <!-- <p><a class="nhsuk-link" href="/all-users/check-details">Skip and start learning</a></p> -->
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}

@@ -1,0 +1,206 @@
+{% extends 'layout.html' %}
+
+{% set pageName = "Learner profile" %}
+
+{% block beforeContent %}
+  {{ backLink({ href: "/learner-profile/your-role-search", text: "Back" }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-width-container">
+    <main class="nhsuk-main-wrapper" id="maincontent">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+          <div class="nhsuk-u-reading-width">
+            <h1 class="nhsuk-heading-xl">Learner profile</h1>
+            {% set user = data.user | default({}) %}
+            {% set profile = user.profile | default({}) %}
+            {% set tasks = user.tasks | default({}) %}
+
+            {# NOTE: Like all feilds in these steps - data need to be carried forward to populate the relivant feilds later int eh journey - e.g. summary screen and job role. The best way to do this may be by using a key value object as middleware #}
+
+            {{ summaryList({
+              rows: [
+                {
+                  key: {
+                    text: "Your role"
+                  },
+                  value: {
+                    text: profile.role or profile.roleSearch or 'Not yet provided'
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "/learner-profile/your-role",
+                        text: "Change",
+                        visuallyHiddenText: "role"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }) }}
+
+            <p>Finish setting up your profile by completing the tasks below.</p>
+
+            <ul class="nhsuk-task-list nhsuk-u-margin-bottom-5">
+              {% set psStatus = (tasks.primarySpeciality and tasks.primarySpeciality.status) or 'Not yet started' %}
+              <li class="nhsuk-task-list__item nhsuk-task-list__item--with-link">
+                <div class="nhsuk-task-list__name-and-hint">
+                  <a class="nhsuk-link nhsuk-task-list__link" href="/learner-profile/primary-speciality" aria-describedby="primary-speciality-status">
+                    Primary speciality
+                  </a>
+                </div>
+                <div class="nhsuk-task-list__status{% if psStatus == 'Completed' %} nhsuk-task-list__status--completed{% endif %}" id="primary-speciality-status">
+                  {% if psStatus == 'Completed' %}
+                    {{ psStatus }}
+                  {% else %}
+                    {{ tag({
+                      text: psStatus,
+                      classes: "nhsuk-tag--blue"
+                    }) }}
+                  {% endif %}
+                </div>
+              </li>
+
+
+
+              {% set prnStatus = (tasks.prn and tasks.prn.status) or 'Not yet started' %}
+              <li class="nhsuk-task-list__item nhsuk-task-list__item--with-link">
+                <div class="nhsuk-task-list__name-and-hint">
+                  <a class="nhsuk-link nhsuk-task-list__link" href="/learner-profile/enter-prn" aria-describedby="enter-prn-status">Your professional registration number (PRN)</a>
+                </div>
+                <div class="nhsuk-task-list__status{% if prnStatus == 'Completed' %} nhsuk-task-list__status--completed{% endif %}" id="enter-prn-status">
+                  {% if prnStatus == 'Completed' %}
+                    {{ prnStatus }}
+                  {% else %}
+                    {{ tag({
+                      text: prnStatus,
+                      classes: "nhsuk-tag--blue"
+                    }) }}
+                  {% endif %}
+                </div>
+              </li>
+              {% set sdStatus = (tasks.startDate and tasks.startDate.status) or 'Not yet started' %}
+              <li class="nhsuk-task-list__item nhsuk-task-list__item--with-link">
+                <div class="nhsuk-task-list__name-and-hint">
+                  <a class="nhsuk-link nhsuk-task-list__link" href="/learner-profile/start-date" aria-describedby="start-date-status">Start date</a>
+                </div>
+                <div class="nhsuk-task-list__status{% if sdStatus == 'Completed' %} nhsuk-task-list__status--completed{% endif %}" id="start-date-status">
+                  {% if sdStatus == 'Completed' %}
+                    {{ sdStatus }}
+                  {% else %}
+                    {{ tag({
+                      text: sdStatus,
+                      classes: "nhsuk-tag--blue"
+                    }) }}
+                  {% endif %}
+                </div>
+              </li>
+              {% set pbStatus = (tasks.payBand and tasks.payBand.status) or 'Not yet started' %}
+              <li class="nhsuk-task-list__item nhsuk-task-list__item--with-link">
+                <div class="nhsuk-task-list__name-and-hint">
+                  <a class="nhsuk-link nhsuk-task-list__link" href="/learner-profile/pay-band" aria-describedby="pay-band-status">Pay band</a>
+                </div>
+                <div class="nhsuk-task-list__status{% if pbStatus == 'Completed' %} nhsuk-task-list__status--completed{% endif %}" id="pay-band-status">
+                  {% if pbStatus == 'Completed' %}
+                    {{ pbStatus }}
+                  {% else %}
+                    {{ tag({
+                      text: pbStatus,
+                      classes: "nhsuk-tag--blue"
+                    }) }}
+                  {% endif %}
+                </div>
+              </li>
+              {% set powStatus = (tasks.placeOfWork and tasks.placeOfWork.status) or 'Not yet started' %}
+              <li class="nhsuk-task-list__item nhsuk-task-list__item--with-link">
+                <div class="nhsuk-task-list__name-and-hint">
+                  <a class="nhsuk-link nhsuk-task-list__link" href="/learner-profile/place-of-work" aria-describedby="place-of-work-status">Place of work</a>
+                </div>
+                <div class="nhsuk-task-list__status{% if powStatus == 'Completed' %} nhsuk-task-list__status--completed{% endif %}" id="place-of-work-status">
+                  {% if powStatus == 'Completed' %}
+                    {{ powStatus }}
+                  {% else %}
+                    {{ tag({
+                      text: powStatus,
+                      classes: "nhsuk-tag--blue"
+                    }) }}
+                  {% endif %}
+                </div>
+              </li>
+              {# {% set regionStatus = (tasks.region and tasks.region.status) or 'Not yet started' %}
+              <li class="nhsuk-task-list__item nhsuk-task-list__item--with-link">
+                <div class="nhsuk-task-list__name-and-hint">
+                  <a class="nhsuk-link nhsuk-task-list__link" href="/learner-profile/region" aria-describedby="region-status">Region</a>
+                </div>
+                <div class="nhsuk-task-list__status{% if regionStatus == 'Completed' %} nhsuk-task-list__status--completed{% endif %}" id="region-status">
+                  {% if regionStatus == 'Completed' %}
+                    {{ regionStatus }}
+                  {% else %}
+                    {{ tag({
+                      text: regionStatus,
+                      classes: "nhsuk-tag--blue"
+                    }) }}
+                  {% endif %}
+                </div>
+              </li> #}
+              {% set interestsStatus = (tasks.interests and tasks.interests.status) or 'Optional' %}
+              <li class="nhsuk-task-list__item nhsuk-task-list__item--with-link">
+                <div class="nhsuk-task-list__name-and-hint">
+                  <a class="nhsuk-link nhsuk-task-list__link" href="/all-users/learning-interests" aria-describedby="interests-status">Enter your interests</a>
+                </div>
+                <div class="nhsuk-task-list__status{% if interestsStatus == 'Completed' %} nhsuk-task-list__status--completed{% endif %}" id="interests-status">
+                  {% if interestsStatus == 'Completed' %}
+                    {{ interestsStatus }}
+                  {% else %}
+                    {{ tag({
+                      text: interestsStatus,
+                      classes: "nhsuk-tag--white"
+                    }) }}
+                  {% endif %}
+                </div>
+              </li>
+              {% set seStatus = (tasks.secondaryEmail and tasks.secondaryEmail.status) or 'Optional' %}
+              <li class="nhsuk-task-list__item nhsuk-task-list__item--with-link">
+                <div class="nhsuk-task-list__name-and-hint">
+                  <a class="nhsuk-link nhsuk-task-list__link" href="/all-users/secondary-email" aria-describedby="secondary-email-status">Account recovery email</a>
+                </div>
+                <div class="nhsuk-task-list__status{% if seStatus == 'Completed' %} nhsuk-task-list__status--completed{% endif %}" id="secondary-email-status">
+                  {% if seStatus == 'Completed' %}
+                    {{ seStatus }}
+                  {% else %}
+                    {{ tag({
+                      text: seStatus,
+                      classes: "nhsuk-tag--white"
+                    }) }}
+                  {% endif %}
+                </div>
+              </li>
+              {% set socialStatus = (tasks.social and tasks.social.status) or 'Optional' %}
+              <li class="nhsuk-task-list__item nhsuk-task-list__item--with-link">
+                <div class="nhsuk-task-list__name-and-hint">
+                  <a class="nhsuk-link nhsuk-task-list__link" href="/all-users/link-social" aria-describedby="social-status">Add your LinkedIn account</a>
+                </div>
+                <div class="nhsuk-task-list__status{% if socialStatus == 'Completed' %} nhsuk-task-list__status--completed{% endif %}" id="social-status">
+                  {% if socialStatus == 'Completed' %}
+                    {{ socialStatus }}
+                  {% else %}
+                    {{ tag({
+                      text: socialStatus,
+                      classes: "nhsuk-tag--white"
+                    }) }}
+                  {% endif %}
+                </div>
+              </li>
+            </ul>
+            <div class="nhsuk-button-group">
+              {{ button({ text: "Review information is correct and submit", href: "/all-users/check-details" }) }}
+              <a class="nhsuk-button nhsuk-button--secondary" href="#">Save for later</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}

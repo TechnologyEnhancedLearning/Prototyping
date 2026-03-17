@@ -1,0 +1,80 @@
+{% extends 'layout.html' %}
+
+{%- from 'radios/macro.njk' import radios %}
+{%- from 'input/macro.njk' import input %}
+{%- from 'button/macro.njk' import button %}
+{%- from 'details/macro.njk' import details %}
+{%- from 'back-link/macro.njk' import backLink %}
+
+{#
+  Displays search results for the user's place of work.  This page
+  mirrors the mock‑up by showing the search term, allowing the user
+  to refine their search and presenting a list of matching
+  organisations with addresses and organisation codes.  A help panel
+  explains why we need workplace details【148225817585091†L350-L371】.
+#}
+
+{% set pageName = "Place of work results" %}
+
+{% block beforeContent %}
+  {{ backLink({ href: "/learner-profile/place-of-work", text: "Back" }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-width-container">
+    <main class="nhsuk-main-wrapper" id="maincontent">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+          <div class="nhsuk-u-reading-width">
+            <h1 class="nhsuk-heading-xl">Search results for great ormond street hospital</h1>
+            <p>Enter the name, postcode or Organisation Data Service (ODS) code of your place of work.</p>
+            <form action="/learner-profile/place-of-work-results" method="post" class="nhsuk-form">
+              {{ input({
+                label: { text: "", classes: "" },
+                id: "place-search",
+                name: "placeSearch",
+                value: "great ormond street hospital",
+                classes: "nhsuk-input"
+              }) }}
+            </form>
+            <form action="/learner-profile/place-of-work-results" method="post">
+            {{ radios({
+              idPrefix: "workplace",
+              name: "workplace",
+              fieldset: {
+                legend: {
+                  text: "Select your place of work",
+                  classes: "nhsuk-fieldset__legend--m"
+                }
+              },
+              items: [
+                {
+                  value: "bernard",
+                  html: "<strong>40 Bernard Street, Great Ormond Street Hospital for Children NHS Foundation Trust (NHS Trust Site)</strong><br><span class='nhsuk-hint'>Address: GREAT ORMOND STREET HOSPITAL CHILDR, 40&nbsp;BERNARD STREET, WC1N 1LE<br>Org code: HSP96M</span>"
+                },
+                {
+                  value: "acute",
+                  html: "<strong>Acute Wards – GOSH Satellite, Great Ormond Street Hospital for Children NHS Foundation Trust (NHS Trust Site)</strong><br><span class='nhsuk-hint'>Address: GREAT ORMOND STREET HOSPITAL CHILDR, GREAT ORMOND STREET, WC1N 3JH<br>Org code: HSP96A</span>"
+                },
+                {
+                  value: "barclay",
+                  html: "<strong>Barclay House, Great Ormond Street Hospital for Children NHS Foundation Trust (NHS Trust Site)</strong><br><span class='nhsuk-hint'>Address: 37&nbsp;QUEEN SQUARE, WC1N 3BH<br>Org code: D181S</span>"
+                },
+                {
+                  value: "broomfield",
+                  html: "<strong>Broomfield Hospital, Great Ormond Street Hospital for Children NHS Foundation Trust (NHS Trust Site)</strong><br><span class='nhsuk-hint'>Address: COURT ROAD, ESSEX, CM1 7ET<br>Org code: RDEP3</span>"
+                }
+              ]
+            }) }}
+            {{ details({
+              summaryText: "Why do I need to provide details about where I work?",
+              html: "<p>Information on your place of work will help us provide activity reports to evidence your learning.</p>"
+            }) }}
+            {{ button({ text: "Continue" }) }}
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}

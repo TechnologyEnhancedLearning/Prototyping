@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{%- from 'input/macro.njk' import input %}
+{%- from 'button/macro.njk' import button %}
+{%- from 'details/macro.njk' import details %}
+{%- from 'back-link/macro.njk' import backLink %}
+
+{#
+  Prompts the user to search for their place of work.  This page follows the
+  mock‑up by asking for the name, postcode or Organisation Data Service
+  (ODS) code of the workplace.  A help panel explains why we ask for
+  these details.  The content is wrapped in a reading‑width container for
+  readability【148225817585091†L350-L371】.
+#}
+
+{% set pageName = "Place of work" %}
+
+{% block beforeContent %}
+  {{ backLink({ href: "/learner-profile/task-list", text: "Back" }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-width-container">
+    <main class="nhsuk-main-wrapper" id="maincontent">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+          <div class="nhsuk-u-reading-width">
+            <h1 class="nhsuk-heading-xl">Search for your place of work</h1>
+            <p>Enter the name, postcode or Organisation Data Service (ODS) code of your place of work.</p>
+            <form action="/learner-profile/place-of-work-results" method="post">
+              {{ input({
+                label: { text: "", classes: "" },
+                id: "place-search",
+                name: "placeSearch",
+                placeholder: "great ormond street hospital",
+                classes: "nhsuk-input"
+              }) }}
+              {{ button({ text: "Search" }) }}
+            </form>
+            {{ details({
+              summaryText: "Why do I need to provide details about where I work?",
+              html: "<p>Information on your place of work will help us provide activity reports to evidence your learning.</p>"
+            }) }}
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}

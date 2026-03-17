@@ -1,0 +1,63 @@
+{% extends 'layout.html' %}
+
+{%- from 'radios/macro.njk' import radios %}
+{%- from 'input/macro.njk' import input %}
+{%- from 'button/macro.njk' import button %}
+{%- from 'back-link/macro.njk' import backLink %}
+{%- from 'details/macro.njk' import details %}
+
+{#
+  Displays the results of the job role search and allows the user to
+  choose from predefined roles or specify their own.  Uses the NHS
+  radios component to list choices【812188338922131†L110-L133】 and a text input for
+  the free‑text role.  A back link returns to the search page.
+#}
+
+{% set pageName = "Select your role" %}
+
+{% block beforeContent %}
+  {{ backLink({ href: "/learner-profile/your-role", text: "Back" }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-width-container">
+    <main class="nhsuk-main-wrapper" id="maincontent">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+          <div class="nhsuk-u-reading-width">
+            <!-- Heading and description -->
+            {{ radios({
+              idPrefix: "role",
+              name: "role",
+              fieldset: {
+                legend: {
+                  text: "Search results for midwife",
+                  classes: "nhsuk-fieldset__legend--l",
+                  isPageHeading: true
+                }
+              },
+              hint: { text: "Use a generic term to best describe your role" },
+              items: [
+                { value: "midwife_tutor", text: "Midwife – Tutor (Students)" },
+                { value: "nursing_associate", text: "Nursing Associate (Nursing and Midwifery Registered)" },
+                { value: "nurse", text: "Nurse (Nursing and Midwifery Registered)" },
+                { value: "health_visitor", text: "Health Visitor (Nursing and Midwifery Registered)" },
+                { value: "other", text: "Other" }
+              ]
+            }) }}
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label" for="other-role">Enter your role</label>
+              <input class="nhsuk-input" id="other-role" name="otherRole" type="text">
+            </div>
+            {{ button({ text: "Continue", href: "/learner-profile/task-list" }) }}
+            {{ details({
+              summaryText: "Why do I need to provide details about my role?",
+              html: "<p>In the future, resources will be recommended to you based on your role.</p>"
+            }) }}
+            <p class="nhsuk-body-s nhsuk-u-margin-top-4">Previous 1 of 3 · Next 3 of 3</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}

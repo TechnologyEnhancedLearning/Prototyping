@@ -1,0 +1,665 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+  <!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+  <link href="/css/lh-css-copy-all.css" rel="stylesheet">
+  <link href="/css/main.css" rel="stylesheet">
+{% endblock %}
+
+{% set pageName = "Dashboard" %}
+{% set containerClasses = "app-width-container--full" %}
+{% set mainClasses = "app-main-wrapper--no-padding nhsuk-bg-white" %}
+
+{% block content %}
+<!-- <div class="nhsuk-width-container">
+  <main class="nhsuk-main-wrapper" id="maincontent">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full">
+        <div class="nhsuk-u-reading-width">
+          <h1 class="nhsuk-heading-xl">Dashboard</h1>
+          <p>This is your dashboard. From here you can access your learning resources, profile settings and messages.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+  -->
+
+  <div>
+    <div class="nhsuk-bg-white">
+      <div class="text-center">
+        <picture>
+          <source media="(min-width: 1441px)" srcset="images/LH-dashboard-banner_2400x320.jpg">
+          <source media="(min-width: 991px)" srcset="images/LH-dashboard-banner_1500x320.jpg">
+          <source media="(min-width: 769px)" srcset="images/LH-dashboard-banner_990x320.jpg">
+          <source media="(min-width: 641px)" srcset="images/LH-dashboard-banner_770x320.jpg">
+          <img src="images/LH-dashboard-banner_640x320.jpg" class="hero-image" alt="">
+        </picture>
+      </div>
+
+      <div class="nhsuk-width-container app-width-container">
+        <div id="my-learning">
+          <div class="dashboardTray">
+            <h2>My courses and elearning</h2>
+
+            <nav class="subnavbarwhite nhsuk-bg-white  navbar-expand-md nhsuk-u-margin-bottom-5">
+              <input class="subnav-hidden-checkbox" id="mylearning-subnav-hidden-checkbox" role="button" type="checkbox" aria-controls="collapsingMyLearningSubNavbar" aria-labelledby="mylearning-subnav-hidden-checkbox-label">
+              <div class="bar">
+                <div class="navbar-toggler navbar-toggler-left nhsuk-u-font-size-19">In Progress</div>
+                <label class="navbar-toggler navbar-toggler-right" id="mylearning-subnav-hidden-checkbox-label" for="mylearning-subnav-hidden-checkbox">
+                  <i class="fa-solid fa-chevron-down">
+                    <span class="nhsuk-u-visually-hidden">Show Resource Options</span>
+                  </i>
+                  <i class="fa-solid fa-chevron-up display--hide">
+                    <span class="nhsuk-u-visually-hidden">Hide Resource Options</span>
+                  </i>
+                </label>
+              </div>
+              <div class="navbar-collapse collapse nhsuk-bg-white" id="collapsingMyLearningSubNavbar">
+                <ul class="navbar-nav">
+                  <li class="subnavwhite-item nhsuk-bg-white active">
+                    <a tabindex="0" class="subnavwhite-link text-nowrap" href="https://learninghub.nhs.uk/?dashboardTrayLearningResourceType=all&amp;myLearningDashboard=my-in-progress&amp;resourceDashboard=my-recent-completed&amp;catalogueDashboard=popular-catalogues#my-learning">In Progress</a>
+                  </li>
+
+                  <li class="subnavwhite-item nhsuk-bg-white ">
+                    <a tabindex="0" class="subnavwhite-link text-nowrap" href="https://learninghub.nhs.uk/?dashboardTrayLearningResourceType=all&amp;myLearningDashboard=my-certificates&amp;resourceDashboard=my-recent-completed&amp;catalogueDashboard=popular-catalogues#my-learning">Certificates</a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+            <div class="nhsuk-u-padding-bottom-3">
+              <span class="nhsuk-u-padding-right-3 nhsuk-u-primary-text-color nhsuk-u-font-size-16 nhsuk-u-font-weight-bold">Show</span>
+              <span class="nhsuk-u-padding-right-3">
+                <a class="nhsuk-u-padding-right-3 nhsuk-u-secondary-text-color nhsuk-u-font-size-16 nhsuk-u-font-weight-bold nhsuk-u-text-align-centre filterlink filteractive" title="All" href="https://learninghub.nhs.uk/?dashboardTrayLearningResourceType=all&amp;myLearningDashboard=my-in-progress&amp;resourceDashboard=my-recent-completed&amp;catalogueDashboard=popular-catalogues#my-learning">
+                  All
+                </a>
+              </span>
+              <span class="nhsuk-u-padding-right-3">
+                <a class="subnavwhite-link text-nowrap nhsuk-u-padding-right-3 nhsuk-u-secondary-text-color nhsuk-u-font-size-16 nhsuk-u-font-weight-bold filterlink filterinactive" title="Courses" href="https://learninghub.nhs.uk/?dashboardTrayLearningResourceType=courses&amp;myLearningDashboard=my-in-progress&amp;resourceDashboard=my-recent-completed&amp;catalogueDashboard=popular-catalogues#my-learning">
+                  Courses
+                </a>
+              </span>
+              <span class="nhsuk-u-padding-right-3">
+                <a class="subnavwhite-link text-nowrap nhsuk-u-padding-right-3  nhsuk-u-secondary-text-color nhsuk-u-font-size-16 nhsuk-u-font-weight-bold filterlink filterinactive" title="Elearning" href="https://learninghub.nhs.uk/?dashboardTrayLearningResourceType=elearning&amp;myLearningDashboard=my-in-progress&amp;resourceDashboard=my-recent-completed&amp;catalogueDashboard=popular-catalogues#my-learning">
+                  elearning
+                </a>
+              </span>
+            </div>
+            <div class="nhsuk-grid-row nhsuk-u-margin-bottom-2">
+              <div class="nhsuk-grid-column-full">
+                <div>
+                  <ul class="nhsuk-grid-row nhsuk-card-group nhsuk-card-group--centred">
+                    <li class="nhsuk-grid-column-one-third-small-desktop nhsuk-card-group__item">
+                      <div class="nhsuk-card dashboard-card ">
+                        <div class="nhsuk-card__content dashboard-card-content">
+                          <div>
+                            <h3 class="nhsuk-card__heading nhsuk-heading-m line-clamp-5">
+
+                              <a class="nhsuk-u-font-size-19 nhsuk-card__link" href="https://learninghub.nhs.uk/Resource/3672/Item"> Deteriorating Patient eLearning</a>
+                            </h3>
+                          </div>
+                          <div class="nhsuk-card__description dashboard-card-body">
+
+
+                            <div class="nhs-item-row nhsuk-u-padding-bottom-3 nhsuk-u-padding-top-2">
+                              <div>
+                                <span class="nhsuk-u-secondary-text-color nhsuk-u-font-size-16 nhsuk-u-font-weight-bold nhsuk-u-padding-right-2">Type:</span>
+
+                                <span class="nhsuk-u-padding-right-3  nhsuk-u-font-size-16 nhsuk-u-secondary-text-color">
+                                  elearning
+                                </span>
+                              </div>
+                              <div>
+                                <span class="nhsuk-u-text-align-left  table-content-spacing">
+                                  <strong class="nhsuk-tag nhsuk-tag--blue">
+                                    In progress
+                                  </strong>
+                                </span>
+                              </div>
+                            </div>
+                            <div class="nhsuk-u-padding-bottom-3">
+                              <span class="nhsuk-u-padding-right-2 nhsuk-u-font-size-16 nhsuk-u-secondary-text-color nhsuk-u-font-weight-bold">
+                                Accessed:
+                              </span>
+
+                              <span class="nhsuk-u-font-size-16 nhsuk-u-secondary-text-color">
+                                28 Jul 2025
+                              </span>
+                            </div>
+                            <div class="nhsuk-u-padding-bottom-5 nhsuk-u-padding-top-4">
+                              <div>
+                                <span class="nhsuk-u-visually-hidden">No certificate available</span>
+                              </div>
+                            </div>
+                            <div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card-provider-details card-provider-details--darkblank">
+                        </div>
+                      </div>
+                    </li>
+                    <li class="nhsuk-grid-column-one-third-small-desktop nhsuk-card-group__item">
+                      <div class="nhsuk-card dashboard-card ">
+                        <div class="nhsuk-card__content dashboard-card-content">
+                          <div>
+                            <h3 class="nhsuk-card__heading nhsuk-heading-m line-clamp-5">
+
+                              <a class="nhsuk-u-font-size-19 nhsuk-card__link" href="https://learninghub.nhs.uk/Resource/47485/Item">Introducing the new NHS Cervical Screening Management System (CSMS)</a>
+                            </h3>
+                          </div>
+                          <div class="nhsuk-card__description dashboard-card-body">
+
+
+                            <div class="nhs-item-row nhsuk-u-padding-bottom-3 nhsuk-u-padding-top-2">
+                              <div>
+                                <span class="nhsuk-u-secondary-text-color nhsuk-u-font-size-16 nhsuk-u-font-weight-bold nhsuk-u-padding-right-2">Type:</span>
+
+                                <span class="nhsuk-u-padding-right-3  nhsuk-u-font-size-16 nhsuk-u-secondary-text-color">
+                                  elearning
+                                </span>
+                              </div>
+                              <div>
+                                <span class="nhsuk-u-text-align-left  table-content-spacing">
+                                  <strong class="nhsuk-tag nhsuk-tag--blue">
+                                    In progress
+                                  </strong>
+                                </span>
+                              </div>
+                            </div>
+                            <div class="nhsuk-u-padding-bottom-3">
+                              <span class="nhsuk-u-padding-right-2 nhsuk-u-font-size-16 nhsuk-u-secondary-text-color nhsuk-u-font-weight-bold">
+                                Accessed:
+                              </span>
+
+                              <span class="nhsuk-u-font-size-16 nhsuk-u-secondary-text-color">
+                                16 Apr 2025
+                              </span>
+                            </div>
+                            <div class="nhsuk-u-padding-bottom-5 nhsuk-u-padding-top-4">
+                              <div>
+                                <span class="nhsuk-u-visually-hidden">No certificate available</span>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="nhsuk nhsuk-u-font-size-16 nhsuk-u-secondary-text-color">
+                                Includes a certificate
+                                <span class="nhsuk-u-padding-left-1">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="19" height="24" viewBox="0 0 19 24" fill="none">
+                                    <g clip-path="url(#clip0_1298_21764)">
+                                      <path d="M13.7817 18.9737V23.1883C13.7817 23.4148 13.1731 23.5225 12.8452 23.3543L9.9952 21.8784C9.77736 21.7662 9.39332 21.7685 9.18221 21.8851L6.60399 23.3139C6.28284 23.4911 5.65625 23.3879 5.65625 23.1546V17.6055" stroke="#AEB7BD" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                                      </path>
+                                      <path d="M18.4565 9.08368C18.4565 9.70947 17.3246 10.2007 17.1898 10.7884C17.0551 11.376 17.8568 12.327 17.5918 12.8721C17.3268 13.4171 16.0894 13.379 15.7076 13.8568C15.3258 14.3345 15.6447 15.5255 15.1641 15.9091C14.6835 16.2927 13.5965 15.714 13.0395 15.9831C12.4826 16.2523 12.2647 17.459 11.6583 17.5958C11.052 17.7327 10.34 16.739 9.71344 16.739C9.08685 16.739 8.35471 17.7304 7.76855 17.5958C7.18239 17.4613 6.93535 16.2456 6.38736 15.9831C5.83938 15.7207 4.74117 16.2904 4.2628 15.9091C3.78444 15.5278 4.10335 14.3368 3.71931 13.8568C3.33527 13.3768 2.10456 13.4284 1.8373 12.8721C1.57005 12.3158 2.3763 11.394 2.23931 10.7884C2.10231 10.1827 0.972656 9.71172 0.972656 9.08368C0.972656 8.45564 2.10456 7.96667 2.23931 7.37901C2.37406 6.79134 1.57229 5.84032 1.8373 5.29527C2.10231 4.75022 3.33977 4.78835 3.72156 4.3106C4.10335 3.83284 3.78444 2.64181 4.26505 2.25826C4.74566 1.87471 5.83264 2.4534 6.38961 2.18424C6.94658 1.91508 7.16442 0.708352 7.7708 0.57153C8.37717 0.434707 9.0891 1.42835 9.71569 1.42835C10.3423 1.42835 11.0744 0.43695 11.6606 0.57153C12.2467 0.706109 12.4938 1.92181 13.0418 2.18424C13.5898 2.44667 14.688 1.87695 15.1663 2.25826C15.6447 2.63957 15.3258 3.8306 15.7098 4.3106C16.0939 4.7906 17.3246 4.73901 17.5918 5.29527C17.8591 5.85153 17.0528 6.7734 17.1898 7.37901C17.3268 7.98461 18.4565 8.45564 18.4565 9.08368Z" fill="#F2F8FD">
+                                      </path>
+                                      <path d="M18.4565 9.08368C18.4565 9.70947 17.3246 10.2007 17.1898 10.7884C17.0551 11.376 17.8568 12.327 17.5918 12.8721C17.3268 13.4171 16.0894 13.379 15.7076 13.8568C15.3258 14.3345 15.6447 15.5255 15.1641 15.9091C14.6835 16.2927 13.5965 15.714 13.0395 15.9831C12.4826 16.2523 12.2647 17.459 11.6583 17.5958C11.052 17.7327 10.34 16.739 9.71344 16.739C9.08686 16.739 8.35471 17.7304 7.76855 17.5958C7.18239 17.4612 6.93535 16.2455 6.38736 15.9831C5.83938 15.7207 4.74117 16.2904 4.2628 15.9091C3.78444 15.5278 4.10335 14.3368 3.71931 13.8568C3.33527 13.3768 2.10456 13.4284 1.8373 12.8721C1.57005 12.3158 2.3763 11.394 2.23931 10.7884C2.10231 10.1827 0.972656 9.71172 0.972656 9.08368C0.972656 8.45564 2.10456 7.96667 2.23931 7.37901C2.37406 6.79134 1.57229 5.84032 1.8373 5.29527C2.10231 4.75022 3.33977 4.78835 3.72156 4.3106C4.10335 3.83284 3.78444 2.64181 4.26505 2.25826C4.74566 1.87471 5.83264 2.4534 6.38961 2.18424C6.94658 1.91508 7.16442 0.708352 7.7708 0.57153C8.37717 0.434707 9.0891 1.42835 9.71569 1.42835C10.3423 1.42835 11.0744 0.43695 11.6606 0.57153C12.2467 0.706109 12.4938 1.92181 13.0418 2.18424C13.5898 2.44667 14.688 1.87695 15.1663 2.25826C15.6447 2.63957 15.3258 3.8306 15.7098 4.3106C16.0939 4.7906 17.3246 4.73901 17.5918 5.29527C17.8591 5.85153 17.0528 6.7734 17.1898 7.37901C17.3268 7.98461 18.4565 8.45564 18.4565 9.08368Z" stroke="#AEB7BD" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                                      </path>
+                                      <path d="M9.64784 13.2915L5.35156 8.03622L7.21336 5.27734H12.3698L14.0901 8.03622L9.64784 13.2915Z" fill="#F2F8FD" stroke="#AEB7BD" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round">
+                                      </path>
+                                      <path d="M9.68893 13.2915L7.71484 8.03622L8.57051 5.27734H10.9376L11.7259 8.03622L9.68893 13.2915Z" fill="#F2F8FD" stroke="#AEB7BD" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round">
+                                      </path>
+                                      <path d="M5.53516 7.99609H12.5556" stroke="#AEB7BD" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round">
+                                      </path>
+                                    </g>
+                                    <defs>
+                                      <clippath id="clip0_1298_21764">
+                                        <rect width="18.5764" height="24" fill="white" transform="translate(0.421875)">
+                                        </rect>
+                                      </clippath>
+                                    </defs>
+                                  </svg>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card-provider-details card-provider-details--darkblank">
+                        </div>
+                      </div>
+                    </li>
+                    <li class="nhsuk-grid-column-one-third-small-desktop nhsuk-card-group__item">
+                      <div class="nhsuk-card dashboard-card ">
+                        <div class="nhsuk-card__content dashboard-card-content">
+                          <div>
+                            <h3 class="nhsuk-card__heading nhsuk-heading-m line-clamp-5">
+
+                              <a class="nhsuk-u-font-size-19 nhsuk-card__link" href="https://learninghub.nhs.uk/Resource/45999/Item">Enhancing Generalist Skills VR 360 Complex Multi-Morbidity 1</a>
+                            </h3>
+                          </div>
+                          <div class="nhsuk-card__description dashboard-card-body">
+
+
+                            <div class="nhs-item-row nhsuk-u-padding-bottom-3 nhsuk-u-padding-top-2">
+                              <div>
+                                <span class="nhsuk-u-secondary-text-color nhsuk-u-font-size-16 nhsuk-u-font-weight-bold nhsuk-u-padding-right-2">Type:</span>
+
+                                <span class="nhsuk-u-padding-right-3  nhsuk-u-font-size-16 nhsuk-u-secondary-text-color">
+                                  elearning
+                                </span>
+                              </div>
+                              <div>
+                                <span class="nhsuk-u-text-align-left  table-content-spacing">
+                                  <strong class="nhsuk-tag nhsuk-tag--blue">
+                                    In progress
+                                  </strong>
+                                </span>
+                              </div>
+                            </div>
+                            <div class="nhsuk-u-padding-bottom-3">
+                              <span class="nhsuk-u-padding-right-2 nhsuk-u-font-size-16 nhsuk-u-secondary-text-color nhsuk-u-font-weight-bold">
+                                Accessed:
+                              </span>
+
+                              <span class="nhsuk-u-font-size-16 nhsuk-u-secondary-text-color">
+                                19 Jan 2024
+                              </span>
+                            </div>
+                            <div class="nhsuk-u-padding-bottom-5 nhsuk-u-padding-top-4">
+                              <div>
+                                <span class="nhsuk-u-visually-hidden">No certificate available</span>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="nhsuk nhsuk-u-font-size-16 nhsuk-u-secondary-text-color">
+                                Includes a certificate
+                                <span class="nhsuk-u-padding-left-1">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="19" height="24" viewBox="0 0 19 24" fill="none">
+                                    <g clip-path="url(#clip0_1298_21764)">
+                                      <path d="M13.7817 18.9737V23.1883C13.7817 23.4148 13.1731 23.5225 12.8452 23.3543L9.9952 21.8784C9.77736 21.7662 9.39332 21.7685 9.18221 21.8851L6.60399 23.3139C6.28284 23.4911 5.65625 23.3879 5.65625 23.1546V17.6055" stroke="#AEB7BD" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                                      </path>
+                                      <path d="M18.4565 9.08368C18.4565 9.70947 17.3246 10.2007 17.1898 10.7884C17.0551 11.376 17.8568 12.327 17.5918 12.8721C17.3268 13.4171 16.0894 13.379 15.7076 13.8568C15.3258 14.3345 15.6447 15.5255 15.1641 15.9091C14.6835 16.2927 13.5965 15.714 13.0395 15.9831C12.4826 16.2523 12.2647 17.459 11.6583 17.5958C11.052 17.7327 10.34 16.739 9.71344 16.739C9.08685 16.739 8.35471 17.7304 7.76855 17.5958C7.18239 17.4613 6.93535 16.2456 6.38736 15.9831C5.83938 15.7207 4.74117 16.2904 4.2628 15.9091C3.78444 15.5278 4.10335 14.3368 3.71931 13.8568C3.33527 13.3768 2.10456 13.4284 1.8373 12.8721C1.57005 12.3158 2.3763 11.394 2.23931 10.7884C2.10231 10.1827 0.972656 9.71172 0.972656 9.08368C0.972656 8.45564 2.10456 7.96667 2.23931 7.37901C2.37406 6.79134 1.57229 5.84032 1.8373 5.29527C2.10231 4.75022 3.33977 4.78835 3.72156 4.3106C4.10335 3.83284 3.78444 2.64181 4.26505 2.25826C4.74566 1.87471 5.83264 2.4534 6.38961 2.18424C6.94658 1.91508 7.16442 0.708352 7.7708 0.57153C8.37717 0.434707 9.0891 1.42835 9.71569 1.42835C10.3423 1.42835 11.0744 0.43695 11.6606 0.57153C12.2467 0.706109 12.4938 1.92181 13.0418 2.18424C13.5898 2.44667 14.688 1.87695 15.1663 2.25826C15.6447 2.63957 15.3258 3.8306 15.7098 4.3106C16.0939 4.7906 17.3246 4.73901 17.5918 5.29527C17.8591 5.85153 17.0528 6.7734 17.1898 7.37901C17.3268 7.98461 18.4565 8.45564 18.4565 9.08368Z" fill="#F2F8FD">
+                                      </path>
+                                      <path d="M18.4565 9.08368C18.4565 9.70947 17.3246 10.2007 17.1898 10.7884C17.0551 11.376 17.8568 12.327 17.5918 12.8721C17.3268 13.4171 16.0894 13.379 15.7076 13.8568C15.3258 14.3345 15.6447 15.5255 15.1641 15.9091C14.6835 16.2927 13.5965 15.714 13.0395 15.9831C12.4826 16.2523 12.2647 17.459 11.6583 17.5958C11.052 17.7327 10.34 16.739 9.71344 16.739C9.08686 16.739 8.35471 17.7304 7.76855 17.5958C7.18239 17.4612 6.93535 16.2455 6.38736 15.9831C5.83938 15.7207 4.74117 16.2904 4.2628 15.9091C3.78444 15.5278 4.10335 14.3368 3.71931 13.8568C3.33527 13.3768 2.10456 13.4284 1.8373 12.8721C1.57005 12.3158 2.3763 11.394 2.23931 10.7884C2.10231 10.1827 0.972656 9.71172 0.972656 9.08368C0.972656 8.45564 2.10456 7.96667 2.23931 7.37901C2.37406 6.79134 1.57229 5.84032 1.8373 5.29527C2.10231 4.75022 3.33977 4.78835 3.72156 4.3106C4.10335 3.83284 3.78444 2.64181 4.26505 2.25826C4.74566 1.87471 5.83264 2.4534 6.38961 2.18424C6.94658 1.91508 7.16442 0.708352 7.7708 0.57153C8.37717 0.434707 9.0891 1.42835 9.71569 1.42835C10.3423 1.42835 11.0744 0.43695 11.6606 0.57153C12.2467 0.706109 12.4938 1.92181 13.0418 2.18424C13.5898 2.44667 14.688 1.87695 15.1663 2.25826C15.6447 2.63957 15.3258 3.8306 15.7098 4.3106C16.0939 4.7906 17.3246 4.73901 17.5918 5.29527C17.8591 5.85153 17.0528 6.7734 17.1898 7.37901C17.3268 7.98461 18.4565 8.45564 18.4565 9.08368Z" stroke="#AEB7BD" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                                      </path>
+                                      <path d="M9.64784 13.2915L5.35156 8.03622L7.21336 5.27734H12.3698L14.0901 8.03622L9.64784 13.2915Z" fill="#F2F8FD" stroke="#AEB7BD" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round">
+                                      </path>
+                                      <path d="M9.68893 13.2915L7.71484 8.03622L8.57051 5.27734H10.9376L11.7259 8.03622L9.68893 13.2915Z" fill="#F2F8FD" stroke="#AEB7BD" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round">
+                                      </path>
+                                      <path d="M5.53516 7.99609H12.5556" stroke="#AEB7BD" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round">
+                                      </path>
+                                    </g>
+                                    <defs>
+                                      <clippath id="clip0_1298_21764">
+                                        <rect width="18.5764" height="24" fill="white" transform="translate(0.421875)">
+                                        </rect>
+                                      </clippath>
+                                    </defs>
+                                  </svg>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card-provider-details card-provider-details--darkblank">
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="nhsuk-grid-row nhsuk-card-group nhsuk-card-group--centred nhsuk-u-margin-bottom-1">
+              <div class="nhsuk-grid-column-one-third-small-desktop nhsuk-card-group__item nhsuk-u-padding-top-3">
+                <a tabindex="0" class="subnavwhite-link text-nowrap" href="https://learninghub.nhs.uk/MyLearning/activity?myLearningDashboard=my-in-progress">View in My Learning activity</a>
+              </div>
+              <div class="nhsuk-grid-column-one-third-small-desktop nhsuk-card-group__item">
+              </div>
+              <div class="nhsuk-grid-column-one-third-small-desktop nhsuk-card-group__item  nhsuk-u-padding-top-3 display--no-js-hide">
+
+                <nav class="nhsuk-u-width-full display--no-js-hide" role="navigation" aria-label="Pagination">
+                  <ul class="nhsuk-list nhsuk-pagination__list dashboard-paging">
+                    <li class="nhsuk-u-text-align-left">
+                    </li>
+                    <li class="nhsuk-u-text-align-centre nhsuk-u-padding-left-10 nhsuk-u-padding-right-10">1 to 3 of 8</li>
+                    <li class="nhsuk-u-text-align-right">
+                      <a class="nhsuk-u-text-align-right" onclick="return loadPage(&#39;my-learning&#39;, &#39;/home/loadpage/all/my-learning/my-in-progress/my-recent-completed/popular-catalogues/2&#39;, &#39;/?dashboardTrayLearningResourceType=all&amp;myLearningDashboard=my-in-progress&amp;resourceDashboard=my-recent-completed&amp;catalogueDashboard=popular-catalogues#my-learning&#39;)" href="https://learninghub.nhs.uk/#" aria-label="next">
+                        <span class="nhsuk-u-font-size-16">Next</span>
+                        <svg class="nhsuk-icon nhsuk-icon__arrow-right nhsuk-u-font-size-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" width="18" height="18">
+                          <path d="M19.6 11.66l-2.73-3A.51.51 0 0 0 16 9v2H5a1 1 0 0 0 0 2h11v2a.5.5 0 0 0 .32.46.39.39 0 0 0 .18 0 .52.52 0 0 0 .37-.16l2.73-3a.5.5 0 0 0 0-.64z">
+                          </path>
+                        </svg>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nhsuk-bg-grey">
+      <div class="nhsuk-width-container app-width-container">
+        <div id="resources">
+
+
+          <div class="dashboardTray">
+            <h2>Resources</h2>
+
+            <nav class="subnavbarwhite nhsuk-bg-grey navbar-expand-md nhsuk-u-margin-bottom-5">
+              <input class="subnav-hidden-checkbox" id="resources-subnav-hidden-checkbox" role="button" type="checkbox" aria-controls="collapsingResourcesSubNavbar" aria-labelledby="resources-subnav-hidden-checkbox-label">
+              <div class="bar">
+                <div class="navbar-toggler navbar-toggler-left nhsuk-u-font-size-19">Recently completed</div>
+                <label class="navbar-toggler navbar-toggler-right" id="resources-subnav-hidden-checkbox-label" for="resources-subnav-hidden-checkbox">
+                  <i class="fa-solid fa-chevron-down">
+                    <span class="nhsuk-u-visually-hidden">Show Resource Options</span>
+                  </i>
+                  <i class="fa-solid fa-chevron-up display--hide">
+                    <span class="nhsuk-u-visually-hidden">Hide Resource Options</span>
+                  </i>
+
+                </label>
+              </div>
+              <div class="navbar-collapse nhsuk-bg-grey collapse" id="collapsingResourcesSubNavbar">
+                <ul class="navbar-nav">
+                  <li class="subnavwhite-item nhsuk-bg-grey active">
+                    <a tabindex="0" class="subnavwhite-link text-nowrap" href="https://learninghub.nhs.uk/?myLearningDashboard=my-in-progress&amp;resourceDashboard=my-recent-completed&amp;catalogueDashboard=popular-catalogues#resources">Recently completed</a>
+                  </li>
+                  <li class="subnavwhite-item nhsuk-bg-grey ">
+                    <a tabindex="0" class="subnavwhite-link text-nowrap" href="https://learninghub.nhs.uk/?myLearningDashboard=my-in-progress&amp;resourceDashboard=rated-resources&amp;catalogueDashboard=popular-catalogues#resources">Highly rated</a>
+                  </li>
+                  <li class="subnavwhite-item nhsuk-bg-grey ">
+                    <a tabindex="0" class="subnavwhite-link text-nowrap" href="https://learninghub.nhs.uk/?myLearningDashboard=my-in-progress&amp;resourceDashboard=recent-resources&amp;catalogueDashboard=popular-catalogues#resources">Recently added</a>
+                  </li>
+                  <li class="subnavwhite-item nhsuk-bg-grey ">
+                    <a tabindex="0" class="subnavwhite-link text-nowrap" href="https://learninghub.nhs.uk/?myLearningDashboard=my-in-progress&amp;resourceDashboard=popular-resources&amp;catalogueDashboard=popular-catalogues#resources">Most accessed</a>
+                  </li>
+
+                </ul>
+              </div>
+            </nav>
+
+            <div class="nhsuk-grid-row">
+              <div class="nhsuk-grid-column-full">
+                <ul class="nhsuk-grid-row nhsuk-card-group nhsuk-card-group--centred nhsuk-u-margin-bottom-2">
+                </ul>
+              </div>
+            </div>
+            <div class="nhsuk-grid-row">
+              <div class="nhsuk-grid-column-full">
+                <div class="nhsuk-grid-row nhsuk-card-group nhsuk-card-group--centred  nhsuk-u-margin-bottom-1">
+                  <div class="nhsuk-grid-column-one-third-small-desktop nhsuk-card-group__item">
+                  </div>
+                  <div class="nhsuk-grid-column-one-third-small-desktop nhsuk-card-group__item">
+                  </div>
+                  <div class="nhsuk-grid-column-one-third-small-desktop nhsuk-card-group__item  nhsuk-u-padding-top-2 display--no-js-hide">
+
+                    <nav class="nhsuk-u-width-full display--no-js-hide" role="navigation" aria-label="Pagination">
+                      <ul class="nhsuk-list nhsuk-pagination__list dashboard-paging">
+                        <li class="nhsuk-u-text-align-left">
+                        </li>
+                        <li class="nhsuk-u-text-align-centre nhsuk-u-padding-left-10 nhsuk-u-padding-right-10">
+                        </li>
+                        <li class="nhsuk-u-text-align-right">
+                        </li>
+                      </ul>
+                    </nav>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="nhsuk-bg-light-blue">
+      <div class="nhsuk-width-container app-width-container dashboard-contribute">
+        <div class="dashboard-contribute-text">
+          <h2>Contribute a resource</h2>
+          <p class="nhsuk-u-reading-width">Share your knowledge, insights and expertise by contributing elearning, video, audio, images, web links, documents and articles on a range of subjects.</p>
+
+          <div class="nhsuk-action-link">
+            <a class="nhsuk-action-link__link" href="https://learninghub.nhs.uk/contribute-resource/select-resource">
+              <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M0 0h24v24H0z" fill="none">
+                </path>
+                <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z">
+                </path>
+              </svg>
+              <span class="nhsuk-action-link__text">Contribute a resource</span>
+            </a>
+          </div>
+
+        </div>
+        <div class="tray-image">
+        </div>
+      </div>
+    </div>
+
+    <div class="nhsuk-bg-white">
+      <div class="nhsuk-width-container app-width-container">
+        <div id="catalogues">
+
+
+          <div class="dashboardTray">
+            <h2>Catalogues</h2>
+
+            <nav class="subnavbarwhite navbar-expand-md nhsuk-u-margin-bottom-5">
+              <input class="subnav-hidden-checkbox" id="catalogues-subnav-hidden-checkbox" role="button" type="checkbox" aria-controls="collapsingCataloguesSubNavbar" aria-labelledby="catalogues-subnav-hidden-checkbox-label">
+              <div class="bar">
+                <div class="navbar-toggler navbar-toggler-left  nhsuk-u-font-size-19">Most accessed</div>
+                <label class="navbar-toggler navbar-toggler-right" id="catalogues-subnav-hidden-checkbox-label" for="catalogues-subnav-hidden-checkbox">
+                  <i class="fa-solid fa-chevron-down">
+                    <span class="nhsuk-u-visually-hidden">Show Catalogue Options</span>
+                  </i>
+                  <i class="fa-solid fa-chevron-up display--hide">
+                    <span class="nhsuk-u-visually-hidden">Hide Catalogue Options</span>
+                  </i>
+
+                </label>
+              </div>
+              <div class="navbar-collapse collapse" id="collapsingCataloguesSubNavbar">
+                <ul class="navbar-nav">
+                  <li class="subnavwhite-item active">
+                    <a tabindex="0" class="subnavwhite-link text-nowrap" href="https://learninghub.nhs.uk/?myLearningDashboard=my-in-progress&amp;resourceDashboard=my-recent-completed&amp;catalogueDashboard=popular-catalogues#catalogues">Most accessed</a>
+                  </li>
+                  <li class="subnavwhite-item ">
+                    <a tabindex="0" class="subnavwhite-link text-nowrap" href="https://learninghub.nhs.uk/?myLearningDashboard=my-in-progress&amp;resourceDashboard=my-recent-completed&amp;catalogueDashboard=recent-catalogues#catalogues">Recently added</a>
+                  </li>
+                  <li class="subnavwhite-item ">
+                    <a tabindex="0" class="subnavwhite-link text-nowrap" href="https://learninghub.nhs.uk/?myLearningDashboard=my-in-progress&amp;resourceDashboard=my-recent-completed&amp;catalogueDashboard=highly-contributed-catalogues#catalogues">Top contributors</a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+
+            <div class="nhsuk-grid-row">
+              <div class="nhsuk-grid-column-full">
+                <ul class="nhsuk-grid-row nhsuk-card-group nhsuk-card-group--centred nhsuk-u-margin-bottom-2">
+                  <li class="nhsuk-grid-column-one-third-small-desktop nhsuk-card-group__item">
+                    <div class="nhsuk-card dashboard-card">
+                      <div class="nhsuk-card-banner-container">
+                        <img class="nhsuk-card__img nhsuk-card-banner" src="images/f7e3903f-93d4-46d7-a02d-29421cfd616d" alt="Pathology Portal">
+                      </div>
+                      <div class="nhsuk-card__content dashboard-card-content">
+                        <h3 class="nhsuk-card__heading nhsuk-heading-m">
+                          <a class="nhsuk-card__link" href="https://learninghub.nhs.uk/catalogue/pathologyportal">Pathology Portal</a>
+                        </h3>
+                        <div class="nhsuk-card__description dashboard-card-body">
+                          <div class="line-clamp-3 nhsuk-u-margin-bottom-2point5">
+                            Using technology to enhance learning, the Portal incorporates the ability to digitally host and view whole slide images and a wide range of other resources, including teaching sessions and quizzes.
+
+                            Published content includes thousands of modules with more to follow, in a phased rollout across pathology specialties.
+
+                          </div>
+
+                          <div class="catalogue-meta">
+                            <div>
+                              <div class="nhsuk-u-margin-bottom-2">
+                                <div class="nhsuk-u-font-size-16 nhsuk-u-font-weight-bold">Access granted</div>
+                              </div>
+                              <div>
+                                <a class="nhsuk-u-font-size-16 nhsuk-u-margin-right-3" href="https://learninghub.nhs.uk/bookmark/catalogue?bookmarked=True&amp;id=688&amp;title=Pathology%20Portal&amp;nodeId=65&amp;path=pathologyportal&amp;returnUrl=%2F">Remove from  my bookmarks</a>
+                              </div>
+                            </div>
+                            <div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card-provider-details card-provider-details--blank">
+                      </div>
+                    </div>
+                  </li>
+                  <li class="nhsuk-grid-column-one-third-small-desktop nhsuk-card-group__item">
+                    <div class="nhsuk-card dashboard-card">
+                      <div class="nhsuk-card-banner-container">
+                        <img class="nhsuk-card__img nhsuk-card-banner" src="images/97e851dd-82a7-4965-b003-0852a66f43c6" alt="COVID-19 Vaccination">
+                      </div>
+                      <div class="nhsuk-card__content dashboard-card-content">
+                        <h3 class="nhsuk-card__heading nhsuk-heading-m">
+                          <a class="nhsuk-card__link" href="https://learninghub.nhs.uk/catalogue/COVID-19-Vaccination-autumn-campaign">COVID-19 Vaccination</a>
+                        </h3>
+                        <div class="nhsuk-card__description dashboard-card-body">
+                          <div class="line-clamp-3 nhsuk-u-margin-bottom-2point5">
+                            This elearning programme provides information about the COVID-19 national vaccination programme. This programme began in the UK in December 2020 to protect against serious illness and death from the SARS-CoV-2 virus.
+
+                            It is designed to provide healthcare practitioners involved in delivering the national COVID-19 vaccination programme with the knowledge they need to safely and effectively deliver the programme and to promote high uptake of the vaccine.
+
+                            All those undertaking this elearning programme should complete the core knowledge session as this is designed to provide essential knowledge about COVID-19 and the key principles of immunisation needed to deliver the vaccines. Learners should then complete the vaccine-specific knowledge sessions for the vaccine(s) they will be involved in giving as these provide more detailed information including how the vaccine works, how it should be stored, prepared and administered and any contraindications, precautions and potential vaccine reactions. The assessment sessions should be completed after each knowledge session.
+
+                            The information presented was correct at the time of publication. As the COVID-19 vaccination programme is constantly changing to ensure optimal protection to those who need it, some of the information may change. Updates are being made to this programme as new information becomes available.
+
+                          </div>
+
+                          <div class="catalogue-meta">
+                            <div>
+                              <div class="nhsuk-u-margin-bottom-2">
+                              </div>
+                              <div>
+                                <a class="nhsuk-u-font-size-16 nhsuk-u-margin-right-3" href="https://learninghub.nhs.uk/bookmark/catalogue?bookmarked=False&amp;title=COVID-19%20Vaccination&amp;nodeId=10857&amp;path=COVID-19-Vaccination-autumn-campaign&amp;returnUrl=%2F">Add to  my bookmarks</a>
+                              </div>
+                            </div>
+                            <div>
+                              <img src="images/elfhlogo.svg" alt="elearning for healthcare catalogue badge" class="provider-badge">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card-provider-details">
+                        Developed with elearning for healthcare
+                      </div>
+                    </div>
+                  </li>
+                  <li class="nhsuk-grid-column-one-third-small-desktop nhsuk-card-group__item">
+                    <div class="nhsuk-card dashboard-card">
+                      <div class="nhsuk-card-banner-container">
+                        <img class="nhsuk-card__img nhsuk-card-banner" src="images/4e8988cf-d374-4991-9ee0-3a290be4de57" alt="Prescribing Implementation Toolkits">
+                      </div>
+                      <div class="nhsuk-card__content dashboard-card-content">
+                        <h3 class="nhsuk-card__heading nhsuk-heading-m">
+                          <a class="nhsuk-card__link" href="https://learninghub.nhs.uk/catalogue/prescribingtoolkit">Prescribing Implementation Toolkits</a>
+                        </h3>
+                        <div class="nhsuk-card__description dashboard-card-body">
+                          <div class="line-clamp-3 nhsuk-u-margin-bottom-2point5">
+                            Prescribing Implementation Toolkits support the development of prescribing by a range of health professionals at post-professional registration level. The 'Preparing to Prescribe' toolkit offers advice, information and signposting to resources to support those planning to undertake a prescribing qualification in the UK. Toolkits are aimed at healthcare professionals, managers/commissioners, and others with an interest in prescribing. The ‘Preparing to Prescribe’ toolkit was developed at the University of Surrey, based on research evidence and multi-professional input from experts. Further resources are planned, informed by research led by Professor Nicola Carey (University of the Highlands and Islands) and Dr Karen Stenner (University of Surrey), in collaboration with researchers, patient representatives and expert advisors.
+
+                          </div>
+
+                          <div class="catalogue-meta">
+                            <div>
+                              <div class="nhsuk-u-margin-bottom-2">
+                              </div>
+                              <div>
+                                <a class="nhsuk-u-font-size-16 nhsuk-u-margin-right-3" href="https://learninghub.nhs.uk/bookmark/catalogue?bookmarked=False&amp;title=Prescribing%20Implementation%20Toolkits&amp;nodeId=5217&amp;path=prescribingtoolkit&amp;returnUrl=%2F">Add to  my bookmarks</a>
+                              </div>
+                            </div>
+                            <div>
+                              <img src="images/528d650f-2e2d-435e-be0f-6f91684e76ae" alt="Provider&#39;s catalogue badge" class="catalogue-badge">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card-provider-details card-provider-details--blank">
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="nhsuk-grid-row">
+              <div class="nhsuk-grid-column-full">
+                <div class="nhsuk-grid-row nhsuk-card-group nhsuk-card-group--centred nhsuk-u-margin-bottom-1">
+                  <div class="nhsuk-grid-column-one-third-small-desktop nhsuk-card-group__item nhsuk-u-padding-top-3">
+                    <a tabindex="0" class="subnavwhite-link text-nowrap" href="https://learninghub.nhs.uk/allcatalogue">View all catalogues</a>
+                  </div>
+                  <div class="nhsuk-grid-column-one-third-small-desktop nhsuk-card-group__item">
+                  </div>
+                  <div class="nhsuk-grid-column-one-third-small-desktop nhsuk-card-group__item  nhsuk-u-padding-top-2 display--no-js-hide">
+
+                    <nav class="nhsuk-u-width-full display--no-js-hide" role="navigation" aria-label="Pagination">
+                      <ul class="nhsuk-list nhsuk-pagination__list dashboard-paging">
+                        <li class="nhsuk-u-text-align-left">
+                        </li>
+                        <li class="nhsuk-u-text-align-centre nhsuk-u-padding-left-10 nhsuk-u-padding-right-10">1 to 3 of 12</li>
+                        <li class="nhsuk-u-text-align-right">
+                          <a class="nhsuk-u-text-align-right" onclick="return loadPage(&#39;catalogues&#39;, &#39;/home/loadpage/all/catalogues/my-in-progress/my-recent-completed/popular-catalogues/2&#39;, &#39;/?dashboardTrayLearningResourceType=all&amp;myLearningDashboard=my-in-progress&amp;resourceDashboard=my-recent-completed&amp;catalogueDashboard=popular-catalogues#catalogues&#39;)" href="https://learninghub.nhs.uk/#" aria-label="next">
+                            <span class="nhsuk-u-font-size-16">Next</span>
+                            <svg class="nhsuk-icon nhsuk-icon__arrow-right nhsuk-u-font-size-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" width="18" height="18">
+                              <path d="M19.6 11.66l-2.73-3A.51.51 0 0 0 16 9v2H5a1 1 0 0 0 0 2h11v2a.5.5 0 0 0 .32.46.39.39 0 0 0 .18 0 .52.52 0 0 0 .37-.16l2.73-3a.5.5 0 0 0 0-.64z">
+                              </path>
+                            </svg>
+                          </a>
+                        </li>
+                      </ul>
+                    </nav>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div id="static">
+
+          <div class="dashboardTray">
+            <h2>You might also be interested in</h2>
+
+            <ul class="nhsuk-grid-row nhsuk-card-group">
+              <li class="nhsuk-grid-column-one-half nhsuk-card-group__item">
+                <div class="nhsuk-card">
+                  <div class="nhsuk-card__content">
+                    <h3 class="nhsuk-card__heading nhsuk-heading-m">
+                      <a class="nhsuk-card__link" href="https://learninghub.nhs.uk/api/dashboard?eventType=DashBoardElfh&amp;url=%2Fcatalogue%2Fpathologyportal">The Pathology Portal</a>
+                    </h3>
+                    <p class="nhsuk-card__description">
+                      Developed for pathology trainees and practising pathologists, the portal features innovative and interactive
+                      short modules to support training curricula and CPD from world class faculty.
+                    </p>
+                  </div>
+                </div>
+              </li>
+              <li class="nhsuk-grid-column-one-half nhsuk-card-group__item">
+                <div class="nhsuk-card">
+                  <div class="nhsuk-card__content">
+                    <div class="bmj-best-practice-logo-border">
+                      <div class="bmj-best-practice-logo-image">
+                      </div>
+                    </div>
+                    <h3 class="nhsuk-card__heading nhsuk-heading-m">
+                      <a class="nhsuk-card__link" href="https://learninghub.nhs.uk/api/dashboard?eventType=DashBoardBmj&amp;url=https%3A%2F%2Fwww.bmj.com%2Fcompany%2Fhee%2F">BMJ Best Practice</a>
+                    </h3>
+                    <p class="nhsuk-card__description">
+                      This tool uses the latest evidence-based research, guidelines and expert opinion to offer step-by-step guidance on diagnosis, prognosis, treatment and prevention.
+                    </p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  {% endblock %}

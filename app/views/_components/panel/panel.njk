@@ -1,0 +1,36 @@
+{% from "../picture.njk" import picture %}
+
+{% macro panel(params) %}
+{% set params = params or {} %}
+<div class="panel{{ ' ' + params.additionalClasses if params.additionalClasses }}">
+
+  <div class="panel__media {% if params.contentPosition == 'right' %}panel__media--position-left{% endif %}">
+    {% if params.pictureSmallSrc %}
+    {{ picture(
+      'picture--cover panel__picture',
+      params.pictureSmallSrc,
+      params.pictureMediumSrc,
+      params.pictureLargeSrc,
+      params.pictureXLargeSrc,
+      null,
+      null,
+      params.pictureAlt,
+      params.loading or 'lazy'
+    ) }}
+    {% endif %}
+  </div>
+
+  <div class="panel__content panel__content-1 {% if params.contentPosition == 'right' %}panel__content--position-right{% endif %}">
+    <div class="panel__content-inner">
+      {% if caller %}
+        {{ caller() }}
+      {% else %}
+        <div class="wysiwyg-content">
+          {{ params.content | safe }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+</div>
+{% endmacro %}

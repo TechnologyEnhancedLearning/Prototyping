@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+
+{%- from 'input/macro.njk' import input %}
+{%- from 'button/macro.njk' import button %}
+{%- from 'back-link/macro.njk' import backLink %}
+
+{#
+  Captures the start date of the user's current role.  We use NHS
+  select components for month and year to allow the user to choose
+  values.  The design is kept simple and contained within a
+  reading‑width wrapper for improved readability【148225817585091†L350-L371】.
+#}
+
+{% set pageName = "Start date" %}
+
+{% block beforeContent %}
+  {{ backLink({ href: "/learner-profile/task-list", text: "Back" }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-width-container">
+    <main class="nhsuk-main-wrapper" id="maincontent">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+          <div class="nhsuk-u-reading-width">
+            <h1 class="nhsuk-heading-xl">Enter your start date</h1>
+            <p>Enter the date you started your current role, for example, 08&nbsp;2021.</p>
+            <form action="/learner-profile/start-date" method="post">
+              {{ input({
+                label: { text: "Month", classes: "nhsuk-label--m" },
+                id: "month",
+                name: "month",
+                classes: "nhsuk-input--width-2",
+                type: "text"
+              }) }}
+              {{ input({
+                label: { text: "Year", classes: "nhsuk-label--m" },
+                id: "year",
+                name: "year",
+                classes: "nhsuk-input--width-4",
+                type: "text"
+              }) }}
+              {{ button({ text: "Continue" }) }}
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}

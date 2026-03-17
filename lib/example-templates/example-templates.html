@@ -1,16 +1,12 @@
-{% extends 'layouts/layout.html' %}
+{% extends "layout.html" %}
 
-{% block pageTitle %}
-  Page templates - NHS prototype kit
-{% endblock %}
+{% set pageName = "Page templates" %}
 
 {% block beforeContent %}
-  <div class="nhsuk-width-container">
-    {{ breadcrumb({
-      href: "/",
-      text: "Home"
-    }) }}
-  </div>
+  {{ breadcrumb({
+    href: "/",
+    text: "Home"
+  }) }}
 {% endblock %}
 
 {% block content %}
@@ -18,7 +14,7 @@
 
     <div class="nhsuk-grid-column-two-thirds">
 
-      <h1>Page templates</h1>
+      <h1>{{ pageName }}</h1>
 
       <p>You can find these templates in the <strong>/lib/example-templates</strong> folder.</p>
 
@@ -35,8 +31,6 @@
 
       <ul>
         <li><a href="/example-templates/blank-transactional">Blank transactional</a></li>
-        <li><a href="/example-templates/start-page">Start page</a></li>
-        <li><a href="/example-templates/question-page">Question page</a></li>
       </ul>
     </div>
 
