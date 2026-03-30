@@ -44,10 +44,33 @@
                 value: "",
                 classes: "nhsuk-input",
                 inputmode: "text",
-                spellcheck: false
+                spellcheck: false,
+                attributes: {
+                  autocomplete: "off",
+                  "data-autosuggest": "roles",
+                  "data-autosuggest-endpoint": "/api/roles/search"
+                }
               }) }}
 
-              {{ button({ text: "Search" }) }}
+              <div class="app-live-role-results" data-live-role-results hidden>
+                <div class="nhsuk-form-group nhsuk-u-margin-bottom-4">
+                  <fieldset class="nhsuk-fieldset">
+                    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                      Select your role
+                    </legend>
+                    <div class="nhsuk-radios" data-live-role-radios></div>
+                  </fieldset>
+                </div>
+
+                <div class="nhsuk-form-group" data-live-role-other-group hidden>
+                  <label class="nhsuk-label" for="live-other-role">Enter your role</label>
+                  <input class="nhsuk-input" id="live-other-role" name="otherRole" type="text">
+                </div>
+
+                <button class="nhsuk-button" type="submit" data-live-role-continue>Continue</button>
+              </div>
+
+              {# {{ button({ text: "Search" }) }} #}
             </form>
             {# {{ details({
               summaryText: "Why do I need to provide details about my role?",

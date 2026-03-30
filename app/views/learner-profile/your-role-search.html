@@ -25,36 +25,80 @@
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-full">
           <div class="nhsuk-u-reading-width">
-            <!-- Heading and description -->
-            {{ radios({
-              idPrefix: "role",
-              name: "role",
-              fieldset: {
-                legend: {
-                  text: "Search results for midwife",
-                  classes: "nhsuk-fieldset__legend--l",
-                  isPageHeading: true
+            {% set user = data.user | default({}) %}
+            {% set profile = user.profile | default({}) %}
+            {% set query = roleSearchQuery or profile.roleSearch or '' %}
+            {% set results = roleSearchResults | default([]) %}
+
+            <h1 class="nhsuk-heading-xl">Search results for {{ query }}</h1>
+            <p class="nhsuk-body">Use a generic term to best describe your role.</p>
+
+            <form action="/learner-profile/your-role-search" method="post">
+              {{ input({
+                label: {
+                  text: "Search again",
+                  classes: "nhsuk-label--m"
+                },
+                id: "role-search",
+                name: "roleSearch",
+                value: query,
+                classes: "nhsuk-input",
+                inputmode: "text",
+                spellcheck: false,
+                attributes: {
+                  autocomplete: "off",
+                  "data-autosuggest": "roles",
+                  "data-autosuggest-endpoint": "/api/roles/search"
                 }
-              },
-              hint: { text: "Use a generic term to best describe your role" },
-              items: [
-                { value: "midwife_tutor", text: "Midwife – Tutor (Students)" },
-                { value: "nursing_associate", text: "Nursing Associate (Nursing and Midwifery Registered)" },
-                { value: "nurse", text: "Nurse (Nursing and Midwifery Registered)" },
-                { value: "health_visitor", text: "Health Visitor (Nursing and Midwifery Registered)" },
-                { value: "other", text: "Other" }
-              ]
-            }) }}
-            <div class="nhsuk-form-group">
-              <label class="nhsuk-label" for="other-role">Enter your role</label>
-              <input class="nhsuk-input" id="other-role" name="otherRole" type="text">
-            </div>
-            {{ button({ text: "Continue", href: "/learner-profile/task-list" }) }}
+              }) }}
+
+              {{ button({ text: "Search" }) }}
+            </form>
+
+            <form action="/learner-profile/your-role-search" method="post">
+              <input type="hidden" name="roleSearch" value="{{ query }}">
+
+              {% if results.length %}
+                {{ radios({
+                  idPrefix: "role",
+                  name: "role",
+                  fieldset: {
+                    legend: {
+                      text: "Select your role",
+                      classes: "nhsuk-fieldset__legend--m"
+                    }
+                  },
+                  items: results.concat([
+                    {
+                      value: "other",
+                      text: "Other",
+                      checked: selectedRole and not selectedRoleInSearchResults
+                    }
+                  ])
+                }) }}
+              {% else %}
+                <div class="nhsuk-warning-callout">
+                  <h2 class="nhsuk-warning-callout__label">
+                    <span role="text">No roles found</span>
+                  </h2>
+                  <p>Try a broader search term, or enter your role manually below.</p>
+                </div>
+
+                <input type="hidden" name="role" value="other">
+              {% endif %}
+
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label" for="other-role">Enter your role</label>
+                <input class="nhsuk-input" id="other-role" name="otherRole" type="text" value="{{ selectedRole if selectedRole and not selectedRoleInSearchResults }}">
+              </div>
+
+              {{ button({ text: "Continue" }) }}
+            </form>
+
             {{ details({
               summaryText: "Why do I need to provide details about my role?",
               html: "<p>In the future, resources will be recommended to you based on your role.</p>"
             }) }}
-            <p class="nhsuk-body-s nhsuk-u-margin-top-4">Previous 1 of 3 · Next 3 of 3</p>
           </div>
         </div>
       </div>

@@ -3,6 +3,7 @@ const express = require('express')
 
 const router = express.Router()
 
+const { searchRoles } = require('./data/nhs-role-search')
 const formActions = require('./routes/registration/form-actions')
 const migrateSessionUserData = require('./routes/registration/middleware/session-user-migration')
 
@@ -31,6 +32,37 @@ router.use((req, res, next) => {
 
   next();
 });
+
+router.get('/api/roles/search', (req, res) => {
+  const query = req.query.q || ''
+
+  res.json({
+    query,
+    results: searchRoles(query)
+  })
+})
+
+router.use((req, res, next) => {
+  if (req.path !== '/learner-profile/your-role-search') {
+    next()
+    return
+  }
+
+  const profile = req.session?.data?.user?.profile || {}
+  const roleSearchQuery = profile.roleSearch || ''
+  const selectedRole = profile.role || ''
+  const roleSearchResults = searchRoles(roleSearchQuery)
+
+  res.locals.roleSearchQuery = roleSearchQuery
+  res.locals.roleSearchResults = roleSearchResults.map((role) => ({
+    ...role,
+    checked: role.value === selectedRole
+  }))
+  res.locals.selectedRole = selectedRole
+  res.locals.selectedRoleInSearchResults = roleSearchResults.some((role) => role.value === selectedRole)
+
+  next()
+})
 
 
 

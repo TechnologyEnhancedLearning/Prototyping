@@ -93,7 +93,20 @@ formActions.post('/create-account/about-you', (req, res) => {
 formActions.post('/learner-profile/your-role-search', (req, res) => {
   setProfileField(req, 'roleSearch', req.body.roleSearch || '')
   if (req.body.role) {
-    setProfileField(req, 'role', req.body.otherRole || req.body.role)
+    const otherRole = (req.body.otherRole || '').trim()
+
+    if (req.body.role === 'other' && !otherRole) {
+      res.redirect('/learner-profile/your-role-search')
+      return
+    }
+
+    const selectedRole = req.body.role === 'other'
+      ? otherRole
+      : req.body.role
+
+    setProfileField(req, 'role', selectedRole)
+    res.redirect('/learner-profile/task-list')
+    return
   }
 
   // Process search for role and display results (GET request will render the page)
