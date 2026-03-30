@@ -1,9 +1,19 @@
 {% extends 'layout.html' %}
+{% from "breadcrumb/macro.njk" import breadcrumb %}
 
 {% set pageName = "Learner profile" %}
 
 {% block beforeContent %}
-  {{ backLink({ href: "/learner-profile/your-role-search", text: "Back" }) }}
+  {# {{ backLink({ href: "/learner-profile/your-role-search", text: "Back" }) }} #}
+
+{{ breadcrumb({
+  items: [
+    {
+      href: "/dashboard",
+      text: "Home"
+    }
+  ]
+}) }}
 {% endblock %}
 
 {% block content %}
