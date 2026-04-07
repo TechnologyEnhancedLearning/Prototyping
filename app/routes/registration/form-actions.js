@@ -58,7 +58,9 @@ function workplaceLabel(workplace) {
     bernard: '40 Bernard Street, Great Ormond Street Hospital for Children NHS Foundation Trust (NHS Trust Site)',
     acute: 'Acute Wards - GOSH Satellite, Great Ormond Street Hospital for Children NHS Foundation Trust (NHS Trust Site)',
     barclay: 'Barclay House, Great Ormond Street Hospital for Children NHS Foundation Trust (NHS Trust Site)',
-    broomfield: 'Broomfield Hospital, Great Ormond Street Hospital for Children NHS Foundation Trust (NHS Trust Site)'
+    broomfield: 'Broomfield Hospital, Great Ormond Street Hospital for Children NHS Foundation Trust (NHS Trust Site)',
+    home: 'Home working',
+    'not-applicable': 'Not applicable'
   }
 
   return labels[workplace] || workplace
@@ -150,6 +152,12 @@ formActions.post('/learner-profile/place-of-work-results', (req, res) => {
     setProfileField(req, 'workplace', req.body.workplace)
     setProfileField(req, 'workplaceLabel', workplaceLabel(req.body.workplace))
     setTaskStatus(req, 'placeOfWork', 'Completed')
+
+    if (req.body.workplace === 'home' || req.body.workplace === 'not-applicable') {
+      res.redirect('/learner-profile/region')
+      return
+    }
+
     res.redirect('/learner-profile/task-list')
     return
   }
