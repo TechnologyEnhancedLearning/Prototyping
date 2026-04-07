@@ -12,6 +12,11 @@ function debounce(fn, delay) {
 function createAutosuggest(input) {
   const endpoint = input.dataset.autosuggestEndpoint
   const form = input.form
+  const resultType = input.dataset.autosuggest || 'results'
+  const radioName = input.dataset.autosuggestRadioName || 'role'
+  const otherValue = input.dataset.autosuggestOtherValue || 'other'
+  const otherLabelText = input.dataset.autosuggestOtherLabel || 'Other'
+  const emptyText = input.dataset.autosuggestEmptyText || `No matching ${resultType} found. Select ${otherLabelText} to enter a value manually.`
 
   if (!endpoint || !form) {
     return
@@ -23,7 +28,7 @@ function createAutosuggest(input) {
   const otherInput = form.querySelector('#live-other-role')
   const continueButton = form.querySelector('[data-live-role-continue]')
 
-  if (!resultsRegion || !radiosContainer || !otherGroup || !otherInput || !continueButton) {
+  if (!resultsRegion || !radiosContainer || !otherGroup || !otherInput) {
     return
   }
 
@@ -37,8 +42,8 @@ function createAutosuggest(input) {
   }
 
   function updateOtherFieldVisibility() {
-    const selectedRole = form.querySelector('input[name="role"]:checked')
-    otherGroup.hidden = !selectedRole || selectedRole.value !== 'other'
+    const selectedItem = form.querySelector(`input[name="${radioName}"]:checked`)
+    otherGroup.hidden = !selectedItem || selectedItem.value !== otherValue
   }
 
   function renderResults(items) {
@@ -50,7 +55,7 @@ function createAutosuggest(input) {
     if (!items.length) {
       const emptyMessage = document.createElement('p')
       emptyMessage.className = 'nhsuk-body app-live-role-results__empty'
-      emptyMessage.textContent = 'No matching roles found. Select Other to enter your role manually.'
+      emptyMessage.textContent = emptyText
       fragment.append(emptyMessage)
     } else {
       items.forEach((result, index) => {
@@ -59,8 +64,8 @@ function createAutosuggest(input) {
 
         const radio = document.createElement('input')
         radio.className = 'nhsuk-radios__input'
-        radio.id = `live-role-${index + 1}`
-        radio.name = 'role'
+        radio.id = `live-${radioName}-${index + 1}`
+        radio.name = radioName
         radio.type = 'radio'
         radio.value = result.value
         radio.addEventListener('change', updateOtherFieldVisibility)
@@ -88,16 +93,16 @@ function createAutosuggest(input) {
 
     const otherRadio = document.createElement('input')
     otherRadio.className = 'nhsuk-radios__input'
-    otherRadio.id = 'live-role-other'
-    otherRadio.name = 'role'
+    otherRadio.id = `live-${radioName}-${otherValue}`
+    otherRadio.name = radioName
     otherRadio.type = 'radio'
-    otherRadio.value = 'other'
+    otherRadio.value = otherValue
     otherRadio.addEventListener('change', updateOtherFieldVisibility)
 
     const otherLabel = document.createElement('label')
     otherLabel.className = 'nhsuk-label nhsuk-radios__label'
     otherLabel.htmlFor = otherRadio.id
-    otherLabel.textContent = 'Other'
+    otherLabel.textContent = otherLabelText
 
     otherItem.append(otherRadio, otherLabel)
     fragment.append(otherItem)
@@ -140,7 +145,9 @@ function createAutosuggest(input) {
     }
   }, 150)
 
-  continueButton.hidden = false
+  if (continueButton) {
+    continueButton.hidden = false
+  }
 
   input.addEventListener('input', (event) => {
     fetchResults(event.target.value)
@@ -149,6 +156,6 @@ function createAutosuggest(input) {
 
 document.addEventListener('DOMContentLoaded', () => {
   document
-    .querySelectorAll('[data-autosuggest="roles"]')
+    .querySelectorAll('[data-autosuggest]')
     .forEach((input) => createAutosuggest(input))
 })

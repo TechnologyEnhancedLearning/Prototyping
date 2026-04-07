@@ -1,0 +1,284 @@
+{% set SPECIALTY_INDEX = [
+  {
+    specialtyKey: "emergency-medicine",
+    specialtyName: "Emergency Medicine",
+    category: "Medical",
+    tags: ["emergency medicine", "accident and emergency", "a&e", "ed", "acute care", "unscheduled care"]
+  },
+  {
+    specialtyKey: "acute-medicine",
+    specialtyName: "Acute Medicine",
+    category: "Medical",
+    tags: ["acute medicine", "acute internal medicine", "aim", "acute care"]
+  },
+  {
+    specialtyKey: "general-medicine",
+    specialtyName: "General (Internal) Medicine",
+    category: "Medical",
+    tags: ["general medicine", "internal medicine", "gim", "medical wards"]
+  },
+  {
+    specialtyKey: "general-practice",
+    specialtyName: "General Practice",
+    category: "Primary care",
+    tags: ["general practice", "gp", "primary care", "family medicine"]
+  },
+  {
+    specialtyKey: "anaesthetics",
+    specialtyName: "Anaesthetics",
+    category: "Medical",
+    tags: ["anaesthetics", "anaesthesia", "perioperative", "pain management"]
+  },
+  {
+    specialtyKey: "critical-care",
+    specialtyName: "Critical Care Medicine",
+    category: "Medical",
+    tags: ["critical care", "intensive care", "icu", "itu"]
+  },
+  {
+    specialtyKey: "cardiology",
+    specialtyName: "Cardiology",
+    category: "Medical",
+    tags: ["cardiology", "heart", "cardiac", "cardiovascular"]
+  },
+  {
+    specialtyKey: "cardiothoracic-surgery",
+    specialtyName: "Cardiothoracic Surgery",
+    category: "Surgical",
+    tags: ["cardiothoracic surgery", "heart surgery", "thoracic surgery"]
+  },
+  {
+    specialtyKey: "general-surgery",
+    specialtyName: "General Surgery",
+    category: "Surgical",
+    tags: ["general surgery", "surgery", "operative care"]
+  },
+  {
+    specialtyKey: "trauma-orthopaedics",
+    specialtyName: "Trauma and Orthopaedics",
+    category: "Surgical",
+    tags: ["trauma and orthopaedics", "t&o", "orthopaedics", "fractures"]
+  },
+  {
+    specialtyKey: "neurosurgery",
+    specialtyName: "Neurosurgery",
+    category: "Surgical",
+    tags: ["neurosurgery", "brain surgery", "spinal surgery"]
+  },
+  {
+    specialtyKey: "plastic-reconstructive-surgery",
+    specialtyName: "Plastic and Reconstructive Surgery",
+    category: "Surgical",
+    tags: ["plastic surgery", "reconstructive surgery", "burns", "cosmetic"]
+  },
+  {
+    specialtyKey: "urology",
+    specialtyName: "Urology",
+    category: "Surgical",
+    tags: ["urology", "urinary tract", "prostate", "renal surgery"]
+  },
+  {
+    specialtyKey: "obstetrics-gynaecology",
+    specialtyName: "Obstetrics and Gynaecology",
+    category: "Medical",
+    tags: ["obstetrics", "gynaecology", "o&g", "maternity", "womens health"]
+  },
+  {
+    specialtyKey: "paediatrics",
+    specialtyName: "Paediatrics",
+    category: "Medical",
+    tags: ["paediatrics", "children", "child health"]
+  },
+  {
+    specialtyKey: "psychiatry",
+    specialtyName: "Psychiatry",
+    category: "Mental health",
+    tags: ["psychiatry", "mental health", "adult mental illness"]
+  },
+  {
+    specialtyKey: "child-adolescent-psychiatry",
+    specialtyName: "Psychiatry: Child and Adolescent",
+    category: "Mental health",
+    tags: ["child psychiatry", "camhs", "adolescent mental health"]
+  },
+  {
+    specialtyKey: "forensic-psychiatry",
+    specialtyName: "Psychiatry: Forensic",
+    category: "Mental health",
+    tags: ["forensic psychiatry", "secure services", "mental health law"]
+  },
+  {
+    specialtyKey: "learning-disability-psychiatry",
+    specialtyName: "Psychiatry of Learning Disabilities",
+    category: "Mental health",
+    tags: ["learning disability psychiatry", "ld psychiatry", "neurodevelopmental"]
+  },
+  {
+    specialtyKey: "geriatrics",
+    specialtyName: "Geriatric Medicine",
+    category: "Medical",
+    tags: ["geriatrics", "elderly care", "older people"]
+  },
+  {
+    specialtyKey: "respiratory-medicine",
+    specialtyName: "Respiratory Medicine",
+    category: "Medical",
+    tags: ["respiratory medicine", "lungs", "pulmonology"]
+  },
+  {
+    specialtyKey: "neurology",
+    specialtyName: "Neurology",
+    category: "Medical",
+    tags: ["neurology", "brain", "nervous system"]
+  },
+  {
+    specialtyKey: "renal-medicine",
+    specialtyName: "Renal Medicine",
+    category: "Medical",
+    tags: ["renal medicine", "nephrology", "kidney"]
+  },
+  {
+    specialtyKey: "haematology",
+    specialtyName: "Clinical Haematology",
+    category: "Medical",
+    tags: ["haematology", "blood disorders", "transfusion"]
+  },
+  {
+    specialtyKey: "oncology-medical",
+    specialtyName: "Medical Oncology",
+    category: "Medical",
+    tags: ["medical oncology", "cancer medicine", "chemotherapy"]
+  },
+  {
+    specialtyKey: "oncology-clinical",
+    specialtyName: "Clinical Oncology",
+    category: "Medical",
+    tags: ["clinical oncology", "radiotherapy", "cancer treatment"]
+  },
+  {
+    specialtyKey: "radiology",
+    specialtyName: "Radiology",
+    category: "Diagnostics",
+    tags: ["radiology", "imaging", "x-ray", "ct", "mri"]
+  },
+  {
+    specialtyKey: "pathology",
+    specialtyName: "General Pathology",
+    category: "Diagnostics",
+    tags: ["pathology", "laboratory medicine", "diagnostics"]
+  },
+  {
+    specialtyKey: "histopathology",
+    specialtyName: "Histopathology",
+    category: "Diagnostics",
+    tags: ["histopathology", "tissue diagnosis", "microscopy"]
+  },
+  {
+    specialtyKey: "microbiology",
+    specialtyName: "Medical Microbiology",
+    category: "Diagnostics",
+    tags: ["medical microbiology", "infection", "bacteria"]
+  },
+  {
+    specialtyKey: "virology",
+    specialtyName: "Medical Virology",
+    category: "Diagnostics",
+    tags: ["medical virology", "viruses", "infection"]
+  },
+  {
+    specialtyKey: "public-health",
+    specialtyName: "Public Health Medicine",
+    category: "Public health",
+    tags: ["public health", "population health", "prevention"]
+  },
+  {
+    specialtyKey: "occupational-medicine",
+    specialtyName: "Occupational Medicine",
+    category: "Public health",
+    tags: ["occupational medicine", "workplace health"]
+  },
+  {
+    specialtyKey: "rehabilitation-medicine",
+    specialtyName: "Rehabilitation",
+    category: "Medical",
+    tags: ["rehabilitation", "rehab medicine", "recovery"]
+  },
+  {
+    specialtyKey: "palliative-medicine",
+    specialtyName: "Palliative Medicine",
+    category: "Medical",
+    tags: ["palliative medicine", "end of life care", "supportive care"]
+  },
+  {
+    specialtyKey: "ophthalmology",
+    specialtyName: "Ophthalmology",
+    category: "Medical",
+    tags: ["ophthalmology", "eye care", "vision"]
+  },
+  {
+    specialtyKey: "dentistry-general",
+    specialtyName: "General Dental Practice",
+    category: "Dental",
+    tags: ["general dental practice", "dentistry", "oral health"]
+  },
+  {
+    specialtyKey: "oral-surgery",
+    specialtyName: "Oral Surgery",
+    category: "Dental",
+    tags: ["oral surgery", "dental surgery"]
+  },
+  {
+    specialtyKey: "orthodontics",
+    specialtyName: "Orthodontics",
+    category: "Dental",
+    tags: ["orthodontics", "braces", "teeth alignment"]
+  },
+  {
+    specialtyKey: "paediatric-dentistry",
+    specialtyName: "Paediatric Dentistry",
+    category: "Dental",
+    tags: ["paediatric dentistry", "child dental"]
+  },
+  {
+    specialtyKey: "allied-health-episode",
+    specialtyName: "Allied Health Professional Episode",
+    category: "Workforce / Episode",
+    tags: ["ahp", "allied health", "episode"]
+  },
+  {
+    specialtyKey: "nursing-episode",
+    specialtyName: "Nursing Episode",
+    category: "Workforce / Episode",
+    tags: ["nursing", "nursing episode"]
+  },
+  {
+    specialtyKey: "foundation",
+    specialtyName: "Foundation",
+    category: "Training",
+    tags: ["foundation", "fy1", "fy2", "training"]
+  },
+  {
+    specialtyKey: "physician-associate",
+    specialtyName: "Physician Assistant",
+    category: "Workforce",
+    tags: ["physician associate", "pa", "medical associate"]
+  },
+  {
+    specialtyKey: "continuing-healthcare",
+    specialtyName: "Continuing Healthcare",
+    category: "Care pathway",
+    tags: ["continuing healthcare", "chc", "long term care"]
+  },
+  {
+    specialtyKey: "not-applicable",
+    specialtyName: "Not Applicable",
+    category: "Other",
+    tags: ["not applicable", "n/a"]
+  },
+  {
+    specialtyKey: "other",
+    specialtyName: "Other",
+    category: "Other",
+    tags: ["other", "unspecified"]
+  }
+] %}

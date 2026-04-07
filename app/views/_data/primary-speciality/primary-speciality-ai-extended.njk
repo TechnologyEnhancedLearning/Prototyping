@@ -1,0 +1,311 @@
+{% set SPECIALTY_INDEX = [
+  {
+    specialtyKey: "emergency-medicine",
+    specialtyName: "Emergency Medicine",
+    category: "Medical",
+    isClinical: true,
+    careSetting: ["Acute", "Secondary"],
+    codes: { nhsSpecialtyCode: null, gmcSpecialtyCode: null },
+    learningAlignment: {
+      curriculumLevel: ["Undergraduate", "Postgraduate", "CPD"],
+      relevantTo: ["Doctors", "Nurses", "AHPs"]
+    },
+    tags: [
+      "emergency medicine",
+      "accident and emergency",
+      "a&e",
+      "ed",
+      "unscheduled care",
+      "acute care"
+    ]
+  },
+
+  {
+    specialtyKey: "acute-medicine",
+    specialtyName: "Acute Medicine",
+    category: "Medical",
+    isClinical: true,
+    careSetting: ["Acute"],
+    codes: { nhsSpecialtyCode: null, gmcSpecialtyCode: null },
+    learningAlignment: {
+      curriculumLevel: ["Postgraduate", "CPD"],
+      relevantTo: ["Doctors"]
+    },
+    tags: [
+      "acute medicine",
+      "acute internal medicine",
+      "aim",
+      "medical admissions"
+    ]
+  },
+
+  {
+    specialtyKey: "general-internal-medicine",
+    specialtyName: "General (Internal) Medicine",
+    category: "Medical",
+    isClinical: true,
+    careSetting: ["Secondary"],
+    codes: { nhsSpecialtyCode: null, gmcSpecialtyCode: null },
+    learningAlignment: {
+      curriculumLevel: ["Undergraduate", "Postgraduate", "CPD"],
+      relevantTo: ["Doctors"]
+    },
+    tags: [
+      "general medicine",
+      "internal medicine",
+      "gim",
+      "medical wards"
+    ]
+  },
+
+  {
+    specialtyKey: "general-practice",
+    specialtyName: "General Practice",
+    category: "Primary care",
+    isClinical: true,
+    careSetting: ["Primary"],
+    codes: { nhsSpecialtyCode: null, gmcSpecialtyCode: null },
+    learningAlignment: {
+      curriculumLevel: ["Undergraduate", "Postgraduate", "CPD"],
+      relevantTo: ["Doctors", "Nurses", "Physician Associates"]
+    },
+    tags: [
+      "general practice",
+      "gp",
+      "family medicine",
+      "primary care"
+    ]
+  },
+
+  {
+    specialtyKey: "anaesthetics",
+    specialtyName: "Anaesthetics",
+    category: "Medical",
+    isClinical: true,
+    careSetting: ["Acute", "Secondary"],
+    codes: { nhsSpecialtyCode: null, gmcSpecialtyCode: null },
+    learningAlignment: {
+      curriculumLevel: ["Postgraduate", "CPD"],
+      relevantTo: ["Doctors"]
+    },
+    tags: [
+      "anaesthetics",
+      "anaesthesia",
+      "perioperative medicine",
+      "pain management"
+    ]
+  },
+
+  {
+    specialtyKey: "critical-care-medicine",
+    specialtyName: "Critical Care Medicine",
+    category: "Medical",
+    isClinical: true,
+    careSetting: ["Acute"],
+    codes: { nhsSpecialtyCode: null, gmcSpecialtyCode: null },
+    learningAlignment: {
+      curriculumLevel: ["Postgraduate", "CPD"],
+      relevantTo: ["Doctors", "Nurses"]
+    },
+    tags: [
+      "critical care",
+      "intensive care",
+      "icu",
+      "itu"
+    ]
+  },
+
+  {
+    specialtyKey: "psychiatry",
+    specialtyName: "Psychiatry",
+    category: "Mental health",
+    isClinical: true,
+    careSetting: ["Community", "Secondary"],
+    codes: { nhsSpecialtyCode: null, gmcSpecialtyCode: null },
+    learningAlignment: {
+      curriculumLevel: ["Undergraduate", "Postgraduate", "CPD"],
+      relevantTo: ["Doctors", "Mental Health Professionals"]
+    },
+    tags: [
+      "psychiatry",
+      "mental health",
+      "adult mental illness"
+    ]
+  },
+
+  {
+    specialtyKey: "child-adolescent-psychiatry",
+    specialtyName: "Psychiatry: Child and Adolescent",
+    category: "Mental health",
+    isClinical: true,
+    careSetting: ["Community", "Secondary"],
+    codes: { nhsSpecialtyCode: null, gmcSpecialtyCode: null },
+    learningAlignment: {
+      curriculumLevel: ["Postgraduate", "CPD"],
+      relevantTo: ["Doctors", "CAMHS Staff"]
+    },
+    tags: [
+      "child psychiatry",
+      "adolescent psychiatry",
+      "camhs"
+    ]
+  },
+
+  {
+    specialtyKey: "radiology",
+    specialtyName: "Radiology",
+    category: "Diagnostics",
+    isClinical: true,
+    careSetting: ["Secondary"],
+    codes: { nhsSpecialtyCode: null, gmcSpecialtyCode: null },
+    learningAlignment: {
+      curriculumLevel: ["Undergraduate", "Postgraduate", "CPD"],
+      relevantTo: ["Doctors", "Radiographers"]
+    },
+    tags: [
+      "radiology",
+      "medical imaging",
+      "x-ray",
+      "ct",
+      "mri"
+    ]
+  },
+
+  {
+    specialtyKey: "histopathology",
+    specialtyName: "Histopathology",
+    category: "Diagnostics",
+    isClinical: true,
+    careSetting: ["Laboratory"],
+    codes: { nhsSpecialtyCode: null, gmcSpecialtyCode: null },
+    learningAlignment: {
+      curriculumLevel: ["Postgraduate", "CPD"],
+      relevantTo: ["Doctors", "Biomedical Scientists"]
+    },
+    tags: [
+      "histopathology",
+      "pathology",
+      "tissue diagnosis"
+    ]
+  },
+
+  {
+    specialtyKey: "public-health-medicine",
+    specialtyName: "Public Health Medicine",
+    category: "Public health",
+    isClinical: false,
+    careSetting: ["Population"],
+    codes: { nhsSpecialtyCode: null, gmcSpecialtyCode: null },
+    learningAlignment: {
+      curriculumLevel: ["Postgraduate", "CPD"],
+      relevantTo: ["Public Health Professionals"]
+    },
+    tags: [
+      "public health",
+      "population health",
+      "prevention",
+      "health protection"
+    ]
+  },
+
+  {
+    specialtyKey: "dentistry-general",
+    specialtyName: "General Dental Practice",
+    category: "Dental",
+    isClinical: true,
+    careSetting: ["Primary"],
+    codes: { nhsSpecialtyCode: null, gmcSpecialtyCode: null },
+    learningAlignment: {
+      curriculumLevel: ["Undergraduate", "Postgraduate", "CPD"],
+      relevantTo: ["Dentists"]
+    },
+    tags: [
+      "general dental practice",
+      "dentistry",
+      "oral health"
+    ]
+  },
+
+  {
+    specialtyKey: "foundation",
+    specialtyName: "Foundation",
+    category: "Training",
+    isClinical: false,
+    careSetting: ["Training"],
+    codes: { nhsSpecialtyCode: null, gmcSpecialtyCode: null },
+    learningAlignment: {
+      curriculumLevel: ["Foundation"],
+      relevantTo: ["Doctors"]
+    },
+    tags: [
+      "foundation programme",
+      "fy1",
+      "fy2",
+      "medical training"
+    ]
+  },
+
+  {
+    specialtyKey: "nursing-episode",
+    specialtyName: "Nursing Episode",
+    category: "Workforce",
+    isClinical: true,
+    careSetting: ["All"],
+    codes: { nhsSpecialtyCode: null, gmcSpecialtyCode: null },
+    learningAlignment: {
+      curriculumLevel: ["Pre-registration", "CPD"],
+      relevantTo: ["Nurses"]
+    },
+    tags: [
+      "nursing episode",
+      "nursing care"
+    ]
+  },
+
+  {
+    specialtyKey: "allied-health-episode",
+    specialtyName: "Allied Health Professional Episode",
+    category: "Workforce",
+    isClinical: true,
+    careSetting: ["All"],
+    codes: { nhsSpecialtyCode: null, gmcSpecialtyCode: null },
+    learningAlignment: {
+      curriculumLevel: ["Undergraduate", "Postgraduate", "CPD"],
+      relevantTo: ["Allied Health Professionals"]
+    },
+    tags: [
+      "ahp",
+      "allied health",
+      "physiotherapy",
+      "occupational therapy"
+    ]
+  },
+
+  {
+    specialtyKey: "other",
+    specialtyName: "Other",
+    category: "Other",
+    isClinical: false,
+    careSetting: [],
+    codes: { nhsSpecialtyCode: null, gmcSpecialtyCode: null },
+    learningAlignment: {
+      curriculumLevel: [],
+      relevantTo: []
+    },
+    tags: ["other", "unspecified"]
+  },
+
+  {
+    specialtyKey: "not-applicable",
+    specialtyName: "Not Applicable",
+    category: "Other",
+    isClinical: false,
+    careSetting: [],
+    codes: { nhsSpecialtyCode: null, gmcSpecialtyCode: null },
+    learningAlignment: {
+      curriculumLevel: [],
+      relevantTo: []
+    },
+    tags: ["not applicable", "n/a"]
+  }
+] %}

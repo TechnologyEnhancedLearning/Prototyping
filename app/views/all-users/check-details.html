@@ -30,62 +30,74 @@
             {% set profile = user.profile | default({}) %}
             {% set tasks = user.tasks | default({}) %}
             {% set startDate = ((profile.startMonth or '') + ' ' + (profile.startYear or '')) | trim %}
+            {% set roleRequirements = roleRequirements | default({}) %}
+            {% set prnConfig = roleRequirements.prn | default({}) %}
+            {% set payConfig = roleRequirements.pay | default({}) %}
+            {% set rows = [
+              {
+                key: { text: "Secondary email address" },
+                value: { text: profile.secondaryEmail or 'Not provided' },
+                actions: { items: [ { href: "/all-users/secondary-email", text: "Change", visuallyHiddenText: "secondary email address" } ] }
+              },
+              {
+                key: { text: "Current role" },
+                value: { text: profile.role or profile.roleSearch or 'Not provided' },
+                actions: { items: [ { href: "/learner-profile/your-role-search", text: "Change", visuallyHiddenText: "current role" } ] }
+              }
+            ] %}
+            {% if roleRequirements.needsPrimarySpeciality %}
+              {% set rows = rows.concat([{
+                key: { text: "Primary speciality" },
+                value: { text: profile.primarySpeciality or profile.primarySpecialitySearch or 'Not provided' },
+                actions: { items: [ { href: "/learner-profile/primary-speciality", text: "Change", visuallyHiddenText: "primary speciality" } ] }
+              }]) %}
+            {% endif %}
+            {% if roleRequirements.needsPrn %}
+              {% set rows = rows.concat([{
+                key: { text: prnConfig.summaryLabel or "Professional registration number (PRN)" },
+                value: { text: profile.prn or 'Not provided' },
+                actions: { items: [ { href: "/learner-profile/enter-prn", text: "Change", visuallyHiddenText: "professional registration number" } ] }
+              }]) %}
+            {% endif %}
+            {% if roleRequirements.needsPayScale %}
+              {% set rows = rows.concat([{
+                key: { text: payConfig.summaryLabel or "Grade" },
+                value: { text: profile.payBand or 'Not provided' },
+                actions: { items: [ { href: "/learner-profile/pay-band", text: "Change", visuallyHiddenText: "grade" } ] }
+              }]) %}
+            {% endif %}
+            {% set rows = rows.concat([
+              {
+                key: { text: "Start date" },
+                value: { text: startDate or 'Not provided' },
+                actions: { items: [ { href: "/learner-profile/start-date", text: "Change", visuallyHiddenText: "start date" } ] }
+              },
+              {
+                key: { text: "Place of work" },
+                value: { text: profile.workplaceLabel or profile.placeSearch or 'Not provided' },
+                actions: { items: [ { href: "/learner-profile/place-of-work", text: "Change", visuallyHiddenText: "place of work" } ] }
+              },
+              {
+                key: { text: "Region" },
+                value: { text: profile.region or 'Not provided' },
+                actions: { items: [ { href: "/learner-profile/region", text: "Change", visuallyHiddenText: "region" } ] }
+              },
+              {
+                key: { text: "Your interests" },
+                value: { text: profile.interestSearch or 'Not provided' },
+                actions: { items: [ { href: "/all-users/learning-interests", text: "Change", visuallyHiddenText: "your interests" } ] }
+              },
+              {
+                key: { text: "Link account" },
+                value: { text: (tasks.social and tasks.social.status) or 'Not linked' },
+                actions: { items: [ { href: "/all-users/link-social", text: "Change", visuallyHiddenText: "link account" } ] }
+              }
+            ]) %}
             <h1 class="nhsuk-heading-xl">Check your details</h1>
             <p>Review the information you've provided before you start learning.</p>
             <form action="/all-users/check-details" method="post">
             {{ summaryList({
-              rows: [
-                {
-                  key: { text: "Secondary email address" },
-                  value: { text: profile.secondaryEmail or 'Not provided' },
-                  actions: { items: [ { href: "/all-users/secondary-email", text: "Change", visuallyHiddenText: "secondary email address" } ] }
-                },
-                {
-                  key: { text: "Current role" },
-                  value: { text: profile.role or profile.roleSearch or 'Not provided' },
-                  actions: { items: [ { href: "/learner-profile/your-role-search", text: "Change", visuallyHiddenText: "current role" } ] }
-                },
-                {
-                  key: { text: "Primary speciality" },
-                  value: { text: profile.primarySpeciality or profile.primarySpecialitySearch or 'Not provided' },
-                  actions: { items: [ { href: "/learner-profile/primary-speciality", text: "Change", visuallyHiddenText: "primary speciality" } ] }
-                },
-                {
-                  key: { text: "Professional registration number (PRN)" },
-                  value: { text: profile.prn or 'Not provided' },
-                  actions: { items: [ { href: "/learner-profile/enter-prn", text: "Change", visuallyHiddenText: "professional registration number" } ] }
-                },
-                {
-                  key: { text: "Grade" },
-                  value: { text: profile.payBand or 'Not provided' },
-                  actions: { items: [ { href: "/learner-profile/pay-band", text: "Change", visuallyHiddenText: "grade" } ] }
-                },
-                {
-                  key: { text: "Start date" },
-                  value: { text: startDate or 'Not provided' },
-                  actions: { items: [ { href: "/learner-profile/start-date", text: "Change", visuallyHiddenText: "start date" } ] }
-                },
-                {
-                  key: { text: "Place of work" },
-                  value: { text: profile.workplaceLabel or profile.placeSearch or 'Not provided' },
-                  actions: { items: [ { href: "/learner-profile/place-of-work", text: "Change", visuallyHiddenText: "place of work" } ] }
-                },
-                {
-                  key: { text: "Region" },
-                  value: { text: profile.region or 'Not provided' },
-                  actions: { items: [ { href: "/learner-profile/region", text: "Change", visuallyHiddenText: "region" } ] }
-                },
-                {
-                  key: { text: "Your interests" },
-                  value: { text: profile.interestSearch or 'Not provided' },
-                  actions: { items: [ { href: "/all-users/learning-interests", text: "Change", visuallyHiddenText: "your interests" } ] }
-                },
-                {
-                  key: { text: "Link account" },
-                  value: { text: (tasks.social and tasks.social.status) or 'Not linked' },
-                  actions: { items: [ { href: "/all-users/link-social", text: "Change", visuallyHiddenText: "link account" } ] }
-                }
-              ]
+              rows: rows
             }) }}
             {{ button({ text: "Submit and start learning" }) }}
             </form>

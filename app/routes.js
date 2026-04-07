@@ -4,6 +4,8 @@ const express = require('express')
 const router = express.Router()
 
 const { searchRoles } = require('./data/nhs-role-search')
+const { searchPrimarySpecialities } = require('./data/primary-speciality-search')
+const { getRoleRequirements } = require('./data/role-requirements')
 const formActions = require('./routes/registration/form-actions')
 const migrateSessionUserData = require('./routes/registration/middleware/session-user-migration')
 
@@ -42,13 +44,41 @@ router.get('/api/roles/search', (req, res) => {
   })
 })
 
+router.get('/api/primary-specialities/search', (req, res) => {
+  const query = req.query.q || ''
+
+  res.json({
+    query,
+    results: searchPrimarySpecialities(query)
+  })
+})
+
 router.use((req, res, next) => {
+  const profile = req.session?.data?.user?.profile || {}
+  const roleRequirements = getRoleRequirements(profile.role || '')
+
+  res.locals.roleRequirements = roleRequirements
+
+  if (req.method === 'GET' && req.path === '/learner-profile/primary-speciality' && !roleRequirements.needsPrimarySpeciality) {
+    res.redirect('/learner-profile/task-list')
+    return
+  }
+
+  if (req.method === 'GET' && req.path === '/learner-profile/enter-prn' && !roleRequirements.needsPrn) {
+    res.redirect('/learner-profile/task-list')
+    return
+  }
+
+  if (req.method === 'GET' && req.path === '/learner-profile/pay-band' && !roleRequirements.needsPayScale) {
+    res.redirect('/learner-profile/task-list')
+    return
+  }
+
   if (req.path !== '/learner-profile/your-role-search') {
     next()
     return
   }
 
-  const profile = req.session?.data?.user?.profile || {}
   const roleSearchQuery = profile.roleSearch || ''
   const selectedRole = profile.role || ''
   const roleSearchResults = searchRoles(roleSearchQuery)

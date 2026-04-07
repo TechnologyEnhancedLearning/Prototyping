@@ -13,7 +13,11 @@
   Content is wrapped in a reading‑width container for good line lengths【148225817585091†L350-L371】.
 #}
 
-{% set pageName = "Pay band" %}
+{% set roleRequirements = roleRequirements | default({}) %}
+{% set payConfig = roleRequirements.pay | default({}) %}
+{% set profile = (data.user.profile if data.user and data.user.profile else {}) %}
+{% set payHint = { text: payConfig.hint } if payConfig.hint else null %}
+{% set pageName = payConfig.pageName or "Pay band" %}
 
 {% block beforeContent %}
   {{ backLink({ href: "/learner-profile/task-list", text: "Back" }) }}
@@ -29,32 +33,16 @@
             {{ radios({
               idPrefix: "pay-band",
               name: "payBand",
+              value: profile.payBand,
               fieldset: {
                 legend: {
-                  text: "Select your band",
+                  text: payConfig.heading or "Select your band",
                   classes: "nhsuk-fieldset__legend--l",
                   isPageHeading: true
                 }
               },
-              hint: {
-                text: "You can find this on your payslip."
-              },
-              items: [
-                { value: "1", text: "Band 1" },
-                { value: "2", text: "Band 2" },
-                { value: "3", text: "Band 3" },
-                { value: "4", text: "Band 4" },
-                { value: "5", text: "Band 5" },
-                { value: "6", text: "Band 6" },
-                { value: "7", text: "Band 7" },
-                { value: "8", text: "Band 8" },
-                { value: "8a", text: "Band 8a" },
-                { value: "8b", text: "Band 8b" },
-                { value: "8c", text: "Band 8c" },
-                { value: "8d", text: "Band 8d" },
-                { value: "9", text: "Band 9" },
-                { value: "student", text: "Student" }
-              ]
+              hint: payHint,
+              items: payConfig.options or []
             }) }}
             {{ details({
               summaryText: "Why do I need to provide details about my grade?",

@@ -11,7 +11,11 @@
   wrapped in a reading‑width container【148225817585091†L350-L371】.
 #}
 
-{% set pageName = "Enter PRN" %}
+{% set roleRequirements = roleRequirements | default({}) %}
+{% set prnConfig = roleRequirements.prn | default({}) %}
+{% set profile = (data.user.profile if data.user and data.user.profile else {}) %}
+{% set prnHint = { text: prnConfig.hint } if prnConfig.hint else null %}
+{% set pageName = prnConfig.pageName or "Enter PRN" %}
 
 {% block beforeContent %}
   {{ backLink({ href: "/learner-profile/task-list", text: "Back" }) }}
@@ -23,13 +27,17 @@
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-full">
           <div class="nhsuk-u-reading-width">
-            <h1 class="nhsuk-heading-xl">Enter your professional registration number (PRN)</h1>
-            <p>You may know this as your NMC number or PIN.</p>
+            <h1 class="nhsuk-heading-xl">{{ prnConfig.heading or "Enter your professional registration number (PRN)" }}</h1>
+            {% if prnConfig.intro %}
+              <p>{{ prnConfig.intro }}</p>
+            {% endif %}
             <form action="/learner-profile/enter-prn" method="post">
               {{ input({
-                label: { text: "Professional registration number (PRN)", classes: "nhsuk-label--m" },
+                label: { text: prnConfig.label or "Professional registration number (PRN)", classes: "nhsuk-label--m" },
                 id: "prn",
                 name: "prn",
+                hint: prnHint,
+                value: profile.prn,
                 placeholder: "99A9999A"
               }) }}
               {{ button({ text: "Continue" }) }}

@@ -17,7 +17,7 @@ router.use((req, res, next) => {
   res.locals.headerState = req.session?.user ? 'logged-in' : 'logged-out';
 
   // You can easily add more states here later
-  if (req.path.startsWith('/create-account') | req.path.startsWith('/admin')) {
+  if (req.path.startsWith('/create-account') | req.path.startsWith('/create-account') | req.path.startsWith('/admin')) {
     res.locals.headerState = 'basic';
   }
   if (req.path.startsWith('/all-users') | req.path.startsWith('/dashboard') | req.path.startsWith('/learner-profile')) {

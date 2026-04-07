@@ -4,6 +4,9 @@
 {%- from 'button/macro.njk' import button %}
 {%- from 'back-link/macro.njk' import backLink %}
 
+{% set user = data.user | default({}) %}
+{% set profile = user.profile | default({}) %}
+{% set selectedSpeciality = profile.primarySpeciality or '' %}
 
 {% set pageName = "Primary specialty" %}
 
@@ -21,26 +24,58 @@
             <p class="nhsuk-hint">Use a generic term to best describe your primary specialty or select ‘not applicable’ if it's not relevant to you.</p>
             <form action="/learner-profile/primary-speciality" method="post">
               {{ input({
-                label: { text: "", classes: "" },
+                label: {
+                  text: "Search for your primary specialty",
+                  classes: "nhsuk-label--m"
+                },
                 id: "speciality-search",
                 name: "specialitySearch",
-                value: "",
+                value: profile.primarySpecialitySearch or '',
                 classes: "nhsuk-input",
-                placeholder: "lorem ipsum"
+                placeholder: "paediatrics",
+                inputmode: "text",
+                spellcheck: false,
+                attributes: {
+                  autocomplete: "off",
+                  "data-autosuggest": "specialities",
+                  "data-autosuggest-endpoint": "/api/primary-specialities/search",
+                  "data-autosuggest-radio-name": "speciality",
+                  "data-autosuggest-other-label": "Other",
+                  "data-autosuggest-other-value": "other",
+                  "data-autosuggest-empty-text": "No matching specialties found. Select Other to enter your specialty manually."
+                }
               }) }}
+
+              <div class="app-live-role-results" data-live-role-results hidden>
+                <div class="nhsuk-form-group nhsuk-u-margin-bottom-4">
+                  <fieldset class="nhsuk-fieldset">
+                    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                      Select your primary specialty
+                    </legend>
+                    <div class="nhsuk-radios" data-live-role-radios></div>
+                  </fieldset>
+                </div>
+
+                <div class="nhsuk-form-group" data-live-role-other-group hidden>
+                  <label class="nhsuk-label" for="live-other-role">Enter your primary specialty</label>
+                  <input class="nhsuk-input" id="live-other-role" name="otherSpeciality" type="text" value="{{ selectedSpeciality if selectedSpeciality and selectedSpeciality != 'na' }}">
+                </div>
+              </div>
+
               <div class="nhsuk-form-group">
                 <fieldset class="nhsuk-fieldset">
                   <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
-                    <span class="nhsuk-fieldset__heading">&nbsp;</span>
+                    <span class="nhsuk-fieldset__heading">Or choose one option</span>
                   </legend>
                   <div class="nhsuk-radios">
                     <div class="nhsuk-radios__item">
-                      <input class="nhsuk-radios__input" id="speciality-na" name="speciality" type="radio" value="na">
+                      <input class="nhsuk-radios__input" id="speciality-na" name="speciality" type="radio" value="na"{% if selectedSpeciality == 'na' %} checked{% endif %}>
                       <label class="nhsuk-label nhsuk-radios__label" for="speciality-na">Not applicable</label>
                     </div>
                   </div>
                 </fieldset>
               </div>
+
               {{ button({ text: "Continue" }) }}
             </form>
           </div>

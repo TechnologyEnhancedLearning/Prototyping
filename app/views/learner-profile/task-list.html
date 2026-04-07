@@ -26,6 +26,9 @@
             {% set user = data.user | default({}) %}
             {% set profile = user.profile | default({}) %}
             {% set tasks = user.tasks | default({}) %}
+            {% set roleRequirements = roleRequirements | default({}) %}
+            {% set prnConfig = roleRequirements.prn | default({}) %}
+            {% set payConfig = roleRequirements.pay | default({}) %}
 
             {# NOTE: Like all feilds in these steps - data need to be carried forward to populate the relivant feilds later int eh journey - e.g. summary screen and job role. The best way to do this may be by using a key value object as middleware #}
 
@@ -54,43 +57,45 @@
             <p>Finish setting up your profile by completing the tasks below.</p>
 
             <ul class="nhsuk-task-list nhsuk-u-margin-bottom-5">
-              {% set psStatus = (tasks.primarySpeciality and tasks.primarySpeciality.status) or 'Not yet started' %}
-              <li class="nhsuk-task-list__item nhsuk-task-list__item--with-link">
-                <div class="nhsuk-task-list__name-and-hint">
-                  <a class="nhsuk-link nhsuk-task-list__link" href="/learner-profile/primary-speciality" aria-describedby="primary-speciality-status">
-                    Primary speciality
-                  </a>
-                </div>
-                <div class="nhsuk-task-list__status{% if psStatus == 'Completed' %} nhsuk-task-list__status--completed{% endif %}" id="primary-speciality-status">
-                  {% if psStatus == 'Completed' %}
-                    {{ psStatus }}
-                  {% else %}
-                    {{ tag({
-                      text: psStatus,
-                      classes: "nhsuk-tag--blue"
-                    }) }}
-                  {% endif %}
-                </div>
-              </li>
+              {% if roleRequirements.needsPrimarySpeciality %}
+                {% set psStatus = (tasks.primarySpeciality and tasks.primarySpeciality.status) or 'Not yet started' %}
+                <li class="nhsuk-task-list__item nhsuk-task-list__item--with-link">
+                  <div class="nhsuk-task-list__name-and-hint">
+                    <a class="nhsuk-link nhsuk-task-list__link" href="/learner-profile/primary-speciality" aria-describedby="primary-speciality-status">
+                      Primary speciality
+                    </a>
+                  </div>
+                  <div class="nhsuk-task-list__status{% if psStatus == 'Completed' %} nhsuk-task-list__status--completed{% endif %}" id="primary-speciality-status">
+                    {% if psStatus == 'Completed' %}
+                      {{ psStatus }}
+                    {% else %}
+                      {{ tag({
+                        text: psStatus,
+                        classes: "nhsuk-tag--blue"
+                      }) }}
+                    {% endif %}
+                  </div>
+                </li>
+              {% endif %}
 
-
-
-              {% set prnStatus = (tasks.prn and tasks.prn.status) or 'Not yet started' %}
-              <li class="nhsuk-task-list__item nhsuk-task-list__item--with-link">
-                <div class="nhsuk-task-list__name-and-hint">
-                  <a class="nhsuk-link nhsuk-task-list__link" href="/learner-profile/enter-prn" aria-describedby="enter-prn-status">Your professional registration number (PRN)</a>
-                </div>
-                <div class="nhsuk-task-list__status{% if prnStatus == 'Completed' %} nhsuk-task-list__status--completed{% endif %}" id="enter-prn-status">
-                  {% if prnStatus == 'Completed' %}
-                    {{ prnStatus }}
-                  {% else %}
-                    {{ tag({
-                      text: prnStatus,
-                      classes: "nhsuk-tag--blue"
-                    }) }}
-                  {% endif %}
-                </div>
-              </li>
+              {% if roleRequirements.needsPrn %}
+                {% set prnStatus = (tasks.prn and tasks.prn.status) or 'Not yet started' %}
+                <li class="nhsuk-task-list__item nhsuk-task-list__item--with-link">
+                  <div class="nhsuk-task-list__name-and-hint">
+                    <a class="nhsuk-link nhsuk-task-list__link" href="/learner-profile/enter-prn" aria-describedby="enter-prn-status">{{ prnConfig.taskLabel or "Your professional registration number (PRN)" }}</a>
+                  </div>
+                  <div class="nhsuk-task-list__status{% if prnStatus == 'Completed' %} nhsuk-task-list__status--completed{% endif %}" id="enter-prn-status">
+                    {% if prnStatus == 'Completed' %}
+                      {{ prnStatus }}
+                    {% else %}
+                      {{ tag({
+                        text: prnStatus,
+                        classes: "nhsuk-tag--blue"
+                      }) }}
+                    {% endif %}
+                  </div>
+                </li>
+              {% endif %}
               {% set sdStatus = (tasks.startDate and tasks.startDate.status) or 'Not yet started' %}
               <li class="nhsuk-task-list__item nhsuk-task-list__item--with-link">
                 <div class="nhsuk-task-list__name-and-hint">
@@ -107,22 +112,24 @@
                   {% endif %}
                 </div>
               </li>
-              {% set pbStatus = (tasks.payBand and tasks.payBand.status) or 'Not yet started' %}
-              <li class="nhsuk-task-list__item nhsuk-task-list__item--with-link">
-                <div class="nhsuk-task-list__name-and-hint">
-                  <a class="nhsuk-link nhsuk-task-list__link" href="/learner-profile/pay-band" aria-describedby="pay-band-status">Pay band</a>
-                </div>
-                <div class="nhsuk-task-list__status{% if pbStatus == 'Completed' %} nhsuk-task-list__status--completed{% endif %}" id="pay-band-status">
-                  {% if pbStatus == 'Completed' %}
-                    {{ pbStatus }}
-                  {% else %}
-                    {{ tag({
-                      text: pbStatus,
-                      classes: "nhsuk-tag--blue"
-                    }) }}
-                  {% endif %}
-                </div>
-              </li>
+              {% if roleRequirements.needsPayScale %}
+                {% set pbStatus = (tasks.payBand and tasks.payBand.status) or 'Not yet started' %}
+                <li class="nhsuk-task-list__item nhsuk-task-list__item--with-link">
+                  <div class="nhsuk-task-list__name-and-hint">
+                    <a class="nhsuk-link nhsuk-task-list__link" href="/learner-profile/pay-band" aria-describedby="pay-band-status">{{ payConfig.taskLabel or "Pay band" }}</a>
+                  </div>
+                  <div class="nhsuk-task-list__status{% if pbStatus == 'Completed' %} nhsuk-task-list__status--completed{% endif %}" id="pay-band-status">
+                    {% if pbStatus == 'Completed' %}
+                      {{ pbStatus }}
+                    {% else %}
+                      {{ tag({
+                        text: pbStatus,
+                        classes: "nhsuk-tag--blue"
+                      }) }}
+                    {% endif %}
+                  </div>
+                </li>
+              {% endif %}
               {% set powStatus = (tasks.placeOfWork and tasks.placeOfWork.status) or 'Not yet started' %}
               <li class="nhsuk-task-list__item nhsuk-task-list__item--with-link">
                 <div class="nhsuk-task-list__name-and-hint">

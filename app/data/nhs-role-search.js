@@ -1,7 +1,7 @@
 const fs = require('node:fs')
 const path = require('node:path')
 
-const rolesFilePath = path.join(__dirname, '../views/_data/learning-interests/nhs-roles.njk')
+const rolesFilePath = path.join(__dirname, '../views/_data/roles/nhs-roles.njk')
 
 function normalise(value = '') {
   return value
@@ -62,6 +62,9 @@ function buildRoleIndex() {
 }
 
 const roleIndex = buildRoleIndex()
+const roleIndexByName = new Map(
+  roleIndex.map((role) => [normalise(role.value), role])
+)
 
 function scoreRoleMatch(role, query) {
   const normalisedRoleText = normalise(role.text)
@@ -118,6 +121,11 @@ function searchRoles(rawQuery, options = {}) {
     }))
 }
 
+function getRoleByName(roleName = '') {
+  return roleIndexByName.get(normalise(roleName)) || null
+}
+
 module.exports = {
-  searchRoles
+  searchRoles,
+  getRoleByName
 }

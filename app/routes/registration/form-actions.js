@@ -115,7 +115,12 @@ formActions.post('/learner-profile/your-role-search', (req, res) => {
 
 formActions.post('/learner-profile/primary-speciality', (req, res) => {
   setProfileField(req, 'primarySpecialitySearch', req.body.specialitySearch || '')
-  setProfileField(req, 'primarySpeciality', req.body.speciality || req.body.specialitySearch || '')
+  const otherSpeciality = (req.body.otherSpeciality || '').trim()
+  const selectedSpeciality = req.body.speciality === 'other'
+    ? otherSpeciality
+    : req.body.speciality
+
+  setProfileField(req, 'primarySpeciality', selectedSpeciality || req.body.specialitySearch || '')
   setTaskStatus(req, 'primarySpeciality', 'Completed')
   res.redirect('/learner-profile/task-list')
 })
