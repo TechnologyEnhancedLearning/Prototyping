@@ -31,49 +31,35 @@
 <div class="nhsuk-width-container">
   <main class="nhsuk-main-wrapper" id="maincontent">
     <div class="nhsuk-grid-row">
-      <div class="nhsuk-grid-column-two-thirds">
-
-        <!-- You can delete the lines below -->
-        <h2 class="nhsuk-heading-l">
-          NHS prototype kit
-          <span class="nhsuk-caption-xl nhsuk-caption--bottom">Version {{version}}</span>
-        </h2>
-        <hr>
-
-
-        <!-- Add your content here -->
-        <!-- Styles and components can be found at https://service-manual.nhs.uk/design-system -->
-
-        <h1 class="nhsuk-heading-xl">
+      <div class="nhsuk-grid-column-full">
+        <span class="nhsuk-caption-s">Last updated: 08 April 2026</span>
+        <h1>
           {{ serviceName }}
         </h1>
 
-        <p>Set the service name for your prototype by editing <strong>/app/config.js</strong>.</p>
+        <div class="nhsuk-u-reading-width">
+          <h2 class="nhsuk-heading-m">Who it's for</h2>
+          <p class="nhsuk-body">The prototype is for the purpose of user research and testing. </p>
 
-        <p>
-          This is the index page for your prototype. You can find it at <strong>/app/views/index.html</strong>.
-        </p>
+          <h2 class="nhsuk-heading-m">What's included</h2>
 
-        <hr>
+           <p class="nhsuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Fusce at dolor sit amet felis aliquam bibendum quis a libero.</p>
 
-        <h2 class="nhsuk-heading-l">
-          Get started
-        </h2>
+           <div class="nhsuk-inset-text">
+            We regularly update the prototype to reflect decision we've made based on user research.
+          </div>
 
-        <ul class="nhsuk-list nhsuk-list--bullet">
-          <li>
-            <a href="https://prototype-kit.service-manual.nhs.uk/how-tos">NHS prototype kit guides</a> – including a tutorial
-          </li>
-          <li>
-            <a href="https://service-manual.nhs.uk/design-system">NHS digital service manual</a> – for code snippets and guidance on using NHS styles, components and patterns
-          </li>
-        </ul>
 
-        <p>
-          There is a selection of <a href="/example-templates">example page templates</a> in <strong>/lib/example-templates/</strong>. To use these, copy and paste them into <strong>/app/views/</strong>.
-        </p>
-        <!-- End of content -->
+          <h2 class="nhsuk-heading-m">How to use the prototype</h2>
+          <p class="nhsuk-body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt nesciunt reiciendis vero esse eveniet? Culpa, saepe quod itaque fugit voluptates quisquam similique quis optio reiciendis natus nisi, velit, eaque commodi!</p>
 
+          {{ actionLink({
+            text: "Get started",
+            href: "/start",
+            classes: "nhsuk-u-margin-top-4"
+          }) }}
+
+        </div>
       </div>
     </div>
   </main>
