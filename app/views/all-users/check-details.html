@@ -84,12 +84,12 @@
               },
               {
                 key: { text: "Your interests" },
-                value: { text: profile.interestSearch or 'Not provided' },
+                value: { text: profile.interestSearch or 'Incomplete' },
                 actions: { items: [ { href: "/all-users/learning-interests", text: "Change", visuallyHiddenText: "your interests" } ] }
               },
               {
-                key: { text: "Link account" },
-                value: { text: (tasks.social and tasks.social.status) or 'Not linked' },
+                key: { text: "LinkIn account" },
+                value: { text: (tasks.social.status == 'Completed' and 'LinkedIn Account linked') or 'Incomplete' },
                 actions: { items: [ { href: "/all-users/link-social", text: "Change", visuallyHiddenText: "link account" } ] }
               }
             ]) %}

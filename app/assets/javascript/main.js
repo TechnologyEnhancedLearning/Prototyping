@@ -152,6 +152,18 @@ function createAutosuggest(input) {
   input.addEventListener('input', (event) => {
     fetchResults(event.target.value)
   })
+
+  input.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault()
+    }
+  })
+
+  otherInput.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault()
+    }
+  })
 }
 
 document.addEventListener('DOMContentLoaded', () => {
