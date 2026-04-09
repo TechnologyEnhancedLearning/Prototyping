@@ -4,27 +4,6 @@
 {# {%- set listHeading = params.listHeading if params.listHeading is not undefined else "Show" -%} #}
 
 
-{# NOTE: This needs to be expanded to include some logging function and be moved out to a scripts file a be detected with a return statment #}
-<script>
-  // Toggle on click (handles elements added later too)
-  document.addEventListener('click', function (e) {
-    const btn = e.target.closest('.quick-filters__button');
-    if (!btn) return;
-    btn.classList.toggle('quick-filters__button--active');
-  });
-
-  // Optional: keyboard support if it's not a native <button>
-  document.addEventListener('keydown', function (e) {
-    const btn = e.target.closest('.quick-filters__button');
-    if (!btn) return;
-    // Space or Enter toggles
-    if (e.key === ' ' || e.key === 'Enter') {
-      e.preventDefault();
-      btn.classList.toggle('quick-filters__button--active');
-    }
-  });
-</script>
-
 <nav class="quick-filters{%- if params.classes %} {{ params.classes }}{% endif %}" {{- nhsukAttributes(params.attributes) }}>
   {% if params.filterTitle %}
     <div class="quick-filters__filter-title">{{ params.filterTitle }}</div>

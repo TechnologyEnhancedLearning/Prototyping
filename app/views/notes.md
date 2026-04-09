@@ -1,7 +1,7 @@
 # Todos
-TODO: pull in in content-group wrapper from dls-prototype
-TODO: root logged out LH header logo to start
-TODO: root logged in LH header logo to dashboard
+TODO: ⭐️ pull in in content-group wrapper from dls-prototype
+TODO: ⭐️ root logged out LH header logo to start
+TODO: ⭐️ root logged in LH header logo to dashboard
 TODO: consider how I plan to do email handling form /create-account/email-sent
 
 
@@ -50,26 +50,35 @@ TODO: Swap linked in with account recovery
 TODO: [medium priority] Build search
 TODO: [medium priority] Alternatively: List items on page
 TODO: Update page url from "learner-profile/primary-speciality" to "learner-profile/primary-specialty"
+Discuss Data with Jeremy and find out if he can link the data to the roll
+TODO: skip anyone without a reg number - check this with people who know
 - learner-profile/prn
 TODO: PRN should be dynamic for role
+TODO: Remove "Professional registration number (PRN)" label text and make "you may know this as" hint text
+TODO: [medium priority] Add valifdation
 - learner-profile/start-date
 TODO: Align Month and year date feilds
+TODO: [medium priority] Add valifdation
 - learner-profile/pay-band
-TODO: Move why to below heading
+TODO: Move "Why do I need to provide" to below heading
+TODO: update "Why do I need to provide details about my grade" to reference band - make this dynamic
 TODO: update page so the header has the correct bottom margin
 - learner-profile/place-of-work
 TODO: Extraxct a key value object from the list of addresses supplied by Jeremy
 TODO: Get codex to apply the same logic to the search
+TODO: Work with Angelian to strip ODS and make page description more meanigful
 - learner-profile/interests
 TODO: Apply search filter logic
-TODO: Tidy up vertical spacing on quick filters pattern
-TODO: Hook up interests to check your details
+TODO: ⭐️ Tidy up vertical spacing on quick filters pattern
+TODO: ⭐️ Hook up interests to check your details
+TODO: ⭐️ get an AI to list an exhastive set of interests grouped by health profession
 - learner-profile/recovery-email
-n/a
+TODO: ⭐️ change "Account secondary email address" to "Secondary email address" 
+TODO: ⭐️ change to "We need to take a secondary email address so that we are able to verify who you are if we need to help you recover your account in the future."
 - learner-profile/link-social
-n/a
-TODO: Check the "We are developing this feature." line. - maybe this should link to UR and state "We are developing this feature and we'd like users to participate in research so we can better understand how we might develp this feature int he future"
+TODO: ⭐️ Add linked in logo
+TODO: ⭐️ Check the "We are developing this feature." line. - maybe this should link to UR and state "We are developing this feature and we'd like users to participate in research so we can better understand how we might develp this feature int he future" - work with Angelina
 - learner-profile/confirmation
-n/a
+TODO: ⭐️ amend to "Review the information you've provided is correct before you start learning.
 - dashboard/complete
 TODO: hook up second view of Dashboard

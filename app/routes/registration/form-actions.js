@@ -53,6 +53,20 @@ function setProfileField(req, field, value) {
   req.session.data.user.profile[field] = value
 }
 
+function normaliseToArray(value) {
+  if (Array.isArray(value)) {
+    return value
+      .map((item) => String(item).trim())
+      .filter((item) => item && item !== '_unchecked')
+  }
+
+  if (typeof value === 'string' && value.trim()) {
+    return value.trim() === '_unchecked' ? [] : [value.trim()]
+  }
+
+  return []
+}
+
 function workplaceLabel(workplace) {
   const labels = {
     bernard: '40 Bernard Street, Great Ormond Street Hospital for Children NHS Foundation Trust (NHS Trust Site)',
@@ -174,8 +188,11 @@ formActions.post('/learner-profile/region', (req, res) => {
 // Optional tasks flow
 
 formActions.post('/all-users/learning-interests', (req, res) => {
+  const selectedInterests = normaliseToArray(req.body.interests)
+
   setProfileField(req, 'interestSearch', req.body.interestSearch || '')
-  setTaskStatus(req, 'interests', 'Completed')
+  setProfileField(req, 'interests', selectedInterests)
+  setTaskStatus(req, 'interests', selectedInterests.length ? 'Completed' : 'Optional')
   res.redirect('/learner-profile/task-list')
 })
 

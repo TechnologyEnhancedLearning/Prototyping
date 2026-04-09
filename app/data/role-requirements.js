@@ -89,7 +89,7 @@ const PRN_CONFIG = {
     summaryLabel: 'GMC number',
     pageName: 'Enter your GMC number',
     heading: 'Enter your GMC number',
-    label: 'GMC number',
+    label: 'Enter your GMC number',
     hint: 'This is your General Medical Council registration number.',
     intro: 'You can find this on the GMC register or in your registration emails.'
   },
@@ -99,7 +99,7 @@ const PRN_CONFIG = {
     summaryLabel: 'NMC number',
     pageName: 'Enter your NMC number',
     heading: 'Enter your NMC number',
-    label: 'NMC number',
+    label: 'Enter your NMC number',
     hint: 'This may also be referred to as your PIN.',
     intro: 'You can find this on your NMC registration details.'
   },
@@ -109,7 +109,7 @@ const PRN_CONFIG = {
     summaryLabel: 'HCPC number',
     pageName: 'Enter your HCPC number',
     heading: 'Enter your HCPC registration number',
-    label: 'HCPC registration number',
+    label: 'Enter your HCPC registration number',
     hint: 'This is your Health and Care Professions Council registration number.',
     intro: 'You can find this on the HCPC register or in your registration details.'
   }

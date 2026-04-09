@@ -14,6 +14,7 @@ module.exports = {
       workplaceLabel: '',
       region: '',
       interestSearch: '',
+      interests: [],
       secondaryEmail: ''
     },
     tasks: {

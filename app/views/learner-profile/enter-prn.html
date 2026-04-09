@@ -26,10 +26,11 @@
     <main class="nhsuk-main-wrapper" id="maincontent">
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-full">
+          <h1 class="nhsuk-heading-xl">Professional registration number</h1>
+
           <div class="nhsuk-u-reading-width">
-            <h1 class="nhsuk-heading-xl">{{ prnConfig.heading or "Enter your professional registration number (PRN)" }}</h1>
             {% if prnConfig.intro %}
-              <p>{{ prnConfig.intro }}</p>
+              {# <p>{{ prnConfig.intro }}</p> #}
             {% endif %}
             <form action="/learner-profile/enter-prn" method="post">
               {{ input({

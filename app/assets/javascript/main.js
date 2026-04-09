@@ -166,8 +166,64 @@ function createAutosuggest(input) {
   })
 }
 
+function createInterestPicker(form) {
+  const searchInput = form.querySelector('[data-interest-search]')
+  const items = [...form.querySelectorAll('[data-interest-item]')]
+
+  if (!searchInput || !items.length) {
+    return
+  }
+
+  function syncButtonState(button, checkbox) {
+    button.classList.toggle('quick-filters__button--active', checkbox.checked)
+  }
+
+  function filterItems(query) {
+    const trimmedQuery = query.trim().toLowerCase()
+
+    items.forEach((item) => {
+      const searchableText = (item.dataset.interestSearchText || '').toLowerCase()
+      item.hidden = Boolean(trimmedQuery) && !searchableText.includes(trimmedQuery)
+    })
+  }
+
+  items.forEach((item) => {
+    const button = item.querySelector('[data-interest-button]')
+    const checkbox = item.querySelector('input[name="interests"]')
+
+    if (!button || !checkbox) {
+      return
+    }
+
+    syncButtonState(button, checkbox)
+
+    button.addEventListener('click', () => {
+      checkbox.checked = !checkbox.checked
+      syncButtonState(button, checkbox)
+    })
+
+    button.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault()
+        checkbox.checked = !checkbox.checked
+        syncButtonState(button, checkbox)
+      }
+    })
+  })
+
+  searchInput.addEventListener('input', (event) => {
+    filterItems(event.target.value)
+  })
+
+  filterItems(searchInput.value)
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   document
     .querySelectorAll('[data-autosuggest]')
     .forEach((input) => createAutosuggest(input))
+
+  document
+    .querySelectorAll('[data-interest-picker]')
+    .forEach((form) => createInterestPicker(form))
 })

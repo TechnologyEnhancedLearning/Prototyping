@@ -30,19 +30,28 @@
             {% set profile = user.profile | default({}) %}
             {% set tasks = user.tasks | default({}) %}
             {% set startDate = ((profile.startMonth or '') + ' ' + (profile.startYear or '')) | trim %}
+            {% set selectedInterests = profile.interests | default([]) %}
+            {% if selectedInterests.length %}
+              {% set interestsSummary %}
+                <ul class="nhsuk-list nhsuk-list--bullet nhsuk-u-margin-bottom-0">
+                  {% for interest in selectedInterests %}
+                    <li>{{ interest }}</li>
+                  {% endfor %}
+                </ul>
+              {% endset %}
+              {% set interestsValue = { html: interestsSummary } %}
+            {% else %}
+              {% set interestsSummary = 'Not provided' %}
+              {% set interestsValue = { text: interestsSummary } %}
+            {% endif %}
             {% set roleRequirements = roleRequirements | default({}) %}
             {% set prnConfig = roleRequirements.prn | default({}) %}
             {% set payConfig = roleRequirements.pay | default({}) %}
             {% set rows = [
               {
-                key: { text: "Secondary email address" },
-                value: { text: profile.secondaryEmail or 'Not provided' },
-                actions: { items: [ { href: "/all-users/secondary-email", text: "Change", visuallyHiddenText: "secondary email address" } ] }
-              },
-              {
                 key: { text: "Current role" },
                 value: { text: profile.role or profile.roleSearch or 'Not provided' },
-                actions: { items: [ { href: "/learner-profile/your-role-search", text: "Change", visuallyHiddenText: "current role" } ] }
+                actions: { items: [ { href: "/learner-profile/your-role", text: "Change", visuallyHiddenText: "current role" } ] }
               }
             ] %}
             {% if roleRequirements.needsPrimarySpeciality %}
@@ -84,8 +93,13 @@
               },
               {
                 key: { text: "Your interests" },
-                value: { text: profile.interestSearch or 'Incomplete' },
+                value: interestsValue,
                 actions: { items: [ { href: "/all-users/learning-interests", text: "Change", visuallyHiddenText: "your interests" } ] }
+              },
+              {
+                key: { text: "Secondary email address" },
+                value: { text: profile.secondaryEmail or 'Not provided' },
+                actions: { items: [ { href: "/all-users/secondary-email", text: "Change", visuallyHiddenText: "secondary email address" } ] }
               },
               {
                 key: { text: "LinkIn account" },
