@@ -30,6 +30,7 @@
             {% set profile = user.profile | default({}) %}
             {% set tasks = user.tasks | default({}) %}
             {% set startDate = ((profile.startMonth or '') + ' ' + (profile.startYear or '')) | trim %}
+            {% set shouldShowRegion = profile.workplace == 'home' or profile.workplace == 'not-applicable' %}
             {% set selectedInterests = profile.interests | default([]) %}
             {% if selectedInterests.length %}
               {% set interestsSummary %}
@@ -85,12 +86,18 @@
                 key: { text: "Place of work" },
                 value: { text: profile.workplaceLabel or profile.placeSearch or 'Not provided' },
                 actions: { items: [ { href: "/learner-profile/place-of-work", text: "Change", visuallyHiddenText: "place of work" } ] }
-              },
-              {
-                key: { text: "Region" },
-                value: { text: profile.region or 'Not provided' },
-                actions: { items: [ { href: "/learner-profile/region", text: "Change", visuallyHiddenText: "region" } ] }
-              },
+              }
+            ]) %}
+            {% if shouldShowRegion %}
+              {% set rows = rows.concat([
+                {
+                  key: { text: "Region" },
+                  value: { text: profile.region or 'Not provided' },
+                  actions: { items: [ { href: "/learner-profile/region", text: "Change", visuallyHiddenText: "region" } ] }
+                }
+              ]) %}
+            {% endif %}
+            {% set rows = rows.concat([
               {
                 key: { text: "Your interests" },
                 value: interestsValue,
