@@ -1,0 +1,14 @@
+version: 2
+updates:
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'daily'
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'daily'
+    ignore:
+      # SASS updates will be done manually in sync with
+      # NHS Frontend to avoid deprecation warnings.
+      - dependency-name: 'sass-embedded'

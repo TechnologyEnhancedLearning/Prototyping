@@ -1,0 +1,76 @@
+
+
+{% extends 'layout.html' %}
+
+{%- from 'input/macro.njk' import input %}
+{%- from 'button/macro.njk' import button %}
+{%- from 'back-link/macro.njk' import backLink %}
+
+{#
+  Collects personal information from the user.  There are inputs for
+  first and last name and for choosing and confirming a password.  A
+  back link allows users to return to the previous step.  The form
+  elements use NHS component macros to ensure consistent styling and
+  accessibility【337303561687225†L100-L109】.  Content is wrapped in the
+  reading‑width class for better line length【148225817585091†L350-L371】.
+#}
+
+{% set pageName = "About you" %}
+
+{% block beforeContent %}
+  {# {{ backLink({ href: "/create-account/email-sent", text: "Back" }) }} #}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-width-container">
+    <main class="nhsuk-main-wrapper" id="maincontent">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+          <div class="nhsuk-u-reading-width">
+            <h1 class="nhsuk-heading-xl">About you</h1>
+            <form action="/create-account/about-you" method="post">
+              <div class="nhsuk-grid-row nhsuk-u-margin-bottom-5">
+                <div class="nhsuk-grid-column-one-half">
+                  {{ input({
+                    label: { text: "First name", classes: "nhsuk-label--s" },
+                    id: "first-name",
+                    name: "firstName",
+                    autocomplete: "given-name"
+                  }) }}
+                </div>
+                <div class="nhsuk-grid-column-one-half">
+                  {{ input({
+                    label: { text: "Last name", classes: "nhsuk-label--s" },
+                    id: "last-name",
+                    name: "lastName",
+                    autocomplete: "family-name"
+                  }) }}
+                </div>
+              </div>
+
+              <h2>Set a password</h2>
+              <p class="nhsuk-hint">A password must be at least 8 characters with at least 1 uppercase letter, 1 lower case letter and 1 number.</p>
+              {{ input({
+                label: { text: "Enter password", classes: "nhsuk-label--s" },
+                classes: " nhsuk-u-width-two-thirds",
+                id: "password",
+                name: "password",
+                type: "password",
+                autocomplete: "new-password"
+              }) }}
+              {{ input({
+                label: { text: "Re-enter password", classes: "nhsuk-label--s" },
+                classes: " nhsuk-u-width-two-thirds",
+                id: "confirm-password",
+                name: "confirmPassword",
+                type: "password",
+                autocomplete: "new-password"
+              }) }}
+              {{ button({ text: "Continue" }) }}
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}

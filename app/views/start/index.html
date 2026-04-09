@@ -1,0 +1,149 @@
+{# TODO: Add images to hero #}
+{# TODO: Add images to "who is the learning hub for" #}
+{# TODO: Consider all sections below "keep up to date" for review #}
+{# TODO: Add Featured media and panel elements from dls-prototyping toolkit #}
+{# TODO: Tidy up spacing #}
+{# TODO: Style Hero card content area #}
+{# TODO CONTENT: Review marketing style content #}
+
+{% from "_components/featured-media.njk" import featuredMedia %}
+
+{% set pageName = "Homepage" %}
+{% set containerClasses = "app-width-container--full" %}
+{% set mainClasses = "app-main-wrapper--no-padding nhsuk-bg-white" %}
+
+{% extends 'layout.html' %}
+
+{%- from 'button/macro.njk' import button %}
+
+{% block content %}
+
+  {% set accountCreationContent %}
+    <h1 class="nhsuk-heading-l">Start learning today</h1>
+    <p class="nhsuk-lede-text">Specialist healthcare learning and development in one place.</p>
+    <p>
+      {{ button({ text: "Create an account", href: "/create-account/email-address" }) }}
+      <a class="nhsuk-button nhsuk-button--secondary" href="/login">Log in</a>
+    </p>
+    <p><a class="nhsuk-link" href="#">Forgotten username or password</a></p>
+  {% endset %}
+
+
+
+  {% from "_components/panel/panel.njk" import panel %}
+  {# {{ panel({
+    additionalClasses: "panel--columns-1-1 panel--light-blue",
+    contentPosition: "right",
+    content: accountCreationContent,
+    pictureSmallSrc: "/images/fm/healthcare-image-2.jpg"
+  }) }} #}
+
+  {% call panel({
+    additionalClasses: "panel--columns-1-1 panel--light-blue",
+    contentPosition: "right",
+    content: accountCreationContent,
+    pictureSmallSrc: "/images/panel/600x300.png",
+    pictureMediumSrc: "/images/panel/900x450.png",
+    pictureLargeSrc: "/images/panel/600x450.png",
+    pictureXLargeSr: "/images/panel/900x600.png"
+  }) %}
+    {% call card() %}
+      {{ accountCreationContent | safe }}
+    {% endcall %}
+  {% endcall %}
+
+  <div class="nhsuk-width-container">
+    <main class="nhsuk-main-wrapper" id="maincontent">
+      <!-- Hero section -->
+      <section class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+
+          {# {{ featuredMedia(
+            classes="featured-media--reversed",
+            content=accountCreationContent,
+            image="/images/fm/healthcare-image-2.jpg"
+          ) }} #}
+
+          <!-- <div class="nhsuk-u-reading-width">
+            <h1 class="nhsuk-heading-xl">Start learning today</h1>
+            <p class="nhsuk-lede-text">Specialist healthcare learning and development in one place.</p>
+            <p>
+              {{ button({ text: "Create an account", href: "/create-account/email-address" }) }}
+              <a class="nhsuk-button nhsuk-button--secondary" href="/login">Log in</a>
+            </p>
+            <p><a class="nhsuk-link" href="#">Forgotten username or password</a></p>
+          </div> -->
+        </div>
+      </section>
+
+      <!-- Find out more section -->
+      <section class="nhsuk-grid-row nhsuk-section">
+        <div class="nhsuk-grid-column-full">
+          <h2 class="nhsuk-heading-l">Find out more about the Learning Hub</h2>
+        </div>
+        <div class="nhsuk-grid-column-one-half">
+          <p class="nhsuk-heading-m">Play this short video</p>
+          <!-- Video player placeholder -->
+          <p><a class="nhsuk-link" href="#">Download transcript</a></p>
+        </div>
+        <div class="nhsuk-grid-column-one-half">
+          <h3 class="nhsuk-heading-m">A place to learn and grow</h3>
+          <p>The Learning Hub supports organisations and individuals across the NHS health and social care workforce, including local government and universities.</p>
+        </div>
+      </section>
+
+      <!-- Who is the Learning Hub for? -->
+      <section class="nhsuk-grid-row nhsuk-section">
+        <div class="nhsuk-grid-column-full">
+          <h2 class="nhsuk-heading-l">Who is the Learning Hub for?</h2>
+        </div>
+        <div class="nhsuk-grid-column-two-thirds">
+          <p>Learners can find lots of interesting resources to support learning and professional development locally, regionally and nationally.</p>
+          <p>Organisations registered on the Learning Hub can contribute and share a wide variety of self‑managed content, knowledge and learning resources.</p>
+        </div>
+      </section>
+
+      <!-- Keep up to date -->
+      <section class="nhsuk-grid-row nhsuk-section">
+        <div class="nhsuk-grid-column-full">
+          <h2 class="nhsuk-heading-m">Keep up to date</h2>
+        </div>
+        <div class="nhsuk-grid-column-one-half">
+          <!-- Illustration placeholder -->
+        </div>
+        <div class="nhsuk-grid-column-one-half">
+          <p>For more information about the Learning Hub visit the <a class="nhsuk-link" href="#">Technology Enhanced Learning (TEL) blog</a>.</p>
+          <p>Follow us on <a class="nhsuk-link" href="#">Twitter @HEE_TEL</a></p>
+        </div>
+      </section>
+
+      <!-- Contribute and Share -->
+      <section class="nhsuk-grid-row nhsuk-section">
+        <div class="nhsuk-grid-column-full">
+          <h2 class="nhsuk-heading-m">Contribute and Share</h2>
+        </div>
+        <div class="nhsuk-grid-column-two-thirds">
+          <p>Share your knowledge, insights and expertise by contributing elearning, video, audio, images, web links, documents and articles on a range of subjects.</p>
+          <p><a class="nhsuk-link" href="#">Contribute a resource</a></p>
+        </div>
+      </section>
+
+      <!-- You might also be interested in -->
+      <section class="nhsuk-grid-row nhsuk-section">
+        <div class="nhsuk-grid-column-full">
+          <h2 class="nhsuk-heading-m">You might also be interested in</h2>
+          <div class="nhsuk-grid-row">
+            <div class="nhsuk-grid-column-one-half">
+              <h3 class="nhsuk-heading-s"><a class="nhsuk-link" href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Feugiat accumsan, at urna…</a></h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. At neque pellentesque odio viverra vivamus. Vitae mauris, risus erat odio curabitur nisi, urna…</p>
+            </div>
+            <div class="nhsuk-grid-column-one-half">
+              <h3 class="nhsuk-heading-s"><a class="nhsuk-link" href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Feugiat accumsan, at urna…</a></h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. At neque pellentesque odio viverra vivamus. Vitae mauris, risus erat odio curabitur nisi, urna…</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'layout.html' %}
+
+{%- from 'radios/macro.njk' import radios %}
+{%- from 'button/macro.njk' import button %}
+{%- from 'details/macro.njk' import details %}
+{%- from 'back-link/macro.njk' import backLink %}
+
+{#
+  Allows users to choose their pay band using a set of radio buttons.
+  This page follows the mock‑up: it asks users to select their pay band
+  and provides guidance on where to find this information on a payslip.
+  A collapsible help panel explains why grade details are required.
+  Content is wrapped in a reading‑width container for good line lengths【148225817585091†L350-L371】.
+#}
+
+{% set roleRequirements = roleRequirements | default({}) %}
+{% set payConfig = roleRequirements.pay | default({}) %}
+{% set profile = (data.user.profile if data.user and data.user.profile else {}) %}
+{% set payHint = { text: payConfig.hint } if payConfig.hint else null %}
+{% set pageName = payConfig.pageName or "Pay band" %}
+
+{% block beforeContent %}
+  {{ backLink({ href: "/learner-profile/task-list", text: "Back" }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-width-container">
+    <main class="nhsuk-main-wrapper" id="maincontent">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+          <div class="nhsuk-u-reading-width">
+            <form action="/learner-profile/pay-band" method="post">
+            {{ radios({
+              idPrefix: "pay-band",
+              name: "payBand",
+              value: profile.payBand,
+              fieldset: {
+                legend: {
+                  text: payConfig.heading or "Select your band",
+                  classes: "nhsuk-fieldset__legend--l",
+                  isPageHeading: true
+                }
+              },
+              hint: payHint,
+              items: payConfig.options or []
+            }) }}
+            {{ button({ text: "Continue" }) }}
+            {{ details({
+              summaryText: "Why do I need to provide details about my grade?",
+              html: "<p>Selecting your grade will provide demographical information about the resources you access and help us in the future recommend other relevant learning.</p>"
+            }) }}
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}

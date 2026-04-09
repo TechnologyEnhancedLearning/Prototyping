@@ -1,0 +1,89 @@
+
+{%- from 'header/macro.njk' import header %}
+
+{% macro getHeaderData(state) %}
+  {% if state == 'logged-in' %}
+    {{ header({
+      logo: {
+        href: "#",
+        ariaLabel: "NHS Learning Hub homepage"
+      },
+      service: {
+        text: "Learning Hub",
+        href: "/dashboard"
+      },
+      account: {
+        items: [
+          {
+            text: "My account",
+            icon: true
+          },
+          {
+            text: "Log out",
+            href: "#"
+          }
+        ]
+      },
+      search: {
+        placeholder: "Search",
+        visuallyHiddenLabel: "Search the Learning hub"
+      },
+      navigation: {
+        items: [
+          {
+            text: "Home",
+            href: "/dashboard"
+          },
+          {
+            text: "My learning activity",
+            href: "#"
+          },
+          {
+            text: "My contributions",
+            href: "#"
+          },
+          {
+            text: "Browse catalogues",
+            href: "#"
+          }
+        ]
+      }
+    }) }}
+  {% elif state == 'basic' %}
+    {{ header({
+      logo: {
+        href: "#",
+        ariaLabel: "NHS Learning Hub homepage"
+      },
+      service: {
+        text: "Learning Hub",
+        href: "/start"
+      }
+    }) }}
+  {% else %}
+    {# Default: logged-out #}
+
+    {{ header({
+      logo: {
+        href: "#",
+        ariaLabel: "NHS Learning Hub homepage"
+      },
+      service: {
+        text: "Learning Hub",
+        href: "/start"
+      },
+      account: {
+        items: [
+          {
+            text: "Create an account",
+            href: "#"
+          },
+          {
+            text: "Log in",
+            href: "#"
+          }
+        ]
+      }
+    }) }}
+  {% endif %}
+{% endmacro %}

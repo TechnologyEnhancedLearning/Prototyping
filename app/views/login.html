@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{%- from 'input/macro.njk' import input %}
+{%- from 'button/macro.njk' import button %}
+
+{#
+  Sign‑in page.  Provides inputs for email and password using NHS
+  text‑input components and constrains the content to a sensible
+  reading width as recommended by the NHS design system【148225817585091†L350-L371】.  A link
+  to create an account is provided for new users.
+#}
+
+{% set pageName = "Log in" %}
+
+{% block content %}
+  <div class="nhsuk-width-container">
+    <main class="nhsuk-main-wrapper" id="maincontent">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+          <div class="nhsuk-u-reading-width">
+            <h1 class="nhsuk-heading-xl">Login to Learning Hub</h1>
+            <p>Log in with your Learning Hub or elfh Hub credentials.</p>
+            <p class="nhsuk-hint">Please note that if you log in to either the elfh Hub or Learning Hub from an external organisation using Single Sign On (SSO), please navigate back to your organisation and re‑attempt logging in from there.</p>
+            <form action="/login" method="post">
+              {{ input({
+                label: { text: "Enter your email address", classes: "nhsuk-label--m" },
+                id: "login-email",
+                name: "loginEmail",
+                type: "email",
+                autocomplete: "email"
+              }) }}
+              {{ input({
+                label: { text: "Enter your password", classes: "nhsuk-label--m" },
+                id: "login-password",
+                name: "loginPassword",
+                type: "password",
+                autocomplete: "current-password"
+              }) }}
+              {{ button({ text: "Login to the Learning Hub" }) }}
+              {{ button({ text: "Continue with OpenAthens", classes: "nhsuk-button--secondary", href: "#" }) }}
+            </form>
+            <p><a class="nhsuk-link" href="#">Forgotten username or password</a></p>
+            <p><a class="nhsuk-link" href="/create-account/email-address">Create new account</a></p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}

@@ -1,0 +1,294 @@
+{% set  NHS_ROLE_INTERESTS = {
+  clinicalCare: {
+    label: "Clinical Care",
+    learningLevels: ["Awareness", "Foundation", "Intermediate", "Advanced", "Expert"],
+    relatedRoles: [
+      "Nurse",
+      "Midwife",
+      "Healthcare Support Worker",
+      "Doctor (General Practice)",
+      "Doctor (Specialist)",
+      "Allied Health Professional",
+      "Paramedic",
+      "Radiographer",
+      "Occupational Therapist",
+      "Physiotherapist"
+    ],
+    tags: [
+      "clinical", "frontline", "patient care", "ward", "community care",
+      "nursing", "midwifery", "gp", "primary care", "secondary care",
+      "ahp", "paramedic", "radiography", "ot", "physio",
+      "registration", "revalidation", "NMC", "GMC", "HCPC",
+      "competencies", "clinical skills", "triage", "care planning",
+      "safeguarding", "patient safety", "infection prevention", "IPC"
+    ]
+  },
+
+  medicalSpecialties: {
+    label: "Medical Specialties",
+    learningLevels: ["Introductory", "Core", "Specialist", "Consultant"],
+    relatedRoles: [
+      "Cardiology",
+      "Oncology",
+      "Neurology",
+      "Gastroenterology",
+      "Endocrinology",
+      "Paediatrics",
+      "Emergency Medicine",
+      "Surgery (General & Specialist)",
+      "Dermatology",
+      "Geriatrics"
+    ],
+    tags: [
+      "specialty", "specialist", "medicine", "surgery", "acute",
+      "ed", "theatre", "oncology", "cardiology", "neurology",
+      "paediatrics", "gastro", "endocrinology", "dermatology", "geriatrics",
+      "consultant", "registrar", "core training", "CCT", "MRCP",
+      "RCS", "Royal Colleges", "clinical pathways", "MDT"
+    ]
+  },
+
+  mentalHealth: {
+    label: "Mental Health & Wellbeing",
+    learningLevels: ["Awareness", "Applied", "Advanced Practice"],
+    relatedRoles: [
+      "Mental Health Nurse",
+      "Clinical Psychologist",
+      "Psychiatrist",
+      "Counsellor",
+      "Wellbeing Practitioner",
+      "CAMHS Practitioner"
+    ],
+    tags: [
+      "mental health", "mh", "wellbeing", "psychology", "psychiatry",
+      "iapt", "talking therapies", "camhs", "community mental health",
+      "forensic", "perinatal", "crisis", "liaison", "cbt",
+      "safeguarding", "suicide prevention", "trauma", "neurodiversity"
+    ]
+  },
+
+  socialCare: {
+    label: "Social Care",
+    learningLevels: ["Awareness", "Foundation", "Practice", "Advanced"],
+    relatedRoles: [
+      "Social Worker",
+      "Care Worker",
+      "Safeguarding Lead",
+      "Community Support Worker",
+      "Learning Disabilities Support Worker"
+    ],
+    tags: [
+      "adult social care", "asc", "children's services", "community care",
+      "care home", "domiciliary care", "ld", "autism", "carers",
+      "strengths-based practice", "MCA", "DoLS", "safeguarding", "panel",
+      "care act", "integration", "ics", "discharge planning"
+    ]
+  },
+
+  publicHealth: {
+    label: "Public Health & Prevention",
+    learningLevels: ["Awareness", "Practitioner", "Advanced Practitioner", "Consultant"],
+    relatedRoles: [
+      "Public Health Officer",
+      "Epidemiologist",
+      "Health Promotion Specialist",
+      "Infection Prevention Practitioner"
+    ],
+    tags: [
+      "public health", "population health", "health inequalities", "epidemiology",
+      "screening", "vaccination", "immunisation", "behaviour change",
+      "health protection", "health improvement", "JSNA", "PHM", "OHID",
+      "surveillance", "outbreak management", "prevention", "policy"
+    ]
+  },
+
+  diagnostics: {
+    label: "Diagnostics & Testing",
+    learningLevels: ["Foundation", "Intermediate", "Advanced"],
+    relatedRoles: [
+      "Lab Technician",
+      "Biomedical Scientist",
+      "Phlebotomist",
+      "Medical Physicist",
+      "Imaging Technician"
+    ],
+    tags: [
+      "diagnostics", "pathology", "laboratory", "biomedical science", "BMS",
+      "phlebotomy", "medical physics", "imaging", "radiology", "ultrasound",
+      "MRI", "CT", "point-of-care", "quality control", "UKAS", "ISO15189"
+    ]
+  },
+
+  digitalHealth: {
+    label: "Digital, Data & Technology in Healthcare",
+    learningLevels: ["Beginner", "Intermediate", "Advanced", "Expert"],
+    relatedRoles: [
+      "Digital Product Manager",
+      "UX Designer",
+      "Service Designer",
+      "Data Analyst",
+      "Data Scientist",
+      "AI Specialist",
+      "Clinical Informatician",
+      "Software Engineer"
+    ],
+    tags: [
+      "digital", "health tech", "nhsx", "NHS App", "EPR", "EHR",
+      "product management", "delivery management", "agile", "scrum", "kanban",
+      "ux", "ui", "content design", "service design", "UCD",
+      "clinical informatics", "interoperability", "FHIR", "SNOMED",
+      "data", "analytics", "BI", "SQL", "python", "R",
+      "cloud", "azure", "devops", "api", "cybersecurity", "IG", "DPIA"
+    ]
+  },
+
+  aiInHealthcare: {
+    label: "Artificial Intelligence in Healthcare",
+    learningLevels: ["Awareness", "Practitioner", "Technical Specialist"],
+    relatedRoles: [
+      "AI Policy Specialist",
+      "AI Safety Officer",
+      "Machine Learning Engineer",
+      "AI Service Owner",
+      "Clinical AI Evaluator",
+      "AI Educator"
+    ],
+    tags: [
+      "ai", "genai", "ml", "nlp", "computer vision",
+      "model evaluation", "bias", "safety", "governance", "risk",
+      "validation", "regulation", "MHRA", "UKCA", "GxP",
+      "data governance", "synthetic data", "privacy", "explainability",
+      "procurement of AI", "AI assurance", "responsible AI", "ethics"
+    ]
+  },
+
+  leadershipAndManagement: {
+    label: "Leadership, Management & Organisational Development",
+    learningLevels: ["Foundation", "Operational", "Strategic", "Executive"],
+    relatedRoles: [
+      "Team Leader",
+      "Service Manager",
+      "Operational Manager",
+      "Programme Manager",
+      "Director",
+      "Organisational Development Specialist"
+    ],
+    tags: [
+      "leadership", "management", "line management", "OD", "L&D",
+      "performance management", "appraisals", "coaching", "mentoring",
+      "change management", "transformation", "strategy", "governance",
+      "NHS Leadership Academy", "HLM", "systems leadership", "stakeholders",
+      "budgeting", "business case", "benefits realisation", "portfolio"
+    ]
+  },
+
+  procurementAndCommercial: {
+    label: "Procurement & Commercial",
+    learningLevels: ["Foundation", "Practitioner", "Senior Practitioner"],
+    relatedRoles: [
+      "Procurement Officer",
+      "Category Manager",
+      "Commercial Specialist",
+      "Contract Manager",
+      "Supply Chain Manager"
+    ],
+    tags: [
+      "procurement", "commercial", "tender", "sourcing", "category management",
+      "contract management", "supplier management", "KPIs", "SLAs",
+      "social value", "sustainability", "green nhs", "modern slavery",
+      "PSR", "Procurement Act 2023", "PCR 2015", "frameworks", "G-Cloud",
+      "PO", "invoices", "spend controls", "approvals", "due diligence"
+    ]
+  },
+
+  governanceAndPolicy: {
+    label: "Governance, Quality Standards & Compliance",
+    learningLevels: ["Awareness", "Practitioner", "Senior Practitioner"],
+    relatedRoles: [
+      "Governance Officer",
+      "Risk Manager",
+      "Regulatory Compliance Lead",
+      "Quality Improvement Lead"
+    ],
+    tags: [
+      "governance", "board", "policy", "risk", "assurance",
+      "audit", "quality", "qi", "improvement", "lean", "six sigma",
+      "CQC", "NHS Oversight Framework", "well-led", "incident management",
+      "root cause analysis", "datix", "safety huddles", "SOPs"
+    ]
+  },
+
+  educationAndTraining: {
+    label: "Education, Learning & Workforce Development",
+    learningLevels: ["Awareness", "Facilitator", "Advanced Trainer", "Strategic Lead"],
+    relatedRoles: [
+      "Learning & Development Practitioner",
+      "Clinical Educator",
+      "Simulation Technician",
+      "Apprenticeship Lead",
+      "Workforce Planner",
+      "Practice Educator"
+    ],
+    tags: [
+      "education", "training", "learning outcomes", "curriculum", "assessment",
+      "simulation", "immersive", "VR", "AR", "skills passport",
+      "apprenticeships", "ESFA", "mentoring", "coaching", "CPD",
+      "TEL", "learning hub", "e-lfh", "ESR", "competency frameworks",
+      "workforce planning", "capability", "talent", "succession"
+    ]
+  },
+
+  userCentredDesign: {
+    label: "User-Centred Design & Research",
+    learningLevels: ["Awareness", "Practitioner", "Lead", "Head of UCD"],
+    relatedRoles: [
+      "UX Designer",
+      "Service Designer",
+      "User Researcher",
+      "Content Designer",
+      "Accessibility Specialist"
+    ],
+    tags: [
+      "ucd", "user research", "ux", "ui", "content design",
+      "service design", "cx", "interaction design", "prototyping", "testing",
+      "inclusive research", "accessibility", "wcag", "assistive tech",
+      "journey mapping", "personas", "evidence-based design", "ethics"
+    ]
+  },
+
+  estatesAndFacilities: {
+    label: "Estates, Facilities & Operations",
+    learningLevels: ["Foundation", "Operational", "Advanced"],
+    relatedRoles: [
+      "Facilities Manager",
+      "Estates Technician",
+      "Security Lead",
+      "Sustainability Lead",
+      "Catering & Domestic Services Roles"
+    ],
+    tags: [
+      "estates", "facilities", "hard fm", "soft fm", "maintenance",
+      "PFI", "capital projects", "fire safety", "health & safety",
+      "sustainability", "net zero", "energy", "waste", "water safety",
+      "security", "portering", "catering", "cleaning", "infection control"
+    ]
+  },
+
+  pharmacyAndMedicines: {
+    label: "Pharmacy & Medicines Management",
+    learningLevels: ["Foundation", "Pharmacy Technician", "Pharmacist", "Consultant Pharmacist"],
+    relatedRoles: [
+      "Pharmacy Assistant",
+      "Pharmacy Technician",
+      "Pharmacist",
+      "Clinical Pharmacist",
+      "Medicines Optimisation Lead"
+    ],
+    tags: [
+      "pharmacy", "medicines", "dispensing", "clinical pharmacy",
+      "formulary", "medicines optimisation", "prescribing", "PGDs", "EPS",
+      "controlled drugs", "pharmacovigilance", "medication safety",
+      "ATMPs", "biologics", "antimicrobial stewardship", "AMS"
+    ]
+  }
+} %}

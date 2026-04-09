@@ -1,0 +1,12 @@
+{% macro definitionList(groups=[], type='inline', additionalClasses='', size='') %}
+  <dl class="definition-list definition-list--{{ type }} {{ additionalClasses }} {% if size|length %}definition-list--{{ size }}{% endif %}">
+    {% for group in groups %}
+    <div class="definition-list__group">
+      <dt class="definition-list__title">{{ group.title | safe }}</dt>
+      {% for description in group.descriptions %}
+      <dd class="definition-list__description">{{ description | safe }}</dd>
+      {% endfor %}
+    </div>
+    {% endfor %}
+  </dl>
+{% endmacro %}

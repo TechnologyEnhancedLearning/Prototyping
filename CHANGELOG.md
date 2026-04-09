@@ -1,5 +1,61 @@
 # NHS prototype kit Changelog
 
+## Unreleased
+
+### :wrench: **Maintenance**
+
+- Upgrade NHS frontend from 10.0 to 10.1
+- Upgrade to Node.js 24 with backwards compatibility
+
+## 7.1.0 - 20 October 2025
+
+### :new: **New features**
+
+- Add a filter for formatting NHS numbers with spaces ([PR ](https://github.com/nhsuk/nhsuk-prototype-kit/pull/663))
+
+### :wrench: **Fixes**
+
+- Fix Browsersync in Codespaces
+- Fix nested query strings not saving correctly ([PR #645](https://github.com/nhsuk/nhsuk-prototype-kit/pull/645), Fixes [#644](https://github.com/nhsuk/nhsuk-prototype-kit/issues/644))
+
+## 7.0.1 - 5 September 2025
+
+:wrench: **Fixes**
+
+- Fix NHS.UK frontend allowed paths on password page
+- Fix reset session data route via GET request
+- Improve Sass error handling when watching for changes
+- Prevent unnecessary console logging from dotenv
+- Preserve defaults when merging filters or session options
+- Configure Nodemon to ignore browser JavaScript
+- Exclude app code from linters by default
+- Adds an .editorconfig file
+
+## 7.0.0 - 27 August 2025
+
+### New features
+
+- Use a different port if something is running on the default one ([PR #557](https://github.com/nhsuk/nhsuk-prototype-kit/pull/557))
+
+### Breaking changes
+
+- The jQuery javascript library is no longer included ([PR #556](https://github.com/nhsuk/nhsuk-prototype-kit/pull/556))
+- Remove unused CSS ([PR #555](https://github.com/nhsuk/nhsuk-prototype-kit/pull/555))
+- Removed question page template as this is now available on the NHS Service manual website ([PR #568](https://github.com/nhsuk/nhsuk-prototype-kit/pull/568))
+- NHS.UK frontend updated to version 10 ([PR 548](https://github.com/nhsuk/nhsuk-prototype-kit/pull/548/))
+
+## 6.3.0 - 26 June 2025
+
+- Make it easier to set page titles ([PR #541](https://github.com/nhsuk/nhsuk-prototype-kit/pull/541))
+- Update to NHS frontend 9.6.3 ([PR #540](https://github.com/nhsuk/nhsuk-prototype-kit/pull/540) and [PR #546](https://github.com/nhsuk/nhsuk-prototype-kit/pull/546))
+
+## 6.2.0 - 23 May 2025
+
+- Update to NHS frontend 9.6.1 ([PR #528](https://github.com/nhsuk/nhsuk-prototype-kit/pull/528))
+- Mark the kit as compatible with Node 22 as well as Node 20 ([PR #531)(https://github.com/nhsuk/nhsuk-prototype-kit/pull/531))
+- Remove duplicate import from default template ([PR #526)(https://github.com/nhsuk/nhsuk-prototype-kit/pull/526))
+- Preserve query when redirecting POSTs to GETs ([PR #527](https://github.com/nhsuk/nhsuk-prototype-kit/pull/527))
+
 ## 6.1.0 - 16 May 2025
 
 - Fix to include the NHS javascript in the default template ([PR 518](https://github.com/nhsuk/nhsuk-prototype-kit/pull/518)).
@@ -77,7 +133,6 @@ to
 - The example page templates have moved from the `docs` folder to `lib/example-templates` - ([PR 409](https://github.com/nhsuk/nhsuk-prototype-kit/pull/409))
 - The middleware folder has been moved into the `lib` folder - ([PR 440](https://github.com/nhsuk/nhsuk-prototype-kit/pull/440))
 - Added a devcontainer.json file to configure Github Codespaces for use of the kit ([PR 428](https://github.com/nhsuk/nhsuk-prototype-kit/pull/428))
-
 
 ## 5.1.0 - 12 November 2024
 

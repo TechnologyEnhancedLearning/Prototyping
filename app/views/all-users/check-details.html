@@ -1,0 +1,130 @@
+{% extends 'layout.html' %}
+
+{%- from 'summary-list/macro.njk' import summaryList %}
+{%- from 'button/macro.njk' import button %}
+{%- from 'back-link/macro.njk' import backLink %}
+
+{#
+  Review page where users can check the details they have provided
+  before starting to use the service.  This page follows the mock‑up by
+  listing each piece of information and offering links to change it.
+  A final call to action lets the user continue and start learning.
+  The content uses a summary list for accessibility and readability【148225817585091†L350-L371】.
+#}
+
+{% set pageName = "Check your details" %}
+
+{% block beforeContent %}
+  {# The check details page is reached from the task list. The back link should
+     return the user to the task list so they can edit or complete other tasks. #}
+  {{ backLink({ href: "/learner-profile/task-list", text: "Back" }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-width-container">
+    <main class="nhsuk-main-wrapper" id="maincontent">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+          <div class="nhsuk-u-reading-width">
+            {% set user = data.user | default({}) %}
+            {% set profile = user.profile | default({}) %}
+            {% set tasks = user.tasks | default({}) %}
+            {% set startDate = ((profile.startMonth or '') + ' ' + (profile.startYear or '')) | trim %}
+            {% set shouldShowRegion = profile.workplace == 'home' or profile.workplace == 'not-applicable' %}
+            {% set selectedInterests = profile.interests | default([]) %}
+            {% if selectedInterests.length %}
+              {% set interestsSummary %}
+                <ul class="nhsuk-list nhsuk-list--bullet nhsuk-u-margin-bottom-0">
+                  {% for interest in selectedInterests %}
+                    <li>{{ interest }}</li>
+                  {% endfor %}
+                </ul>
+              {% endset %}
+              {% set interestsValue = { html: interestsSummary } %}
+            {% else %}
+              {% set interestsSummary = 'Not provided' %}
+              {% set interestsValue = { text: interestsSummary } %}
+            {% endif %}
+            {% set roleRequirements = roleRequirements | default({}) %}
+            {% set prnConfig = roleRequirements.prn | default({}) %}
+            {% set payConfig = roleRequirements.pay | default({}) %}
+            {% set rows = [
+              {
+                key: { text: "Current role" },
+                value: { text: profile.role or profile.roleSearch or 'Not provided' },
+                actions: { items: [ { href: "/learner-profile/your-role", text: "Change", visuallyHiddenText: "current role" } ] }
+              }
+            ] %}
+            {% if roleRequirements.needsPrimarySpeciality %}
+              {% set rows = rows.concat([{
+                key: { text: "Primary speciality" },
+                value: { text: profile.primarySpeciality or profile.primarySpecialitySearch or 'Not provided' },
+                actions: { items: [ { href: "/learner-profile/primary-speciality", text: "Change", visuallyHiddenText: "primary speciality" } ] }
+              }]) %}
+            {% endif %}
+            {% if roleRequirements.needsPrn %}
+              {% set rows = rows.concat([{
+                key: { text: prnConfig.summaryLabel or "Professional registration number (PRN)" },
+                value: { text: profile.prn or 'Not provided' },
+                actions: { items: [ { href: "/learner-profile/enter-prn", text: "Change", visuallyHiddenText: "professional registration number" } ] }
+              }]) %}
+            {% endif %}
+            {% if roleRequirements.needsPayScale %}
+              {% set rows = rows.concat([{
+                key: { text: payConfig.summaryLabel or "Grade" },
+                value: { text: profile.payBand or 'Not provided' },
+                actions: { items: [ { href: "/learner-profile/pay-band", text: "Change", visuallyHiddenText: "grade" } ] }
+              }]) %}
+            {% endif %}
+            {% set rows = rows.concat([
+              {
+                key: { text: "Start date" },
+                value: { text: startDate or 'Not provided' },
+                actions: { items: [ { href: "/learner-profile/start-date", text: "Change", visuallyHiddenText: "start date" } ] }
+              },
+              {
+                key: { text: "Place of work" },
+                value: { text: profile.workplaceLabel or profile.placeSearch or 'Not provided' },
+                actions: { items: [ { href: "/learner-profile/place-of-work", text: "Change", visuallyHiddenText: "place of work" } ] }
+              }
+            ]) %}
+            {% if shouldShowRegion %}
+              {% set rows = rows.concat([
+                {
+                  key: { text: "Region" },
+                  value: { text: profile.region or 'Not provided' },
+                  actions: { items: [ { href: "/learner-profile/region", text: "Change", visuallyHiddenText: "region" } ] }
+                }
+              ]) %}
+            {% endif %}
+            {% set rows = rows.concat([
+              {
+                key: { text: "Your interests" },
+                value: interestsValue,
+                actions: { items: [ { href: "/all-users/learning-interests", text: "Change", visuallyHiddenText: "your interests" } ] }
+              },
+              {
+                key: { text: "Secondary email address" },
+                value: { text: profile.secondaryEmail or 'Not provided' },
+                actions: { items: [ { href: "/all-users/secondary-email", text: "Change", visuallyHiddenText: "secondary email address" } ] }
+              },
+              {
+                key: { text: "LinkIn account" },
+                value: { text: (tasks.social.status == 'Completed' and 'LinkedIn Account linked') or 'Incomplete' },
+                actions: { items: [ { href: "/all-users/link-social", text: "Change", visuallyHiddenText: "link account" } ] }
+              }
+            ]) %}
+            <h1 class="nhsuk-heading-xl">Check your details</h1>
+            <p>Review the information you've provided before you start learning.</p>
+            <form action="/all-users/check-details" method="post">
+            {{ summaryList({
+              rows: rows
+            }) }}
+            {{ button({ text: "Submit and start learning" }) }}
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}

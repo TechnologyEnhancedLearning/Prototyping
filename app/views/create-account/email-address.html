@@ -1,0 +1,47 @@
+{# NOTE: Amend, change name space to create account index #}
+{# NOTE: Amend, As we're mentioning educator and student should we replace these with ac.uk as educator is a bit vague? #}
+
+{% extends 'layout.html' %}
+
+{%- from 'input/macro.njk' import input %}
+{%- from 'button/macro.njk' import button %}
+{%- from 'back-link/macro.njk' import backLink %}
+
+{#
+  First step of the registration process.  This page asks the user
+  for their email address using the NHS text input component.  A
+  hint below the input explains that a verification code will be sent
+  to this address.  The content is wrapped in the reading‑width
+  utility class to improve readability【148225817585091†L350-L371】.
+#}
+
+{% set pageName = "Create new account" %}
+
+{% block content %}
+  <div class="nhsuk-width-container">
+    <main class="nhsuk-main-wrapper" id="maincontent">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+          <div class="nhsuk-u-reading-width">
+            <span class="nhsuk-caption-m">Create new account</span>
+            <h1 class="nhsuk-heading-xl">Get started with the Learning Hub</h1>
+            <p>Enter an NHS, healthcare, educator, student, or GOV.UK email address if you have one. If you do not have one, you may provide an alternative email address to continue.</p>
+            <p>We’ll ask you to verify your email and complete a few short steps before you can access learning.</p>
+            <form action="/create-account/email-address" method="post">
+              {{ input({
+                label: { text: "Work or personal email address", classes: "nhsuk-label--s" },
+                id: "email",
+                name: "emailAddress",
+                type: "email",
+                autocomplete: "email",
+                hint: { text: "" }
+              }) }}
+              {{ button({ text: "Start account creation" }) }}
+            </form>
+            <p>Already have an account? <a class="nhsuk-link" href="/login">Log in</a></p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}

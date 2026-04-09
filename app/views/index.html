@@ -2,161 +2,65 @@
 
 <!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
 
-<!-- Extends the layout from /views/layout.html -->
-{% extends 'layouts/layout.html' %}
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'layout.html' %}
 <!--
-  In /views/layout.html you can:
+  In /app/views/layout.html you can:
     - change the header and footer
     - add custom CSS and JavaScript
 -->
 
-<!-- Set the page title -->
-{% block pageTitle %}
-  DLS prototype
-{% endblock %}
+<!--
+  Use this to set the page name which will appear at the
+  start of the <title> tag, followed by the service name.
+  This is often not needed on the homepage, where only the
+  service name is needed. You can also reuse this variable
+  within the <h1>, where they are the same.
+-->
+{% set pageName = "" %}
 
-{% block header %}
-  {{ header({
-    "service": {
-        "name": "Digital Learning Solutions Prototype"
-      },
-      "homeHref": "/",
-      "showNav": "false",
-      "classes": "",
-      "primaryLinks": []
-    })
-  }}
-{% endblock %}
-
-<!-- For adding a breadcrumb -->
-<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+<!-- For adding a breadcrumb or back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
 {% block beforeContent %}
-  {{ hero({
-    "heading": "DLS prototype kit",
-    "text": "HTML prototypes for Digital Learning Solutions services."
-  }) }}
 {% endblock %}
 
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
-  <div class="nhsuk-width-container">
+
+<div class="nhsuk-width-container">
+  <main class="nhsuk-main-wrapper" id="maincontent">
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-full">
-
-        <ul class="nhsuk-grid-row nhsuk-card-group">
-          <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
-            {{ card({
-              "href": "/admin-home",
-              "clickable": "true",
-              "heading": "Frameworks admin interface",
-              "headingClasses": "nhsuk-heading-s",
-              "description": ""
-            }) }}
-          </li>
-          <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
-            {{ card({
-              "href": "/login",
-              "clickable": "true",
-              "heading": "Login journey",
-              "headingClasses": "nhsuk-heading-s",
-              "description": ""
-            }) }}
-          </li>
-          <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
-            {{ card({
-              "href": "/proficiencies",
-              "clickable": "true",
-              "heading": "Nursing, learner proficiencies",
-              "headingClasses": "nhsuk-heading-s",
-              "description": ""
-            }) }}
-          </li>
-          <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
-            {{ card({
-              "href": "/paper-transfer",
-              "clickable": "true",
-              "heading": "Paper transfer process",
-              "headingClasses": "nhsuk-heading-s",
-              "description": ""
-            }) }}
-          </li>
-          <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
-            {{ card({
-              "href": "/register-delegates",
-              "clickable": "true",
-              "heading": "Register users",
-              "headingClasses": "nhsuk-heading-s",
-              "description": ""
-            }) }}
-          </li>
-          <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
-            {{ card({
-              "href": "/prototypes/learning-conversations",
-              "clickable": "true",
-              "heading": "Learning Conversations",
-              "headingClasses": "nhsuk-heading-s",
-              "description": ""
-            }) }}
-          </li>
-        </ul>
-        <hr class="nhsuk-u-margin-top-2 nhsuk-u-margin-bottom-6">
-      </div>
-    </div>
-
-    <div class="nhsuk-grid-row">
-      <div class="nhsuk-grid-column-full">
-
-        <ul class="nhsuk-grid-row nhsuk-card-group">
-          <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
-            {{ card({
-              "href": "/elements",
-              "clickable": "true",
-              "heading": "Elements",
-              "headingClasses": "nhsuk-heading-s",
-              "description": ""
-            }) }}
-          </li>
-          <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
-            {{ card({
-              "href": "/prototypes/certificates",
-              "clickable": "true",
-              "heading": "Certificate",
-              "headingClasses": "nhsuk-heading-s",
-              "description": ""
-            }) }}
-          </li>
-          <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
-            {{ card({
-              "href": "/prototypes/supervisor-dashboard",
-              "clickable": "true",
-              "heading": "Supervisor dashboard",
-              "headingClasses": "nhsuk-heading-s",
-              "description": ""
-            }) }}
-          </li>
-        </ul>
-
-        <hr class="nhsuk-u-margin-top-2 nhsuk-u-margin-bottom-6">
-      </div>
-    </div>
-
-
-
-    <div class="nhsuk-grid-row">
-      <div class="nhsuk-grid-column-full">
+        <span class="nhsuk-caption-s">Last updated: 08 April 2026</span>
+        <h1>
+          {{ serviceName }}
+        </h1>
 
         <div class="nhsuk-u-reading-width">
-          <p class="nhsuk-u-margin-bottom-0">Visit the <a href="https://service-manual.nhs.uk">NHS digital service manual</a> for guidance and examples.</p>
-        </div>
+          <h2 class="nhsuk-heading-m">Who it's for</h2>
+          <p class="nhsuk-body">The prototype is for the purpose of user research and testing. </p>
 
+          {# <h2 class="nhsuk-heading-m">What's included</h2> #}
+          {# <p class="nhsuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Fusce at dolor sit amet felis aliquam bibendum quis a libero.</p> #}
+
+           <div class="nhsuk-inset-text">
+            We regularly update the prototype to reflect decision we've made based on user research.
+          </div>
+
+
+          {# <h2 class="nhsuk-heading-m">How to use the prototype</h2>
+          <p class="nhsuk-body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt nesciunt reiciendis vero esse eveniet? Culpa, saepe quod itaque fugit voluptates quisquam similique quis optio reiciendis natus nisi, velit, eaque commodi!</p> #}
+
+          {{ actionLink({
+            text: "Get started",
+            href: "/start",
+            classes: "nhsuk-u-margin-top-4"
+          }) }}
+
+        </div>
       </div>
     </div>
-  </div>
+  </main>
+</div>
 {% endblock %}
-
-<!-- For adding a back link -->
-<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
-{% block outerContent %}
-{% endblock %}
-
-
-

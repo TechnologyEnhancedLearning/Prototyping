@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+
+{%- from 'input/macro.njk' import input %}
+{%- from 'button/macro.njk' import button %}
+{%- from 'back-link/macro.njk' import backLink %}
+
+{#
+  Captures the start date of the user's current role.  We use NHS
+  select components for month and year to allow the user to choose
+  values.  The design is kept simple and contained within a
+  reading‑width wrapper for improved readability【148225817585091†L350-L371】.
+#}
+
+{% set pageName = "Start date" %}
+
+{% block beforeContent %}
+  {{ backLink({ href: "/learner-profile/task-list", text: "Back" }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-width-container">
+    <main class="nhsuk-main-wrapper" id="maincontent">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+            <form action="/learner-profile/start-date" method="post">
+              <fieldset class="nhsuk-fieldset">
+                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                  <h1 class="nhsuk-fieldset__heading">
+                    Enter the date you started your role
+                  </h1>
+                </legend>
+                <div class="nhsuk-u-reading-width">
+                  <div class="nhsuk-hint" id="example-with-hint-text-hint">
+                    For example, 08&nbsp;2021.
+                  </div>
+                  <div class="nhsuk-button-group">
+                    {{ input({
+                      label: { text: "Month", classes: "nhsuk-label--s" },
+                      id: "month",
+                      name: "month",
+                      classes: "nhsuk-input--width-3 nhsuk-u-margin-right-4",
+                      type: "text"
+                    }) }}
+                    {{ input({
+                      label: { text: "Year", classes: "nhsuk-label--s" },
+                      id: "year",
+                      name: "year",
+                      classes: "nhsuk-input--width-3",
+                      type: "text"
+                    }) }}
+                  </div>
+                </div>
+                {{ button({ text: "Continue" }) }}
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}

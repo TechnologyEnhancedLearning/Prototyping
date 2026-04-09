@@ -2,9 +2,13 @@
 
 /* Layout
 ---------------------------------------------------------------------- */
+// NOTE remove after updating to use tel-frontend
+$nhsuk-page-width: 1200px;
+$page-gutter: 32px;
+
 // Some of the NHS styles break down with the 3/4 column layout below this
 // size. Since the NHS large-desktop is 990px, defined this xl-desktop size.
-$xl-desktop: 1024px;
+$xl-desktop: $nhsuk-page-width; // NOTE: it's likely this needs updatign inline with the global site width from globals and if theres time we should just fix the whole thing inclusive of the breakpoints and
 $nhsuk-media-query-tablet: 768px;
 
 $inside-width: $xl-desktop;
@@ -22,7 +26,7 @@ $heading-line-height: 1.2;
 
 /* Colours and transparency
 ---------------------------------------------------------------------- */
-$tel-page-blue: #F2F8FD;
+$color_tel-page-blue: #F2F8FD;
 
 $alpha: 0.95;
 $spectre: transparent;

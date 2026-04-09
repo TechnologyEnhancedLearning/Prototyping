@@ -1,0 +1,81 @@
+{% extends 'layout.html' %}
+
+{% from "_data/roles/nhs-roles.njk" import NHS_ROLE_INTERESTS %}
+
+{%- from '_components/quick-filters/macro.njk' import quickFilters %}
+{%- from 'input/macro.njk' import input %}
+{%- from 'button/macro.njk' import button %}
+{%- from 'back-link/macro.njk' import backLink %}
+
+
+
+{% set pageName = "Learning interests" %}
+
+{% block beforeContent %}
+  {{ backLink({ href: "/learner-profile/task-list", text: "Back" }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-width-container">
+    <main class="nhsuk-main-wrapper" id="maincontent">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+          <div class="nhsuk-u-reading-width">
+            {% set user = data.user | default({}) %}
+            {% set profile = user.profile | default({}) %}
+            {% set selectedInterests = profile.interests | default([]) %}
+            <h1 class="nhsuk-heading-xl">Find topics relevant to you</h1>
+            <p>Select 3 or more topics to personalise your learning (optional).</p>
+            <form action="/all-users/learning-interests" method="post" data-interest-picker>
+              {{ input({
+                label: { text: "", classes: "" },
+                id: "interest-search",
+                name: "interestSearch",
+                value: profile.interestSearch or '',
+                placeholder: "Search",
+                classes: "nhsuk-input",
+                attributes: {
+                  "data-interest-search": "true"
+                }
+              }) }}
+
+              {% call quickFilters({
+                classes: "",
+                filterTitle: "Interests",
+                listHeading: "Show"
+              }) %}
+                {% for key, role in NHS_ROLE_INTERESTS %}
+                  {% set searchTerms = ((role.label or '') + ' ' + ((role.tags | join(' ')) or '')) | lower %}
+                  <li class="quick-filters__list-item" data-interest-item data-interest-search-text="{{ searchTerms }}">
+                    <input
+                      type="checkbox"
+                      name="interests"
+                      value="{{ role.label }}"
+                      class="nhsuk-u-visually-hidden"
+                      tabindex="-1"
+                      aria-hidden="true"
+                      {% if role.label in selectedInterests %}checked{% endif %}>
+                    <button
+                      type="button"
+                      class="quick-filters__button{% if role.label in selectedInterests %} quick-filters__button--active{% endif %}"
+                      data-interest-button
+                      data-interest-value="{{ role.label }}">
+                      <span>{{ role.label }}</span>
+                    </button>
+                  </li>
+                {% endfor %}
+              {% endcall %}
+
+              <div class="nhsuk-u-margin-top-4">
+                <p><a class="nhsuk-link" href="#">Show more</a></p>
+              </div>
+
+              {{ button({ text: "Continue" }) }}
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}
