@@ -1,0 +1,188 @@
+<!-- Use this page as the index for your project -->
+{%- from "elements/data/learning-cards-params.njk" import learningCardContent %}
+{%- from "components/rating.njk" import rating -%}
+{% from "components/macros/definition-list.njk" import definitionList %}
+{% from "components/macros/certificate-icon.njk" import certificateIcon %}
+{%- from 'tag/macro.njk' import tag %}
+
+{% extends 'layouts/layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  Learning cards
+{% endblock %}
+
+{% block header %}
+  {{ header({
+    "service": {
+        "name": "TEL Prototype"
+      },
+      "homeHref": "/",
+      "showNav": "false",
+      "classes": "",
+      "primaryLinks": []
+    })
+  }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full">
+        <h1>Learning cards</h1>
+
+        <div class="nhsuk-u-margin-bottom-6">
+          <h2>Example 1</h2>
+
+          <div class="content-group nhsuk-u-margin-bottom-6 nhsuk-u-reading-width nhsuk-grid-column-one-third">
+            <ul class="nhsuk-grid-row">
+
+              {# <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
+                <div class="nhsuk-card tel-learning-card tel-learning-card--course">
+                  <img class="nhsuk-card__img" src="https://assets.nhs.uk/prod/images/A_0218_exercise-main_FKW1X7.width-690.jpg" alt="">
+
+                  <div class="nhsuk-card__content tel-learning-card__content">
+                    <div class="tel-learning-card__heading"><a href="#" class="tel-learning-card__heading-link">{{ cardContent['title'] }}</a></div>
+                    <div class="tel-learning-card__description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. In voluptatibus incidunt dolorem quas totam. Nemo sapiente aut eveniet, laboriosam modi itaque fugit. Cum non eaque impedit, delectus nemo maiores consequatur?</div>
+                    <div class="tel-learning-card__rating">
+                      <div class="tel-learning-card__rating-stars">
+                        {{ rating(progress=100) }}
+                      </div>
+                      <div class="tel-learning-card__rating-description">5 out of 5 (<span class="tel-learning-card__rating-link"><a href="#">8 ratings</a> </span>)</div>
+                    </div>
+                    <div class="tel-learning-card__key-activity-information">
+                      {% set definitionList1 = [
+                        {
+                          title: "Type:",
+                          descriptions: ["Article"]
+                        },
+                        {
+                          title: "Accessed:",
+                          descriptions: ["DD Month YY"]
+                        }
+                      ] %}
+
+                      {{ definitionList(groups=definitionList1, size="small") }}
+
+                      {{ tag({
+                        text: "In progress",
+                        classes: "nhsuk-tag--blue"
+                      })}}
+
+                      <div class="progress__progress-bar">
+                        <div class="cover" style="width: 10%;"></div>
+                      </div>
+
+                      <div>
+                        includes 7 Activities
+                        with 1 certificate
+                        {{ certificateIcon() }}
+                      </div>
+
+                      <div>
+                        {{ certificateIcon(classes="certificate-icon--small") }}
+                        Includes a certificate
+                      </div>
+                    </div>
+                    <div class="tel-learning-card__catalogue">
+                      <a href="#" class="tel-learning-card__catalogue-link">Enabling Effective Learning</a>
+                      <img src="https://picsum.photos/100" alt="" class="tel-learning-card__catalogue-image">
+                    </div>
+                  </div>
+
+                  <div class="tel-learning-card__developed-with-footer">
+                    <div class="tel-learning-card__developed-with-footer-text">Developed with elearning for healthcare</div>
+                  </div>
+                </div>
+
+              </li> #}
+
+              {% for cardContent in learningCardContent.articles %}
+
+                {% set headingHTMLContent %}
+                  <h2 class="tel-learning-card__heading nhsuk-u-font-size-19 nhsuk-u-font-weight-normal">
+                    <a href="#" class="tel-learning-card__heading-link">
+                      {{ cardContent['title'] }}
+                    </a>
+                  </h2>
+                {% endset%}
+
+                <li class="nhsuk-grid-column-full nhsuk-u-reading-width tel-learning-card__wrapper">
+                {% call card({
+                  classes: "tel-learning-card",
+                  imgURL: "https://assets.nhs.uk/prod/images/A_0218_exercise-main_FKW1X7.width-690.jpg",
+                  headingHtml: headingHTMLContent
+                }) %}
+                  {# <div class="tel-learning-card__content"> #}
+                    <div class="tel-learning-card__description">
+                      Lorem ipsum dolor sit amet consectetur, adipisicing elit. In voluptatibus incidunt dolorem quas totam. Nemo sapiente aut eveniet, laboriosam modi itaque fugit. Cum non eaque impedit, delectus nemo maiores consequatur?
+                    </div>
+                    <div class="tel-learning-card__rating">
+                      <div class="tel-learning-card__rating-stars">
+                        {{ rating(progress=100) }}
+                      </div>
+                      <div class="tel-learning-card__rating-description">5 out of 5 (<span class="tel-learning-card__rating-link"><a href="#">8 ratings</a> </span>)</div>
+                    </div>
+                    <div class="tel-learning-card__key-activity-information">
+                      {# Set DL content #}
+                      {% set definitionList1 = [
+                        {
+                          title: "Type:",
+                          descriptions: ["Article"]
+                        },
+                        {
+                          title: "Accessed:",
+                          descriptions: ["DD Month YY"]
+                        }
+                      ] %}
+
+                      {{ definitionList(groups=definitionList1, size="small") }}
+
+                      {{ tag({
+                        text: "In progress",
+                        classes: "nhsuk-tag--blue"
+                      })}}
+
+                      <div class="progress__progress-bar">
+                        <div class="cover" style="width: 30%;"></div>
+                      </div>
+
+                      <div>
+                        includes 7 Activities
+                        with 1 certificate
+                        {{ certificateIcon() }}
+                      </div>
+
+                      <div>
+                        {{ certificateIcon(classes="certificate-icon--small") }}
+                        Includes a certificate
+                      </div>
+                      {# <dl>
+                        <div>
+                          <dt>Type:</dt>
+                          <dd>Article</dd>
+                        </div>
+                        <div>
+                          <dt>Accessed</dt>
+                          <dd>DD Month YY</dd>
+                        </div>
+                        <div class="tel-learning-card__progress-tag">In progress</div>
+                      </dl> #}
+                    </div>
+                    <div class="tel-learning-card__catalogue">
+                      <a href="#" class="tel-learning-card__catalogue-link">Enabling Effective Learning</a>
+                      <img src="https://picsum.photos/100" alt="" class="tel-learning-card__catalogue-image">
+                    </div>
+                  {# </div> #}
+                {%- endcall %}
+                </li>
+
+              {% endfor %}
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

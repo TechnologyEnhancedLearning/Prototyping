@@ -1,0 +1,135 @@
+<!-- Use this page as the index for your project -->
+{# {%- from "elements/data/learning-cards-params.njk" import learningCardContent %} #}
+{% from "components/rating.njk" import rating %}
+{% from "components/macros/definition-list.njk" import definitionList %}
+{% from "components/macros/elearning-activity-information.njk" import elearningActivityInformation %}
+
+{% extends 'layouts/layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  Learning cards
+{% endblock %}
+
+{% block header %}
+  {{ header({
+    "service": {
+        "name": "TEL Prototype"
+      },
+      "homeHref": "/",
+      "showNav": "false",
+      "classes": "",
+      "primaryLinks": []
+    })
+  }}
+{% endblock %}
+
+{% block content %}
+
+  {% set learning_listing_heading %}
+    <div class="tel-learning-listing__heading">
+      <a href="#" class="tel-learning-listing__heading-link">
+        <h2 class="tel-learning-listing__heading-text">
+          Understanding the Basics of Medical Terminology in Clinical Practice for New Healthcare Workers
+        </h2>
+      </a>
+    </div>
+  {% endset%}
+
+  {% macro learning_listing_content(progress, developedWith, starRating=45) %}
+    <div class="tel-learning-listing__content">
+      <div class="tel-learning-listing__description">
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. In voluptatibus incidunt dolorem quas totam. Nemo sapiente aut eveniet, laboriosam modi itaque fugit. Cum non eaque impedit, delectus nemo maiores consequatur?<p>
+      </div>
+      <div class="tel-learning-listing__rating">
+        {{ rating(progress=starRating) }}
+      </div>
+      <div class="tel-learning-listing__key-activity-information">
+
+        {{ elearningActivityInformation(progress) }}
+
+      </div>
+    </div>
+
+    <div class="tel-learning-listing__footer">
+      <div class="tel-learning-listing__catalogue">
+        <img src="https://picsum.photos/100" alt="" class="tel-learning-listing__catalogue-image">
+        <a href="#" class="tel-learning-listing__catalogue-link">Enabling Effective Learning</a>
+      </div>
+
+      {% if developedWith is string or developedWith == true %}
+        <div class="tel-learning-listing__developed-with">
+          Developed with elearning for healthcare
+        </div>
+      {% endif %}
+    </div>
+  {% endmacro %}
+
+
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full">
+        <h1>Learning cards</h1>
+
+        <div class="nhsuk-u-margin-bottom-6">
+          <h2>Cards</h2>
+          <div class="">
+            <ul class="nhsuk-grid-row nhsuk-card-group">
+              <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
+                {% call card({
+                  classes: "tel-learning-listing tel-learning-listing--learning-card",
+                  imgURL: "https://assets.nhs.uk/prod/images/A_0218_exercise-main_FKW1X7.width-690.jpg",
+                  headingHtml: learning_listing_heading
+                }) %}
+                    {{ learning_listing_content(0) }}
+                {%- endcall %}
+              </li>
+
+              <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
+                {% call card({
+                  classes: "tel-learning-listing tel-learning-listing--learning-card tel-learning-listing--course-card",
+                  imgURL: "https://assets.nhs.uk/prod/images/A_0218_exercise-main_FKW1X7.width-690.jpg",
+                  headingHtml: learning_listing_heading
+                }) %}
+                    {{ learning_listing_content(progress=90, developedWith=true, starRating=20) }}
+                {%- endcall %}
+              </li>
+
+              <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
+                {% call card({
+                  classes: "tel-learning-listing tel-learning-listing--learning-card tel-learning-listing--course-card",
+                  imgURL: "https://assets.nhs.uk/prod/images/A_0218_exercise-main_FKW1X7.width-690.jpg",
+                  headingHtml: learning_listing_heading
+                }) %}
+                    {{ learning_listing_content(100) }}
+                {%- endcall %}
+              </li>
+            </ul>
+          </div>
+
+          <h2>Listings</h2>
+          <div class="nhsuk-grid-row">
+
+            <ul class="nhsuk-grid-column-full tel-list">
+                <li class="tel-learning-listing nhsuk-u-reading-width no-list-style">
+                  {{ learning_listing_heading | safe }}
+                  {{ learning_listing_content(0) }}
+                </li>
+
+                <li class="tel-learning-listing nhsuk-u-reading-width no-list-style">
+                  {{ learning_listing_heading | safe }}
+                  {{ learning_listing_content(80) }}
+                </li>
+
+                <li class="tel-learning-listing nhsuk-u-reading-width no-list-style">
+                  {{ learning_listing_heading | safe }}
+                  {{ learning_listing_content(100) }}
+                </li>
+              </div>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+  </div>
+{% endblock %}

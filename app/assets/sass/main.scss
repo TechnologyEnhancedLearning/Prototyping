@@ -12,13 +12,18 @@
 
 // Custom prototyping components
 @import 'components/certificate';
+@import 'components/definition-list';
+@import 'components/tel-list';
+
 @import 'components/featured-media';
 @import 'components/form-elements';
+@import 'components/icons';
 @import 'components/learning-log';
 @import 'components/picture';
 @import 'components/progress';
 @import 'components/quick-filters';
 @import 'components/search';
+@import 'components/rating';
 @import 'components/user-entry';
 @import 'components/utilities';
 
@@ -29,6 +34,7 @@
 
 // NHSUK front-end overrides
 @import 'components/nhsuk-overrides/card';
+@import 'components/nhsuk-overrides/tel-learning-card';
 @import 'components/nhsuk-overrides/expander';
 @import 'components/nhsuk-overrides/list-border';
 @import 'components/nhsuk-overrides/summary-list';

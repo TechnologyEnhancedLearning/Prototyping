@@ -1,0 +1,237 @@
+{# Format content like the below
+{%
+  set learningCardContent = {
+    lvl1: {
+      lvl2: ''
+    },
+  }
+%}
+
+I'll need content for each iof these:
+
+  imageUrl: use unsplash image urls, images want to be 525w X 225h
+  title: '',
+  description: '', - max length of 125 characters
+  starRatingScore: '' - a number between 0 and 5 with 1 decimal place
+  starRating: '' - the starRatingScore as a percent
+  type: '' types should consist of either: article, catalogue, course or elearning
+  accessed: 'DD Month YYYY',
+  Progress: {
+    ['not started', 'in progress', 'complete'],
+    numberOfActivities: '' - a number less than 20,
+    numberOfActivitiesComplete: '' - a number less than or equal to the numberOfActivities,
+    progressPercent: '' - the numberOfActivitiesComplete as a percentage of numberOfActivities,
+    completedOn: 'DD Month YYYY'
+  },
+  includesCertificate: yes/no,
+  parentCatalogue,
+  developedWith: "elearning for healthcare"
+
+For each type i'd like some different dumby information to be provided:
+  articles
+    - title
+    - description
+    - rating
+    - type
+    - accessed
+    - parentCatalogue
+    - developedWith
+
+  catalogue
+    - imageUrl
+    - title
+    - description
+    - developedWith
+
+  course
+    - title
+    - description
+    - rating
+    - type
+    - accessed
+    - Progress
+    - includesCertificate
+    - parentCatalogue
+    - developedWith
+
+  elearning
+    - title
+    - description
+    - rating
+    - type
+    - accessed
+    - Progress
+    - includesCertificate
+    - parentCatalogue
+    - developedWith
+
+and I would like several of each with variying title content so I can see what this content will look like in varying states. titles should be between 80 and 180 charecters and go up in incriments of 25 charecters #}
+
+
+{% set learningCardContent = {
+    articles: [
+      {
+        title: 'Understanding the Basics of Medical Terminology in Clinical Practice for New Healthcare Workers',
+        description: 'A quick overview of key medical terms you’ll need on your first clinical rotation.',
+        starRatingScore: 4.2,
+        starRating: '84%',
+        type: 'article',
+        accessed: '05 June 2025',
+        parentCatalogue: 'Clinical Foundations',
+        developedWith: 'elearning for healthcare'
+      },
+      {
+        title: 'Navigating Ethical Dilemmas in Complex Patient Care Situations as a Junior Practitioner in Hospitals',
+        description: 'Explore real-world ethical decisions faced by junior staff in hospitals.',
+        starRatingScore: 3.8,
+        starRating: '76%',
+        type: 'article',
+        accessed: '28 May 2025',
+        parentCatalogue: 'Ethics in Practice',
+        developedWith: 'elearning for healthcare'
+      },
+      {
+        title: 'Communication Skills and Strategies for High-Stakes Conversations in Multidisciplinary Healthcare Teams',
+        description: 'Learn to lead and manage difficult conversations with colleagues.',
+        starRatingScore: 4.7,
+        starRating: '94%',
+        type: 'article',
+        accessed: '12 June 2025',
+        parentCatalogue: 'Team Working',
+        developedWith: 'elearning for healthcare'
+      }
+    ],
+    catalogue: [
+      {
+        imageUrl: 'https://source.unsplash.com/525x225/?medicine,healthcare',
+        title: 'Clinical Specialties Catalogue for General Practice Trainees Covering All Core Learning Areas and Resources',
+        description: 'Explore learning modules, articles, and case studies across clinical specialties.',
+        developedWith: 'elearning for healthcare'
+      },
+      {
+        imageUrl: 'https://source.unsplash.com/525x225/?hospital,training',
+        title: 'Comprehensive Learning Resources for Emergency Medicine and Trauma Care Skills with Practical Simulations',
+        description: 'This catalogue supports frontline workers in developing emergency response skills.',
+        developedWith: 'elearning for healthcare'
+      },
+      {
+        imageUrl: 'https://source.unsplash.com/525x225/?doctor,nurse',
+        title: 'Patient Safety, Risk Management and Human Factors for Acute and Community Healthcare Providers',
+        description: 'A themed learning collection to enhance safety in patient care across all sectors.',
+        developedWith: 'elearning for healthcare'
+      }
+    ],
+    course: [
+      {
+        title: 'Foundations of Safe Prescribing and Medicines Administration for New Prescribers in Primary Care Settings',
+        description: 'Learn safe, legal, and effective prescribing practices.',
+        starRatingScore: 4.5,
+        starRating: '90%',
+        type: 'course',
+        accessed: '01 June 2025',
+        Progress: {
+          status: 'in progress',
+          numberOfActivities: 12,
+          numberOfActivitiesComplete: 5,
+          progressPercent: '42%',
+          completedOn: '—'
+        },
+        includesCertificate: 'yes',
+        parentCatalogue: 'Prescribing Competency',
+        developedWith: 'elearning for healthcare'
+      },
+      {
+        title: 'Cultural Competency and Inclusive Care Delivery Across Diverse Populations in NHS and Allied Settings',
+        description: 'Explore how to provide inclusive care that respects diverse needs.',
+        starRatingScore: 4.0,
+        starRating: '80%',
+        type: 'course',
+        accessed: '25 May 2025',
+        Progress: {
+          status: 'not started',
+          numberOfActivities: 10,
+          numberOfActivitiesComplete: 0,
+          progressPercent: '0%',
+          completedOn: '—'
+        },
+        includesCertificate: 'no',
+        parentCatalogue: 'Equality and Diversity',
+        developedWith: 'elearning for healthcare'
+      },
+      {
+        title: 'Long-Term Condition Management Including Diabetes, Asthma, and Hypertension for Community Healthcare Staff',
+        description: 'In-depth review of managing long-term conditions in the community.',
+        starRatingScore: 4.9,
+        starRating: '98%',
+        type: 'course',
+        accessed: '03 June 2025',
+        Progress: {
+          status: 'complete',
+          numberOfActivities: 15,
+          numberOfActivitiesComplete: 15,
+          progressPercent: '100%',
+          completedOn: '10 June 2025'
+        },
+        includesCertificate: 'yes',
+        parentCatalogue: 'Chronic Conditions',
+        developedWith: 'elearning for healthcare'
+      }
+    ],
+    elearning: [
+      {
+        title: 'Interactive Scenario-Based eLearning for Recognising and Escalating Deteriorating Patients in Acute Wards',
+        description: 'Practise how to identify and act on early signs of deterioration.',
+        starRatingScore: 4.3,
+        starRating: '86%',
+        type: 'elearning',
+        accessed: '06 June 2025',
+        Progress: {
+          status: 'in progress',
+          numberOfActivities: 8,
+          numberOfActivitiesComplete: 3,
+          progressPercent: '38%',
+          completedOn: '—'
+        },
+        includesCertificate: 'yes',
+        parentCatalogue: 'Acute Care Skills',
+        developedWith: 'elearning for healthcare'
+      },
+      {
+        title: 'eLearning Series on Infection Prevention and Control in Healthcare Settings for Clinical and Non-Clinical Staff',
+        description: 'Learn key IPC practices to keep yourself and patients safe.',
+        starRatingScore: 3.9,
+        starRating: '78%',
+        type: 'elearning',
+        accessed: '29 May 2025',
+        Progress: {
+          status: 'not started',
+          numberOfActivities: 6,
+          numberOfActivitiesComplete: 0,
+          progressPercent: '0%',
+          completedOn: '—'
+        },
+        includesCertificate: 'no',
+        parentCatalogue: 'Public Health and Safety',
+        developedWith: 'elearning for healthcare'
+      },
+      {
+        title: 'Advanced eLearning on Mental Health Assessment, Crisis Intervention, and Safeguarding for Frontline Professionals',
+        description: 'Skills for assessing mental health and responding to crises effectively.',
+        starRatingScore: 4.8,
+        starRating: '96%',
+        type: 'elearning',
+        accessed: '08 June 2025',
+        Progress: {
+          status: 'complete',
+          numberOfActivities: 9,
+          numberOfActivitiesComplete: 9,
+          progressPercent: '100%',
+          completedOn: '10 June 2025'
+        },
+        includesCertificate: 'yes',
+        parentCatalogue: 'Mental Health Awareness',
+        developedWith: 'elearning for healthcare'
+      }
+    ]
+  }
+%}

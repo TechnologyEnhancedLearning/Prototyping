@@ -1,0 +1,118 @@
+.definition-list {
+  $this: &;
+
+  margin-bottom: 1em;
+  line-height: 1.5;
+
+  @include nhsuk-font-size(19);
+  @include adjust-heading($size: 19);
+
+  margin-bottom: 1em;
+
+  &__title,
+  &__description {
+    display: block;
+    word-break: break-word;
+  }
+
+  &__title {
+    font-weight: bold;
+  }
+
+  &__description {
+    @include wysiwyg-content;
+
+    margin-left: 0;
+  }
+
+  &__group {
+    &:nth-last-child(n + 2) {
+      padding-bottom: nhsuk-spacing(3);
+    }
+  }
+
+  &--small {
+    @include nhsuk-font-size(16);
+    @include adjust-heading($size: 16);
+  }
+
+  &--inline {
+    #{$this}__title,
+    #{$this}__description {
+      display: inline;
+    }
+
+    #{$this}__title {
+      margin-right: nhsuk-spacing(1);
+    }
+
+    #{$this}__group {
+      padding-bottom: 0;
+    }
+
+    #{$this}__description {
+      &:nth-of-type(n + 2) {
+        display: block;
+      }
+    }
+
+    p {
+      display: inline-block;
+      margin-bottom: 0;
+    }
+  }
+
+  &--separated {
+    @include nhsuk-media-query($from: tablet) {
+      #{$this}__group {
+        display: block;
+
+        @supports (grid-area: auto) {
+          display: grid;
+          grid-template-columns: 200px 1fr;
+          grid-gap: 0 nhsuk-spacing(5);
+        }
+      }
+
+      #{$this}__title {
+        grid-column-start: 1;
+      }
+
+      #{$this}__description {
+        grid-column-start: 2;
+      }
+    }
+  }
+
+  &--zebra-striped {
+    margin-bottom: nhsuk-spacing(3);
+    padding-top: 20px;
+    border-bottom: 2px solid $nhsuk-form-border-color;
+
+    &__group {
+      border-top: 2px solid $nhsuk-form-border-color;
+    }
+
+    & > :nth-child(odd) {
+      background-color: $color_nhsuk-white;
+    }
+
+    & > :nth-child(even) {
+      background-color:  $color_nhsuk-grey-4;
+    }
+
+    #{$this}__group {
+      padding: nhsuk-spacing(3);
+      // border-bottom: 1px solid $nhsuk-form-border-color;
+
+      &:last-child {
+        margin-bottom: 0;
+        border-bottom: 0;
+      }
+
+      #{$this}__title {
+        margin-bottom: 0.5em;
+      }
+    }
+  }
+}

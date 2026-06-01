@@ -1,0 +1,125 @@
+.tel-learning-listing {
+  $this: &;
+
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+
+  &--course-card {
+    box-shadow: 4px 6px 0 0 #1C366A;
+  }
+
+  &--learning-card {
+    border-radius: $global-radius;
+    overflow: hidden;
+
+    & .nhsuk-card__content {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      padding: nhsuk-spacing(4) 0 0 0;
+    }
+
+    #{$this}__heading,
+    #{$this}__content {
+      padding: 0 nhsuk-spacing(4);
+    }
+
+    #{$this}__catalogue {
+      padding: nhsuk-spacing(3) nhsuk-spacing(4);
+    }
+
+    #{$this}__developed-with {
+      padding: nhsuk-spacing(1) nhsuk-spacing(4);
+    }
+
+    #{$this}__footer {
+      flex: 1;
+      align-content: end;
+    }
+  }
+
+  &__heading {
+    margin-bottom: nhsuk-spacing(3);
+  }
+
+  &__heading-link {}
+
+  &__heading-text {
+    @include nhsuk-font(19, $weight: normal);
+    @include adjust-heading(19);
+
+    margin-bottom: nhsuk-spacing(0);
+
+    @include nhsuk-media-query($from: tablet) {
+      @include adjust-heading(19);
+    }
+  }
+
+  &__description > * {
+    @include nhsuk-font-size(16);
+
+    margin-bottom: nhsuk-spacing(3);
+  }
+
+  &__key-info {
+    display: flex;
+    // justify-content: space-between;
+    align-items: baseline;
+  }
+
+  &__key-info__information__dl {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 0 nhsuk-spacing(2) 0;
+
+    .definition-list__group{
+      margin: 0 nhsuk-spacing(3) nhsuk-spacing(1) 0;
+      flex: 1 0 max-content;
+    }
+  }
+
+  &__key-info__status {
+    flex: 1 0 content;
+
+      margin: 0 0 nhsuk-spacing(2) 0;
+      text-align: right;
+  }
+
+  &__catalogue {
+    display: flex;
+    // justify-content: space-between;
+    border-top: 1px solid $nhsuk-border-color;
+    padding-top: nhsuk-spacing(3);
+    margin-bottom: nhsuk-spacing(3);
+    align-items: center;
+  }
+
+  &__catalogue-link {
+    @include nhsuk-font-size(16);
+
+    display: inline-block;
+  }
+
+  &__catalogue-image {
+    width: 32Px;
+    height: 32px;
+    margin-right: nhsuk-spacing(3);
+    border: 1px solid $nhsuk-form-border-color;
+    border-radius: $global-radius;
+
+    // @include nhsuk-media-query($from: tablet) {
+    //   width: 54px;
+    //   height: 54px;
+    // }
+  }
+
+  &__developed-with {
+    @include nhsuk-font-size(14);
+    @include adjust-heading(14);
+
+    // padding: nhsuk-spacing(2) nhsuk-spacing(4);
+    background: $color_nhsuk-blue;
+    color: $color_nhsuk-white;
+  }
+}
