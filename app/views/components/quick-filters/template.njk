@@ -1,0 +1,40 @@
+{% from "../macros/attributes.njk" import nhsukAttributes %}
+
+{%- set useLinks = params.useLinks if params.useLinks is not undefined else false -%}
+{%- set listHeading = params.listHeading if params.listHeading is not undefined else "Show" -%}
+
+<nav class="quick-filters{%- if params.classes %} {{ params.classes }}{% endif %}" {{- nhsukAttributes(params.attributes) }}>
+  {% if params.filterTitle %}
+    <div class="quick-filters__filter-title">{{ params.filterTitle }}</div>
+  {% endif %}
+
+  <ul class="quick-filters__list{%- if params.listClasses %} {{ params.listClasses }}{% endif %}">
+    {% if listHeading is not sameas(false) %}
+      <span class="quick-filters__list-heading">{{ listHeading }}</span>
+    {% endif %}
+
+    {% for item in params.items %}
+      <li class="quick-filters__list-item{%- if item.classes %} {{ item.classes }}{% endif %}">
+        {% if useLinks %}
+          {%- set href = item.href if item.href else "#" -%}
+          <a href="{{ href }}" class="quick-filters__button{%- if item.active %} quick-filters__button--active{% endif %}{%- if item.buttonClasses %} {{ item.buttonClasses }}{% endif %}" {{- nhsukAttributes(item.attributes) }}>
+            {% if item.html %}
+              {{ item.html | safe | trim | indent(14) }}
+            {% else %}
+              <span>{{ item.text }}</span>
+            {% endif %}
+          </a>
+        {% else %}
+          {%- set buttonType = item.type if item.type else "button" -%}
+          <button type="{{ buttonType }}" class="quick-filters__button{%- if item.active %} quick-filters__button--active{% endif %}{%- if item.buttonClasses %} {{ item.buttonClasses }}{% endif %}" {{- nhsukAttributes(item.attributes) }}>
+            {% if item.html %}
+              {{ item.html | safe | trim | indent(14) }}
+            {% else %}
+              <span>{{ item.text }}</span>
+            {% endif %}
+          </button>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</nav>

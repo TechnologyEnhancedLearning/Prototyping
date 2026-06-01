@@ -1,0 +1,74 @@
+.tel-rating {
+  $this: &;
+  @extend .nhsuk-u-font-size-16;
+
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: nhsuk-spacing(3);
+  color: $nhsuk-secondary-text-color;
+
+  &__container {
+    margin-bottom: nhsuk-spacing(2);
+
+  }
+
+  &__cover {
+    background: white;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  &--star {
+    #{$this}__container {
+      padding: 0 nhsuk-spacing(3) 0 0;
+    }
+
+    #{$this}__progress {
+      flex: 0;
+      height: 20px;
+      position: relative;
+      white-space: nowrap;
+
+      svg {
+        width: 24px;
+        fill: gold;
+      }
+
+      #{$this}__cover {
+        height: 20px;
+        mix-blend-mode: color;
+      }
+    }
+
+    #{$this}__description {}
+  }
+
+  &--progress-bar {
+    #{$this}__container {
+      width: 100%;
+    }
+
+    #{$this}__progress {
+      overflow: hidden;
+      height: 8px;
+      margin-right: 6px;
+      margin-bottom: nhsuk-spacing(3);
+      border-radius: 6px;
+      border: 1px solid $color_nhsuk-green;
+      position: relative;
+      white-space: nowrap;
+      background-color: $color_nhsuk-green;
+    }
+
+    #{$this}__completion {}
+
+    #{$this}__cover {
+      height: 8px;
+      mix-blend-mode: background-color;
+    }
+  }
+}

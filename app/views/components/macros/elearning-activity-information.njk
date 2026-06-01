@@ -1,0 +1,94 @@
+{% from 'tag/macro.njk' import tag %}
+{% from "components/macros/certificate-icon.njk" import certificateIcon %}
+{% from "components/macros/definition-list.njk" import definitionList %}
+{% from "components/rating.njk" import rating %}
+
+{# {% set definitionList1 = [
+  {
+    title: "Type:",
+    descriptions: ["Course"]
+  },
+  {
+    title: "Accessed:",
+    descriptions: ["22 Jan 2028"]
+  }]
+%} #}
+
+{% macro elearningActivityInformation(progress, additionalClasses='') %}
+  {% if not progress or progress == 0 or progress == 'not-started' %}
+    {# <p>Not started</p> #}
+
+    <div>
+    {{ definitionList(
+      additionalClasses="tel-learning-listing__key-info__information__dl",
+      groups=[{
+        title: "includes:",
+        descriptions: ["7 Activities", "with 1 certificate" + certificateIcon(classes="certificate-icon--small")]
+      }],
+      size="small")
+    }}
+    </div>
+
+    {# <div>
+      includes 7 Activities
+      with 1 certificate
+      {{ certificateIcon() }}
+    </div>
+
+    <div>
+      {{ certificateIcon(classes="certificate-icon--small") }}
+      Includes a certificate
+    </div> #}
+  {% elseif progress is number and progress < 100 %}
+    {# <p>In progress</p> #}
+
+    <div class="tel-learning-listing__key-info">
+      <div class="tel-learning-listing__key-info__information">
+        {{ definitionList(
+          additionalClasses="tel-learning-listing__key-info__information__dl",
+          groups=[
+            {
+              title: "Type:",
+              descriptions: ["Course"]
+            },
+            {
+              title: "Accessed:",
+              descriptions: ["22 Jan 2028"]
+          }],
+          size="small")
+        }}
+      </div>
+
+      <div class="tel-learning-listing__key-info__status">
+        {{ tag({ text: "In progress", classes: "nhsuk-tag--blue"  })}}
+      </div>
+    </div>
+
+    {{ rating(type='progress-bar', progress=progress) }}
+
+  {% elseif progress == 100 or progress == 'complete' or progress == 'completed' %}
+    {# <p>Completed</p> #}
+
+    <div class="tel-learning-listing__key-info">
+      <div class="tel-learning-listing__key-info__information">
+        {{ definitionList(
+          additionalClasses="tel-learning-listing__key-info__information__dl",
+          groups=[
+            {
+              title: "Type:",
+              descriptions: ["Course"]
+            },
+            {
+              title: "Awarded:",
+              descriptions: ["22 Jan 2028"]
+          }],
+          size="small")
+        }}
+      </div>
+
+      <div class="tel-learning-listing__key-info__status">
+        {{ tag({ text: "Completed", classes: "nhsuk-tag--green"  })}}
+      </div>
+    </div>
+  {% endif %}
+{% endmacro %}

@@ -1,0 +1,129 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layouts/layout.html' %}
+<!--
+In /views/layout.html you can:
+- change the header and footer
+- add custom CSS and JavaScript
+-->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+DLS prototype
+{% endblock %}
+
+{% block header %}
+{{ header({
+  "service": {
+    "name": "TEL Prototype"
+  },
+  "homeHref": "/",
+  "showNav": "false",
+  "classes": "",
+  "primaryLinks": []
+})
+}}
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+{% from 'components/quick-filters/macro.njk' import quickFilters %}
+
+<script>
+  // Toggle on click (handles elements added later too)
+  document.addEventListener('click', function (e) {
+    const btn = e.target.closest('.quick-filters__button');
+    if (!btn) return;
+    btn.classList.toggle('quick-filters__button--active');
+  });
+
+  // Optional: keyboard support if it's not a native <button>
+  document.addEventListener('keydown', function (e) {
+    const btn = e.target.closest('.quick-filters__button');
+    if (!btn) return;
+    // Space or Enter toggles
+    if (e.key === ' ' || e.key === 'Enter') {
+      e.preventDefault();
+      btn.classList.toggle('quick-filters__button--active');
+    }
+  });
+</script>
+
+<div class="nhsuk-width-container">
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+      <h1>Quick filters</h1>
+
+      <div class="content-group nhsuk-u-margin-bottom-6">
+        <h2>Links</h2>
+
+        {{ quickFilters({
+          "useLinks": true,
+          "filterTitle": "Activity",
+          "listHeading": "Show",
+          "items": [
+            { "text": "All", "href": "#", "active": true },
+            { "text": "Confirmed", "href": "#" },
+            { "text": "Sent for review", "href": "#" },
+            { "text": "Review requested", "href": "#" },
+            { "text": "In draft", "href": "#" }
+          ]
+        }) }}
+
+        {{ quickFilters({
+          "useLinks": true,
+          "filterTitle": "Activity",
+          "listHeading": "Show",
+          "items": [
+            { "text": "All", "href": "#", "active": true },
+            { "text": "Confirmed", "href": "#" },
+            { "text": "Sent for review", "href": "#" },
+            { "text": "Review requested", "href": "#" },
+            { "text": "In draft", "href": "#" }
+          ]
+        }) }}
+
+      </div>
+
+      <div class="content-group nhsuk-u-margin-bottom-6">
+        <h2>Buttons</h2>
+
+        {{ quickFilters({
+          "classes": "learning-log__activity-filter",
+          "filterTitle": "Activity",
+          "listHeading": "Show",
+          "items": [
+            { "text": "All", "active": true },
+            { "text": "Confirmed" },
+            { "text": "Sent for review" },
+            { "text": "Review requested" },
+            { "text": "In draft" }
+          ]
+        }) }}
+
+        {{ quickFilters({
+          "listHeading": "Show",
+          "items": [
+            { "text": "All", "active": true },
+            { "text": "Confirmed" },
+            { "text": "Sent for review" },
+            { "text": "Review requested" },
+            { "text": "In draft" }
+          ]
+        }) }}
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+
+  <!-- For adding a back link -->
+  <!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+  {% block outerContent %}
+  {% endblock %}

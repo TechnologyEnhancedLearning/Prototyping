@@ -1,0 +1,95 @@
+{% from "components/macros/definition-list.njk" import definitionList %}
+{# {% from "components/heading.njk" import heading %} #}
+
+{% extends "layouts/layout.html" %}
+
+{% block pageTitle %}
+  Definition Lists
+{% endblock %}
+
+{% block header %}
+  {{ header({
+    "service": {
+        "name": "TEL Prototype"
+      },
+      "homeHref": "/",
+      "showNav": "false",
+      "classes": "",
+      "primaryLinks": []
+    })
+  }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full">
+        <h1>Definition Lists</h1>
+
+        {# Set DL content #}
+        {% set definitionList1 = [
+          {
+            title: "Title 1 Lorem ipsum, dolor sit amet",
+            descriptions: ["Description 1 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil rem vel cum, magni asperiores, maxime sed perspiciatis voluptate, accusamus quae deleniti itaque! Illo doloribus, deserunt nesciunt suscipit et delectus earum?"]
+          },
+          {
+            title: "Title 2 Lorem ipsum",
+            descriptions: ["Description 2 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil rem vel cum, magni asperiores, maxime sed perspiciatis voluptate, accusamus quae deleniti itaque! Illo doloribus, deserunt nesciunt suscipit et delectus earum?"]
+          },
+          {
+            title: "Title 3 Lorem ipsum, dolor sit",
+            descriptions: ["Description 3 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil rem vel cum, magni asperiores, maxime sed perspiciatis voluptate, accusamus quae deleniti itaque! Illo doloribus, deserunt nesciunt suscipit et delectus earum?"]
+          },
+          {
+            title: "Title 4 Lorem ipsum, dolor sit amet consectetur adipisicing elit",
+            descriptions: ["Description 4 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil rem vel cum, magni asperiores, maxime sed perspiciatis voluptate, accusamus quae deleniti itaque! Illo doloribus, deserunt nesciunt suscipit et delectus earum?"]
+          }
+        ] %}
+
+        {% set definitionList2 = [
+          {
+            title: "Title 1",
+            descriptions: ["Description 1", "Description 2", "Description 3"]
+          },
+          {
+            title: "Title 2",
+            descriptions: ["Description 4", "Description 5"]
+          }
+        ] %}
+
+        {# {{ heading("Definition Lists Example Page") }} #}
+
+        <div class="content-group nhsuk-u-margin-bottom-6 nhsuk-u-reading-width">
+          <h2>Inline</h2>
+          {{ definitionList(groups=definitionList1) }}
+        </div>
+
+        <div class="content-group nhsuk-u-margin-bottom-6 nhsuk-u-reading-width">
+          <h2>Inline small</h2>
+          {{ definitionList(groups=definitionList1, size="small") }}
+        </div>
+
+        <div class="content-group nhsuk-u-margin-bottom-6 nhsuk-u-reading-width">
+          <h2>Zebra striped</h2>
+          {{ definitionList(groups=definitionList1, additionalClasses="definition-list--zebra-striped") }}
+        </div>
+
+        <div class="content-group nhsuk-u-margin-bottom-6 nhsuk-u-reading-width">
+          <h2>Zebra striped</h2>
+          {{ definitionList(groups=definitionList1, type="zebra-striped") }}
+        </div>
+
+        <div class="content-group nhsuk-u-margin-bottom-6 nhsuk-u-reading-width">
+          <h2>Separated</h2>
+          {{ definitionList(groups=definitionList2, type="separated") }}
+        </div>
+
+        <div class="content-group nhsuk-u-margin-bottom-6 nhsuk-u-reading-width">
+          <h2>Separated</h2>
+          {{ definitionList(groups=definitionList2, type="separated") }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

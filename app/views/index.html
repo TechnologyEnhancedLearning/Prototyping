@@ -42,6 +42,43 @@
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-full">
 
+        {% from 'select/macro.njk' import select %}
+        {{ select({
+          id: "select-1",
+          name: "select-1",
+          label: {
+            text: "Label text goes here"
+          },
+          attributes: 'multiple size="40"',
+          items: [
+            {
+              value: 1,
+              text: "NHS.UK frontend option 1",
+              selected: true
+            },
+            {
+              value: 2,
+              text: "NHS.UK frontend option 2"
+            },
+            {
+              value: 3,
+              text: "NHS.UK frontend option 3"
+            },
+            {
+              value: 4,
+              text: "NHS.UK frontend option 4"
+            },
+            {
+              value: 5,
+              text: "NHS.UK frontend option 5"
+            },
+            {
+              value: 6,
+              text: "NHS.UK frontend option 6"
+            }
+          ]
+        }) }}
+
         <ul class="nhsuk-grid-row nhsuk-card-group">
           <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
             {{ card({
